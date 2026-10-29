@@ -66,6 +66,7 @@
       accTxt: 'Academy está incluida en cualquier versión Full de CaVeSal®: Calculadora Prenatal, Historia Clínica o Emergencias Obstétricas. Si ya activaste una de ellas en este dispositivo, entrás directamente.',
       accPh: 'Tu clave de licencia', accBtn: 'Entrar', accComprobando: 'Comprobando…',
       accNoTiene: '¿Todavía no tenés una versión Full?', accVer: 'Ver opciones',
+      tutTit: 'Tutorial', tutTxt: 'Cómo usar Academy paso a paso: acceso, buscador, guías, artículos e instalación.', tutPie: 'Tutorial y manual de uso',
       accHC: 'Desde la Historia Clínica, el botón Academy abre este sitio con tu clave.',
       mNoExiste: 'No encontramos esa clave. Revisá que esté completa.',
       mNoActivada: 'Esta clave todavía no se activó. Activala primero en su app (Calculadora, Historia Clínica o Emergencias) y después volvé.',
@@ -120,6 +121,7 @@
       accTxt: 'Academy is included in any CaVeSal® Full version: Prenatal Calculator, Clinical Record or Obstetric Emergencies. If you already activated one on this device, you get in directly.',
       accPh: 'Your license key', accBtn: 'Enter', accComprobando: 'Checking…',
       accNoTiene: 'No Full version yet?', accVer: 'See options',
+      tutTit: 'Tutorial', tutTxt: 'How to use Academy step by step: access, search, guides, articles and installation.', tutPie: 'Tutorial and user manual',
       accHC: 'From the Clinical Record, the Academy button opens this site with your key.',
       mNoExiste: 'We could not find that key. Check that it is complete.',
       mNoActivada: 'This key has not been activated yet. Activate it in its app first (Calculator, Clinical Record or Emergencies) and come back.',
@@ -174,6 +176,7 @@
       accTxt: 'O Academy está incluído em qualquer versão Full da CaVeSal®: Calculadora Pré-natal, Prontuário Clínico ou Emergências Obstétricas. Se você já ativou uma delas neste dispositivo, entra diretamente.',
       accPh: 'Sua chave de licença', accBtn: 'Entrar', accComprobando: 'Verificando…',
       accNoTiene: 'Ainda não tem uma versão Full?', accVer: 'Ver opções',
+      tutTit: 'Tutorial', tutTxt: 'Como usar o Academy passo a passo: acesso, busca, guias, artigos e instalação.', tutPie: 'Tutorial e manual de uso',
       accHC: 'No Prontuário Clínico, o botão Academy abre este site com sua chave.',
       mNoExiste: 'Não encontramos essa chave. Verifique se está completa.',
       mNoActivada: 'Esta chave ainda não foi ativada. Ative-a primeiro no seu app (Calculadora, Prontuário ou Emergências) e depois volte.',
@@ -371,11 +374,13 @@
   })();
 
   /* ================= interfaz general ================= */
+  function manualURL() { return lang === 'en' ? 'manual-en.html' : lang === 'pt' ? 'manual-pt.html' : 'manual.html'; }
   function aplicarIdioma() {
     document.documentElement.lang = lang;
     document.querySelectorAll('[data-t]').forEach(function (el) { el.textContent = t(el.getAttribute('data-t')); });
     document.querySelectorAll('[data-ta]').forEach(function (el) { el.setAttribute('aria-label', t(el.getAttribute('data-ta'))); });
     var s = $('#sel-lang'); if (s) s.value = lang;
+    var mt = $('#pie-tut'); if (mt) mt.href = manualURL();
     pintarVolver();
     if (version) { var p = $('#pie-sync'); if (p) p.textContent = t('sync') + ' ' + fecha(version.actualizado); }
   }
@@ -456,6 +461,7 @@
       (renovar ? '<a class="btn btn-navy" href="' + GUMROAD + '" target="_blank" rel="noopener">' + esc(t('renovar')) + '</a>' : '') +
       '<small>' + esc(t('accNoTiene')) + ' <a href="' + GUMROAD + '" target="_blank" rel="noopener">' + esc(t('accVer')) + '</a></small>' +
       '<small>' + esc(t('accHC')) + '</small>' +
+      '<small><a href="' + manualURL() + '">' + esc(t('tutPie')) + '</a></small>' +
       '</section>';
     $('#f-acceso').addEventListener('submit', function (ev) {
       ev.preventDefault();
@@ -504,6 +510,7 @@
       tarjeta('#/buscar', t('busTit'), t('busTxt')) +
       tarjeta('#/biblioteca', t('bibTit'), t('bibTxt')) +
       tarjeta('#/articulos', t('artTit'), t('artTxt'), 'PubMed · Cochrane · LILACS · OMS · FIGO · ISUOG') +
+      tarjeta(manualURL(), t('tutTit'), t('tutTxt'), 'ES · EN · PT') +
       '</div>' +
       '<h2 class="seccion">' + esc(t('secProx')) + '</h2><div class="grid">' +
       tarjeta('', t('atlasTit'), t('atlasTxt'), 'IETA · IOTA · O-RADS · MUSA', ' prox') +

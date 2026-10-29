@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tutorial e Manual de Uso · CaVeSal® Academy</title>
+<meta name="description" content="Manual completo do CaVeSal® Academy: como entrar com sua versão full, busca comum, guias do Prontuário Clínico e de Emergências, biblioteca, buscadores de artigos científicos e diretrizes oficiais.">
+<meta name="author" content="CaVeSal">
+<meta name="theme-color" content="#0D1B2D">
+<link rel="icon" href="img/favicon.png">
+<link rel="canonical" href="https://cavesal.app/academy/manual-pt.html">
+<link rel="alternate" hreflang="es" href="https://cavesal.app/academy/manual.html">
+<link rel="alternate" hreflang="en" href="https://cavesal.app/academy/manual-en.html">
+<link rel="alternate" hreflang="pt" href="https://cavesal.app/academy/manual-pt.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tutorial e Manual de Uso · CaVeSal® Academy">
+<meta property="og:description" content="Manual completo do CaVeSal® Academy: como entrar com sua versão full, busca comum, guias do Prontuário Clínico e de Emergências, biblioteca, buscadores de artigos científicos e diretrizes oficiais.">
+<meta property="og:url" content="https://cavesal.app/academy/manual-pt.html">
+<meta property="og:image" content="https://cavesal.app/academy/img/academy-portada.jpg">
+<meta property="og:site_name" content="CaVeSal®">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700;800&family=Nunito+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0D1B2D;--teal:#0EA5B7;--teal-d:#0b7f8d;--teal-lt:#e6f7f9;--slate:#4a6274;--mist:#f2f7f9;--border:#d0e8ed;--gold:#c9a227}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Nunito Sans','Segoe UI',system-ui,sans-serif;background:var(--mist);color:var(--navy);line-height:1.6}
+header.hd{background:linear-gradient(135deg,#0D1B2D,#0b5e6b 70%,#0EA5B7);color:#fff;padding:26px 20px 30px;text-align:center}
+.langs{display:flex;justify-content:flex-end;gap:6px;max-width:760px;margin:0 auto 10px}
+.langs a{color:#fff;text-decoration:none;font-size:.78rem;font-weight:800;padding:4px 10px;border:1px solid rgba(255,255,255,.35);border-radius:999px}
+.langs a[aria-current]{background:#fff;color:var(--navy)}
+header.hd img{width:150px;height:auto;border-radius:16px;background:#fff;padding:6px;box-shadow:0 6px 24px rgba(0,0,0,.25)}
+header.hd h1{font-family:'Fraunces',Georgia,serif;font-size:1.5rem;font-weight:800;margin-top:14px;line-height:1.25}
+header.hd p{font-size:.92rem;opacity:.88;margin-top:6px}
+.btn-open{display:inline-block;margin-top:16px;background:#fff;color:var(--navy);font-weight:800;font-size:.88rem;text-decoration:none;padding:10px 18px;border-radius:999px}
+.btn-open:hover{background:var(--teal-lt)}
+main{max-width:760px;margin:0 auto;padding:26px 18px 50px}
+nav.toc{background:#fff;border-radius:14px;padding:18px 20px;margin-bottom:20px;box-shadow:0 2px 12px rgba(14,165,183,.10)}
+nav.toc h2{font-size:1rem;color:var(--teal-d);margin-bottom:8px}
+nav.toc ol{padding-left:20px;font-size:.9rem;columns:2;column-gap:28px}
+nav.toc li{margin-bottom:4px;break-inside:avoid}
+nav.toc a{color:var(--navy);text-decoration:none}
+nav.toc a:hover{color:var(--teal-d)}
+section{background:#fff;border-radius:14px;padding:22px;margin-bottom:16px;box-shadow:0 2px 12px rgba(14,165,183,.10);scroll-margin-top:12px}
+section h2{font-family:'Fraunces',Georgia,serif;font-size:1.2rem;color:var(--navy);margin-bottom:10px;display:flex;align-items:center;gap:10px}
+section h2 .n{background:var(--teal);color:#fff;font-family:'Nunito Sans',system-ui,sans-serif;font-size:.8rem;font-weight:800;min-width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center}
+section p{font-size:.93rem;margin-bottom:10px}
+section ul{font-size:.92rem;padding-left:20px;margin:0 0 10px}
+section li{margin-bottom:4px}
+.steps{list-style:none;padding:0;counter-reset:s;margin:4px 0 10px}
+.steps li{position:relative;padding-left:36px;margin-bottom:10px;font-size:.92rem}
+.steps li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:1px;width:24px;height:24px;border-radius:50%;background:var(--teal);color:#fff;font-size:.76rem;font-weight:800;display:flex;align-items:center;justify-content:center}
+.tip{background:var(--teal-lt);border-left:3px solid var(--teal);border-radius:8px;padding:11px 14px;font-size:.88rem;margin:10px 0}
+.warn{background:#fff8e6;border-left:3px solid var(--gold);border-radius:8px;padding:11px 14px;font-size:.88rem;margin:10px 0}
+.shots{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:14px 0}
+.shots figure{flex:0 1 250px;text-align:center}
+.shots img{width:100%;height:auto;border-radius:16px;border:1px solid var(--border);box-shadow:0 4px 16px rgba(13,27,45,.12);display:block}
+.shots figcaption{font-size:.78rem;color:var(--slate);margin-top:6px}
+details{border:1px solid var(--border);border-radius:10px;padding:10px 14px;margin-bottom:8px}
+details summary{font-weight:800;font-size:.92rem;cursor:pointer}
+details p{margin:8px 0 0}
+.top{display:inline-block;margin-top:6px;font-size:.78rem;color:var(--teal-d)}
+a{color:var(--teal-d)}
+.updated{font-size:.8rem;color:var(--slate);text-align:center;margin-top:18px}
+footer.ft{text-align:center;font-size:.8rem;color:var(--slate);padding:0 18px 30px}
+@media(max-width:560px){nav.toc ol{columns:1}.shots figure{flex-basis:100%;max-width:300px}header.hd h1{font-size:1.3rem}}
+</style>
+</head>
+<body>
+<header class="hd">
+<nav class="langs" aria-label="Idioma / Language"><a href="manual.html" hreflang="es">ES</a><a href="manual-en.html" hreflang="en">EN</a><a href="manual-pt.html" hreflang="pt" aria-current="page">PT</a></nav>
+<img src="img/academy-logo.jpg" alt="CaVeSal® Academy — Medical Education" width="284" height="210">
+<h1>Tutorial e Manual de Uso · CaVeSal® Academy</h1>
+<p>Como usar o espaço de formação médica do ecossistema CaVeSal®, passo a passo.</p>
+<a class="btn-open" href="./">Abrir o CaVeSal® Academy →</a>
+</header>
+<main>
+<nav class="toc" id="indice"><h2>Conteúdo</h2><ol><li><a href="#que-es">O que é o CaVeSal® Academy</a></li><li><a href="#acceso">Quem pode entrar e como</a></li><li><a href="#desde-apps">Entrar a partir dos seus apps</a></li><li><a href="#inicio">Início, menu e idioma</a></li><li><a href="#buscador">Busca comum</a></li><li><a href="#hc">Guias do Prontuário Clínico</a></li><li><a href="#em">Guias de Emergências Obstétricas</a></li><li><a href="#biblioteca">Biblioteca</a></li><li><a href="#articulos">Artigos científicos e diretrizes oficiais</a></li><li><a href="#instalar">Instalar como app e usar sem internet</a></li><li><a href="#faq">Perguntas frequentes</a></li></ol></nav>
+<section id="que-es"><h2><span class="n">1</span>O que é o CaVeSal® Academy</h2><p>O CaVeSal® Academy é o espaço de formação médica do ecossistema CaVeSal®. Reúne em um só lugar as guias do <b>Prontuário Clínico</b> e de <b>Emergências Obstétricas</b>, com uma busca comum, a bibliografia completa de cada app e acesso direto à literatura científica e às diretrizes oficiais.</p><ul><li><b>179 guias</b> do Prontuário Clínico, em 4 capítulos.</li><li><b>192 fichas</b> de Emergências Obstétricas, em 16 abas.</li><li><b>8 buscadores</b> de artigos científicos e <b>19 acessos</b> a diretrizes oficiais.</li><li>Tudo em <b>espanhol, inglês e português</b>.</li></ul><div class="tip">As guias são mantidas no app de origem e copiadas para o Academy automaticamente todos os dias. Você sempre vê a mesma versão do app.</div><a class="top" href="#indice">↑ Voltar ao índice</a></section>
+<section id="acceso"><h2><span class="n">2</span>Quem pode entrar e como</h2><p>O Academy está <b>incluído sem custo adicional</b> em qualquer versão full do CaVeSal®: Calculadora Pré-natal, Prontuário Clínico ou Emergências Obstétricas.</p><ol class="steps"><li>Abra <b>cavesal.app/academy</b>.</li><li>Se você já ativou uma versão full nesse dispositivo, entra diretamente.</li><li>Se não, digite a <b>chave de licença</b> da sua Calculadora, Prontuário Clínico ou Emergências e toque em <b>Entrar</b>.</li></ol><div class="shots"><figure><img src="img/manual/pt-01-acceso.jpg" alt="Tela de acesso com chave" width="585" height="1170" loading="lazy"><figcaption>Tela de acesso com chave</figcaption></figure></div><div class="warn">As chaves do CaVeSal® IA não incluem o Academy. Use a chave de um dos três apps profissionais. A chave precisa estar ativada antes no seu app.</div><a class="top" href="#indice">↑ Voltar ao índice</a></section>
+<section id="desde-apps"><h2><span class="n">3</span>Entrar a partir dos seus apps</h2><p>O jeito mais prático é entrar a partir do app que você já usa. O Academy abre em uma janela separada e reconhece sua chave sozinho.</p><ul><li><b>Calculadora Pré-natal:</b> botão <b>Academy</b> no cabeçalho e cartão em <b>Sobre</b>.</li><li><b>Emergências Obstétricas:</b> logo do Academy em <b>Sobre</b> e na guia.</li><li><b>Prontuário Clínico:</b> botão <b>Academy</b> do menu.</li></ul><p>No topo aparece uma barra turquesa <b>“← Voltar para…”</b> com o nome do seu app. Toque nela para voltar aonde você estava.</p><div class="shots"><figure><img src="img/manual/pt-04-volver.jpg" alt="Barra para voltar ao app de origem" width="585" height="1170" loading="lazy"><figcaption>Barra para voltar ao app de origem</figcaption></figure></div><a class="top" href="#indice">↑ Voltar ao índice</a></section>
+<section id="inicio"><h2><span class="n">4</span>Início, menu e idioma</h2><p>No início há uma busca e cartões para cada seção. Embaixo, o menu fixo leva a <b>Guias HC</b>, <b>Emergências</b>, <b>Biblioteca</b> e <b>Artigos</b> de qualquer tela.</p><div class="shots"><figure><img src="img/manual/pt-02-inicio.jpg" alt="Início com busca" width="585" height="1170" loading="lazy"><figcaption>Início com busca</figcaption></figure><figure><img src="img/manual/pt-03-tarjetas.jpg" alt="Cartões de guias e ferramentas" width="585" height="1170" loading="lazy"><figcaption>Cartões de guias e ferramentas</figcaption></figure></div><ol class="steps"><li>No canto superior direito, a <b>lupa</b> abre a busca comum.</li><li>O seletor <b>ES · EN · PT</b> muda o idioma de toda a interface e das guias. O Academy lembra sua escolha.</li></ol><div class="tip">As seções <b>Atlas médico</b> e <b>Tabelas e classificações</b> aparecem como “Em breve” e serão habilitadas em próximas atualizações.</div><a class="top" href="#indice">↑ Voltar ao índice</a></section>
+<section id="buscador"><h2><span class="n">5</span>Busca comum</h2><p>Busca ao mesmo tempo em todas as guias do Prontuário Clínico e de Emergências.</p><ol class="steps"><li>Digite um termo clínico (pelo menos 2 letras), por exemplo <i>magnésio</i>, <i>HELLP</i> ou <i>Bishop</i>.</li><li>Filtre por <b>Tudo</b>, <b>Prontuário Clínico</b> ou <b>Emergências Obstétricas</b>.</li><li>Toque em um resultado para abrir a guia. O termo aparece destacado.</li></ol><div class="shots"><figure><img src="img/manual/pt-05-buscar.jpg" alt="Resultados com o termo destacado" width="585" height="1170" loading="lazy"><figcaption>Resultados com o termo destacado</figcaption></figure></div><div class="tip">Se não houver resultados, o botão <b>Buscar em artigos</b> leva sua busca aos buscadores científicos.</div><a class="top" href="#indice">↑ Voltar ao índice</a></section>
+<section id="hc"><h2><span class="n">6</span>Guias do Prontuário Clínico</h2><p>São as mesmas guias do Prontuário Clínico, organizadas em 4 capítulos: <b>Obstétrica</b>, <b>Ginecológica</b>, <b>Pré-concepcional e Fertilidade</b> e <b>Estudos</b>.</p><ol class="steps"><li>Escolha um capítulo.</li><li>Toque em uma guia do índice ou use o seletor <b>Ir para…</b> para ir direto.</li><li>Cada guia mostra sua fonte. No rodapé, <b>Ver no app original</b> abre o Prontuário Clínico.</li></ol><div class="shots"><figure><img src="img/manual/pt-06-hc.jpg" alt="Capítulos do Prontuário Clínico" width="585" height="1170" loading="lazy"><figcaption>Capítulos do Prontuário Clínico</figcaption></figure><figure><img src="img/manual/pt-08-hc-guia.jpg" alt="Guia aberta com sua fonte" width="585" height="1170" loading="lazy"><figcaption>Guia aberta com sua fonte</figcaption></figure></div><a class="top" href="#indice">↑ Voltar ao índice</a></section>
+<section id="em"><h2><span class="n">7</span>Guias de Emergências Obstétricas</h2><p>As 16 abas da guia de Emergências, cada uma com a cor do seu código: <b>Código Vermelho</b> (hemorragia), <b>Código SHG — Hipertensão</b>, <b>Código Amarelo — Sepse</b>, <b>Código Azul Obstétrico</b>, tromboprofilaxia, parto e mais.</p><ol class="steps"><li>Escolha uma aba.</li><li>Abra uma ficha do índice ou use <b>Ir para…</b>.</li><li>As fichas incluem tabelas, algoritmos e fontes.</li></ol><div class="shots"><figure><img src="img/manual/pt-09-em.jpg" alt="Abas com a cor de cada código" width="585" height="1170" loading="lazy"><figcaption>Abas com a cor de cada código</figcaption></figure><figure><img src="img/manual/pt-11-em-ficha.jpg" alt="Ficha do Código Vermelho" width="585" height="1170" loading="lazy"><figcaption>Ficha do Código Vermelho</figcaption></figure></div><a class="top" href="#indice">↑ Voltar ao índice</a></section>
+<section id="biblioteca"><h2><span class="n">8</span>Biblioteca</h2><p>A bibliografia completa que sustenta cada app: fontes acadêmicas, diretrizes internacionais e normas, com links para cada fonte.</p><div class="shots"><figure><img src="img/manual/pt-12-biblio.jpg" alt="Bibliografia por app" width="585" height="1170" loading="lazy"><figcaption>Bibliografia por app</figcaption></figure></div><a class="top" href="#indice">↑ Voltar ao índice</a></section>
+<section id="articulos"><h2><span class="n">9</span>Artigos científicos e diretrizes oficiais</h2><p>Digite o tema uma única vez e escolha onde buscar. Cada buscador abre em uma nova aba.</p><ul><li><b>PubMed</b>: literatura biomédica indexada (NLM / NIH).</li><li><b>Cochrane Library</b>: revisões sistemáticas.</li><li><b>Epistemonikos</b>: evidências de revisões sistemáticas.</li><li><b>BVS / LILACS</b>: literatura latino-americana (OPAS).</li><li><b>Trip Database</b>: diretrizes e evidências em uma só busca.</li><li><b>Europe PMC</b>: muito texto completo gratuito.</li><li><b>Consensus</b>: respostas baseadas em estudos.</li><li><b>Google Acadêmico</b>: artigos, teses, livros e citações.</li></ul><div class="tip">Para obter mais resultados, busque em inglês (por exemplo <i>magnesium sulfate neuroprotection preterm</i>). Epistemonikos e BVS abrem no idioma que você escolheu.</div><div class="shots"><figure><img src="img/manual/pt-13-articulos.jpg" alt="Buscadores de artigos" width="585" height="1170" loading="lazy"><figcaption>Buscadores de artigos</figcaption></figure><figure><img src="img/manual/pt-14-oficiales.jpg" alt="Diretrizes e fontes oficiais" width="585" height="1170" loading="lazy"><figcaption>Diretrizes e fontes oficiais</figcaption></figure></div><p>Mais abaixo, <b>Diretrizes e fontes oficiais</b> reúne acessos diretos agrupados em:</p><ul><li><b>Paraguai:</b> MSPBS (Manual Nacional Pré-natal 2022, Patologias Obstétricas 2018, Código Vermelho 2022 e materiais), FPGO e sua revista.</li><li><b>Organismos internacionais:</b> OMS, IRIS da OMS, OPAS/CLAP, FIGO e CDC.</li><li><b>Sociedades e diretrizes clínicas:</b> NICE, ACOG, RCOG, SMFM e SOGC.</li><li><b>Medicina fetal e ultrassonografia:</b> ISUOG, Fetal Medicine Foundation e Medicina Fetal Barcelona.</li></ul><div class="tip">Os documentos abrem no site oficial, assim você sempre vê a versão vigente.</div><a class="top" href="#indice">↑ Voltar ao índice</a></section>
+<section id="instalar"><h2><span class="n">10</span>Instalar como app e usar sem internet</h2><ol class="steps"><li><b>Android:</b> no Chrome, menu ⋮ → <b>Instalar app</b> ou <b>Adicionar à tela inicial</b>.</li><li><b>iPhone / iPad:</b> no Safari, botão <b>Compartilhar</b> → <b>Adicionar à Tela de Início</b>.</li><li><b>PC:</b> no Chrome ou Edge, ícone de instalar na barra de endereços.</li></ol><p>As guias que você já abriu ficam salvas. Sem conexão, o Academy mostra a última cópia e avisa com uma faixa <b>“Sem conexão”</b>. Os buscadores de artigos e as diretrizes oficiais precisam de internet.</p><a class="top" href="#indice">↑ Voltar ao índice</a></section>
+<section id="faq"><h2><span class="n">11</span>Perguntas frequentes</h2><details><summary>O Academy tem custo?</summary><p>Não. Está incluído em qualquer versão full da Calculadora Pré-natal, do Prontuário Clínico ou de Emergências Obstétricas.</p></details><details><summary>Minha chave não funciona.</summary><p>Verifique se está completa e se já foi ativada no seu app. As chaves do CaVeSal® IA não servem para o Academy. Se o seu plano anual venceu, aparece o botão <b>Renovar plano</b>.</p></details><details><summary>Com que frequência as guias são atualizadas?</summary><p>Todos os dias são copiadas automaticamente do app de origem. A data da última sincronização aparece no rodapé do Academy.</p></details><details><summary>Posso usar o Academy em inglês ou espanhol?</summary><p>Sim. Escolha EN ou ES no canto superior direito: mudam a interface e as guias.</p></details><details><summary>O Academy substitui o julgamento clínico?</summary><p>Não. É material de formação para profissionais de saúde e não substitui o julgamento clínico nem as diretrizes locais.</p></details><details><summary>Com quem falo?</summary><p>Escreva para <a href="mailto:drverasalerno@gmail.com">drverasalerno@gmail.com</a>.</p></details><a class="top" href="#indice">↑ Voltar ao índice</a></section>
+<p class="updated">Manual atualizado: outubro de 2026</p>
+</main>
+<footer class="ft">CaVeSal® Academy — Medical Education · © Dr. Carlos Vera Salerno · <a href="mailto:drverasalerno@gmail.com">drverasalerno@gmail.com</a></footer>
+</body>
+</html>
