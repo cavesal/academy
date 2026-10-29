@@ -138,6 +138,10 @@ a.tarjeta:hover{transform:translateY(-2px);border-color:var(--teal)}
 .motor:hover{border-color:var(--teal)}
 .motor strong{font-size:1rem;color:var(--navy)}
 .motor span{font-size:.85rem;color:var(--muted)}
+a.motor{text-decoration:none}
+.art-sec{font-size:1.15rem;color:var(--navy);margin:28px 0 4px}
+.art-grupo{font-size:.95rem;color:var(--teal);margin:20px 0 0;text-transform:uppercase;letter-spacing:.04em}
+.etq-pdf{font-style:normal;font-size:.7rem;font-weight:600;background:var(--navy);color:#fff;border-radius:4px;padding:1px 5px;margin-left:4px;vertical-align:middle}
 
 /* ---------- acceso ---------- */
 .acceso{max-width:520px;margin:20px auto;background:#fff;border-radius:20px;box-shadow:var(--sh);padding:28px;text-align:center}
