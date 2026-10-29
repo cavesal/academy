@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CaVeSal® Academy — Medical Education</title>
+<meta name="description" content="CaVeSal® Academy: todas las guías clínicas del ecosistema CaVeSal® en un solo lugar — Historia Clínica y Emergencias Obstétricas, con buscador común, biblioteca y búsqueda de artículos.">
+<meta name="theme-color" content="#0D1B2D">
+<meta name="robots" content="noindex">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700;900&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#vista">Saltar al contenido</a>
+
+<header class="top">
+  <div class="top-in">
+    <a class="marca" href="#/" aria-label="CaVeSal Academy — inicio">
+      <img src="img/icon-192.png" alt="" width="40" height="40">
+      <span class="marca-txt"><strong>CaVeSal<sup>®</sup> Academy</strong><small data-t="lema">Medical Education</small></span>
+    </a>
+    <nav class="top-nav" aria-label="Secciones">
+      <a href="#/hc" data-t="navHC">Guías HC</a>
+      <a href="#/emergencias" data-t="navEM">Emergencias</a>
+      <a href="#/biblioteca" data-t="navBib">Biblioteca</a>
+      <a href="#/articulos" data-t="navArt">Artículos</a>
+    </nav>
+    <div class="top-tools">
+      <button type="button" class="ico-btn" id="btn-buscar" aria-label="Buscar" data-ta="buscar">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+      </button>
+      <label class="sr" for="sel-lang">Idioma</label>
+      <select id="sel-lang" class="lang">
+        <option value="es">ES</option>
+        <option value="en">EN</option>
+        <option value="pt">PT</option>
+      </select>
+    </div>
+  </div>
+  <div class="offline" id="aviso-offline" hidden data-t="offline">Sin conexión — estás viendo la última copia guardada de las guías.</div>
+</header>
+
+<main id="vista" tabindex="-1"></main>
+
+<footer class="pie">
+  <div class="pie-in">
+    <img src="img/cavesal-emblema.png" alt="" width="36" height="36">
+    <p>
+      <strong>CaVeSal® Academy — Medical Education.</strong> <span data-t="pieTexto">Material de formación para profesionales de la salud. Las guías se mantienen en su app de origen y se copian aquí automáticamente.</span>
+      <br><span id="pie-sync"></span> · © Dr. Carlos Vera Salerno · <a href="mailto:drverasalerno@gmail.com">drverasalerno@gmail.com</a>
+    </p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

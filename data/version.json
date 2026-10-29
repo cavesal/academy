@@ -1,0 +1,26 @@
+{
+  "version": "e44000cf0b97",
+  "actualizado": "2026-10-28T19:26:33.847Z",
+  "conteos": {
+    "hc": {
+      "capitulos": 4,
+      "guias": 179
+    },
+    "emergencias": {
+      "pestanas": 16,
+      "fichas": 192
+    }
+  },
+  "archivos": {
+    "hc-es.json": "c19315a74667",
+    "hc-en.json": "bed48f3339a6",
+    "hc-pt.json": "748862e667cf",
+    "biblio-hc-es.json": "a304a8eb2fa3",
+    "biblio-hc-en.json": "a1b8106ecbe9",
+    "biblio-hc-pt.json": "56c3561cff30",
+    "hc.css": "957321724d34",
+    "emergencias-es.json": "20ba91341b63",
+    "biblio-emergencias-es.json": "50d81be461f3",
+    "emergencias.css": "d1184cc8949c"
+  }
+}
