@@ -43,7 +43,7 @@
       hcBajada: 'Elegí un capítulo. El contenido es el mismo que el de la Historia Clínica, en el idioma seleccionado.',
       emBajada: 'Las 16 pestañas de la guía de Emergencias Obstétricas, con el color de cada código.',
       indice: 'Índice', otrosCap: 'Otros capítulos', otrasPest: 'Otras pestañas', irA: 'Ir a…',
-      soloEs: 'Las guías de Emergencias están disponibles solo en español.',
+      soloEs: 'Las guías de Emergencias están disponibles solo en español.', soloEsBib: 'La bibliografía de Emergencias está en español.',
       origenHC: 'Copia fiel de las guías de la Historia Clínica CaVeSal®.',
       origenEM: 'Copia fiel de la guía de Emergencias Obstétricas CaVeSal®.',
       verOriginal: 'Ver en la app original',
@@ -90,7 +90,7 @@
       hcBajada: 'Choose a chapter. Content is the same as in the Clinical Record, in the selected language.',
       emBajada: 'The 16 tabs of the Obstetric Emergencies guide, with each code\'s color.',
       indice: 'Contents', otrosCap: 'Other chapters', otrasPest: 'Other tabs', irA: 'Go to…',
-      soloEs: 'Emergency guides are available in Spanish only.',
+      soloEs: 'Emergency guides are available in Spanish only.', soloEsBib: 'The Emergencies bibliography is in Spanish.',
       origenHC: 'Faithful copy of the CaVeSal® Clinical Record guides.',
       origenEM: 'Faithful copy of the CaVeSal® Obstetric Emergencies guide.',
       verOriginal: 'View in the original app',
@@ -137,7 +137,7 @@
       hcBajada: 'Escolha um capítulo. O conteúdo é o mesmo do Prontuário Clínico, no idioma selecionado.',
       emBajada: 'As 16 abas da guia de Emergências Obstétricas, com a cor de cada código.',
       indice: 'Índice', otrosCap: 'Outros capítulos', otrasPest: 'Outras abas', irA: 'Ir para…',
-      soloEs: 'As guias de Emergências estão disponíveis apenas em espanhol.',
+      soloEs: 'As guias de Emergências estão disponíveis apenas em espanhol.', soloEsBib: 'A bibliografia de Emergências está em espanhol.',
       origenHC: 'Cópia fiel das guias do Prontuário Clínico CaVeSal®.',
       origenEM: 'Cópia fiel da guia de Emergências Obstétricas CaVeSal®.',
       verOriginal: 'Ver no app original',
@@ -442,7 +442,7 @@
       '</section>' +
       '<h2 class="seccion">' + esc(t('secGuias')) + '</h2><div class="grid">' +
       tarjeta('#/hc', t('hcTit'), t('hcTxt'), c.hc.guias + ' ' + t('guias') + ' · ' + c.hc.capitulos + ' ' + t('capitulos') + ' · ES · EN · PT') +
-      tarjeta('#/emergencias', t('emTit'), t('emTxt'), c.emergencias.fichas + ' ' + t('fichas') + ' · ' + c.emergencias.pestanas + ' ' + t('pestanas') + ' · ES', ' tab-em c-rojo') +
+      tarjeta('#/emergencias', t('emTit'), t('emTxt'), c.emergencias.fichas + ' ' + t('fichas') + ' · ' + c.emergencias.pestanas + ' ' + t('pestanas') + ' · ' + emLangs().join(' · ').toUpperCase(), ' tab-em c-rojo') +
       '</div>' +
       '<h2 class="seccion">' + esc(t('secHerr')) + '</h2><div class="grid">' +
       tarjeta('#/buscar', t('busTit'), t('busTxt')) +
@@ -513,12 +513,14 @@
   }
 
   /* ================= Emergencias ================= */
-  function datosEM() { return Promise.all([cargar('emergencias-es.json'), hoja('emergencias.css')]).then(function (r) { return r[0]; }); }
+  function emLang() { return (version && version.archivos && version.archivos['emergencias-' + lang + '.json']) ? lang : 'es'; }
+  function emLangs() { return ['es', 'en', 'pt'].filter(function (l) { return l === 'es' || (version && version.archivos && version.archivos['emergencias-' + l + '.json']); }); }
+  function datosEM() { return Promise.all([cargar('emergencias-' + emLang() + '.json'), hoja('emergencias.css')]).then(function (r) { return r[0]; }); }
   function vistaEM(p) {
-    if (p[1] && p[2] && ultimaVista === 'emergencias/' + p[1] && document.getElementById(p[2])) { irAncla(p[2]); return; }
+    if (p[1] && p[2] && ultimaVista === 'emergencias/' + p[1] + '|' + lang && document.getElementById(p[2])) { irAncla(p[2]); return; }
     cargando();
     datosEM().then(function (d) {
-      var aviso = lang !== 'es' ? '<div class="aviso-es">' + esc(t('soloEs')) + '</div>' : '';
+      var aviso = emLang() !== lang ? '<div class="aviso-es">' + esc(t('soloEs')) + '</div>' : '';
       if (!p[1]) {
         ultimaVista = '';
         vista.innerHTML = migas([enlaceVolver('#/emergencias', t('emTit'))]) + aviso +
@@ -543,7 +545,7 @@
         '<p class="origen">' + esc(t('origenEM')) + ' <a href="' + esc(d.fuente || APPS.em) + '" target="_blank" rel="noopener">' + esc(t('verOriginal')) + '</a></p>' +
         '</div></div>';
       $('#sel-ficha').addEventListener('change', function () { if (this.value) location.hash = '#/emergencias/' + g.id + '/' + this.value; });
-      ultimaVista = 'emergencias/' + g.id;
+      ultimaVista = 'emergencias/' + g.id + '|' + lang;
       irAncla(p[2]);
     }, error);
   }
@@ -553,7 +555,7 @@
   function indice() {
     if (indices[lang]) return Promise.resolve(indices[lang]);
     var l = lang;
-    return Promise.all([cargar('hc-' + l + '.json'), cargar('emergencias-es.json')]).then(function (r) {
+    return Promise.all([cargar('hc-' + l + '.json'), cargar('emergencias-' + emLang() + '.json')]).then(function (r) {
       var items = [];
       r[0].capitulos.forEach(function (c) {
         c.guias.forEach(function (g) {
@@ -678,7 +680,7 @@
     cargando();
     var archivo = esHC ? 'biblio-hc-' + lang + '.json' : 'biblio-emergencias-es.json';
     Promise.all([cargar(archivo), hoja(esHC ? 'hc.css' : 'emergencias.css')]).then(function (r) {
-      var aviso = (!esHC && lang !== 'es') ? '<div class="aviso-es">' + esc(t('soloEs')) + '</div>' : '';
+      var aviso = (!esHC && lang !== 'es') ? '<div class="aviso-es">' + esc(t('soloEsBib')) + '</div>' : '';
       vista.innerHTML = migas([enlaceVolver('#/biblioteca', t('bibTit')), esc(esHC ? t('bibHC') : t('bibEM'))]) + aviso +
         '<div class="biblio ' + (esHC ? 'hc-src' : 'emg-src') + '">' + r[0].html + '</div>';
       ultimaVista = key;
@@ -716,8 +718,9 @@
   aplicarIdioma();
   estadoRed();
   cargando();
-  cargarVersion();
-  comprobarAcceso().then(function (r) { acceso = r; render(); }, function () { acceso = { ok: false, motivo: 'error' }; render(); });
+  var pVersion = cargarVersion();
+  comprobarAcceso().then(function (r) { acceso = r; }, function () { acceso = { ok: false, motivo: 'error' }; })
+    .then(function () { return pVersion; }).then(render, render);
 
   if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
     navigator.serviceWorker.register('sw.js').catch(function () {});
