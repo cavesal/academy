@@ -1,6 +1,6 @@
 {
-  "version": "afb4088cf657",
-  "actualizado": "2026-10-29T02:35:12.165Z",
+  "version": "247995f03ba2",
+  "actualizado": "2026-10-29T21:10:34.444Z",
   "conteos": {
     "hc": {
       "capitulos": 4,
@@ -8,7 +8,7 @@
     },
     "emergencias": {
       "pestanas": 16,
-      "fichas": 192
+      "fichas": 193
     }
   },
   "archivos": {
@@ -19,10 +19,10 @@
     "biblio-hc-en.json": "a1b8106ecbe9",
     "biblio-hc-pt.json": "56c3561cff30",
     "hc.css": "957321724d34",
-    "emergencias-es.json": "20ba91341b63",
-    "emergencias-en.json": "76df865fc451",
-    "emergencias-pt.json": "2770e5e45a39",
-    "biblio-emergencias-es.json": "50d81be461f3",
+    "emergencias-es.json": "0f31c5874595",
+    "emergencias-en.json": "6eab10eabf06",
+    "emergencias-pt.json": "df418192ca11",
+    "biblio-emergencias-es.json": "756653ccf4ab",
     "emergencias.css": "d1184cc8949c"
   }
 }
