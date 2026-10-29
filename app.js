@@ -56,7 +56,7 @@
       artPh: 'Ej.: magnesium sulfate neuroprotection preterm',
       pubmed: 'Literatura biomédica indexada (NLM / NIH).', consensus: 'Respuestas basadas en estudios, con resumen de la evidencia.', scholar: 'Artículos, tesis, libros y citas.',
       cochrane: 'Revisiones sistemáticas Cochrane.', episte: 'Evidencia de revisiones sistemáticas, en español.', lilacs: 'Literatura latinoamericana (BVS / OPS).', trip: 'Guías y evidencia en una sola búsqueda.', epmc: 'Artículos con mucho texto completo gratuito.',
-      motTit: 'Buscar artículos', guiTit: 'Guías y fuentes oficiales', guiTxt: 'Accesos directos a las páginas oficiales. Los documentos se abren en su sitio de origen, siempre en la versión vigente.',
+      volverA: 'Volver a', motTit: 'Buscar artículos', guiTit: 'Guías y fuentes oficiales', guiTxt: 'Accesos directos a las páginas oficiales. Los documentos se abren en su sitio de origen, siempre en la versión vigente.',
       gPy: 'Paraguay', gInt: 'Organismos internacionales', gSoc: 'Sociedades y guías clínicas', gFet: 'Medicina fetal y ecografía', pdf: 'PDF',
       dPrenatal: 'Manual Nacional de Normas de Cuidados: Preconcepcional, Prenatal, Parto, Nacimiento y Puerperio (3.ª ed., 2022).', dPatol: 'Manual Nacional de Normas de Atención de las Principales Patologías Obstétricas (2018).', dCR: 'Guía de Código Rojo Materno Neonatal (2.ª ed., 2022).', dMat: 'Todos los manuales y guías del Ministerio para descargar.', dFPGO: 'Federación Paraguaya de Ginecología y Obstetricia.', dRevFPGO: 'Revista Ginecología Obstetricia, de acceso abierto (FPGO).',
       dOMS: 'Guías y salud materna de la Organización Mundial de la Salud.', dIRIS: 'Repositorio de publicaciones de la OMS.', dCLAP: 'Centro Latinoamericano de Perinatología (OPS/OMS).', dFIGO: 'Federación Internacional de Ginecología y Obstetricia.', dCDC: 'Embarazo y salud materna (EE. UU.).',
@@ -110,7 +110,7 @@
       artPh: 'E.g. magnesium sulfate neuroprotection preterm',
       pubmed: 'Indexed biomedical literature (NLM / NIH).', consensus: 'Study-based answers with an evidence summary.', scholar: 'Articles, theses, books and citations.',
       cochrane: 'Cochrane systematic reviews.', episte: 'Evidence from systematic reviews.', lilacs: 'Latin American literature (VHL / PAHO).', trip: 'Guidelines and evidence in a single search.', epmc: 'Articles with plenty of free full text.',
-      motTit: 'Search articles', guiTit: 'Guidelines and official sources', guiTxt: 'Direct links to official pages. Documents open on their original site, always in the current version.',
+      volverA: 'Back to', motTit: 'Search articles', guiTit: 'Guidelines and official sources', guiTxt: 'Direct links to official pages. Documents open on their original site, always in the current version.',
       gPy: 'Paraguay', gInt: 'International organizations', gSoc: 'Societies and clinical guidelines', gFet: 'Fetal medicine and ultrasound', pdf: 'PDF',
       dPrenatal: 'National care standards: preconception, prenatal, birth and postpartum (3rd ed., 2022). In Spanish.', dPatol: 'National standards for the main obstetric conditions (2018). In Spanish.', dCR: 'Maternal-Neonatal Code Red guide (2nd ed., 2022). In Spanish.', dMat: 'All Ministry manuals and guides for download. In Spanish.', dFPGO: 'Paraguayan Federation of Obstetrics and Gynecology.', dRevFPGO: 'Open-access journal Ginecología Obstetricia (FPGO).',
       dOMS: 'World Health Organization guidelines and maternal health.', dIRIS: 'WHO publications repository.', dCLAP: 'Latin American Center for Perinatology (PAHO/WHO).', dFIGO: 'International Federation of Gynecology and Obstetrics.', dCDC: 'Pregnancy and maternal health (USA).',
@@ -164,7 +164,7 @@
       artPh: 'Ex.: magnesium sulfate neuroprotection preterm',
       pubmed: 'Literatura biomédica indexada (NLM / NIH).', consensus: 'Respostas baseadas em estudos, com resumo da evidência.', scholar: 'Artigos, teses, livros e citações.',
       cochrane: 'Revisões sistemáticas Cochrane.', episte: 'Evidência de revisões sistemáticas.', lilacs: 'Literatura latino-americana (BVS / OPAS).', trip: 'Diretrizes e evidência em uma única busca.', epmc: 'Artigos com muito texto completo gratuito.',
-      motTit: 'Buscar artigos', guiTit: 'Diretrizes e fontes oficiais', guiTxt: 'Acesso direto às páginas oficiais. Os documentos abrem no site de origem, sempre na versão vigente.',
+      volverA: 'Voltar para', motTit: 'Buscar artigos', guiTit: 'Diretrizes e fontes oficiais', guiTxt: 'Acesso direto às páginas oficiais. Os documentos abrem no site de origem, sempre na versão vigente.',
       gPy: 'Paraguai', gInt: 'Organismos internacionais', gSoc: 'Sociedades e diretrizes clínicas', gFet: 'Medicina fetal e ultrassonografia', pdf: 'PDF',
       dPrenatal: 'Normas nacionais de cuidados: pré-concepção, pré-natal, parto e puerpério (3.ª ed., 2022). Em espanhol.', dPatol: 'Normas nacionais das principais patologias obstétricas (2018). Em espanhol.', dCR: 'Guia de Código Vermelho Materno-Neonatal (2.ª ed., 2022). Em espanhol.', dMat: 'Todos os manuais e guias do Ministério para baixar. Em espanhol.', dFPGO: 'Federação Paraguaia de Ginecologia e Obstetrícia.', dRevFPGO: 'Revista Ginecología Obstetricia, de acesso aberto (FPGO).',
       dOMS: 'Diretrizes e saúde materna da Organização Mundial da Saúde.', dIRIS: 'Repositório de publicações da OMS.', dCLAP: 'Centro Latino-Americano de Perinatologia (OPAS/OMS).', dFIGO: 'Federação Internacional de Ginecologia e Obstetrícia.', dCDC: 'Gravidez e saúde materna (EUA).',
@@ -320,6 +320,40 @@
     }
   }
 
+  /* regreso a la app de origen (?desde=calc|em|hc): Academy se abre aparte y ofrece volver */
+  var K_DESDE = 'cavesal_academy_desde';
+  (function leerOrigen() {
+    var d = '', u = '';
+    try {
+      var sp = new URLSearchParams(location.search);
+      d = sp.get('desde') || '';
+      if (d && APPS[d]) {
+        var ref = document.referrer || '';
+        u = /^https:\/\/([a-z0-9-]+\.)?cavesal\.app\//.test(ref) && ref.indexOf('/academy/') < 0 ? ref : APPS[d];
+        sessionStorage.setItem(K_DESDE, JSON.stringify({ d: d, u: u }));
+        sp.delete('desde');
+        var q = sp.toString();
+        history.replaceState(null, '', location.pathname + (q ? '?' + q : '') + location.hash);
+      }
+    } catch (e) {}
+  })();
+  function origen() { try { return JSON.parse(sessionStorage.getItem(K_DESDE)) || null; } catch (e) { return null; } }
+  function pintarVolver() {
+    var o = origen(), bar = document.getElementById('volver-app');
+    if (!o || !APPS[o.d]) { if (bar) bar.remove(); return; }
+    if (!bar) {
+      bar = document.createElement('div'); bar.id = 'volver-app'; bar.className = 'volver-app';
+      var hdr = document.querySelector('header.top'); if (hdr) hdr.insertAdjacentElement('afterend', bar); else document.body.prepend(bar);
+    }
+    bar.innerHTML = '<a href="' + esc(o.u) + '" id="volver-link">← ' + esc(t('volverA')) + ' ' + esc(t(o.d)) + '</a>';
+    bar.querySelector('a').addEventListener('click', function (ev) {
+      ev.preventDefault();
+      var dest = o.u;
+      try { window.close(); } catch (e) {}
+      setTimeout(function () { location.href = dest; }, 250);
+    });
+  }
+
   /* clave y/o idioma que llegan en el enlace (desde la Historia Clínica): #k=CLAVE&lang=xx */
   (function leerEnlace() {
     var h = location.hash.replace(/^#\/?\??/, '');
@@ -342,6 +376,7 @@
     document.querySelectorAll('[data-t]').forEach(function (el) { el.textContent = t(el.getAttribute('data-t')); });
     document.querySelectorAll('[data-ta]').forEach(function (el) { el.setAttribute('aria-label', t(el.getAttribute('data-ta'))); });
     var s = $('#sel-lang'); if (s) s.value = lang;
+    pintarVolver();
     if (version) { var p = $('#pie-sync'); if (p) p.textContent = t('sync') + ' ' + fecha(version.actualizado); }
   }
   function marcarNav(seccion) {

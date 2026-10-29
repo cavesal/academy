@@ -1,6 +1,6 @@
 /* CaVeSal® Academy — service worker
    Interfaz: precache. Guías (data/): red primero (4 s) y copia guardada si no hay conexión. */
-var VERSION = 'cavesal-academy-v3';
+var VERSION = 'cavesal-academy-v4';
 var SHELL = ['./', 'index.html', 'styles.css', 'app.js', 'manifest.json',
   'img/academy-portada.jpg', 'img/academy-logo.jpg', 'img/icon-192.png', 'img/icon-512.png',
   'img/apple-touch-icon.png', 'img/favicon.png', 'img/cavesal-emblema.png'];
