@@ -28,7 +28,7 @@ const FUENTES = {
   },
   emergencias: {
     base: "https://cavesal.app/cavesal-emergencias/",
-    guias: { es: "guia.html" },
+    guias: { es: "guia.html", en: "guia-en.html", pt: "guia-pt.html" }, // en/pt opcionales: si aún no están publicadas se omiten
     biblio: { es: "bibliografia.html" },
     css: "styles.css",
   },
@@ -149,11 +149,8 @@ async function espejoHC() {
 }
 
 /* ---------- Emergencias ---------- */
-async function espejoEmergencias() {
-  const f = FUENTES.emergencias;
-  const url = f.base + f.guias.es;
+async function guiaEmergencias(url, lang) {
   const doc = parse(await bajar(url));
-
   const pestanas = doc.querySelectorAll("nav.demo-tabs .demo-tab").map((b) => ({
     id: b.getAttribute("data-tab"),
     nombre: limpiarTexto(b.text),
@@ -196,8 +193,23 @@ async function espejoEmergencias() {
     grupos.push({ ...p, titulo, bajada, html: panel.innerHTML.trim(), fichas });
   }
   const total = grupos.reduce((a, g) => a + g.fichas.length, 0);
-  if (grupos.length < 10 || total < 100) throw new Error(`Emergencias: ${grupos.length} pestañas, ${total} fichas — se cancela`);
-  console.log(`Emergencias es: ${grupos.length} pestañas, ${total} fichas`);
+  if (grupos.length < 10 || total < 100) throw new Error(`Emergencias ${lang}: ${grupos.length} pestañas, ${total} fichas — se cancela`);
+  console.log(`Emergencias ${lang}: ${grupos.length} pestañas, ${total} fichas`);
+  return { app: "emergencias", idioma: lang, fuente: url, grupos };
+}
+
+async function espejoEmergencias() {
+  const f = FUENTES.emergencias;
+  const guias = {};
+  for (const [lang, archivo] of Object.entries(f.guias)) {
+    try {
+      guias[lang] = await guiaEmergencias(f.base + archivo, lang);
+    } catch (e) {
+      if (lang === "es") throw e;
+      console.log(`Emergencias ${lang}: no disponible (${e.message}) — se omite`);
+    }
+  }
+
 
   const burl = f.base + f.biblio.es;
   const bdoc = parse(await bajar(burl));
@@ -207,7 +219,7 @@ async function espejoEmergencias() {
 
   const css = await cssEncerrado(await bajar(f.base + f.css), ".emg-src");
   return {
-    guias: { es: { app: "emergencias", idioma: "es", fuente: url, grupos } },
+    guias,
     biblio: { es: { app: "emergencias", idioma: "es", fuente: burl, html: bmain.innerHTML.trim() } },
     css,
   };
@@ -226,7 +238,7 @@ const archivos = {};
 for (const [l, d] of Object.entries(hc.guias)) archivos[`hc-${l}.json`] = escribir(`hc-${l}.json`, d);
 for (const [l, d] of Object.entries(hc.biblio)) archivos[`biblio-hc-${l}.json`] = escribir(`biblio-hc-${l}.json`, d);
 archivos["hc.css"] = escribir("hc.css", hc.css);
-archivos["emergencias-es.json"] = escribir("emergencias-es.json", em.guias.es);
+for (const [l, d] of Object.entries(em.guias)) archivos[`emergencias-${l}.json`] = escribir(`emergencias-${l}.json`, d);
 archivos["biblio-emergencias-es.json"] = escribir("biblio-emergencias-es.json", em.biblio.es);
 archivos["emergencias.css"] = escribir("emergencias.css", em.css);
 
