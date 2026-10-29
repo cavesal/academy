@@ -1,1 +1,36 @@
-txt
+name: Espejo de guías
+
+on:
+  schedule:
+    - cron: '0 9 * * *'   # todos los días, 06:00 de Paraguay
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: espejo
+  cancel-in-progress: false
+
+jobs:
+  espejo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install --no-audit --no-fund
+      - name: Copiar guías de Historia Clínica y Emergencias
+        run: node scripts/espejo.mjs
+      - name: Guardar cambios
+        run: |
+          if [ -n "$(git status --porcelain data)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data
+            git commit -m "Espejo automático de guías $(date -u +%Y-%m-%d)"
+            git push
+          else
+            echo "Sin cambios en las guías."
+          fi
