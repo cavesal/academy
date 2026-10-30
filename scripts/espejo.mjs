@@ -187,8 +187,12 @@ async function guiaEmergencias(url, lang) {
         id: c.id,
         titulo: limpiarTexto((h?.text || "").replace(/^\s*\d+/, "")),
         texto: textoDe(c.querySelector(".subcard-body") || c),
+        fuentes: c.querySelectorAll(".source-note").map((n) => textoDe(n)).filter(Boolean).join(" · "),
       });
     });
+    // Fichas sin nota de fuente propia: usan la nota general de la pestaña
+    const notaPestana = panel.querySelectorAll(".source-note").filter((n) => !n.closest(".subcard")).map((n) => textoDe(n)).filter(Boolean).join(" · ");
+    if (notaPestana) fichas.forEach((f) => { if (!f.fuentes) f.fuentes = notaPestana; });
     sanear(panel, url, ancla);
     grupos.push({ ...p, titulo, bajada, html: panel.innerHTML.trim(), fichas });
   }
@@ -228,8 +232,59 @@ async function espejoEmergencias() {
 /* ---------- escritura ---------- */
 function escribir(nombre, contenido) {
   const texto = typeof contenido === "string" ? contenido : JSON.stringify(contenido);
-  writeFileSync(join(DATA, nombre), texto);
+  const ruta = join(DATA, nombre);
+  if (!existsSync(dirname(ruta))) mkdirSync(dirname(ruta), { recursive: true });
+  writeFileSync(ruta, texto);
   return hash(texto);
+}
+
+/* ---------- Índice para IA (NUEVO 2026-10-30) ----------
+ * data/ia/indice-{es,en,pt}.json — una entrada por ficha, en texto plano,
+ * con fuentes y enlaces. Lo leen CaVeSal IA y la IA de Mujer y Mamá para
+ * responder con la misma base. Sin HTML: más liviano y sin ruido. */
+const ACADEMY = "https://cavesal.app/academy/";
+function indiceIA(lang, hcGuia, emGuia) {
+  const fichas = [];
+  if (hcGuia) {
+    for (const c of hcGuia.capitulos) {
+      const seccion = limpiarTexto(c.nombre.replace(/^[^\p{L}\p{N}]+/u, ""));
+      for (const g of c.guias) {
+        fichas.push({
+          id: "hc/" + g.id,
+          app: "hc",
+          seccion,
+          titulo: g.titulo,
+          texto: g.texto,
+          fuentes: g.fuente || "",
+          academy: ACADEMY + "#/hc/g/" + g.id,
+          guia: hcGuia.fuente + "#" + g.id,
+        });
+      }
+    }
+  }
+  if (emGuia) {
+    for (const gr of emGuia.grupos) {
+      for (const f of gr.fichas) {
+        fichas.push({
+          id: "emergencias/" + gr.id + "/" + f.id,
+          app: "emergencias",
+          seccion: gr.nombre,
+          titulo: f.titulo,
+          texto: f.texto,
+          fuentes: f.fuentes || "",
+          academy: ACADEMY + "#/emergencias/" + gr.id + "/" + f.id,
+          guia: emGuia.fuente + "#" + f.id,
+        });
+      }
+    }
+  }
+  return {
+    idioma: lang,
+    descripcion: "Índice de las guías CaVeSal® (Historia Clínica y Emergencias) para uso de IA. Texto plano por ficha, con fuentes y enlaces. Se regenera solo desde las guías publicadas; no editar a mano.",
+    autor: "Dr. Carlos Vera Salerno · CaVeSal®",
+    total: fichas.length,
+    fichas,
+  };
 }
 
 const hc = await espejoHC();
@@ -241,6 +296,10 @@ archivos["hc.css"] = escribir("hc.css", hc.css);
 for (const [l, d] of Object.entries(em.guias)) archivos[`emergencias-${l}.json`] = escribir(`emergencias-${l}.json`, d);
 archivos["biblio-emergencias-es.json"] = escribir("biblio-emergencias-es.json", em.biblio.es);
 archivos["emergencias.css"] = escribir("emergencias.css", em.css);
+for (const l of ["es", "en", "pt"]) {
+  if (!hc.guias[l] && !em.guias[l]) continue;
+  archivos[`ia/indice-${l}.json`] = escribir(`ia/indice-${l}.json`, indiceIA(l, hc.guias[l], em.guias[l]));
+}
 
 // version.json solo cambia si cambió algún archivo (así el commit diario no es ruido)
 const vPath = join(DATA, "version.json");
