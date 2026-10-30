@@ -28,6 +28,26 @@ La clave se comprueba con el script de licencias (`accion=verificar&producto=aca
 3. Settings → Pages → Source: *Deploy from a branch* → `main` / `(root)` → Save. Queda en https://cavesal.app/academy/ (usa el dominio que ya tiene cavesal.github.io; no hace falta tocar DNS).
 4. Actions → Espejo de guías → *Run workflow* para la primera actualización manual.
 
+## Índice para IA
+
+El espejo genera también `data/ia/indice-es.json`, `indice-en.json` e `indice-pt.json`: todas las fichas de Historia Clínica y Emergencias en un solo archivo por idioma, para que una IA (por ejemplo Mujer y Mamá) lea el contenido sin entrar al sitio.
+
+- Dirección: https://cavesal.app/academy/data/ia/indice-es.json (cambiar `es` por `en` o `pt`).
+- Cada ficha trae: `id`, `app`, `seccion`, `titulo`, `texto`, `fuentes`, `academy` (enlace a la ficha en Academy) y `guia` (enlace a la guía de origen).
+- Se actualiza solo, con el espejo diario. No editar a mano.
+
+## Vigilancia de evidencia
+
+El día 1 de cada mes, a las 07:00 de Paraguay, la acción **Vigilancia de evidencia** busca publicaciones nuevas sobre los temas de `vigilancia/temas.json` en PubMed (incluye Cochrane), OMS, OPS y RCOG.
+
+- Descarta lo ya citado en las guías y lo ya revisado en meses anteriores (`vigilancia/estado.json`).
+- Una IA (GitHub Models, sin costo dentro de Actions) clasifica cada hallazgo en **Importante** (podría cambiar una conducta), **Para revisar** o descartado. Si la IA no está disponible, clasifica por tipo de publicación.
+- Abre un **Issue** con el informe y casillas Aprobar / Descartar. Si hay algo importante menciona a @cavesal, y GitHub manda el correo.
+- Avisa al grupo de Telegram **CaVeSal Evidencia**: con sonido si hay algo importante, en silencio si no. Si la corrida falla, también avisa.
+- **Nunca modifica una guía.** Lo aprobado se aplica a mano en la app de origen (ES/EN/PT y bibliografía).
+- Prueba manual: Actions → Vigilancia de evidencia → Run workflow → prueba = si. La prueba abre el Issue marcado [Prueba] y no guarda lo visto.
+- Requiere el secreto `TELEGRAM_BOT_TOKEN` en Settings → Secrets and variables → Actions.
+
 ## Archivos
 
 | Archivo | Qué es |
@@ -36,6 +56,10 @@ La clave se comprueba con el script de licencias (`accion=verificar&producto=aca
 | `sw.js`, `manifest.json` | Instalación y modo sin conexión |
 | `scripts/espejo.mjs` | Copia automática de las guías |
 | `.github/workflows/espejo.yml` | Ejecuta el espejo cada día |
+| `scripts/vigilancia.mjs` | Vigilancia mensual de evidencia |
+| `vigilancia/temas.json` | Temas y búsquedas de la vigilancia (se puede editar) |
+| `vigilancia/estado.json` | Lo ya revisado, lo guarda la vigilancia, no editar |
+| `.github/workflows/vigilancia.yml` | Ejecuta la vigilancia el día 1 de cada mes |
 | `data/` | Generado por el espejo, no editar |
 | `img/` | Logo, portada e íconos |
 

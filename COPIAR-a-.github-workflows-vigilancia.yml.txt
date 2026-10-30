@@ -1,0 +1,66 @@
+name: Vigilancia de evidencia
+
+on:
+  schedule:
+    - cron: '0 10 1 * *'   # día 1 de cada mes, 07:00 de Paraguay
+  workflow_dispatch:
+    inputs:
+      prueba:
+        description: 'Corrida de prueba (no guarda lo visto)'
+        type: choice
+        options: ['si', 'no']
+        default: 'si'
+      dias:
+        description: 'Días hacia atrás (vacío = desde la última corrida)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+  issues: write
+  models: read
+
+concurrency:
+  group: vigilancia
+  cancel-in-progress: false
+
+jobs:
+  vigilancia:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install --no-audit --no-fund
+      - name: Buscar evidencia nueva
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: '-5145182858'
+          AVISAR_A: cavesal
+          PRUEBA: ${{ github.event.inputs.prueba || 'no' }}
+          DIAS: ${{ github.event.inputs.dias || '' }}
+        run: node scripts/vigilancia.mjs
+      - name: Guardar lo ya visto
+        if: ${{ github.event.inputs.prueba != 'si' }}
+        run: |
+          if [ -n "$(git status --porcelain vigilancia/estado.json)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add vigilancia/estado.json
+            git commit -m "Vigilancia de evidencia $(date -u +%Y-%m)"
+            git pull --rebase
+            git push
+          else
+            echo "Sin cambios en el estado."
+          fi
+      - name: Avisar si falló
+        if: failure()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        run: |
+          curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+            --data-urlencode "chat_id=-5145182858" \
+            --data-urlencode "text=CaVeSal Evidencia: la vigilancia mensual falló. Ver ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" > /dev/null
