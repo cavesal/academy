@@ -41,12 +41,12 @@ El espejo genera también `data/ia/indice-es.json`, `indice-en.json` e `indice-p
 El día 1 de cada mes, a las 07:00 de Paraguay, la acción **Vigilancia de evidencia** busca publicaciones nuevas sobre los temas de `vigilancia/temas.json` en PubMed (incluye Cochrane), OMS, OPS y RCOG.
 
 - Descarta lo ya citado en las guías y lo ya revisado en meses anteriores (`vigilancia/estado.json`).
-- Una IA (GitHub Models, sin costo dentro de Actions) clasifica cada hallazgo en **Importante** (podría cambiar una conducta), **Para revisar** o descartado. Si la IA no está disponible, clasifica por tipo de publicación.
+- Una IA (Groq, plan gratuito; clave en el secreto `GROQ_API_KEY`) clasifica cada hallazgo en **Importante** (podría cambiar una conducta), **Para revisar** o descartado. Si la IA no está disponible, clasifica por tipo de publicación.
 - Abre un **Issue** con el informe y casillas Aprobar / Descartar. Si hay algo importante menciona a @cavesal, y GitHub manda el correo.
 - Avisa al grupo de Telegram **CaVeSal Evidencia**: con sonido si hay algo importante, en silencio si no. Si la corrida falla, también avisa.
 - **Nunca modifica una guía.** Lo aprobado se aplica a mano en la app de origen (ES/EN/PT y bibliografía).
 - Prueba manual: Actions → Vigilancia de evidencia → Run workflow → prueba = si. La prueba abre el Issue marcado [Prueba] y no guarda lo visto.
-- Requiere el secreto `TELEGRAM_BOT_TOKEN` en Settings → Secrets and variables → Actions.
+- Requiere los secretos `TELEGRAM_BOT_TOKEN` y `GROQ_API_KEY` en Settings → Secrets and variables → Actions. Sin `GROQ_API_KEY` funciona igual, pero sin resumen ni clasificación por IA.
 
 ## Archivos
 

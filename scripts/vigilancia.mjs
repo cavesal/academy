@@ -3,7 +3,7 @@
  *
  * Busca publicaciones nuevas (PubMed/Cochrane, OMS, OPS, RCOG) sobre los
  * temas de las guías CaVeSal® (Historia Clínica y Emergencias), descarta lo
- * que ya está citado, las clasifica con IA (GitHub Models) y:
+ * que ya está citado, las clasifica con IA (Groq, plan gratuito) y:
  *   1) abre un Issue en este repositorio con el informe para aprobar;
  *   2) avisa por Telegram al grupo "CaVeSal Evidencia".
  *
@@ -14,7 +14,8 @@
  *   TELEGRAM_BOT_TOKEN               → secreto del repositorio
  *   TELEGRAM_CHAT_ID                 → número del grupo (en el workflow)
  *   AVISAR_A                         → usuario de GitHub a mencionar (correo)
- *   MODELO                           → modelo de GitHub Models (opcional)
+ *   GROQ_API_KEY                     → secreto del repositorio (sin clave, clasifica sin IA)
+ *   MODELO                           → modelo de Groq (opcional)
  *   DIAS                             → días hacia atrás (opcional; si no, desde la última corrida)
  *   PRUEBA = "si"                    → no guarda estado, marca todo como prueba
  *   SIN_IA = "si"                    → no usa IA (para probar en local)
@@ -31,8 +32,8 @@ const ENV = process.env;
 const PRUEBA = (ENV.PRUEBA || "").toLowerCase() === "si";
 const SIN_IA = (ENV.SIN_IA || "").toLowerCase() === "si";
 const SIN_PUBLICAR = (ENV.SIN_PUBLICAR || "").toLowerCase() === "si";
-const MODELO = ENV.MODELO || "openai/gpt-4.1-mini";
-const MODELO_RESPALDO = "openai/gpt-4o-mini";
+const MODELO = ENV.MODELO || "llama-3.3-70b-versatile";
+const MODELO_RESPALDO = "llama-3.1-8b-instant";
 const ACADEMY = "https://cavesal.app/academy/";
 const UA = "CaVeSal-Academy-Vigilancia (drverasalerno@gmail.com)";
 const MAX_IA = 220; // tope de artículos que pasan por la IA en una corrida
@@ -239,7 +240,7 @@ async function organismos() {
   return { items, avisos, rcog };
 }
 
-/* ---------- IA: GitHub Models ---------- */
+/* ---------- IA: Groq (compatible con OpenAI) ---------- */
 const SISTEMA = `Sos el asistente de vigilancia de evidencia de las guías clínicas CaVeSal® (obstetricia, medicina materno-fetal y ginecología; Paraguay). Para cada publicación decidís si importa para alguna ficha de las guías.
 
 Niveles:
@@ -258,16 +259,17 @@ Reglas:
 Respondé SOLO con JSON válido, sin texto antes ni después:
 {"items":[{"ref":1,"nivel":"importante|revisar|descartar","ficha":"id o null","resumen":"...","sugerencia":"...","motivo":"..."}]}`;
 
-let iaDisponible = !SIN_IA && !!ENV.GITHUB_TOKEN;
+let iaDisponible = !SIN_IA && !!ENV.GROQ_API_KEY;
+if (!SIN_IA && !ENV.GROQ_API_KEY) console.log("IA: falta GROQ_API_KEY, clasifico sin IA");
 let iaFallos = 0;
 let modeloActual = MODELO;
 async function preguntarIA(usuario) {
   for (let intento = 1; intento <= 4; intento++) {
     try {
-      const r = await fetch("https://models.github.ai/inference/chat/completions", {
+      const r = await fetch("https://api.groq.com/openai/v1/chat/completions", {
         method: "POST",
-        headers: { Authorization: "Bearer " + ENV.GITHUB_TOKEN, "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ model: modeloActual, temperature: 0.1, max_tokens: 2500, messages: [{ role: "system", content: SISTEMA }, { role: "user", content: usuario }] }),
+        headers: { Authorization: "Bearer " + ENV.GROQ_API_KEY, "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({ model: modeloActual, temperature: 0.1, max_tokens: 2500, response_format: { type: "json_object" }, messages: [{ role: "system", content: SISTEMA }, { role: "user", content: usuario }] }),
       });
       if (r.status === 429) {
         const seg = Math.min(+(r.headers.get("retry-after") || 30), 120);
@@ -281,7 +283,9 @@ async function preguntarIA(usuario) {
         continue;
       }
       if (!r.ok) throw new Error("HTTP " + r.status + " " + (await r.text()).slice(0, 200));
-      const d = await r.json();
+      const crudo = await r.text();
+      if (!crudo.trim().startsWith("{")) throw new Error("respuesta no JSON: " + crudo.slice(0, 80));
+      const d = JSON.parse(crudo);
       const txt = d.choices?.[0]?.message?.content || "";
       const json = JSON.parse(txt.slice(txt.indexOf("{"), txt.lastIndexOf("}") + 1));
       return Array.isArray(json.items) ? json.items : [];
@@ -348,7 +352,7 @@ async function clasificar(articulos) {
         a.motivo = limpiar(r.motivo);
         a.porIA = true;
       });
-      await espera(4500); // respeta el límite gratuito por minuto
+      await espera(20000); // respeta el límite gratuito de tokens por minuto
     }
   }
 }
@@ -401,7 +405,8 @@ async function main() {
   const imp = articulos.filter((a) => a.nivel === "importante");
   const rev = articulos.filter((a) => a.nivel === "revisar");
   const des = articulos.filter((a) => a.nivel === "descartar");
-  if (!iaDisponible && !SIN_IA) avisos.push("La IA no estuvo disponible en parte de la corrida: esos hallazgos se clasificaron solo por tipo de publicación, sin resumen.");
+  if (!ENV.GROQ_API_KEY && !SIN_IA) avisos.push("No hay clave de IA (GROQ_API_KEY): los hallazgos se clasificaron solo por tipo de publicación, sin resumen.");
+  else if (!iaDisponible && !SIN_IA) avisos.push("La IA no estuvo disponible en parte de la corrida: esos hallazgos se clasificaron solo por tipo de publicación, sin resumen.");
 
   const periodo = `${fmtPy(desde)} al ${fmtPy(hoy)}`;
   const mes = MESES[new Date(hoy.getTime() - 15 * 864e5).getMonth()] + " " + new Date(hoy.getTime() - 15 * 864e5).getFullYear();
