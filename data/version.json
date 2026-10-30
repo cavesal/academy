@@ -1,6 +1,6 @@
 {
-  "version": "247995f03ba2",
-  "actualizado": "2026-10-29T21:10:34.444Z",
+  "version": "94722fa8ee06",
+  "actualizado": "2026-10-30T18:32:51.954Z",
   "conteos": {
     "hc": {
       "capitulos": 4,
@@ -19,10 +19,13 @@
     "biblio-hc-en.json": "a1b8106ecbe9",
     "biblio-hc-pt.json": "56c3561cff30",
     "hc.css": "957321724d34",
-    "emergencias-es.json": "0f31c5874595",
-    "emergencias-en.json": "6eab10eabf06",
-    "emergencias-pt.json": "df418192ca11",
+    "emergencias-es.json": "ad4f224a9bcf",
+    "emergencias-en.json": "538ea13b5757",
+    "emergencias-pt.json": "c0ae89c687dc",
     "biblio-emergencias-es.json": "756653ccf4ab",
-    "emergencias.css": "d1184cc8949c"
+    "emergencias.css": "d1184cc8949c",
+    "ia/indice-es.json": "d679ac7ce56d",
+    "ia/indice-en.json": "973aca0da94b",
+    "ia/indice-pt.json": "5a9b7916a84e"
   }
 }
