@@ -280,13 +280,16 @@ async function elegirModelo() {
   if (!modeloActual) { iaDisponible = false; console.log("IA: sin modelos disponibles, sigo sin IA"); }
   else console.log("IA: uso " + modeloActual);
 }
-async function preguntarIA(usuario) {
+// Groq gratis: el pedido (entrada + max_tokens) no puede pasar de 8000 tokens por minuto
+const TOPE_TPM = 7000;
+const tokensAprox = (t) => Math.ceil(t.length / 3);
+async function preguntarIA(usuario, maxTok = 2500) {
   for (let intento = 1; intento <= 4; intento++) {
     try {
       const r = await fetch("https://api.groq.com/openai/v1/chat/completions", {
         method: "POST",
         headers: { Authorization: "Bearer " + ENV.GROQ_API_KEY, "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ model: modeloActual, temperature: 0.1, max_tokens: 2500, response_format: { type: "json_object" }, ...(/gpt-oss/.test(modeloActual) ? { reasoning_effort: "low" } : {}), messages: [{ role: "system", content: SISTEMA }, { role: "user", content: usuario }] }),
+        body: JSON.stringify({ model: modeloActual, temperature: 0.1, max_tokens: maxTok, response_format: { type: "json_object" }, ...(/gpt-oss/.test(modeloActual) ? { reasoning_effort: "low" } : {}), messages: [{ role: "system", content: SISTEMA }, { role: "user", content: usuario }] }),
       });
       if (r.status === 429) {
         const seg = Math.min(+(r.headers.get("retry-after") || 30), 120);
@@ -300,6 +303,10 @@ async function preguntarIA(usuario) {
         modeloActual = sig;
         intento--;
         continue;
+      }
+      if (r.status === 413) {
+        console.log("IA: pedido demasiado grande (" + (await r.text()).slice(0, 160).replace(/\s+/g, " ") + "), lo divido");
+        return "grande";
       }
       if (!r.ok) throw new Error("HTTP " + r.status + " " + (await r.text()).slice(0, 200));
       const crudo = await r.text();
@@ -324,13 +331,66 @@ function listaFichas(temaIds) {
   return [...secciones].flatMap((s) => fichasPorSeccion[s] || []);
 }
 
-function textoArticulo(a, n) {
-  return `[ref ${n}] Origen: ${a.origen} · Tipo: ${a.tipo} · ${a.revista} ${a.anio}\nTítulo: ${a.titulo}\nResumen: ${(a.resumen || "(sin resumen)").slice(0, 1100)}`;
+function textoArticulo(a, n, largo = 1100) {
+  return `[ref ${n}] Origen: ${a.origen} · Tipo: ${a.tipo} · ${a.revista} ${a.anio}\nTítulo: ${a.titulo}\nResumen: ${(a.resumen || "(sin resumen)").slice(0, largo)}`;
 }
 
 function sinIA(a) {
   const fuerte = /guía|Cochrane|OMS|OPS/.test(a.tipo) && !/protocolo/.test(a.tipo);
   return { nivel: fuerte ? "revisar" : "descartar", ficha: null, resumen: "", sugerencia: "", motivo: "Clasificado sin IA según el tipo de publicación." };
+}
+
+// Arma el pedido; "compacto" acorta resúmenes y títulos de fichas para entrar en el límite
+function armarPedido(tema, lote, compacto) {
+  const largo = compacto ? 600 : 1100;
+  const pubs = lote.map((a, j) => textoArticulo(a, j + 1, largo)).join("\n\n");
+  if (tema === "_org") {
+    return "Documentos nuevos de organismos. No hay lista de fichas: poné ficha null y, en \"motivo\", el tema de las guías al que corresponde (o \"fuera de tema\").\nTemas de las guías: " +
+      temas.map((t) => t.nombre).join("; ") + "\n\n" + pubs;
+  }
+  const t = temas.find((x) => x.id === tema);
+  const fichas = listaFichas([...new Set(lote.flatMap((a) => a.temas))]);
+  const linea = (f) => compacto ? `${f.id} | ${f.titulo.slice(0, 70)}` : `${f.id} | ${f.titulo} | ${f.seccion}`;
+  return `Tema: ${t?.nombre || tema}\nFichas posibles (id | título${compacto ? "" : " | sección"}):\n` +
+    fichas.map(linea).join("\n") + "\n\nPublicaciones:\n" + pubs;
+}
+
+function aplicar(lote, res) {
+  lote.forEach((a, j) => {
+    const r = Array.isArray(res) && res.find((x) => +x.ref === j + 1);
+    if (!r) return Object.assign(a, sinIA(a));
+    a.nivel = ["importante", "revisar", "descartar"].includes(r.nivel) ? r.nivel : "revisar";
+    a.ficha = r.ficha && fichaPorId[r.ficha] ? r.ficha : null;
+    a.resumen_ia = limpiar(r.resumen);
+    a.sugerencia = limpiar(r.sugerencia);
+    a.motivo = limpiar(r.motivo);
+    a.porIA = true;
+  });
+}
+
+// Si el lote no entra en el límite, se parte en artículos sueltos y, si hace falta, en versión compacta
+async function clasificarLote(tema, lote) {
+  const maxTok = lote.length > 1 ? 2500 : 1500;
+  let compacto = false;
+  let usuario = armarPedido(tema, lote, false);
+  if (tokensAprox(SISTEMA + usuario) + maxTok > TOPE_TPM) {
+    if (lote.length > 1) {
+      for (const a of lote) { await clasificarLote(tema, [a]); await espera(20000); }
+      return;
+    }
+    compacto = true;
+    usuario = armarPedido(tema, lote, true);
+  }
+  let res = await preguntarIA(usuario, maxTok);
+  if (res === "grande") {
+    if (lote.length > 1) {
+      for (const a of lote) { await clasificarLote(tema, [a]); await espera(20000); }
+      return;
+    }
+    if (!compacto) res = await preguntarIA(armarPedido(tema, lote, true), 1200);
+    if (res === "grande") res = null;
+  }
+  aplicar(lote, res);
 }
 
 async function clasificar(articulos) {
@@ -350,27 +410,7 @@ async function clasificar(articulos) {
     for (let i = 0; i < lista.length; i += 3) {
       const lote = lista.slice(i, i + 3);
       if (!iaDisponible) { lote.forEach((a) => Object.assign(a, sinIA(a))); continue; }
-      let usuario;
-      if (tema === "_org") {
-        usuario = "Documentos nuevos de organismos. No hay lista de fichas: poné ficha null y, en \"motivo\", el tema de las guías al que corresponde (o \"fuera de tema\").\nTemas de las guías: " +
-          temas.map((t) => t.nombre).join("; ") + "\n\n" + lote.map((a, j) => textoArticulo(a, j + 1)).join("\n\n");
-      } else {
-        const t = temas.find((x) => x.id === tema);
-        const fichas = listaFichas([...new Set(lote.flatMap((a) => a.temas))]);
-        usuario = `Tema: ${t?.nombre || tema}\nFichas posibles (id | título | sección):\n` +
-          fichas.map((f) => `${f.id} | ${f.titulo} | ${f.seccion}`).join("\n") + "\n\nPublicaciones:\n" + lote.map((a, j) => textoArticulo(a, j + 1)).join("\n\n");
-      }
-      const res = await preguntarIA(usuario);
-      lote.forEach((a, j) => {
-        const r = res && res.find((x) => +x.ref === j + 1);
-        if (!r) return Object.assign(a, sinIA(a));
-        a.nivel = ["importante", "revisar", "descartar"].includes(r.nivel) ? r.nivel : "revisar";
-        a.ficha = r.ficha && fichaPorId[r.ficha] ? r.ficha : null;
-        a.resumen_ia = limpiar(r.resumen);
-        a.sugerencia = limpiar(r.sugerencia);
-        a.motivo = limpiar(r.motivo);
-        a.porIA = true;
-      });
+      await clasificarLote(tema, lote);
       await espera(30000); // respeta el límite gratuito de tokens por minuto
     }
   }
