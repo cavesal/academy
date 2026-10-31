@@ -264,6 +264,7 @@ if (!SIN_IA && !ENV.GROQ_API_KEY) console.log("IA: falta GROQ_API_KEY, clasifico
 let iaFallos = 0;
 let modeloActual = null;
 let candidatos = [];
+const modelosUsados = new Set();
 async function elegirModelo() {
   try {
     const r = await fetch("https://api.groq.com/openai/v1/models", { headers: { Authorization: "Bearer " + ENV.GROQ_API_KEY } });
@@ -278,7 +279,7 @@ async function elegirModelo() {
   }
   modeloActual = candidatos.shift() || null;
   if (!modeloActual) { iaDisponible = false; console.log("IA: sin modelos disponibles, sigo sin IA"); }
-  else console.log("IA: uso " + modeloActual);
+  else { modelosUsados.add(modeloActual); console.log("IA: uso " + modeloActual); }
 }
 // Groq gratis: el pedido (entrada + max_tokens) no puede pasar de 8000 tokens por minuto
 const TOPE_TPM = 7000;
@@ -292,15 +293,22 @@ async function preguntarIA(usuario, maxTok = 2500) {
         body: JSON.stringify({ model: modeloActual, temperature: 0.1, max_tokens: maxTok, response_format: { type: "json_object" }, ...(/gpt-oss/.test(modeloActual) ? { reasoning_effort: "low" } : {}), messages: [{ role: "system", content: SISTEMA }, { role: "user", content: usuario }] }),
       });
       if (r.status === 429) {
-        const seg = Math.min(+(r.headers.get("retry-after") || 30), 120);
-        console.log(`IA: límite de uso, espero ${seg} s`);
+        const cuerpo429 = await r.text();
+        const retry = +(r.headers.get("retry-after") || 30);
+        // Cupo diario agotado (tokens o pedidos por día): cada modelo tiene el suyo, paso al siguiente
+        if (/per day|\bTPD\b|\bRPD\b/i.test(cuerpo429) || retry > 300) {
+          if (cambiarModelo("cupo diario agotado")) { intento--; continue; }
+          iaDisponible = false;
+          console.log("IA: todos los modelos agotaron su cupo diario, sigo sin IA");
+          return null;
+        }
+        const seg = Math.min(retry, 120);
+        console.log(`IA: límite por minuto, espero ${seg} s`);
         await espera(seg * 1000);
         continue;
       }
       if ((r.status === 404 || r.status === 400) && candidatos.length) {
-        const sig = candidatos.shift();
-        console.log(`IA: ${modeloActual} no disponible (${r.status} ${(await r.text()).slice(0, 120)}), paso a ${sig}`);
-        modeloActual = sig;
+        cambiarModelo(`no disponible (${r.status} ${(await r.text()).slice(0, 120)})`);
         intento--;
         continue;
       }
@@ -321,8 +329,19 @@ async function preguntarIA(usuario, maxTok = 2500) {
     }
   }
   iaFallos++;
-  if (iaFallos >= 3) { iaDisponible = false; console.log("IA: demasiados fallos, sigo sin IA"); }
+  if (iaFallos >= 3) {
+    if (!cambiarModelo("demasiados fallos")) { iaDisponible = false; console.log("IA: demasiados fallos, sigo sin IA"); }
+  }
   return null;
+}
+function cambiarModelo(motivo) {
+  if (!candidatos.length) return false;
+  const sig = candidatos.shift();
+  console.log(`IA: ${modeloActual} — ${motivo}, paso a ${sig}`);
+  modelosUsados.add(sig);
+  modeloActual = sig;
+  iaFallos = 0;
+  return true;
 }
 
 function listaFichas(temaIds) {
@@ -335,9 +354,9 @@ function textoArticulo(a, n, largo = 1100) {
   return `[ref ${n}] Origen: ${a.origen} · Tipo: ${a.tipo} · ${a.revista} ${a.anio}\nTítulo: ${a.titulo}\nResumen: ${(a.resumen || "(sin resumen)").slice(0, largo)}`;
 }
 
+// Sin IA nada se descarta solo: queda en "para revisar", marcado como no leído
 function sinIA(a) {
-  const fuerte = /guía|Cochrane|OMS|OPS/.test(a.tipo) && !/protocolo/.test(a.tipo);
-  return { nivel: fuerte ? "revisar" : "descartar", ficha: null, resumen: "", sugerencia: "", motivo: "Clasificado sin IA según el tipo de publicación." };
+  return { nivel: "revisar", ficha: null, resumen: "", sugerencia: "", motivo: "Sin leer por la IA (cupo agotado o IA no disponible): revisar el título.", sinLeer: true };
 }
 
 // Arma el pedido; "compacto" acorta resúmenes y títulos de fichas para entrar en el límite
@@ -431,7 +450,7 @@ function cita(a) {
 function bloque(a, n) {
   const f = a.ficha ? fichaPorId[a.ficha] : null;
   return [
-    `### ${n}. [${etiquetaTema(a)}] ${a.titulo}`,
+    `### ${n}. [${etiquetaTema(a)}] ${a.titulo}${a.sinLeer ? " _(sin leer por la IA)_" : ""}`,
     `- **Tipo:** ${a.tipo} · ${a.origen}${a.fecha ? " · " + a.fecha : ""}`,
     `- **Cita:** ${cita(a)}`,
     `- **Ficha afectada:** ${f ? `[${f.seccion} › ${f.titulo}](${f.academy})` : "ninguna en particular" + (a.temas?.length ? " (tema: " + nombreTema(a.temas[0]) + ")" : "")}`,
@@ -463,10 +482,11 @@ async function main() {
   if (articulos.length && iaDisponible) await elegirModelo();
   if (articulos.length) await clasificar(articulos);
   const imp = articulos.filter((a) => a.nivel === "importante");
-  const rev = articulos.filter((a) => a.nivel === "revisar");
+  const rev = [...articulos.filter((a) => a.nivel === "revisar" && !a.sinLeer), ...articulos.filter((a) => a.nivel === "revisar" && a.sinLeer)];
+  const sinLeer = rev.filter((a) => a.sinLeer).length;
   const des = articulos.filter((a) => a.nivel === "descartar");
-  if (!ENV.GROQ_API_KEY && !SIN_IA) avisos.push("No hay clave de IA (GROQ_API_KEY): los hallazgos se clasificaron solo por tipo de publicación, sin resumen.");
-  else if (!iaDisponible && !SIN_IA) avisos.push("La IA no estuvo disponible en parte de la corrida: esos hallazgos se clasificaron solo por tipo de publicación, sin resumen.");
+  if (!ENV.GROQ_API_KEY && !SIN_IA) avisos.push("No hay clave de IA (GROQ_API_KEY): todos los hallazgos quedaron en \"Para revisar\", sin leer.");
+  else if (sinLeer && !SIN_IA) avisos.push(`La IA no pudo leer ${sinLeer} hallazgo${sinLeer === 1 ? "" : "s"}: quedaron en \"Para revisar\", marcados como sin leer, al final de la lista.`);
 
   const periodo = `${fmtPy(desde)} al ${fmtPy(hoy)}`;
   const mes = MESES[new Date(hoy.getTime() - 15 * 864e5).getMonth()] + " " + new Date(hoy.getTime() - 15 * 864e5).getFullYear();
@@ -496,7 +516,7 @@ async function main() {
   let cuerpo = [
     imp.length && usuario ? `${usuario} hay ${imp.length} hallazgo${imp.length > 1 ? "s" : ""} importante${imp.length > 1 ? "s" : ""} para revisar.\n` : "",
     `**Período:** ${periodo} · **Fuentes:** PubMed (incluye Cochrane), OMS, OPS, RCOG.`,
-    `**Resultado:** ${imp.length} importantes · ${rev.length} para revisar · ${des.length} descartados · ${yaCitados.length} ya citados en las guías.`,
+    `**Resultado:** ${imp.length} importantes · ${rev.length} para revisar${sinLeer ? ` (${sinLeer} sin leer por la IA)` : ""} · ${des.length} descartados · ${yaCitados.length} ya citados en las guías.`,
     "",
     "Marcá **Aprobar** o **Descartar** en cada hallazgo. Lo aprobado se aplica a mano en la guía de origen (ES/EN/PT y bibliografía); esta herramienta no modifica ninguna guía. El texto sugerido es un borrador hecho por IA a partir del resumen: verificalo en la fuente antes de usarlo.",
     avisos.length ? "\n> **Avisos de la corrida:** " + avisos.join(" · ") : "",
@@ -514,7 +534,7 @@ async function main() {
     `<details><summary>Ya citados en las guías (${yaCitados.length})</summary>\n\n` + (yaCitados.map((a) => `- [${a.titulo}](${a.url})`).join("\n") || "Ninguno") + "\n\n</details>",
     "",
     "---",
-    `Vigilancia automática CaVeSal® Academy · ${PRUEBA ? "corrida de prueba · " : ""}modelo: ${SIN_IA || !modeloActual ? "sin IA" : modeloActual} · ${new Date().toISOString()}`,
+    `Vigilancia automática CaVeSal® Academy · ${PRUEBA ? "corrida de prueba · " : ""}modelo: ${SIN_IA || !modelosUsados.size ? "sin IA" : [...modelosUsados].join(", ")} · ${new Date().toISOString()}`,
   ].join("\n");
   if (cuerpo.length > 64000) cuerpo = cuerpo.slice(0, 63500) + "\n\n_(Informe recortado por largo: ver la corrida en Actions.)_";
 
@@ -542,7 +562,7 @@ async function main() {
     imp.length ? `IMPORTANTE (${imp.length}): cambia una conducta o un punto de corte` : "",
     ...imp.slice(0, 6).map((a) => " · " + ficha(a) + " — " + a.tipo),
     imp.length > 6 ? ` · y ${imp.length - 6} más` : "",
-    rev.length ? `PARA REVISAR (${rev.length}): suma evidencia, no cambia conducta` : "",
+    rev.length ? `PARA REVISAR (${rev.length}): suma evidencia, no cambia conducta${sinLeer ? ` · ${sinLeer} sin leer por la IA` : ""}` : "",
     `DESCARTADOS (${des.length}) · YA CITADOS (${yaCitados.length})`,
     avisos.length ? "Aviso: " + avisos.join(" · ") : "",
     issueUrl ? "Ver informe: " + issueUrl : "",
