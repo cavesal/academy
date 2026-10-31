@@ -32,8 +32,8 @@ const ENV = process.env;
 const PRUEBA = (ENV.PRUEBA || "").toLowerCase() === "si";
 const SIN_IA = (ENV.SIN_IA || "").toLowerCase() === "si";
 const SIN_PUBLICAR = (ENV.SIN_PUBLICAR || "").toLowerCase() === "si";
-const MODELO = ENV.MODELO || "llama-3.3-70b-versatile";
-const MODELO_RESPALDO = "llama-3.1-8b-instant";
+// Preferencia de modelos; se usa el primero que la cuenta tenga disponible.
+const PREFERIDOS = [ENV.MODELO, "openai/gpt-oss-120b", "llama-3.3-70b-versatile", "moonshotai/kimi-k2-instruct", "qwen/qwen3-32b", "meta-llama/llama-4-maverick-17b-128e-instruct", "openai/gpt-oss-20b", "meta-llama/llama-4-scout-17b-16e-instruct", "llama-3.1-8b-instant"].filter(Boolean);
 const ACADEMY = "https://cavesal.app/academy/";
 const UA = "CaVeSal-Academy-Vigilancia (drverasalerno@gmail.com)";
 const MAX_IA = 220; // tope de artículos que pasan por la IA en una corrida
@@ -262,14 +262,31 @@ Respondé SOLO con JSON válido, sin texto antes ni después:
 let iaDisponible = !SIN_IA && !!ENV.GROQ_API_KEY;
 if (!SIN_IA && !ENV.GROQ_API_KEY) console.log("IA: falta GROQ_API_KEY, clasifico sin IA");
 let iaFallos = 0;
-let modeloActual = MODELO;
+let modeloActual = null;
+let candidatos = [];
+async function elegirModelo() {
+  try {
+    const r = await fetch("https://api.groq.com/openai/v1/models", { headers: { Authorization: "Bearer " + ENV.GROQ_API_KEY } });
+    if (!r.ok) throw new Error("HTTP " + r.status + " " + (await r.text()).slice(0, 200));
+    const ids = ((await r.json()).data || []).filter((m) => m.active !== false).map((m) => m.id);
+    console.log("IA: modelos disponibles → " + ids.join(", "));
+    const texto = ids.filter((id) => !/whisper|guard|tts|playai|orpheus|prompt|compound|allam|vision|distil/i.test(id));
+    candidatos = [...PREFERIDOS.filter((m) => ids.includes(m)), ...texto.filter((m) => !PREFERIDOS.includes(m))];
+  } catch (e) {
+    console.log("IA: no pude leer la lista de modelos — " + e.message);
+    candidatos = [...PREFERIDOS];
+  }
+  modeloActual = candidatos.shift() || null;
+  if (!modeloActual) { iaDisponible = false; console.log("IA: sin modelos disponibles, sigo sin IA"); }
+  else console.log("IA: uso " + modeloActual);
+}
 async function preguntarIA(usuario) {
   for (let intento = 1; intento <= 4; intento++) {
     try {
       const r = await fetch("https://api.groq.com/openai/v1/chat/completions", {
         method: "POST",
         headers: { Authorization: "Bearer " + ENV.GROQ_API_KEY, "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ model: modeloActual, temperature: 0.1, max_tokens: 2500, response_format: { type: "json_object" }, messages: [{ role: "system", content: SISTEMA }, { role: "user", content: usuario }] }),
+        body: JSON.stringify({ model: modeloActual, temperature: 0.1, max_tokens: 4000, response_format: { type: "json_object" }, ...(/gpt-oss/.test(modeloActual) ? { reasoning_effort: "low" } : {}), messages: [{ role: "system", content: SISTEMA }, { role: "user", content: usuario }] }),
       });
       if (r.status === 429) {
         const seg = Math.min(+(r.headers.get("retry-after") || 30), 120);
@@ -277,9 +294,11 @@ async function preguntarIA(usuario) {
         await espera(seg * 1000);
         continue;
       }
-      if ((r.status === 404 || r.status === 400) && modeloActual !== MODELO_RESPALDO) {
-        console.log(`IA: ${modeloActual} no disponible (${r.status}), paso a ${MODELO_RESPALDO}`);
-        modeloActual = MODELO_RESPALDO;
+      if ((r.status === 404 || r.status === 400) && candidatos.length) {
+        const sig = candidatos.shift();
+        console.log(`IA: ${modeloActual} no disponible (${r.status} ${(await r.text()).slice(0, 120)}), paso a ${sig}`);
+        modeloActual = sig;
+        intento--;
         continue;
       }
       if (!r.ok) throw new Error("HTTP " + r.status + " " + (await r.text()).slice(0, 200));
@@ -401,6 +420,7 @@ async function main() {
   });
   console.log(`Encontrados ${totalEncontrados} · ya citados ${yaCitados.length} · nuevos ${articulos.length}`);
 
+  if (articulos.length && iaDisponible) await elegirModelo();
   if (articulos.length) await clasificar(articulos);
   const imp = articulos.filter((a) => a.nivel === "importante");
   const rev = articulos.filter((a) => a.nivel === "revisar");
@@ -433,7 +453,7 @@ async function main() {
     `<details><summary>Ya citados en las guías (${yaCitados.length})</summary>\n\n` + (yaCitados.map((a) => `- [${a.titulo}](${a.url})`).join("\n") || "Ninguno") + "\n\n</details>",
     "",
     "---",
-    `Vigilancia automática CaVeSal® Academy · ${PRUEBA ? "corrida de prueba · " : ""}modelo: ${SIN_IA ? "sin IA" : modeloActual} · ${new Date().toISOString()}`,
+    `Vigilancia automática CaVeSal® Academy · ${PRUEBA ? "corrida de prueba · " : ""}modelo: ${SIN_IA || !modeloActual ? "sin IA" : modeloActual} · ${new Date().toISOString()}`,
   ].join("\n");
   if (cuerpo.length > 64000) cuerpo = cuerpo.slice(0, 63500) + "\n\n_(Informe recortado por largo: ver la corrida en Actions.)_";
 
