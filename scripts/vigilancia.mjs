@@ -244,7 +244,7 @@ async function organismos() {
 const SISTEMA = `Sos el asistente de vigilancia de evidencia de las guías clínicas CaVeSal® (obstetricia, medicina materno-fetal y ginecología; Paraguay). Para cada publicación decidís si importa para alguna ficha de las guías.
 
 Niveles:
-- "importante": (a) guía, consenso o recomendación oficial NUEVA o ACTUALIZADA de una sociedad u organismo (OMS, OPS, FIGO, ACOG, SMFM, RCOG, NICE, SOGC, ISUOG, ISSHP, CDC, ASCCP, ESHRE, ASRM, NAMS/Menopause Society, MSPBS u otra nacional relevante) sobre un tema de las fichas; o (b) revisión Cochrane, metaanálisis o ensayo aleatorizado grande cuyos resultados cambiarían una conducta, dosis, punto de corte o recomendación de una ficha.
+- "importante" (sé exigente: pocos por mes): SOLO si cambiaría una conducta, dosis, punto de corte, criterio diagnóstico o recomendación concreta de una ficha, y viene de (a) una guía o consenso oficial NUEVO o ACTUALIZADO de OMS, OPS, FIGO, ACOG, SMFM, RCOG, NICE, SOGC, ISUOG, ISSHP, CDC, ASCCP, ESHRE, ASRM, Menopause Society, WAPM/FMF o MSPBS; o (b) una revisión Cochrane, metaanálisis o ensayo aleatorizado grande con resultado claro. Guías de otras especialidades (gastroenterología, ORL, etc.), guías nacionales de otros países, recomendaciones de consejería o comunicación y documentos que solo resumen lo ya conocido NO son "importante": son "revisar".
 - "revisar": suma evidencia útil a una ficha pero no cambia la conducta.
 - "descartar": fuera de tema, protocolo de revisión, comentario o carta, estudio pequeño o de baja calidad, población no aplicable, solo veterinario/laboratorio, o documento administrativo sin contenido clínico.
 
@@ -253,7 +253,7 @@ Reglas:
 - "ficha": copiá exactamente uno de los id de la lista de fichas, o null si ninguna corresponde.
 - Escribí en español, frases cortas y técnicas.
 - "resumen": hasta 60 palabras, qué encontró o recomienda.
-- "sugerencia": solo si es "importante" o "revisar": hasta 70 palabras de texto listo para agregar a la ficha, con la cita abreviada al final (autor/organismo, revista, año). Si es "descartar", cadena vacía.
+- "sugerencia": solo si es "importante" o "revisar": hasta 70 palabras de texto listo para agregar a la ficha, con la cita abreviada al final usando el primer autor o el organismo real que figura en la publicación (ej.: Dall'Asta, Pregnancy, 2026). Nunca escribas "Autor" como marcador. Si es "descartar", cadena vacía.
 - "motivo": hasta 20 palabras, por qué ese nivel.
 
 Respondé SOLO con JSON válido, sin texto antes ni después:
@@ -286,7 +286,7 @@ async function preguntarIA(usuario) {
       const r = await fetch("https://api.groq.com/openai/v1/chat/completions", {
         method: "POST",
         headers: { Authorization: "Bearer " + ENV.GROQ_API_KEY, "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ model: modeloActual, temperature: 0.1, max_tokens: 4000, response_format: { type: "json_object" }, ...(/gpt-oss/.test(modeloActual) ? { reasoning_effort: "low" } : {}), messages: [{ role: "system", content: SISTEMA }, { role: "user", content: usuario }] }),
+        body: JSON.stringify({ model: modeloActual, temperature: 0.1, max_tokens: 2500, response_format: { type: "json_object" }, ...(/gpt-oss/.test(modeloActual) ? { reasoning_effort: "low" } : {}), messages: [{ role: "system", content: SISTEMA }, { role: "user", content: usuario }] }),
       });
       if (r.status === 429) {
         const seg = Math.min(+(r.headers.get("retry-after") || 30), 120);
@@ -325,7 +325,7 @@ function listaFichas(temaIds) {
 }
 
 function textoArticulo(a, n) {
-  return `[ref ${n}] Origen: ${a.origen} · Tipo: ${a.tipo} · ${a.revista} ${a.anio}\nTítulo: ${a.titulo}\nResumen: ${(a.resumen || "(sin resumen)").slice(0, 1400)}`;
+  return `[ref ${n}] Origen: ${a.origen} · Tipo: ${a.tipo} · ${a.revista} ${a.anio}\nTítulo: ${a.titulo}\nResumen: ${(a.resumen || "(sin resumen)").slice(0, 1100)}`;
 }
 
 function sinIA(a) {
@@ -347,8 +347,8 @@ async function clasificar(articulos) {
     porTema.set(k, [...(porTema.get(k) || []), a]);
   }
   for (const [tema, lista] of porTema) {
-    for (let i = 0; i < lista.length; i += 5) {
-      const lote = lista.slice(i, i + 5);
+    for (let i = 0; i < lista.length; i += 3) {
+      const lote = lista.slice(i, i + 3);
       if (!iaDisponible) { lote.forEach((a) => Object.assign(a, sinIA(a))); continue; }
       let usuario;
       if (tema === "_org") {
@@ -371,7 +371,7 @@ async function clasificar(articulos) {
         a.motivo = limpiar(r.motivo);
         a.porIA = true;
       });
-      await espera(20000); // respeta el límite gratuito de tokens por minuto
+      await espera(30000); // respeta el límite gratuito de tokens por minuto
     }
   }
 }
