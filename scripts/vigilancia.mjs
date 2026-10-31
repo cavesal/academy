@@ -473,6 +473,25 @@ async function main() {
   const titulo = `${PRUEBA ? "[Prueba] " : ""}Informe de evidencia — ${mes}`;
   const usuario = ENV.AVISAR_A ? "@" + ENV.AVISAR_A : "";
 
+  // Recordatorio para Lovable: fichas de Academy nuevas o modificadas en el período
+  const URL_NOV = "https://cavesal.app/academy/data/ia/novedades-es.json";
+  let novMes = [];
+  try {
+    const rn = join(ROOT, "data/ia/novedades-es.json");
+    if (existsSync(rn)) novMes = JSON.parse(readFileSync(rn, "utf8")).novedades.filter((x) => x.fecha >= fmt(desde));
+  } catch (e) { console.log("Novedades: no pude leer el archivo", e.message); }
+  const fechaDesde = fmtPy(desde);
+  const mensajeLovable = [
+    `Revisión mensual de Academy. Leé ${URL_NOV} y tomá solo las fichas con fecha desde el ${fechaDesde}.`,
+    "Para cada una, decime si cambia algo en CaVeSal Mujer o en Mamá (guías, controles, IA, Atlas) y qué texto propondrías, en lenguaje para la mujer, sin dosis ni indicaciones, derivando a su profesional.",
+    "No apliques nada hasta que yo apruebe cada punto.",
+  ].join("\n");
+  const bloqueLovable = [
+    `## Revisión mensual para Lovable (${novMes.length} ficha${novMes.length === 1 ? "" : "s"} de Academy nueva${novMes.length === 1 ? "" : "s"} o modificada${novMes.length === 1 ? "" : "s"})`,
+    novMes.length ? novMes.slice(0, 40).map((x) => `- ${x.tipo} · ${x.titulo}${x.academy ? ` — [Academy](${x.academy})` : ""}`).join("\n") : "_Sin cambios en Academy en el período._",
+    novMes.length ? "\nMensaje para pegar en Lovable:\n\n```\n" + mensajeLovable + "\n```" : "",
+  ].join("\n");
+
   let n = 0;
   let cuerpo = [
     imp.length && usuario ? `${usuario} hay ${imp.length} hallazgo${imp.length > 1 ? "s" : ""} importante${imp.length > 1 ? "s" : ""} para revisar.\n` : "",
@@ -481,6 +500,8 @@ async function main() {
     "",
     "Marcá **Aprobar** o **Descartar** en cada hallazgo. Lo aprobado se aplica a mano en la guía de origen (ES/EN/PT y bibliografía); esta herramienta no modifica ninguna guía. El texto sugerido es un borrador hecho por IA a partir del resumen: verificalo en la fuente antes de usarlo.",
     avisos.length ? "\n> **Avisos de la corrida:** " + avisos.join(" · ") : "",
+    "",
+    bloqueLovable,
     "",
     `## Importante (${imp.length})`,
     imp.length ? imp.map((a) => bloque(a, ++n)).join("\n\n") : "_Nada que cambie una conducta este mes._",
@@ -525,9 +546,10 @@ async function main() {
     `DESCARTADOS (${des.length}) · YA CITADOS (${yaCitados.length})`,
     avisos.length ? "Aviso: " + avisos.join(" · ") : "",
     issueUrl ? "Ver informe: " + issueUrl : "",
+    novMes.length ? `\nLOVABLE: ${novMes.length} ficha${novMes.length === 1 ? "" : "s"} de Academy nueva${novMes.length === 1 ? "" : "s"} o modificada${novMes.length === 1 ? "" : "s"}. Te mando abajo el mensaje para pegarle.` : "",
   ].filter((x) => x !== "");
   const texto = lineas.join("\n").slice(0, 4000);
-  if (SIN_PUBLICAR) console.log("--- Telegram ---\n" + texto);
+  if (SIN_PUBLICAR) console.log("--- Telegram ---\n" + texto + (novMes.length ? "\n--- Telegram (Lovable) ---\n" + mensajeLovable : ""));
   else if (ENV.TELEGRAM_BOT_TOKEN && ENV.TELEGRAM_CHAT_ID) {
     const r = await fetch(`https://api.telegram.org/bot${ENV.TELEGRAM_BOT_TOKEN}/sendMessage`, {
       method: "POST",
@@ -535,6 +557,14 @@ async function main() {
       body: JSON.stringify({ chat_id: ENV.TELEGRAM_CHAT_ID, text: texto, disable_web_page_preview: true, disable_notification: imp.length === 0 }),
     });
     console.log("Telegram:", r.status, r.ok ? "enviado" : (await r.text()).slice(0, 200));
+    if (novMes.length) {
+      const r2 = await fetch(`https://api.telegram.org/bot${ENV.TELEGRAM_BOT_TOKEN}/sendMessage`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ chat_id: ENV.TELEGRAM_CHAT_ID, text: mensajeLovable, disable_web_page_preview: true, disable_notification: true }),
+      });
+      console.log("Telegram (Lovable):", r2.status, r2.ok ? "enviado" : (await r2.text()).slice(0, 200));
+    }
   } else console.log("Telegram no configurado: falta TELEGRAM_BOT_TOKEN o TELEGRAM_CHAT_ID");
 
   // Estado (no se guarda en pruebas)

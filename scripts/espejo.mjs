@@ -287,6 +287,41 @@ function indiceIA(lang, hcGuia, emGuia) {
   };
 }
 
+/* ---------- Novedades para la revisión mensual (NUEVO 2026-10-31) ----------
+ * data/ia/novedades-{es,en,pt}.json — fichas nuevas, modificadas o eliminadas,
+ * con la fecha en que el espejo detectó el cambio. Compara el índice nuevo con
+ * el que ya estaba publicado. Guarda 13 meses y una sola entrada por ficha (la
+ * más reciente). Lo lee Lovable en la revisión mensual de CaVeSal Mujer y Mamá. */
+const TEXTOS_NOV = {
+  es: "Fichas de las guías CaVeSal® (Historia Clínica y Emergencias) nuevas, modificadas o eliminadas, con la fecha en que se publicó el cambio. Para la revisión mensual de CaVeSal Mujer y Mamá: tomar solo las entradas con fecha posterior a la última revisión. Se regenera solo; no editar a mano.",
+  en: "New, modified or removed cards of the CaVeSal® guides (Clinical History and Emergencies), with the date the change was published. For the monthly review of CaVeSal Mujer and Mamá: take only entries dated after the last review. Regenerated automatically; do not edit by hand.",
+  pt: "Fichas dos guias CaVeSal® (História Clínica e Emergências) novas, modificadas ou removidas, com a data em que a mudança foi publicada. Para a revisão mensal do CaVeSal Mujer e Mamá: considerar só as entradas com data posterior à última revisão. Regenera-se sozinho; não editar à mão.",
+};
+function novedades(lang, indice) {
+  const rIdx = join(DATA, `ia/indice-${lang}.json`);
+  if (!existsSync(rIdx)) return null; // sin índice previo no hay contra qué comparar
+  const antes = new Map(JSON.parse(readFileSync(rIdx, "utf8")).fichas.map((f) => [f.id, f]));
+  const huella = (f) => hash(f.titulo + "\n" + f.texto + "\n" + f.fuentes);
+  const rNov = join(DATA, `ia/novedades-${lang}.json`);
+  const previo = existsSync(rNov) ? JSON.parse(readFileSync(rNov, "utf8")).novedades : [];
+  const hoyISO = new Date().toISOString().slice(0, 10);
+  const nuevas = [];
+  for (const f of indice.fichas) {
+    const a = antes.get(f.id);
+    if (a && huella(a) === huella(f)) continue;
+    nuevas.push({ fecha: hoyISO, tipo: a ? "modificada" : "nueva", id: f.id, app: f.app, seccion: f.seccion, titulo: f.titulo, academy: f.academy, guia: f.guia, fuentes: f.fuentes, texto: f.texto });
+  }
+  const ahora = new Set(indice.fichas.map((f) => f.id));
+  for (const [id, a] of antes) if (!ahora.has(id)) nuevas.push({ fecha: hoyISO, tipo: "eliminada", id, app: a.app, seccion: a.seccion, titulo: a.titulo });
+  if (!nuevas.length && existsSync(rNov)) return null; // sin cambios: no se reescribe
+  const tocadas = new Set(nuevas.map((n) => n.id));
+  const limite = new Date(Date.now() - 400 * 864e5).toISOString().slice(0, 10);
+  const lista = [...nuevas, ...previo.filter((n) => !tocadas.has(n.id) && n.fecha >= limite)];
+  lista.sort((x, y) => (x.fecha < y.fecha ? 1 : x.fecha > y.fecha ? -1 : x.id.localeCompare(y.id)));
+  if (nuevas.length) console.log(`Novedades ${lang}: ${nuevas.length}`);
+  return { idioma: lang, descripcion: TEXTOS_NOV[lang], autor: "Dr. Carlos Vera Salerno · CaVeSal®", actualizado: hoyISO, total: lista.length, novedades: lista };
+}
+
 const hc = await espejoHC();
 const em = await espejoEmergencias();
 const archivos = {};
@@ -298,7 +333,10 @@ archivos["biblio-emergencias-es.json"] = escribir("biblio-emergencias-es.json", 
 archivos["emergencias.css"] = escribir("emergencias.css", em.css);
 for (const l of ["es", "en", "pt"]) {
   if (!hc.guias[l] && !em.guias[l]) continue;
-  archivos[`ia/indice-${l}.json`] = escribir(`ia/indice-${l}.json`, indiceIA(l, hc.guias[l], em.guias[l]));
+  const indice = indiceIA(l, hc.guias[l], em.guias[l]);
+  const nov = novedades(l, indice);
+  archivos[`ia/indice-${l}.json`] = escribir(`ia/indice-${l}.json`, indice);
+  if (nov) archivos[`ia/novedades-${l}.json`] = escribir(`ia/novedades-${l}.json`, nov);
 }
 
 // version.json solo cambia si cambió algún archivo (así el commit diario no es ruido)
