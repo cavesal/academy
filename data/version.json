@@ -1,6 +1,6 @@
 {
-  "version": "b2949dfaf324",
-  "actualizado": "2026-11-02T19:00:21.315Z",
+  "version": "498978f8ab92",
+  "actualizado": "2026-11-03T16:45:40.138Z",
   "conteos": {
     "hc": {
       "capitulos": 4,
@@ -25,10 +25,7 @@
     "biblio-emergencias-es.json": "63ca470e6285",
     "emergencias.css": "bbeef078769a",
     "ia/indice-es.json": "cd84481f18e8",
-    "ia/novedades-es.json": "1f3a763c56ad",
     "ia/indice-en.json": "8557238b9755",
-    "ia/novedades-en.json": "3261f768e26f",
-    "ia/indice-pt.json": "8cd49fbb5df7",
-    "ia/novedades-pt.json": "15d3eeac82fd"
+    "ia/indice-pt.json": "8cd49fbb5df7"
   }
 }
