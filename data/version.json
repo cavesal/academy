@@ -1,6 +1,6 @@
 {
-  "version": "498978f8ab92",
-  "actualizado": "2026-11-03T16:45:40.138Z",
+  "version": "254b019b1c3a",
+  "actualizado": "2026-11-08T15:41:43.289Z",
   "conteos": {
     "hc": {
       "capitulos": 4,
@@ -12,20 +12,23 @@
     }
   },
   "archivos": {
-    "hc-es.json": "8a5540840b3b",
-    "hc-en.json": "014d6eca1fe5",
-    "hc-pt.json": "10884ff871a7",
-    "biblio-hc-es.json": "2687177cdd76",
-    "biblio-hc-en.json": "e4a188ef6993",
-    "biblio-hc-pt.json": "52d5924a23e0",
+    "hc-es.json": "59c08fad7a95",
+    "hc-en.json": "ea0ae8cb8e7f",
+    "hc-pt.json": "ab3751806713",
+    "biblio-hc-es.json": "709879fb8813",
+    "biblio-hc-en.json": "c320a88d0c84",
+    "biblio-hc-pt.json": "a0c94fc6800d",
     "hc.css": "957321724d34",
     "emergencias-es.json": "ad4f224a9bcf",
     "emergencias-en.json": "538ea13b5757",
     "emergencias-pt.json": "c0ae89c687dc",
-    "biblio-emergencias-es.json": "63ca470e6285",
+    "biblio-emergencias-es.json": "68904197c372",
     "emergencias.css": "bbeef078769a",
-    "ia/indice-es.json": "cd84481f18e8",
-    "ia/indice-en.json": "8557238b9755",
-    "ia/indice-pt.json": "8cd49fbb5df7"
+    "ia/indice-es.json": "ba72b50fd6d9",
+    "ia/novedades-es.json": "83e39f01e2f1",
+    "ia/indice-en.json": "91f8a624a288",
+    "ia/novedades-en.json": "3f1c9440462d",
+    "ia/indice-pt.json": "b0d096dc8d5b",
+    "ia/novedades-pt.json": "3451dff6dcb2"
   }
 }
