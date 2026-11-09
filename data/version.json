@@ -1,6 +1,6 @@
 {
-  "version": "a573689763b6",
-  "actualizado": "2026-11-09T14:14:15.634Z",
+  "version": "5053657fdabf",
+  "actualizado": "2026-11-09T14:29:37.246Z",
   "conteos": {
     "hc": {
       "capitulos": 4,
@@ -38,10 +38,7 @@
     "biblio-calculadora-pt.json": "51c88f0c1c26",
     "calculadora.css": "2fad2d74e710",
     "ia/indice-es.json": "0d4765dca927",
-    "ia/novedades-es.json": "66ee2627174a",
     "ia/indice-en.json": "500db0b083ad",
-    "ia/novedades-en.json": "d8c125518b2a",
-    "ia/indice-pt.json": "93383778670f",
-    "ia/novedades-pt.json": "1036fce38331"
+    "ia/indice-pt.json": "93383778670f"
   }
 }
