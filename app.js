@@ -9,6 +9,7 @@
   var GUMROAD = 'https://cavesal.gumroad.com/l/cavesal';
   var K_LIC = 'cavesal_academy_licencia';
   var K_CLAVE = 'cavesal_academy_clave';
+  var K_IA_PASE = 'cavesal_academy_ia_pase';
   var K_LANG = 'cavesal_academy_lang';
   // claves Full ya activadas en las otras apps del mismo dominio (cavesal.app)
   var CLAVES_APPS = ['cavesal_full_unlocked', 'cavesal_emerg_full_unlocked', 'cavesal_hc_full_unlocked'];
@@ -71,7 +72,7 @@
       accHC: 'Desde la Historia Clínica, el botón Academy abre este sitio con tu clave.',
       mNoExiste: 'No encontramos esa clave. Revisá que esté completa.',
       mNoActivada: 'Esta clave todavía no se activó. Activala primero en su app (Calculadora, Historia Clínica o Emergencias) y después volvé.',
-      mIA: 'Las claves de CaVeSal® IA no incluyen Academy. Usá la clave de tu Calculadora, Historia Clínica o Emergencias.',
+      mIA: 'Esta es una clave de CaVeSal® IA. Para entrar a Academy abrí el botón Academy dentro de CaVeSal® IA (ia.cavesal.app), o usá la clave de tu Calculadora, Historia Clínica o Emergencias.',
       mVencida: 'Tu plan anual venció el {f}. Renovalo para seguir usando Academy.',
       mError: 'No pudimos comprobar la clave. Revisá tu conexión e intentá de nuevo.',
       mVacia: 'Escribí tu clave.', renovar: 'Renovar plan',
@@ -127,7 +128,7 @@
       accHC: 'From the Clinical Record, the Academy button opens this site with your key.',
       mNoExiste: 'We could not find that key. Check that it is complete.',
       mNoActivada: 'This key has not been activated yet. Activate it in its app first (Calculator, Clinical Record or Emergencies) and come back.',
-      mIA: 'CaVeSal® AI keys do not include Academy. Use your Calculator, Clinical Record or Emergencies key.',
+      mIA: 'This is a CaVeSal® AI key. To enter Academy, open the Academy button inside CaVeSal® AI (ia.cavesal.app), or use your Calculator, Clinical Record or Emergencies key.',
       mVencida: 'Your annual plan expired on {f}. Renew it to keep using Academy.',
       mError: 'We could not check the key. Check your connection and try again.',
       mVacia: 'Type your key.', renovar: 'Renew plan',
@@ -183,7 +184,7 @@
       accHC: 'No Prontuário Clínico, o botão Academy abre este site com sua chave.',
       mNoExiste: 'Não encontramos essa chave. Verifique se está completa.',
       mNoActivada: 'Esta chave ainda não foi ativada. Ative-a primeiro no seu app (Calculadora, Prontuário ou Emergências) e depois volte.',
-      mIA: 'As chaves da CaVeSal® IA não incluem o Academy. Use a chave da Calculadora, Prontuário ou Emergências.',
+      mIA: 'Esta é uma chave da CaVeSal® IA. Para entrar no Academy, abra o botão Academy dentro da CaVeSal® IA (ia.cavesal.app), ou use a chave da Calculadora, Prontuário ou Emergências.',
       mVencida: 'Seu plano anual venceu em {f}. Renove-o para continuar usando o Academy.',
       mError: 'Não foi possível verificar a chave. Verifique sua conexão e tente novamente.',
       mVacia: 'Digite sua chave.', renovar: 'Renovar plano',
@@ -245,6 +246,40 @@
   }
 
   /* ================= licencia ================= */
+  /* Academy incluida en los planes de CaVeSal® IA (2026-11-09): el botón Academy de ia.cavesal.app
+     abre este sitio con #ia=<pase corto>; se canjea por una sesión de 30 días que se reverifica
+     contra el Worker de IA (la cuenta debe seguir activa). No usa el Apps Script de licencias. */
+  var IA_API = 'https://cavesal-ai-gateway.cavesal76.workers.dev';
+  var K_IA = 'cavesal_academy_ia';
+  function leerIA() { try { return JSON.parse(ls(K_IA)) || null; } catch (e) { return null; } }
+  function postIA(ruta, cuerpo) {
+    var ctrl = window.AbortController ? new AbortController() : null;
+    var to = setTimeout(function () { if (ctrl) ctrl.abort(); }, 9000);
+    return fetch(IA_API + ruta, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(cuerpo), signal: ctrl ? ctrl.signal : undefined })
+      .then(function (r) { return r.json(); })
+      .finally(function () { clearTimeout(to); });
+  }
+  /* Promesa {ok:true} si la sesión de IA vale; {ok:false} si no hay o ya no vale */
+  function accesoPorIA() {
+    var pase = '';
+    try { pase = sessionStorage.getItem(K_IA_PASE) || ''; } catch (e) {}
+    var canje = Promise.resolve();
+    if (pase) {
+      canje = postIA('/academy-canjear', { token: pase }).then(function (d) {
+        if (d && d.ok && d.sesion) ls(K_IA, JSON.stringify({ sesion: d.sesion, plan: d.plan, t: Date.now() }));
+      }).catch(function () {}).then(function () { try { sessionStorage.removeItem(K_IA_PASE); } catch (e) {} });
+    }
+    return canje.then(function () {
+      var s = leerIA();
+      if (!s || !s.sesion) return { ok: false };
+      if (Date.now() - (s.t || 0) < REVERIFICAR_MS) return { ok: true };
+      if (!navigator.onLine) return { ok: true };
+      return postIA('/academy-verificar', { token: s.sesion }).then(function (d) {
+        if (d && d.ok) { s.t = Date.now(); ls(K_IA, JSON.stringify(s)); return { ok: true }; }
+        ls(K_IA, null); return { ok: false };
+      }, function () { return { ok: true }; });
+    });
+  }
   function leerEstado() { try { return JSON.parse(ls(K_LIC)) || null; } catch (e) { return null; } }
   function guardarEstado(e) { ls(K_LIC, JSON.stringify(e)); }
   function anualVencida(e) { return !!(e && e.plan === 'anual' && e.vence && Date.parse(e.vence) + GRACIA_MS < Date.now()); }
@@ -283,8 +318,11 @@
     if (d.mensaje === 'vencida') return { ok: false, motivo: 'vencida', vence: d.vence };
     return { ok: false, motivo: 'no_existe' };
   }
-  // Devuelve {ok, motivo?, vence?}
+  // Devuelve {ok, motivo?, vence?}. Primero el plan de CaVeSal® IA; si no hay, las claves de las otras apps.
   function comprobarAcceso() {
+    return accesoPorIA().then(function (r) { return r && r.ok ? { ok: true } : comprobarAccesoLicencia(); });
+  }
+  function comprobarAccesoLicencia() {
     var e = leerEstado();
     if (e && e.ok && anualVencida(e)) return Promise.resolve({ ok: false, motivo: 'vencida', vence: e.vence });
     if (e && e.ok && Date.now() - (e.t || 0) < REVERIFICAR_MS) return Promise.resolve({ ok: true });
@@ -363,10 +401,12 @@
   /* clave y/o idioma que llegan en el enlace (desde la Historia Clínica): #k=CLAVE&lang=xx */
   (function leerEnlace() {
     var h = location.hash.replace(/^#\/?\??/, '');
-    if (!/(^|&)(k|lang)=/.test(h)) return;
+    if (!/(^|&)(k|lang|ia)=/.test(h)) return;
     var p = new URLSearchParams(h);
     var k = (p.get('k') || '').trim();
     var l = (p.get('lang') || '').trim().toLowerCase();
+    var pase = (p.get('ia') || '').trim();
+    if (pase) { try { sessionStorage.setItem(K_IA_PASE, pase); } catch (e) {} }
     if (k) {
       ls(K_CLAVE, k);
       var e = leerEstado();
