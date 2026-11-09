@@ -29,8 +29,13 @@ const FUENTES = {
   emergencias: {
     base: "https://cavesal.app/cavesal-emergencias/",
     guias: { es: "guia.html", en: "guia-en.html", pt: "guia-pt.html" }, // en/pt opcionales: si aún no están publicadas se omiten
-    biblio: { es: "bibliografia.html" },
+    biblio: { es: "bibliografia.html", en: "bibliografia-en.html", pt: "bibliografia-pt.html" },
     css: "styles.css",
+  },
+  calculadora: {
+    base: "https://cavesal.app/",
+    guias: { es: "guia-calculadora.html", en: "guia-calculadora-en.html", pt: "guia-calculadora-pt.html" },
+    biblio: { es: "bibliografia-calculadora.html", en: "bibliografia-calculadora-en.html", pt: "bibliografia-calculadora-pt.html" },
   },
 };
 
@@ -149,8 +154,10 @@ async function espejoHC() {
 }
 
 /* ---------- Emergencias ---------- */
-async function guiaEmergencias(url, lang) {
+async function guiaEmergencias(url, lang, app = "emergencias", minimo = { pestanas: 10, fichas: 100 }) {
   const doc = parse(await bajar(url));
+  doc.querySelector("#locked-msg")?.remove();
+  const ruta = "#/" + app + "/";
   const pestanas = doc.querySelectorAll("nav.demo-tabs .demo-tab").map((b) => ({
     id: b.getAttribute("data-tab"),
     nombre: limpiarTexto(b.text),
@@ -166,8 +173,8 @@ async function guiaEmergencias(url, lang) {
   });
   const ancla = (id) => {
     const m = id.match(/^tab-([a-z0-9]+)$/);
-    if (m && tabs.has(m[1])) return "#/emergencias/" + m[1];
-    if (idAPestana[id]) return "#/emergencias/" + idAPestana[id] + "/" + id;
+    if (m && tabs.has(m[1])) return ruta + m[1];
+    if (idAPestana[id]) return ruta + idAPestana[id] + "/" + id;
     return null;
   };
 
@@ -197,9 +204,9 @@ async function guiaEmergencias(url, lang) {
     grupos.push({ ...p, titulo, bajada, html: panel.innerHTML.trim(), fichas });
   }
   const total = grupos.reduce((a, g) => a + g.fichas.length, 0);
-  if (grupos.length < 10 || total < 100) throw new Error(`Emergencias ${lang}: ${grupos.length} pestañas, ${total} fichas — se cancela`);
-  console.log(`Emergencias ${lang}: ${grupos.length} pestañas, ${total} fichas`);
-  return { app: "emergencias", idioma: lang, fuente: url, grupos };
+  if (grupos.length < minimo.pestanas || total < minimo.fichas) throw new Error(`${app} ${lang}: ${grupos.length} pestañas, ${total} fichas — se cancela`);
+  console.log(`${app} ${lang}: ${grupos.length} pestañas, ${total} fichas`);
+  return { app, idioma: lang, fuente: url, grupos };
 }
 
 async function espejoEmergencias() {
@@ -214,19 +221,48 @@ async function espejoEmergencias() {
     }
   }
 
-
-  const burl = f.base + f.biblio.es;
-  const bdoc = parse(await bajar(burl));
-  const bmain = bdoc.querySelector("main");
-  const bids = new Set(bmain.querySelectorAll("[id]").map((e) => e.id));
-  sanear(bmain, burl, (id) => (bids.has(id) ? "#/biblioteca/emergencias/" + id : null));
-
+  const biblio = await bibliografias(f, "emergencias");
   const css = await cssEncerrado(await bajar(f.base + f.css), ".emg-src");
-  return {
-    guias,
-    biblio: { es: { app: "emergencias", idioma: "es", fuente: burl, html: bmain.innerHTML.trim() } },
-    css,
-  };
+  return { guias, biblio, css };
+}
+
+/* Bibliografías por idioma (es obligatoria; en/pt se omiten si aún no están publicadas) */
+async function bibliografias(f, app) {
+  const biblio = {};
+  for (const [lang, archivo] of Object.entries(f.biblio)) {
+    const burl = f.base + archivo;
+    try {
+      const bdoc = parse(await bajar(burl));
+      const bmain = bdoc.querySelector("main");
+      const bids = new Set(bmain.querySelectorAll("[id]").map((e) => e.id));
+      sanear(bmain, burl, (id) => (bids.has(id) ? "#/biblioteca/" + app + "/" + id : null));
+      biblio[lang] = { app, idioma: lang, fuente: burl, html: bmain.innerHTML.trim() };
+    } catch (e) {
+      if (lang === "es") throw e;
+      console.log(`Bibliografía ${app} ${lang}: no disponible (${e.message}) — se omite`);
+    }
+  }
+  return biblio;
+}
+
+/* ---------- Calculadora prenatal (NUEVO 2026-11-08) ---------- */
+async function espejoCalculadora() {
+  const f = FUENTES.calculadora;
+  const guias = {};
+  let estilos = "";
+  for (const [lang, archivo] of Object.entries(f.guias)) {
+    try {
+      guias[lang] = await guiaEmergencias(f.base + archivo, lang, "calculadora", { pestanas: 8, fichas: 40 });
+      if (lang === "es") estilos = parse(await bajar(f.base + archivo)).querySelectorAll("style").map((n) => n.text).join("\n");
+    } catch (e) {
+      if (lang === "es") throw e;
+      console.log(`Calculadora ${lang}: no disponible (${e.message}) — se omite`);
+    }
+  }
+  const biblio = await bibliografias(f, "calculadora");
+  const bEst = parse(await bajar(f.base + f.biblio.es)).querySelectorAll("style").map((n) => n.text).join("\n");
+  const css = await cssEncerrado(estilos + "\n" + bEst, ".calc-src");
+  return { guias, biblio, css };
 }
 
 /* ---------- escritura ---------- */
@@ -243,7 +279,7 @@ function escribir(nombre, contenido) {
  * con fuentes y enlaces. Lo leen CaVeSal IA y la IA de Mujer y Mamá para
  * responder con la misma base. Sin HTML: más liviano y sin ruido. */
 const ACADEMY = "https://cavesal.app/academy/";
-function indiceIA(lang, hcGuia, emGuia) {
+function indiceIA(lang, hcGuia, emGuia, calcGuia) {
   const fichas = [];
   if (hcGuia) {
     for (const c of hcGuia.capitulos) {
@@ -278,9 +314,25 @@ function indiceIA(lang, hcGuia, emGuia) {
       }
     }
   }
+  if (calcGuia) {
+    for (const gr of calcGuia.grupos) {
+      for (const f of gr.fichas) {
+        fichas.push({
+          id: "calculadora/" + gr.id + "/" + f.id,
+          app: "calculadora",
+          seccion: gr.nombre,
+          titulo: f.titulo,
+          texto: f.texto,
+          fuentes: f.fuentes || "",
+          academy: ACADEMY + "#/calculadora/" + gr.id + "/" + f.id,
+          guia: calcGuia.fuente + "#" + f.id,
+        });
+      }
+    }
+  }
   return {
     idioma: lang,
-    descripcion: "Índice de las guías CaVeSal® (Historia Clínica y Emergencias) para uso de IA. Texto plano por ficha, con fuentes y enlaces. Se regenera solo desde las guías publicadas; no editar a mano.",
+    descripcion: "Índice de las guías CaVeSal® (Historia Clínica, Emergencias y Calculadora prenatal) para uso de IA. Texto plano por ficha, con fuentes y enlaces. Se regenera solo desde las guías publicadas; no editar a mano.",
     autor: "Dr. Carlos Vera Salerno · CaVeSal®",
     total: fichas.length,
     fichas,
@@ -293,9 +345,9 @@ function indiceIA(lang, hcGuia, emGuia) {
  * el que ya estaba publicado. Guarda 13 meses y una sola entrada por ficha (la
  * más reciente). Lo lee Lovable en la revisión mensual de CaVeSal Mujer y Mamá. */
 const TEXTOS_NOV = {
-  es: "Fichas de las guías CaVeSal® (Historia Clínica y Emergencias) nuevas, modificadas o eliminadas, con la fecha en que se publicó el cambio. Para la revisión mensual de CaVeSal Mujer y Mamá: tomar solo las entradas con fecha posterior a la última revisión. Se regenera solo; no editar a mano.",
-  en: "New, modified or removed cards of the CaVeSal® guides (Clinical History and Emergencies), with the date the change was published. For the monthly review of CaVeSal Mujer and Mamá: take only entries dated after the last review. Regenerated automatically; do not edit by hand.",
-  pt: "Fichas dos guias CaVeSal® (História Clínica e Emergências) novas, modificadas ou removidas, com a data em que a mudança foi publicada. Para a revisão mensal do CaVeSal Mujer e Mamá: considerar só as entradas com data posterior à última revisão. Regenera-se sozinho; não editar à mão.",
+  es: "Fichas de las guías CaVeSal® (Historia Clínica, Emergencias y Calculadora prenatal) nuevas, modificadas o eliminadas, con la fecha en que se publicó el cambio. Para la revisión mensual de CaVeSal Mujer y Mamá: tomar solo las entradas con fecha posterior a la última revisión. Se regenera solo; no editar a mano.",
+  en: "New, modified or removed cards of the CaVeSal® guides (Clinical History, Emergencies and Prenatal Calculator), with the date the change was published. For the monthly review of CaVeSal Mujer and Mamá: take only entries dated after the last review. Regenerated automatically; do not edit by hand.",
+  pt: "Fichas dos guias CaVeSal® (História Clínica, Emergências e Calculadora pré-natal) novas, modificadas ou removidas, com a data em que a mudança foi publicada. Para a revisão mensal do CaVeSal Mujer e Mamá: considerar só as entradas com data posterior à última revisão. Regenera-se sozinho; não editar à mão.",
 };
 function novedades(lang, indice) {
   const rIdx = join(DATA, `ia/indice-${lang}.json`);
@@ -324,16 +376,20 @@ function novedades(lang, indice) {
 
 const hc = await espejoHC();
 const em = await espejoEmergencias();
+const calc = await espejoCalculadora();
 const archivos = {};
 for (const [l, d] of Object.entries(hc.guias)) archivos[`hc-${l}.json`] = escribir(`hc-${l}.json`, d);
 for (const [l, d] of Object.entries(hc.biblio)) archivos[`biblio-hc-${l}.json`] = escribir(`biblio-hc-${l}.json`, d);
 archivos["hc.css"] = escribir("hc.css", hc.css);
 for (const [l, d] of Object.entries(em.guias)) archivos[`emergencias-${l}.json`] = escribir(`emergencias-${l}.json`, d);
-archivos["biblio-emergencias-es.json"] = escribir("biblio-emergencias-es.json", em.biblio.es);
+for (const [l, d] of Object.entries(em.biblio)) archivos[`biblio-emergencias-${l}.json`] = escribir(`biblio-emergencias-${l}.json`, d);
 archivos["emergencias.css"] = escribir("emergencias.css", em.css);
+for (const [l, d] of Object.entries(calc.guias)) archivos[`calculadora-${l}.json`] = escribir(`calculadora-${l}.json`, d);
+for (const [l, d] of Object.entries(calc.biblio)) archivos[`biblio-calculadora-${l}.json`] = escribir(`biblio-calculadora-${l}.json`, d);
+archivos["calculadora.css"] = escribir("calculadora.css", calc.css);
 for (const l of ["es", "en", "pt"]) {
-  if (!hc.guias[l] && !em.guias[l]) continue;
-  const indice = indiceIA(l, hc.guias[l], em.guias[l]);
+  if (!hc.guias[l] && !em.guias[l] && !calc.guias[l]) continue;
+  const indice = indiceIA(l, hc.guias[l], em.guias[l], calc.guias[l]);
   const nov = novedades(l, indice);
   archivos[`ia/indice-${l}.json`] = escribir(`ia/indice-${l}.json`, indice);
   if (nov) archivos[`ia/novedades-${l}.json`] = escribir(`ia/novedades-${l}.json`, nov);
@@ -345,6 +401,7 @@ const previo = existsSync(vPath) ? JSON.parse(readFileSync(vPath, "utf8")) : {};
 const conteos = {
   hc: { capitulos: hc.guias.es.capitulos.length, guias: hc.guias.es.capitulos.reduce((a, c) => a + c.guias.length, 0) },
   emergencias: { pestanas: em.guias.es.grupos.length, fichas: em.guias.es.grupos.reduce((a, g) => a + g.fichas.length, 0) },
+  calculadora: { pestanas: calc.guias.es.grupos.length, fichas: calc.guias.es.grupos.reduce((a, g) => a + g.fichas.length, 0) },
 };
 if (JSON.stringify(previo.archivos) !== JSON.stringify(archivos)) {
   const v = { version: hash(JSON.stringify(archivos)), actualizado: new Date().toISOString(), conteos, archivos };

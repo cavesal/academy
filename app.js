@@ -23,27 +23,28 @@
   /* ================= textos de la interfaz ================= */
   var T = {
     es: {
-      lema: 'Medical Education', navHC: 'Guías HC', navEM: 'Emergencias', navBib: 'Biblioteca', navArt: 'Artículos', buscar: 'Buscar',
+      lema: 'Medical Education', navHC: 'Guías HC', navEM: 'Emergencias', navCA: 'Calculadora', navBib: 'Biblioteca', navArt: 'Artículos', buscar: 'Buscar',
       offline: 'Sin conexión — estás viendo la última copia guardada de las guías.',
       pieTexto: 'Material de formación para profesionales de la salud. Las guías se mantienen en su app de origen y se copian aquí automáticamente.',
       sync: 'Guías sincronizadas el', inicio: 'Inicio',
       heroTit: 'Todas las guías CaVeSal® en un solo lugar',
-      heroTxt: 'Historia Clínica y Emergencias Obstétricas, con un buscador común, la bibliografía completa y acceso directo a la literatura científica.',
+      heroTxt: 'Historia Clínica, Emergencias Obstétricas y Calculadora Prenatal, con un buscador común, la bibliografía completa y acceso directo a la literatura científica.',
       heroPh: 'Buscar en todas las guías (ej.: sulfato de magnesio, HELLP, Bishop)',
       secGuias: 'Guías', secHerr: 'Herramientas', secProx: 'Próximamente', secApps: 'Volver a mis apps',
       hcTit: 'Guías de Historia Clínica', hcTxt: 'Referencia completa de la Historia Clínica: obstetricia, ginecología, preconcepcional y estudios.',
       emTit: 'Guías de Emergencias Obstétricas', emTxt: 'Protocolos por código y pestaña, con tablas, algoritmos y fuentes.',
       guias: 'guías', capitulos: 'capítulos', fichas: 'fichas', pestanas: 'pestañas',
-      busTit: 'Buscador común', busTxt: 'Busca a la vez en Historia Clínica y Emergencias.',
+      busTit: 'Buscador común', busTxt: 'Busca a la vez en Historia Clínica, Emergencias y Calculadora.',
       bibTit: 'Biblioteca', bibTxt: 'Bibliografía completa de cada app, con enlaces a las fuentes.',
       artTit: 'Artículos científicos', artTxt: 'PubMed, Cochrane, Epistemonikos, LILACS y más, con guías oficiales.',
       atlasTit: 'Atlas médico', atlasTxt: 'Ecografía ginecológica: IETA, IOTA, O-RADS y MUSA, con imágenes y clasificaciones.',
       clasTit: 'Tablas y clasificaciones', clasTxt: 'Escalas y clasificaciones de consulta rápida, con su fuente.',
       calc: 'Calculadora Prenatal', hc: 'Historia Clínica', em: 'Emergencias Obstétricas',
       hcBajada: 'Elegí un capítulo. El contenido es el mismo que el de la Historia Clínica, en el idioma seleccionado.',
+      caTit: 'Guía de la Calculadora Prenatal', caTxt: 'Criterios, umbrales y conductas que usa la Calculadora, con su fuente.', caBajada: 'Las 8 áreas de la guía de la Calculadora Prenatal. Lo que ya está en la Historia Clínica se enlaza, no se repite.', origenCA: 'Copia fiel de la guía de la Calculadora Prenatal CaVeSal®.', bibCA: 'Bibliografía — Calculadora Prenatal',
       emBajada: 'Las 16 pestañas de la guía de Emergencias Obstétricas, con el color de cada código.',
       indice: 'Índice', otrosCap: 'Otros capítulos', otrasPest: 'Otras pestañas', irA: 'Ir a…',
-      soloEs: 'Las guías de Emergencias están disponibles solo en español.', soloEsBib: 'La bibliografía de Emergencias está en español.',
+      soloEs: 'Las guías de Emergencias están disponibles solo en español.', soloEsBib: 'Esta bibliografía todavía no está en tu idioma; se muestra en español.',
       origenHC: 'Copia fiel de las guías de la Historia Clínica CaVeSal®.',
       origenEM: 'Copia fiel de la guía de Emergencias Obstétricas CaVeSal®.',
       verOriginal: 'Ver en la app original',
@@ -78,27 +79,28 @@
       salir: 'Cerrar sesión en este dispositivo'
     },
     en: {
-      lema: 'Medical Education', navHC: 'HC Guides', navEM: 'Emergencies', navBib: 'Library', navArt: 'Articles', buscar: 'Search',
+      lema: 'Medical Education', navHC: 'HC Guides', navEM: 'Emergencies', navCA: 'Calculator', navBib: 'Library', navArt: 'Articles', buscar: 'Search',
       offline: 'Offline — you are viewing the last saved copy of the guides.',
       pieTexto: 'Training material for health professionals. Guides are maintained in their source app and copied here automatically.',
       sync: 'Guides synced on', inicio: 'Home',
       heroTit: 'All CaVeSal® guides in one place',
-      heroTxt: 'Clinical Record and Obstetric Emergencies, with a shared search, the complete bibliography and direct access to the scientific literature.',
+      heroTxt: 'Clinical Record, Obstetric Emergencies and Prenatal Calculator, with a shared search, the complete bibliography and direct access to the scientific literature.',
       heroPh: 'Search all guides (e.g. magnesium sulfate, HELLP, Bishop)',
       secGuias: 'Guides', secHerr: 'Tools', secProx: 'Coming soon', secApps: 'Back to my apps',
       hcTit: 'Clinical Record guides', hcTxt: 'Full Clinical Record reference: obstetrics, gynecology, preconception and tests.',
       emTit: 'Obstetric Emergencies guides', emTxt: 'Protocols by code and tab, with tables, algorithms and sources.',
       guias: 'guides', capitulos: 'chapters', fichas: 'cards', pestanas: 'tabs',
-      busTit: 'Shared search', busTxt: 'Search Clinical Record and Emergencies at once.',
+      busTit: 'Shared search', busTxt: 'Search Clinical Record, Emergencies and Calculator at once.',
       bibTit: 'Library', bibTxt: 'Complete bibliography for each app, with links to sources.',
       artTit: 'Scientific articles', artTxt: 'PubMed, Cochrane, Epistemonikos, LILACS and more, plus official guidelines.',
       atlasTit: 'Medical atlas', atlasTxt: 'Gynecologic ultrasound: IETA, IOTA, O-RADS and MUSA, with images and classifications.',
       clasTit: 'Tables and classifications', clasTxt: 'Quick-reference scores and classifications, with their source.',
       calc: 'Prenatal Calculator', hc: 'Clinical Record', em: 'Obstetric Emergencies',
       hcBajada: 'Choose a chapter. Content is the same as in the Clinical Record, in the selected language.',
+      caTit: 'Prenatal Calculator guide', caTxt: 'Criteria, thresholds and management used by the Calculator, with their source.', caBajada: 'The 8 areas of the Prenatal Calculator guide. What is already in the Clinical Record is linked, not repeated.', origenCA: 'Faithful copy of the CaVeSal® Prenatal Calculator guide.', bibCA: 'Bibliography — Prenatal Calculator',
       emBajada: 'The 16 tabs of the Obstetric Emergencies guide, with each code\'s color.',
       indice: 'Contents', otrosCap: 'Other chapters', otrasPest: 'Other tabs', irA: 'Go to…',
-      soloEs: 'Emergency guides are available in Spanish only.', soloEsBib: 'The Emergencies bibliography is in Spanish.',
+      soloEs: 'Emergency guides are available in Spanish only.', soloEsBib: 'This bibliography is not yet available in your language; showing Spanish.',
       origenHC: 'Faithful copy of the CaVeSal® Clinical Record guides.',
       origenEM: 'Faithful copy of the CaVeSal® Obstetric Emergencies guide.',
       verOriginal: 'View in the original app',
@@ -133,27 +135,28 @@
       salir: 'Sign out on this device'
     },
     pt: {
-      lema: 'Medical Education', navHC: 'Guias HC', navEM: 'Emergências', navBib: 'Biblioteca', navArt: 'Artigos', buscar: 'Buscar',
+      lema: 'Medical Education', navHC: 'Guias HC', navEM: 'Emergências', navCA: 'Calculadora', navBib: 'Biblioteca', navArt: 'Artigos', buscar: 'Buscar',
       offline: 'Sem conexão — você está vendo a última cópia salva das guias.',
       pieTexto: 'Material de formação para profissionais de saúde. As guias são mantidas no app de origem e copiadas aqui automaticamente.',
       sync: 'Guias sincronizadas em', inicio: 'Início',
       heroTit: 'Todas as guias CaVeSal® em um só lugar',
-      heroTxt: 'Prontuário Clínico e Emergências Obstétricas, com busca comum, a bibliografia completa e acesso direto à literatura científica.',
+      heroTxt: 'Prontuário Clínico, Emergências Obstétricas e Calculadora Pré-natal, com busca comum, a bibliografia completa e acesso direto à literatura científica.',
       heroPh: 'Buscar em todas as guias (ex.: sulfato de magnésio, HELLP, Bishop)',
       secGuias: 'Guias', secHerr: 'Ferramentas', secProx: 'Em breve', secApps: 'Voltar aos meus apps',
       hcTit: 'Guias do Prontuário Clínico', hcTxt: 'Referência completa do Prontuário: obstetrícia, ginecologia, pré-concepção e exames.',
       emTit: 'Guias de Emergências Obstétricas', emTxt: 'Protocolos por código e aba, com tabelas, algoritmos e fontes.',
       guias: 'guias', capitulos: 'capítulos', fichas: 'fichas', pestanas: 'abas',
-      busTit: 'Busca comum', busTxt: 'Busque ao mesmo tempo no Prontuário e em Emergências.',
+      busTit: 'Busca comum', busTxt: 'Busque ao mesmo tempo no Prontuário, em Emergências e na Calculadora.',
       bibTit: 'Biblioteca', bibTxt: 'Bibliografia completa de cada app, com links para as fontes.',
       artTit: 'Artigos científicos', artTxt: 'PubMed, Cochrane, Epistemonikos, LILACS e mais, com diretrizes oficiais.',
       atlasTit: 'Atlas médico', atlasTxt: 'Ultrassom ginecológico: IETA, IOTA, O-RADS e MUSA, com imagens e classificações.',
       clasTit: 'Tabelas e classificações', clasTxt: 'Escalas e classificações de consulta rápida, com sua fonte.',
       calc: 'Calculadora Pré-natal', hc: 'Prontuário Clínico', em: 'Emergências Obstétricas',
       hcBajada: 'Escolha um capítulo. O conteúdo é o mesmo do Prontuário Clínico, no idioma selecionado.',
+      caTit: 'Guia da Calculadora Pré-natal', caTxt: 'Critérios, limiares e condutas que a Calculadora usa, com sua fonte.', caBajada: 'As 8 áreas do guia da Calculadora Pré-natal. O que já está no Prontuário Clínico é linkado, não repetido.', origenCA: 'Cópia fiel do guia da Calculadora Pré-natal CaVeSal®.', bibCA: 'Bibliografia — Calculadora Pré-natal',
       emBajada: 'As 16 abas da guia de Emergências Obstétricas, com a cor de cada código.',
       indice: 'Índice', otrosCap: 'Outros capítulos', otrasPest: 'Outras abas', irA: 'Ir para…',
-      soloEs: 'As guias de Emergências estão disponíveis apenas em espanhol.', soloEsBib: 'A bibliografia de Emergências está em espanhol.',
+      soloEs: 'As guias de Emergências estão disponíveis apenas em espanhol.', soloEsBib: 'Esta bibliografia ainda não está no seu idioma; é exibida em espanhol.',
       origenHC: 'Cópia fiel das guias do Prontuário Clínico CaVeSal®.',
       origenEM: 'Cópia fiel da guia de Emergências Obstétricas CaVeSal®.',
       verOriginal: 'Ver no app original',
@@ -433,7 +436,8 @@
     switch (p[0]) {
       case undefined: case '': return vistaInicio();
       case 'hc': return vistaHC(p);
-      case 'emergencias': return vistaEM(p);
+      case 'emergencias': return vistaGuia('emergencias', p);
+      case 'calculadora': return vistaGuia('calculadora', p);
       case 'buscar': return vistaBuscar(r.q);
       case 'biblioteca': return vistaBiblioteca(p);
       case 'articulos': return vistaArticulos(r.q);
@@ -488,7 +492,7 @@
   }
   function vistaInicio() {
     ultimaVista = '';
-    var c = (version && version.conteos) || { hc: { capitulos: 4, guias: 179 }, emergencias: { pestanas: 16, fichas: 192 } };
+    var c = (version && version.conteos) || {}; c.hc = c.hc || { capitulos: 4, guias: 187 }; c.emergencias = c.emergencias || { pestanas: 16, fichas: 193 }; c.calculadora = c.calculadora || { pestanas: 8, fichas: 40 };
     var e = leerEstado(); var aviso = '';
     if (e && e.ok && e.plan === 'anual' && e.vence && Date.parse(e.vence) - Date.now() < 15 * 864e5) {
       aviso = '<div class="aviso-es">' + esc(t('avisoVence').replace('{f}', fecha(e.vence))) + ' <a href="' + GUMROAD + '" target="_blank" rel="noopener">' + esc(t('renovar')) + '</a></div>';
@@ -505,6 +509,7 @@
       '<h2 class="seccion">' + esc(t('secGuias')) + '</h2><div class="grid">' +
       tarjeta('#/hc', t('hcTit'), t('hcTxt'), c.hc.guias + ' ' + t('guias') + ' · ' + c.hc.capitulos + ' ' + t('capitulos') + ' · ES · EN · PT') +
       tarjeta('#/emergencias', t('emTit'), t('emTxt'), c.emergencias.fichas + ' ' + t('fichas') + ' · ' + c.emergencias.pestanas + ' ' + t('pestanas') + ' · ' + emLangs().join(' · ').toUpperCase(), ' tab-em c-rojo') +
+      tarjeta('#/calculadora', t('caTit'), t('caTxt'), c.calculadora.fichas + ' ' + t('fichas') + ' · ' + c.calculadora.pestanas + ' ' + t('pestanas') + ' · ' + gLangs('calculadora').join(' · ').toUpperCase(), ' tab-em c-cian') +
       '</div>' +
       '<h2 class="seccion">' + esc(t('secHerr')) + '</h2><div class="grid">' +
       tarjeta('#/buscar', t('busTit'), t('busTxt')) +
@@ -575,40 +580,48 @@
     }, error);
   }
 
-  /* ================= Emergencias ================= */
-  function emLang() { return (version && version.archivos && version.archivos['emergencias-' + lang + '.json']) ? lang : 'es'; }
-  function emLangs() { return ['es', 'en', 'pt'].filter(function (l) { return l === 'es' || (version && version.archivos && version.archivos['emergencias-' + l + '.json']); }); }
-  function datosEM() { return Promise.all([cargar('emergencias-' + emLang() + '.json'), hoja('emergencias.css')]).then(function (r) { return r[0]; }); }
-  function vistaEM(p) {
-    if (p[1] && p[2] && ultimaVista === 'emergencias/' + p[1] + '|' + lang && document.getElementById(p[2])) { irAncla(p[2]); return; }
+  /* ================= Emergencias y Calculadora ================= */
+  var GUIAS = {
+    emergencias: { css: 'emergencias.css', cls: 'emg-src', tit: 'emTit', baj: 'emBajada', origen: 'origenEM', app: APPS.em, color: null },
+    calculadora: { css: 'calculadora.css', cls: 'calc-src', tit: 'caTit', baj: 'caBajada', origen: 'origenCA', app: APPS.calc, color: 'cian' }
+  };
+  function gLang(app) { return (version && version.archivos && version.archivos[app + '-' + lang + '.json']) ? lang : 'es'; }
+  function gLangs(app) { return ['es', 'en', 'pt'].filter(function (l) { return l === 'es' || (version && version.archivos && version.archivos[app + '-' + l + '.json']); }); }
+  function emLang() { return gLang('emergencias'); }
+  function emLangs() { return gLangs('emergencias'); }
+  function vistaGuia(app, p) {
+    var G = GUIAS[app], raiz = '#/' + app;
+    var col = function (g) { return G.color || g.color; };
+    if (p[1] && p[2] && ultimaVista === app + '/' + p[1] + '|' + lang && document.getElementById(p[2])) { irAncla(p[2]); return; }
     cargando();
-    datosEM().then(function (d) {
-      var aviso = emLang() !== lang ? '<div class="aviso-es">' + esc(t('soloEs')) + '</div>' : '';
+    Promise.all([cargar(app + '-' + gLang(app) + '.json'), hoja(G.css)]).then(function (r) {
+      var d = r[0];
+      var aviso = gLang(app) !== lang ? '<div class="aviso-es">' + esc(t('soloEs')) + '</div>' : '';
       if (!p[1]) {
         ultimaVista = '';
-        vista.innerHTML = migas([enlaceVolver('#/emergencias', t('emTit'))]) + aviso +
-          '<h1>' + esc(t('emTit')) + '</h1><p class="bajada">' + esc(t('emBajada')) + '</p><div class="grid">' +
-          d.grupos.map(function (g) { return tarjeta('#/emergencias/' + g.id, g.nombre, g.bajada || '', g.fichas.length + ' ' + t('fichas'), ' tab-em c-' + g.color); }).join('') + '</div>';
+        vista.innerHTML = migas([enlaceVolver(raiz, t(G.tit))]) + aviso +
+          '<h1>' + esc(t(G.tit)) + '</h1><p class="bajada">' + esc(t(G.baj)) + '</p><div class="grid">' +
+          d.grupos.map(function (g) { return tarjeta(raiz + '/' + g.id, g.nombre, g.bajada || '', g.fichas.length + ' ' + t('fichas'), ' tab-em c-' + col(g)); }).join('') + '</div>';
         window.scrollTo(0, 0); return;
       }
       var g = d.grupos.find(function (x) { return x.id === p[1]; });
       if (!g) return noEncontrado();
-      vista.innerHTML = migas([enlaceVolver('#/emergencias', t('emTit')), esc(g.nombre)]) +
+      vista.innerHTML = migas([enlaceVolver(raiz, t(G.tit)), esc(g.nombre)]) +
         '<div class="lectura">' +
         '<aside class="indice" aria-label="' + esc(t('indice')) + '"><h2>' + esc(t('indice')) + '</h2><ol>' +
-        g.fichas.map(function (f) { return '<li><a href="#/emergencias/' + g.id + '/' + f.id + '">' + esc(f.titulo) + '</a></li>'; }).join('') + '</ol>' +
+        g.fichas.map(function (f) { return '<li><a href="' + raiz + '/' + g.id + '/' + f.id + '">' + esc(f.titulo) + '</a></li>'; }).join('') + '</ol>' +
         '<details><summary>' + esc(t('otrasPest')) + '</summary><ol>' +
-        d.grupos.filter(function (x) { return x.id !== g.id; }).map(function (x) { return '<li><a href="#/emergencias/' + x.id + '">' + esc(x.nombre) + '</a></li>'; }).join('') +
+        d.grupos.filter(function (x) { return x.id !== g.id; }).map(function (x) { return '<li><a href="' + raiz + '/' + x.id + '">' + esc(x.nombre) + '</a></li>'; }).join('') +
         '</ol></details></aside>' +
         '<div><div class="indice-movil"><label class="sr" for="sel-ficha">' + esc(t('irA')) + '</label><select class="campo" id="sel-ficha"><option value="">' + esc(t('irA')) + '</option>' +
         g.fichas.map(function (f) { return '<option value="' + f.id + '">' + esc(f.titulo) + '</option>'; }).join('') + '</select></div>' +
         aviso +
-        '<header class="cabecera-em c-' + g.color + '"><h1>' + esc(g.titulo || g.nombre) + '</h1>' + (g.bajada ? '<p>' + esc(g.bajada) + '</p>' : '') + '</header>' +
-        '<div class="emg-src"><section class="demo-panel active">' + g.html + '</section></div>' +
-        '<p class="origen">' + esc(t('origenEM')) + ' <a href="' + esc(d.fuente || APPS.em) + '" target="_blank" rel="noopener">' + esc(t('verOriginal')) + '</a></p>' +
+        '<header class="cabecera-em c-' + col(g) + '"><h1>' + esc(g.titulo || g.nombre) + '</h1>' + (g.bajada ? '<p>' + esc(g.bajada) + '</p>' : '') + '</header>' +
+        '<div class="' + G.cls + '"><section class="demo-panel active">' + g.html + '</section></div>' +
+        '<p class="origen">' + esc(t(G.origen)) + ' <a href="' + esc(d.fuente || G.app) + '" target="_blank" rel="noopener">' + esc(t('verOriginal')) + '</a></p>' +
         '</div></div>';
-      $('#sel-ficha').addEventListener('change', function () { if (this.value) location.hash = '#/emergencias/' + g.id + '/' + this.value; });
-      ultimaVista = 'emergencias/' + g.id + '|' + lang;
+      $('#sel-ficha').addEventListener('change', function () { if (this.value) location.hash = raiz + '/' + g.id + '/' + this.value; });
+      ultimaVista = app + '/' + g.id + '|' + lang;
       irAncla(p[2]);
     }, error);
   }
@@ -618,7 +631,7 @@
   function indice() {
     if (indices[lang]) return Promise.resolve(indices[lang]);
     var l = lang;
-    return Promise.all([cargar('hc-' + l + '.json'), cargar('emergencias-' + emLang() + '.json')]).then(function (r) {
+    return Promise.all([cargar('hc-' + l + '.json'), cargar('emergencias-' + emLang() + '.json'), cargar('calculadora-' + gLang('calculadora') + '.json').catch(function () { return { grupos: [] }; })]).then(function (r) {
       var items = [];
       r[0].capitulos.forEach(function (c) {
         c.guias.forEach(function (g) {
@@ -628,6 +641,11 @@
       r[1].grupos.forEach(function (gr) {
         gr.fichas.forEach(function (f) {
           items.push({ app: 'em', color: gr.color, titulo: f.titulo, grupo: gr.nombre, texto: f.texto || '', href: '#/emergencias/' + gr.id + '/' + f.id, nt: norm(f.titulo), nx: norm(f.texto), ng: norm(gr.nombre) });
+        });
+      });
+      r[2].grupos.forEach(function (gr) {
+        gr.fichas.forEach(function (f) {
+          items.push({ app: 'ca', titulo: f.titulo, grupo: gr.nombre, texto: f.texto || '', href: '#/calculadora/' + gr.id + '/' + f.id, nt: norm(f.titulo), nx: norm(f.texto), ng: norm(gr.nombre) });
         });
       });
       indices[l] = items; return items;
@@ -681,13 +699,13 @@
     ultimaVista = '';
     var q = qs.get('q') || '';
     var filtro = qs.get('f') || 'todo';
-    if (['todo', 'hc', 'em'].indexOf(filtro) < 0) filtro = 'todo';
+    if (['todo', 'hc', 'em', 'ca'].indexOf(filtro) < 0) filtro = 'todo';
     vista.innerHTML = migas([esc(t('buscar'))]) +
       '<div class="busca-fija"><form id="f-bus" role="search"><label class="sr" for="q">' + esc(t('buscar')) + '</label>' +
       '<input class="campo" id="q" type="search" value="' + esc(q) + '" placeholder="' + esc(t('busPh')) + '" autocomplete="off">' +
       '<button class="btn btn-teal" type="submit">' + esc(t('buscar')) + '</button></form>' +
       '<div class="filtros" role="group">' +
-      [['todo', t('todo')], ['hc', t('hc')], ['em', t('em')]].map(function (f) {
+      [['todo', t('todo')], ['hc', t('hc')], ['em', t('em')], ['ca', t('calc')]].map(function (f) {
         return '<button type="button" class="filtro" data-f="' + f[0] + '" aria-pressed="' + (f[0] === filtro) + '">' + esc(f[1]) + '</button>';
       }).join('') + '</div></div><div id="res"></div>';
     var inp = $('#q');
@@ -707,7 +725,7 @@
           lim.map(function (x) {
             var it = x.it;
             return '<li class="resultado"><a href="' + it.href + '">' +
-              '<span class="chip' + (it.app === 'em' ? ' em' : '') + '">' + esc(it.app === 'em' ? t('em') : t('hc')) + '</span> ' +
+              '<span class="chip' + (it.app === 'em' ? ' em' : it.app === 'ca' ? ' ca' : '') + '">' + esc(it.app === 'em' ? t('em') : it.app === 'ca' ? t('calc') : t('hc')) + '</span> ' +
               '<span class="chip es">' + esc(it.grupo) + '</span>' +
               '<h3>' + resaltar(it.titulo, x.terms) + '</h3><p>' + fragmento(it, x.terms) + '</p></a></li>';
           }).join('') + '</ol>';
@@ -729,23 +747,30 @@
 
   /* ================= biblioteca ================= */
   function vistaBiblioteca(p) {
+    var B = {
+      hc: { tit: 'bibHC', cls: 'hc-src', css: 'hc.css' },
+      emergencias: { tit: 'bibEM', cls: 'emg-src', css: 'emergencias.css' },
+      calculadora: { tit: 'bibCA', cls: 'calc-src', css: 'calculadora.css' }
+    };
+    function bLangs(app) { return ['es', 'en', 'pt'].filter(function (l) { return l === 'es' || (version && version.archivos && version.archivos['biblio-' + app + '-' + l + '.json']); }); }
     if (!p[1]) {
       ultimaVista = '';
       vista.innerHTML = migas([esc(t('bibTit'))]) + '<h1>' + esc(t('bibTit')) + '</h1><p class="bajada">' + esc(t('bibBajada')) + '</p><div class="grid">' +
         tarjeta('#/biblioteca/hc', t('bibHC'), t('hcTxt'), 'ES · EN · PT') +
-        tarjeta('#/biblioteca/emergencias', t('bibEM'), t('emTxt'), 'ES', ' tab-em c-rojo') + '</div>';
+        tarjeta('#/biblioteca/emergencias', t('bibEM'), t('emTxt'), bLangs('emergencias').join(' · ').toUpperCase(), ' tab-em c-rojo') +
+        tarjeta('#/biblioteca/calculadora', t('bibCA'), t('caTxt'), bLangs('calculadora').join(' · ').toUpperCase(), ' tab-em c-cian') + '</div>';
       window.scrollTo(0, 0); return;
     }
-    var esHC = p[1] === 'hc';
-    if (!esHC && p[1] !== 'emergencias') return noEncontrado();
+    var cfg = B[p[1]];
+    if (!cfg) return noEncontrado();
     var key = 'biblio/' + p[1] + '|' + lang;
     if (p[2] && ultimaVista === key && document.getElementById(p[2])) { irAncla(p[2]); return; }
     cargando();
-    var archivo = esHC ? 'biblio-hc-' + lang + '.json' : 'biblio-emergencias-es.json';
-    Promise.all([cargar(archivo), hoja(esHC ? 'hc.css' : 'emergencias.css')]).then(function (r) {
-      var aviso = (!esHC && lang !== 'es') ? '<div class="aviso-es">' + esc(t('soloEsBib')) + '</div>' : '';
-      vista.innerHTML = migas([enlaceVolver('#/biblioteca', t('bibTit')), esc(esHC ? t('bibHC') : t('bibEM'))]) + aviso +
-        '<div class="biblio ' + (esHC ? 'hc-src' : 'emg-src') + '">' + r[0].html + '</div>';
+    var bl = p[1] === 'hc' || bLangs(p[1]).indexOf(lang) >= 0 ? lang : 'es';
+    Promise.all([cargar('biblio-' + p[1] + '-' + bl + '.json'), hoja(cfg.css)]).then(function (r) {
+      var aviso = bl !== lang ? '<div class="aviso-es">' + esc(t('soloEsBib')) + '</div>' : '';
+      vista.innerHTML = migas([enlaceVolver('#/biblioteca', t('bibTit')), esc(t(cfg.tit))]) + aviso +
+        '<div class="biblio ' + cfg.cls + '">' + r[0].html + '</div>';
       ultimaVista = key;
       irAncla(p[2]);
     }, error);

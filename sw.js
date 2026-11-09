@@ -1,13 +1,15 @@
 /* CaVeSal® Academy — service worker
    Interfaz: precache. Guías (data/): red primero (4 s) y copia guardada si no hay conexión. */
-var VERSION = 'cavesal-academy-v5';
+var VERSION = 'cavesal-academy-v6';
 var SHELL = ['./', 'index.html', 'styles.css', 'app.js', 'manifest.json',
   'img/academy-portada.jpg', 'img/academy-logo.jpg', 'img/icon-192.png', 'img/icon-512.png',
   'img/apple-touch-icon.png', 'img/favicon.png', 'img/cavesal-emblema.png',
   'manual.html', 'manual-en.html', 'manual-pt.html'];
 var DATOS = ['data/version.json', 'data/hc.css', 'data/emergencias.css', 'data/emergencias-es.json', 'data/emergencias-en.json', 'data/emergencias-pt.json',
   'data/hc-es.json', 'data/hc-en.json', 'data/hc-pt.json',
-  'data/biblio-hc-es.json', 'data/biblio-hc-en.json', 'data/biblio-hc-pt.json', 'data/biblio-emergencias-es.json'];
+  'data/biblio-hc-es.json', 'data/biblio-hc-en.json', 'data/biblio-hc-pt.json', 'data/biblio-emergencias-es.json', 'data/biblio-emergencias-en.json', 'data/biblio-emergencias-pt.json',
+  'data/calculadora.css', 'data/calculadora-es.json', 'data/calculadora-en.json', 'data/calculadora-pt.json',
+  'data/biblio-calculadora-es.json', 'data/biblio-calculadora-en.json', 'data/biblio-calculadora-pt.json'];
 
 self.addEventListener('install', function (e) {
   e.waitUntil(caches.open(VERSION).then(function (c) {
