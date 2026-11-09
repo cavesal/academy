@@ -154,7 +154,7 @@ async function espejoHC() {
 }
 
 /* ---------- Emergencias ---------- */
-async function guiaEmergencias(url, lang, app = "emergencias", minimo = { pestanas: 10, fichas: 100 }) {
+async function guiaEmergencias(url, lang, app = "emergencias", minimo = { pestanas: 10, fichas: 100 }, interna = null) {
   const doc = parse(await bajar(url));
   doc.querySelector("#locked-msg")?.remove();
   const ruta = "#/" + app + "/";
@@ -201,6 +201,10 @@ async function guiaEmergencias(url, lang, app = "emergencias", minimo = { pestan
     const notaPestana = panel.querySelectorAll(".source-note").filter((n) => !n.closest(".subcard")).map((n) => textoDe(n)).filter(Boolean).join(" · ");
     if (notaPestana) fichas.forEach((f) => { if (!f.fuentes) f.fuentes = notaPestana; });
     sanear(panel, url, ancla);
+    if (interna) panel.querySelectorAll("a[href]").forEach((el) => {
+      const nuevo = interna(el.getAttribute("href"));
+      if (nuevo) { el.setAttribute("href", nuevo); el.removeAttribute("target"); el.removeAttribute("rel"); }
+    });
     grupos.push({ ...p, titulo, bajada, html: panel.innerHTML.trim(), fichas });
   }
   const total = grupos.reduce((a, g) => a + g.fichas.length, 0);
@@ -246,13 +250,31 @@ async function bibliografias(f, app) {
 }
 
 /* ---------- Calculadora prenatal (NUEVO 2026-11-08) ---------- */
-async function espejoCalculadora() {
+/* Enlaces de la guía de la Calculadora a HC y Emergencias: dentro de Academy abren la ficha de Academy */
+function enlaceInterno(hcIds, emGuia) {
+  const emTab = {};
+  if (emGuia) for (const g of emGuia.grupos) for (const m of g.html.matchAll(/\sid="([^"]+)"/g)) emTab[m[1]] = g.id;
+  return (href) => {
+    let m = href.match(/^https:\/\/historia\.cavesal\.app\/guias-clinicas(?:-en|-pt)?(?:\.html)?#(.+)$/);
+    if (m && hcIds.has(decodeURIComponent(m[1]))) return "#/hc/g/" + m[1];
+    m = href.match(/^https:\/\/cavesal\.app\/cavesal-emergencias\/guia(?:-en|-pt)?\.html#(.+)$/);
+    if (m) {
+      const tab = m[1].match(/^tab-([a-z0-9]+)$/);
+      if (tab) return "#/emergencias/" + tab[1];
+      if (emTab[m[1]]) return "#/emergencias/" + emTab[m[1]] + "/" + m[1];
+    }
+    return null;
+  };
+}
+
+async function espejoCalculadora(hcGuias, emGuias) {
+  const hcIds = new Set(Object.values(hcGuias).flatMap((d) => d.capitulos.flatMap((c) => c.guias.map((g) => g.id))));
   const f = FUENTES.calculadora;
   const guias = {};
   let estilos = "";
   for (const [lang, archivo] of Object.entries(f.guias)) {
     try {
-      guias[lang] = await guiaEmergencias(f.base + archivo, lang, "calculadora", { pestanas: 8, fichas: 40 });
+      guias[lang] = await guiaEmergencias(f.base + archivo, lang, "calculadora", { pestanas: 8, fichas: 40 }, enlaceInterno(hcIds, emGuias[lang] || emGuias.es));
       if (lang === "es") estilos = parse(await bajar(f.base + archivo)).querySelectorAll("style").map((n) => n.text).join("\n");
     } catch (e) {
       if (lang === "es") throw e;
@@ -376,7 +398,7 @@ function novedades(lang, indice) {
 
 const hc = await espejoHC();
 const em = await espejoEmergencias();
-const calc = await espejoCalculadora();
+const calc = await espejoCalculadora(hc.guias, em.guias);
 const archivos = {};
 for (const [l, d] of Object.entries(hc.guias)) archivos[`hc-${l}.json`] = escribir(`hc-${l}.json`, d);
 for (const [l, d] of Object.entries(hc.biblio)) archivos[`biblio-hc-${l}.json`] = escribir(`biblio-hc-${l}.json`, d);
