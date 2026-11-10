@@ -21,7 +21,7 @@
  *   SIN_IA = "si"                    → no usa IA (para probar en local)
  *   SIN_PUBLICAR = "si"              → no abre Issue ni manda Telegram (escribe el informe en vigilancia/)
  */
-import { readFileSync, writeFileSync, existsSync } from "node:fs";
+import { readFileSync, writeFileSync, existsSync, mkdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -536,7 +536,14 @@ async function main() {
     "---",
     `Vigilancia automática CaVeSal® Academy · ${PRUEBA ? "corrida de prueba · " : ""}modelo: ${SIN_IA || !modelosUsados.size ? "sin IA" : [...modelosUsados].join(", ")} · ${new Date().toISOString()}`,
   ].join("\n");
-  if (cuerpo.length > 64000) cuerpo = cuerpo.slice(0, 63500) + "\n\n_(Informe recortado por largo: ver la corrida en Actions.)_";
+  if (cuerpo.length > 64000) {
+    // Informe completo en el repositorio; el Issue lleva una versión recortada con el enlace.
+    const archivo = `informe-${new Date(hoy.getTime() - 15 * 864e5).toISOString().slice(0, 7)}${PRUEBA ? "-prueba" : ""}.md`;
+    mkdirSync(join(DIR, "informes"), { recursive: true });
+    writeFileSync(join(DIR, "informes", archivo), `# ${titulo}\n\n${cuerpo}`);
+    const url = `https://github.com/${ENV.GITHUB_REPOSITORY || "cavesal/academy"}/blob/main/vigilancia/informes/${archivo}`;
+    cuerpo = cuerpo.slice(0, 63000) + `\n\n_(Informe recortado por largo. Lista completa: [vigilancia/informes/${archivo}](${url}))_`;
+  }
 
   // Publicar
   let issueUrl = "";
