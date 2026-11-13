@@ -12,13 +12,14 @@
   var K_IA_PASE = 'cavesal_academy_ia_pase';
   var K_LANG = 'cavesal_academy_lang';
   // claves Full ya activadas en las otras apps del mismo dominio (cavesal.app)
-  var CLAVES_APPS = ['cavesal_full_unlocked', 'cavesal_emerg_full_unlocked', 'cavesal_hc_full_unlocked'];
+  var CLAVES_APPS = ['cavesal_full_unlocked', 'cavesal_emerg_full_unlocked', 'cavesal_hc_full_unlocked', 'cavesal_gyn_full_unlocked'];
   var REVERIFICAR_MS = 3 * 864e5;
   var GRACIA_MS = 7 * 864e5;
   var APPS = {
     calc: 'https://cavesal.app/full/',
     hc: 'https://historia.cavesal.app/',
-    em: 'https://cavesal.app/cavesal-emergencias/full/'
+    em: 'https://cavesal.app/cavesal-emergencias/full/',
+    gyn: 'https://cavesal.app/cavesal-gyn/'
   };
 
   /* ================= textos de la interfaz ================= */
@@ -40,7 +41,7 @@
       artTit: 'Artículos científicos', artTxt: 'PubMed, Cochrane, Epistemonikos, LILACS y más, con guías oficiales.',
       atlasTit: 'Atlas médico', atlasTxt: 'Ecografía ginecológica: IETA, IOTA, O-RADS y MUSA, con imágenes y clasificaciones.',
       clasTit: 'Tablas y clasificaciones', clasTxt: 'Escalas y clasificaciones de consulta rápida, con su fuente.',
-      calc: 'Calculadora Prenatal', hc: 'Historia Clínica', em: 'Emergencias Obstétricas',
+      calc: 'Calculadora Prenatal', hc: 'Historia Clínica', em: 'Emergencias Obstétricas', gyn: 'CaVeSal® GYN',
       hcBajada: 'Elegí un capítulo. El contenido es el mismo que el de la Historia Clínica, en el idioma seleccionado.',
       caTit: 'Guía de la Calculadora Prenatal', caTxt: 'Criterios, umbrales y conductas que usa la Calculadora, con su fuente.', caBajada: 'Las 8 áreas de la guía de la Calculadora Prenatal. Lo que ya está en la Historia Clínica se enlaza, no se repite.', origenCA: 'Copia fiel de la guía de la Calculadora Prenatal CaVeSal®.', bibCA: 'Bibliografía — Calculadora Prenatal',
       emBajada: 'Las 16 pestañas de la guía de Emergencias Obstétricas, con el color de cada código.',
@@ -96,7 +97,7 @@
       artTit: 'Scientific articles', artTxt: 'PubMed, Cochrane, Epistemonikos, LILACS and more, plus official guidelines.',
       atlasTit: 'Medical atlas', atlasTxt: 'Gynecologic ultrasound: IETA, IOTA, O-RADS and MUSA, with images and classifications.',
       clasTit: 'Tables and classifications', clasTxt: 'Quick-reference scores and classifications, with their source.',
-      calc: 'Prenatal Calculator', hc: 'Clinical Record', em: 'Obstetric Emergencies',
+      calc: 'Prenatal Calculator', hc: 'Clinical Record', em: 'Obstetric Emergencies', gyn: 'CaVeSal® GYN',
       hcBajada: 'Choose a chapter. Content is the same as in the Clinical Record, in the selected language.',
       caTit: 'Prenatal Calculator guide', caTxt: 'Criteria, thresholds and management used by the Calculator, with their source.', caBajada: 'The 8 areas of the Prenatal Calculator guide. What is already in the Clinical Record is linked, not repeated.', origenCA: 'Faithful copy of the CaVeSal® Prenatal Calculator guide.', bibCA: 'Bibliography — Prenatal Calculator',
       emBajada: 'The 16 tabs of the Obstetric Emergencies guide, with each code\'s color.',
@@ -152,7 +153,7 @@
       artTit: 'Artigos científicos', artTxt: 'PubMed, Cochrane, Epistemonikos, LILACS e mais, com diretrizes oficiais.',
       atlasTit: 'Atlas médico', atlasTxt: 'Ultrassom ginecológico: IETA, IOTA, O-RADS e MUSA, com imagens e classificações.',
       clasTit: 'Tabelas e classificações', clasTxt: 'Escalas e classificações de consulta rápida, com sua fonte.',
-      calc: 'Calculadora Pré-natal', hc: 'Prontuário Clínico', em: 'Emergências Obstétricas',
+      calc: 'Calculadora Pré-natal', hc: 'Prontuário Clínico', em: 'Emergências Obstétricas', gyn: 'CaVeSal® GYN',
       hcBajada: 'Escolha um capítulo. O conteúdo é o mesmo do Prontuário Clínico, no idioma selecionado.',
       caTit: 'Guia da Calculadora Pré-natal', caTxt: 'Critérios, limiares e condutas que a Calculadora usa, com sua fonte.', caBajada: 'As 8 áreas do guia da Calculadora Pré-natal. O que já está no Prontuário Clínico é linkado, não repetido.', origenCA: 'Cópia fiel do guia da Calculadora Pré-natal CaVeSal®.', bibCA: 'Bibliografia — Calculadora Pré-natal',
       emBajada: 'As 16 abas da guia de Emergências Obstétricas, com a cor de cada código.',
@@ -364,7 +365,7 @@
     }
   }
 
-  /* regreso a la app de origen (?desde=calc|em|hc): Academy se abre aparte y ofrece volver */
+  /* regreso a la app de origen (?desde=calc|em|hc|gyn): Academy se abre aparte y ofrece volver */
   var K_DESDE = 'cavesal_academy_desde';
   (function leerOrigen() {
     var d = '', u = '';
