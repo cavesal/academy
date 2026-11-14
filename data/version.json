@@ -1,6 +1,6 @@
 {
-  "version": "e6c8e5cddaee",
-  "actualizado": "2026-11-14T10:35:03.025Z",
+  "version": "abc49887c399",
+  "actualizado": "2026-11-14T10:38:57.281Z",
   "conteos": {
     "hc": {
       "capitulos": 4,
@@ -16,12 +16,12 @@
     }
   },
   "archivos": {
-    "hc-es.json": "1bda3131f7e6",
-    "hc-en.json": "9f6b01524214",
-    "hc-pt.json": "1ee139dcb273",
-    "biblio-hc-es.json": "5cb1f54afd03",
-    "biblio-hc-en.json": "f32f14f54696",
-    "biblio-hc-pt.json": "e47fd8b1ff7c",
+    "hc-es.json": "8244a53d63d7",
+    "hc-en.json": "7cb0670577ba",
+    "hc-pt.json": "76051f2f160c",
+    "biblio-hc-es.json": "60ed59ee61a8",
+    "biblio-hc-en.json": "5af72fcc1525",
+    "biblio-hc-pt.json": "231e785dc155",
     "hc.css": "957321724d34",
     "emergencias-es.json": "d22cbf115485",
     "emergencias-en.json": "cf9dfff589c7",
@@ -37,8 +37,11 @@
     "biblio-calculadora-en.json": "4b443028845d",
     "biblio-calculadora-pt.json": "046100dd7715",
     "calculadora.css": "2fad2d74e710",
-    "ia/indice-es.json": "f4bbf148b691",
-    "ia/indice-en.json": "58daa17ef491",
-    "ia/indice-pt.json": "0363690cabfb"
+    "ia/indice-es.json": "0f3214079eb0",
+    "ia/novedades-es.json": "3617ee76e94b",
+    "ia/indice-en.json": "f79ea86c3aa2",
+    "ia/novedades-en.json": "c819ae01c83a",
+    "ia/indice-pt.json": "f42d39ac99ab",
+    "ia/novedades-pt.json": "7c8793d6e0cb"
   }
 }
