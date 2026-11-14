@@ -1,10 +1,10 @@
 {
-  "version": "428db00238dc",
-  "actualizado": "2026-11-14T16:15:00.048Z",
+  "version": "2e1eca245033",
+  "actualizado": "2026-11-14T17:01:10.747Z",
   "conteos": {
     "hc": {
       "capitulos": 4,
-      "guias": 202
+      "guias": 203
     },
     "emergencias": {
       "pestanas": 16,
@@ -16,12 +16,12 @@
     }
   },
   "archivos": {
-    "hc-es.json": "9ff7b120192d",
-    "hc-en.json": "01fa674928bd",
-    "hc-pt.json": "7d56599f42d6",
-    "biblio-hc-es.json": "0b94ff1fa689",
-    "biblio-hc-en.json": "28c1279fe356",
-    "biblio-hc-pt.json": "b8c89e43d71f",
+    "hc-es.json": "54b36457c61d",
+    "hc-en.json": "8bf40cde6659",
+    "hc-pt.json": "7b998b521769",
+    "biblio-hc-es.json": "7eb8b2635949",
+    "biblio-hc-en.json": "e8c96d91964e",
+    "biblio-hc-pt.json": "34060a1aa3e3",
     "hc.css": "957321724d34",
     "emergencias-es.json": "55e7aaadb650",
     "emergencias-en.json": "1fde377e74c1",
@@ -37,11 +37,11 @@
     "biblio-calculadora-en.json": "d8b2303643a9",
     "biblio-calculadora-pt.json": "e664f0f5ce88",
     "calculadora.css": "2fad2d74e710",
-    "ia/indice-es.json": "006e7b18b072",
-    "ia/novedades-es.json": "9a9f726b3ecd",
-    "ia/indice-en.json": "767a731d9331",
-    "ia/novedades-en.json": "57a300fcbddc",
-    "ia/indice-pt.json": "6b284cedf94f",
-    "ia/novedades-pt.json": "2de4e24a2442"
+    "ia/indice-es.json": "09788e93fb79",
+    "ia/novedades-es.json": "760f12f2c4f1",
+    "ia/indice-en.json": "9f927dc60bc3",
+    "ia/novedades-en.json": "ae46c3ea9c34",
+    "ia/indice-pt.json": "ec815be013de",
+    "ia/novedades-pt.json": "39fe8647a111"
   }
 }
