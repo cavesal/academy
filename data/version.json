@@ -1,6 +1,6 @@
 {
-  "version": "abc49887c399",
-  "actualizado": "2026-11-14T10:38:57.281Z",
+  "version": "7690da3af1cf",
+  "actualizado": "2026-11-14T11:05:38.035Z",
   "conteos": {
     "hc": {
       "capitulos": 4,
@@ -16,19 +16,19 @@
     }
   },
   "archivos": {
-    "hc-es.json": "8244a53d63d7",
-    "hc-en.json": "7cb0670577ba",
-    "hc-pt.json": "76051f2f160c",
-    "biblio-hc-es.json": "60ed59ee61a8",
-    "biblio-hc-en.json": "5af72fcc1525",
-    "biblio-hc-pt.json": "231e785dc155",
+    "hc-es.json": "55c534feae0a",
+    "hc-en.json": "b34a88f4ce88",
+    "hc-pt.json": "07a85a327a4c",
+    "biblio-hc-es.json": "04e4ba115f2c",
+    "biblio-hc-en.json": "44e8a1c6052b",
+    "biblio-hc-pt.json": "3f43356870e9",
     "hc.css": "957321724d34",
-    "emergencias-es.json": "d22cbf115485",
-    "emergencias-en.json": "cf9dfff589c7",
-    "emergencias-pt.json": "30546c76ffdb",
-    "biblio-emergencias-es.json": "ca98b60b07ed",
-    "biblio-emergencias-en.json": "3af981006cfd",
-    "biblio-emergencias-pt.json": "a08d5331eefb",
+    "emergencias-es.json": "c528863461c5",
+    "emergencias-en.json": "fe971075a34f",
+    "emergencias-pt.json": "f3a30d009f37",
+    "biblio-emergencias-es.json": "25062c9c200b",
+    "biblio-emergencias-en.json": "78cf0939303f",
+    "biblio-emergencias-pt.json": "d755a8a25167",
     "emergencias.css": "bbeef078769a",
     "calculadora-es.json": "400b1929252c",
     "calculadora-en.json": "1dfbb990674f",
@@ -37,11 +37,11 @@
     "biblio-calculadora-en.json": "4b443028845d",
     "biblio-calculadora-pt.json": "046100dd7715",
     "calculadora.css": "2fad2d74e710",
-    "ia/indice-es.json": "0f3214079eb0",
-    "ia/novedades-es.json": "3617ee76e94b",
-    "ia/indice-en.json": "f79ea86c3aa2",
-    "ia/novedades-en.json": "c819ae01c83a",
-    "ia/indice-pt.json": "f42d39ac99ab",
-    "ia/novedades-pt.json": "7c8793d6e0cb"
+    "ia/indice-es.json": "63c8f8d08aef",
+    "ia/novedades-es.json": "ce3cf440b460",
+    "ia/indice-en.json": "42214098b994",
+    "ia/novedades-en.json": "2efcf8ba10d7",
+    "ia/indice-pt.json": "b53321353e1d",
+    "ia/novedades-pt.json": "3d7b3f4bba66"
   }
 }
