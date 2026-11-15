@@ -15,6 +15,7 @@ import { createHash } from "node:crypto";
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import vm from "node:vm";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const DATA = join(ROOT, "data");
@@ -36,6 +37,13 @@ const FUENTES = {
     base: "https://cavesal.app/",
     guias: { es: "guia-calculadora.html", en: "guia-calculadora-en.html", pt: "guia-calculadora-pt.html" },
     biblio: { es: "bibliografia-calculadora.html", en: "bibliografia-calculadora-en.html", pt: "bibliografia-calculadora-pt.html" },
+  },
+  gyn: {
+    base: "https://cavesal.app/cavesal-gyn/",
+    textos: "js/textos-es.js",
+    manual: "manual.html",
+    biblio: "bibliografia.html",
+    mapa: "ia-guias.json", // pantalla de GYN -> guías HC relacionadas
   },
 };
 
@@ -301,7 +309,52 @@ function escribir(nombre, contenido) {
  * con fuentes y enlaces. Lo leen CaVeSal IA y la IA de Mujer y Mamá para
  * responder con la misma base. Sin HTML: más liviano y sin ruido. */
 const ACADEMY = "https://cavesal.app/academy/";
-function indiceIA(lang, hcGuia, emGuia, calcGuia) {
+/* ---------- CaVeSal® GYN (NUEVO 2026-11-15) ----------
+ * Una ficha por pantalla de GYN para el índice de la IA: resumen de la función,
+ * uso del manual, fuentes de la bibliografía y guías HC relacionadas. Solo en
+ * español (GYN es profesional y en español). */
+const GYN_MANUAL_ALIAS = { mec: "metodos" };
+async function espejoGYN(hcGuia) {
+  const f = FUENTES.gyn;
+  const w = {};
+  vm.runInNewContext(await bajar(f.base + f.textos), { window: w });
+  const T = w.GYN_TEXTOS;
+  if (!T || !Array.isArray(T.capitulos)) throw new Error("GYN: textos-es.js sin capítulos");
+  const manual = parse(await bajar(f.base + f.manual));
+  const biblio = parse(await bajar(f.base + f.biblio));
+  const mapa = JSON.parse(await bajar(f.base + f.mapa));
+  const titulosHC = new Map();
+  for (const c of hcGuia?.capitulos || []) for (const g of c.guias) titulosHC.set(g.id, g.titulo);
+  const fichas = [];
+  for (const cap of T.capitulos) {
+    for (const fn of cap.funciones) {
+      const mId = GYN_MANUAL_ALIAS[fn.id] || fn.id;
+      const secM = manual.querySelector(`section#${mId}`);
+      const ref = secM?.querySelector("p.ref");
+      secM?.querySelectorAll("a").forEach((a) => /Volver/.test(a.text) && a.remove());
+      const uso = secM ? textoDe(secM).replace(textoDe(secM.querySelector("h2")), "").trim() : "";
+      const secB = biblio.querySelector(`section#${fn.id}`) || biblio.querySelector(`section#${mId}`);
+      const fuentes = secB ? secB.querySelectorAll("li").map((li) => limpiarTexto((li.querySelector("p") || li).text)).join(" · ") : ref ? textoDe(ref) : "";
+      const rel = (mapa[fn.id] || []).filter((id) => titulosHC.has(id));
+      const textoRel = rel.length ? " Guías relacionadas de la Historia Clínica: " + rel.map((id) => titulosHC.get(id)).join("; ") + "." : "";
+      fichas.push({
+        id: "gyn/" + fn.id,
+        app: "gyn",
+        seccion: cap.nombre,
+        titulo: fn.nombre,
+        texto: limpiarTexto((fn.resumen || "") + " " + uso + textoRel),
+        fuentes,
+        academy: rel.length ? ACADEMY + "#/hc/g/" + rel[0] : "",
+        guia: f.base + "manual.html#" + mId,
+        guias_hc: rel.map((id) => ({ id, titulo: titulosHC.get(id), academy: ACADEMY + "#/hc/g/" + id })),
+      });
+    }
+  }
+  if (fichas.length < 25) throw new Error("GYN: muy pocas fichas (" + fichas.length + ")");
+  console.log("GYN:", fichas.length, "fichas");
+  return fichas;
+}
+function indiceIA(lang, hcGuia, emGuia, calcGuia, gynFichas) {
   const fichas = [];
   if (hcGuia) {
     for (const c of hcGuia.capitulos) {
@@ -352,9 +405,10 @@ function indiceIA(lang, hcGuia, emGuia, calcGuia) {
       }
     }
   }
+  if (gynFichas) fichas.push(...gynFichas);
   return {
     idioma: lang,
-    descripcion: "Índice de las guías CaVeSal® (Historia Clínica, Emergencias y Calculadora prenatal) para uso de IA. Texto plano por ficha, con fuentes y enlaces. Se regenera solo desde las guías publicadas; no editar a mano.",
+    descripcion: "Índice de las guías CaVeSal® (Historia Clínica, Emergencias, Calculadora prenatal y GYN) para uso de IA. Las fichas de GYN están en español en los tres idiomas. Texto plano por ficha, con fuentes y enlaces. Se regenera solo desde las guías publicadas; no editar a mano.",
     autor: "Dr. Carlos Vera Salerno · CaVeSal®",
     total: fichas.length,
     fichas,
@@ -367,9 +421,9 @@ function indiceIA(lang, hcGuia, emGuia, calcGuia) {
  * el que ya estaba publicado. Guarda 13 meses y una sola entrada por ficha (la
  * más reciente). Lo lee Lovable en la revisión mensual de CaVeSal Mujer y Mamá. */
 const TEXTOS_NOV = {
-  es: "Fichas de las guías CaVeSal® (Historia Clínica, Emergencias y Calculadora prenatal) nuevas, modificadas o eliminadas, con la fecha en que se publicó el cambio. Para la revisión mensual de CaVeSal Mujer y Mamá: tomar solo las entradas con fecha posterior a la última revisión. Se regenera solo; no editar a mano.",
-  en: "New, modified or removed cards of the CaVeSal® guides (Clinical History, Emergencies and Prenatal Calculator), with the date the change was published. For the monthly review of CaVeSal Mujer and Mamá: take only entries dated after the last review. Regenerated automatically; do not edit by hand.",
-  pt: "Fichas dos guias CaVeSal® (História Clínica, Emergências e Calculadora pré-natal) novas, modificadas ou removidas, com a data em que a mudança foi publicada. Para a revisão mensal do CaVeSal Mujer e Mamá: considerar só as entradas com data posterior à última revisão. Regenera-se sozinho; não editar à mão.",
+  es: "Fichas de las guías CaVeSal® (Historia Clínica, Emergencias, Calculadora prenatal y GYN) nuevas, modificadas o eliminadas, con la fecha en que se publicó el cambio. Para la revisión mensual de CaVeSal Mujer y Mamá: tomar solo las entradas con fecha posterior a la última revisión. Se regenera solo; no editar a mano.",
+  en: "New, modified or removed cards of the CaVeSal® guides (Clinical History, Emergencies, Prenatal Calculator and GYN), with the date the change was published. For the monthly review of CaVeSal Mujer and Mamá: take only entries dated after the last review. Regenerated automatically; do not edit by hand.",
+  pt: "Fichas dos guias CaVeSal® (História Clínica, Emergências, Calculadora pré-natal e GYN) novas, modificadas ou removidas, com a data em que a mudança foi publicada. Para a revisão mensal do CaVeSal Mujer e Mamá: considerar só as entradas com data posterior à última revisão. Regenera-se sozinho; não editar à mão.",
 };
 function novedades(lang, indice) {
   const rIdx = join(DATA, `ia/indice-${lang}.json`);
@@ -399,6 +453,7 @@ function novedades(lang, indice) {
 const hc = await espejoHC();
 const em = await espejoEmergencias();
 const calc = await espejoCalculadora(hc.guias, em.guias);
+const gyn = await espejoGYN(hc.guias.es);
 const archivos = {};
 for (const [l, d] of Object.entries(hc.guias)) archivos[`hc-${l}.json`] = escribir(`hc-${l}.json`, d);
 for (const [l, d] of Object.entries(hc.biblio)) archivos[`biblio-hc-${l}.json`] = escribir(`biblio-hc-${l}.json`, d);
@@ -411,7 +466,7 @@ for (const [l, d] of Object.entries(calc.biblio)) archivos[`biblio-calculadora-$
 archivos["calculadora.css"] = escribir("calculadora.css", calc.css);
 for (const l of ["es", "en", "pt"]) {
   if (!hc.guias[l] && !em.guias[l] && !calc.guias[l]) continue;
-  const indice = indiceIA(l, hc.guias[l], em.guias[l], calc.guias[l]);
+  const indice = indiceIA(l, hc.guias[l], em.guias[l], calc.guias[l], gyn);
   const nov = novedades(l, indice);
   archivos[`ia/indice-${l}.json`] = escribir(`ia/indice-${l}.json`, indice);
   if (nov) archivos[`ia/novedades-${l}.json`] = escribir(`ia/novedades-${l}.json`, nov);
@@ -424,6 +479,7 @@ const conteos = {
   hc: { capitulos: hc.guias.es.capitulos.length, guias: hc.guias.es.capitulos.reduce((a, c) => a + c.guias.length, 0) },
   emergencias: { pestanas: em.guias.es.grupos.length, fichas: em.guias.es.grupos.reduce((a, g) => a + g.fichas.length, 0) },
   calculadora: { pestanas: calc.guias.es.grupos.length, fichas: calc.guias.es.grupos.reduce((a, g) => a + g.fichas.length, 0) },
+  gyn: { fichas: gyn.length },
 };
 if (JSON.stringify(previo.archivos) !== JSON.stringify(archivos)) {
   const v = { version: hash(JSON.stringify(archivos)), actualizado: new Date().toISOString(), conteos, archivos };
