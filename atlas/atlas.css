@@ -76,3 +76,17 @@
 .exp ul{margin:4px 0 0;padding-left:18px;font-size:.9rem}
 .exp h4{margin:8px 0 2px;font-size:.88rem;color:var(--navy)}
 .alt{font-size:.72rem;font-weight:800;color:#8a5a00;background:#fff6e0;border:1px solid #f0d9a0;border-radius:6px;padding:1px 6px;margin-left:4px;vertical-align:middle}
+
+.dib{display:block;width:100%;height:auto;border-radius:10px}
+.par{display:grid;grid-template-columns:1fr;gap:10px}
+@media(min-width:640px){.par{grid-template-columns:1fr 1fr}}
+.par article{border:1px solid var(--line);border-radius:12px;background:var(--mist);padding:8px}
+.par article h3{margin:0 0 6px;font-size:.92rem;color:var(--navy);display:flex;gap:6px;align-items:center}
+.par .duo{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.par .duo figure{margin:0}
+.par .duo img{display:block;width:100%;aspect-ratio:200/140;object-fit:cover;border-radius:10px;background:#000}
+.par .duo figcaption{font-size:.66rem;color:var(--muted);margin-top:3px;line-height:1.3}
+.par .duo figcaption a{color:var(--muted)}
+.par .sin{display:flex;align-items:center;justify-content:center;aspect-ratio:200/140;border:1px dashed var(--line);border-radius:10px;font-size:.72rem;color:var(--muted);text-align:center;padding:6px}
+.par p{margin:6px 0 0;font-size:.82rem;line-height:1.35}
+.exp .dib{max-width:260px;margin:6px 0}

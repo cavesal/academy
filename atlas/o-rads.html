@@ -44,9 +44,9 @@
   </section>
 
   <section class="lam" aria-labelledby="h-d">
-    <h2 id="h-d"><span class="tipo">P</span><span data-t="hD">Imágenes reales: O-RADS 2 a 5 con histología</span></h2>
-    <div class="gal" id="gal"></div>
-    <p class="nota" data-t="notaGal">Imágenes con licencia CC BY 4.0, sin datos de pacientes, con crédito al autor.</p>
+    <h2 id="h-d"><span class="tipo">P</span><span data-t="hD">Categorías 0 a 5: esquema propio y ecografía real</span></h2>
+    <div class="par" id="gal"></div>
+    <p class="nota" data-t="notaGal">Izquierda: dibujo didáctico propio. Derecha: ecografía real con licencia CC BY 4.0, recortada, sin datos de pacientes.</p>
   </section>
 
   <div class="rot">
@@ -69,21 +69,21 @@
     es: { atlas: 'Atlas médico', volver: '← Volver a Academy', ruta: 'Ginecología · Ecografía', tit: 'O-RADS US v2022: categorías, descriptores y conducta',
       baj: 'Tocá una categoría: los descriptores y la conducta aparecen debajo.', hA: 'O-RADS US v2022 (ACR)', hB: 'O-RADS según IOTA (ADNEX)', altTag: 'Alternativa citada por la fuente',
       abrev: 'CS: score color (1 sin flujo, 2 mínimo, 3 moderado, 4 muy intenso). Liso o irregular: pared interna o contorno.',
-      hD: 'Imágenes reales: O-RADS 2 a 5 con histología', notaGal: 'Imágenes con licencia CC BY 4.0, sin datos de pacientes, con crédito al autor.',
+      hD: 'Categorías 0 a 5: esquema propio y ecografía real', notaGal: 'Izquierda: dibujo didáctico propio. Derecha: ecografía real con licencia CC BY 4.0, recortada, sin datos de pacientes.', esq: 'Esquema CaVeSal®', sin0: 'No corresponde: estudio incompleto.', sin1: 'Ovario normal: sin ecografía real incluida.',
       rotulo: 'Algoritmo propio CaVeSal® · Basado en: O-RADS US v2022 (ACR) y consenso IOTA 2026.', nota: 'Lámina didáctica; no reemplaza la evaluación del ecografista ni el estudio histológico.',
       desc: 'Descriptores', cond: 'Conducta', vacio: 'Elegí una categoría.',
       c: ['Incompleta', 'Normal', 'Casi benigna', 'Riesgo bajo', 'Intermedio', 'Alto'] },
     en: { atlas: 'Medical atlas', volver: '← Back to Academy', ruta: 'Gynecology · Ultrasound', tit: 'O-RADS US v2022: categories, descriptors and management',
       baj: 'Tap a category: descriptors and management appear below.', hA: 'O-RADS US v2022 (ACR)', hB: 'O-RADS by IOTA (ADNEX)', altTag: 'Alternative cited by the source',
       abrev: 'CS: color score (1 no flow, 2 minimal, 3 moderate, 4 very strong). Smooth or irregular: inner wall or contour.',
-      hD: 'Real images: O-RADS 2 to 5 with histology', notaGal: 'CC BY 4.0 licensed images, without patient data, credited to the author.',
+      hD: 'Categories 0 to 5: own drawing and real ultrasound', notaGal: 'Left: our own didactic drawing. Right: CC BY 4.0 real ultrasound, cropped, without patient data.', esq: 'CaVeSal® drawing', sin0: 'Not applicable: incomplete study.', sin1: 'Normal ovary: no real ultrasound included.',
       rotulo: 'CaVeSal® own algorithm · Based on: O-RADS US v2022 (ACR) and IOTA consensus 2026.', nota: 'Didactic plate; it does not replace the sonographer’s assessment or histology.',
       desc: 'Descriptors', cond: 'Management', vacio: 'Choose a category.',
       c: ['Incomplete', 'Normal', 'Almost benign', 'Low risk', 'Intermediate', 'High'] },
     pt: { atlas: 'Atlas médico', volver: '← Voltar ao Academy', ruta: 'Ginecologia · Ultrassom', tit: 'O-RADS US v2022: categorias, descritores e conduta',
       baj: 'Toque uma categoria: os descritores e a conduta aparecem abaixo.', hA: 'O-RADS US v2022 (ACR)', hB: 'O-RADS segundo a IOTA (ADNEX)', altTag: 'Alternativa citada pela fonte',
       abrev: 'CS: escore de cor (1 sem fluxo, 2 mínimo, 3 moderado, 4 muito intenso). Liso ou irregular: parede interna ou contorno.',
-      hD: 'Imagens reais: O-RADS 2 a 5 com histologia', notaGal: 'Imagens com licença CC BY 4.0, sem dados de pacientes, com crédito ao autor.',
+      hD: 'Categorias 0 a 5: esquema próprio e ultrassom real', notaGal: 'Esquerda: desenho didático próprio. Direita: ultrassom real com licença CC BY 4.0, recortado, sem dados de pacientes.', esq: 'Esquema CaVeSal®', sin0: 'Não se aplica: estudo incompleto.', sin1: 'Ovário normal: sem ultrassom real incluído.',
       rotulo: 'Algoritmo próprio CaVeSal® · Baseado em: O-RADS US v2022 (ACR) e consenso IOTA 2026.', nota: 'Lâmina didática; não substitui a avaliação do ultrassonografista nem o exame histológico.',
       desc: 'Descritores', cond: 'Conduta', vacio: 'Escolha uma categoria.',
       c: ['Incompleta', 'Normal', 'Quase benigna', 'Risco baixo', 'Intermediário', 'Alto'] }
@@ -153,18 +153,23 @@
     for (var i = desde; i <= 5; i++) h += '<button type="button" data-g="' + key + '" data-i="' + i + '" style="background:' + COL[i] + '" aria-pressed="' + (sel[key] === i) + '">' + i + '<small>' + A.esc(u.c[i]) + '</small></button>';
     el.innerHTML = h;
   }
-  function detalle(el, d, u) {
+  function detalle(el, d, u, dib) {
     if (!d) { el.innerHTML = '<p class="vacio">' + A.esc(u.vacio) + '</p>'; return; }
     var li = function (a) { return '<ul>' + a.map(function (x) { return '<li>' + A.esc(x) + '</li>'; }).join('') + '</ul>'; };
-    el.innerHTML = '<h3>' + A.esc(d[0]) + '</h3>' + (d[1].length ? '<h4>' + A.esc(u.desc) + '</h4>' + li(d[1]) : '') + '<h4>' + A.esc(u.cond) + '</h4>' + li(d[2]);
+    el.innerHTML = '<h3>' + A.esc(d[0]) + '</h3>' + (dib || '') + (d[1].length ? '<h4>' + A.esc(u.desc) + '</h4>' + li(d[1]) : '') + '<h4>' + A.esc(u.cond) + '</h4>' + li(d[2]);
   }
   function pintar() {
     var u = A.textos(UI);
     A.nav($('#nav-at'), 'o-rads.html');
     botones($('#cat'), 'a', 0, u); botones($('#cat2'), 'b', 1, u);
-    detalle($('#exp'), sel.a === null ? null : OR[A.lang][sel.a], u);
+    detalle($('#exp'), sel.a === null ? null : OR[A.lang][sel.a], u, sel.a === null ? '' : A.DIB['o' + sel.a]());
     detalle($('#exp2'), sel.b === null ? null : IO[A.lang][sel.b], u);
-    A.galeria($('#gal'), GAL);
+    var gi = {}; GAL.forEach(function (g) { gi[g.t.es[0].slice(-1)] = g; });
+    $('#gal').innerHTML = [0, 1, 2, 3, 4, 5].map(function (i) {
+      var g = gi[i], c = A.CRED.wu;
+      var real = g ? '<figure><img src="img/' + g.img + '.jpg" alt="O-RADS ' + i + '" loading="lazy"><figcaption><a href="' + c.url + '" target="_blank" rel="noopener">' + A.esc(c.txt) + '</a></figcaption></figure>' : '<div class="sin">' + A.esc(i ? u.sin1 : u.sin0) + '</div>';
+      return '<article><h3><span style="background:' + COL[i] + ';color:#fff;border-radius:6px;padding:1px 7px;font-size:.78rem">' + i + '</span>' + A.esc(u.c[i]) + '</h3><div class="duo"><figure>' + A.DIB['o' + i]() + '<figcaption>' + A.esc(u.esq) + '</figcaption></figure>' + real + '</div>' + (g ? '<p>' + A.esc(g.t[A.lang][1]) + '</p>' : '') + '</article>';
+    }).join('');
   }
   document.addEventListener('click', function (ev) {
     var b = ev.target.closest('button'); if (!b) return;

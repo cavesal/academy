@@ -41,8 +41,14 @@
     <div class="exp" id="exp" aria-live="polite"></div>
   </section>
 
+  <section class="lam" aria-labelledby="h-p">
+    <h2 id="h-p"><span class="tipo">P</span><span data-t="hP">Los 10 rasgos: esquema propio y ecografía real</span></h2>
+    <div class="par" id="par"></div>
+    <p class="nota" data-t="notaPar">Izquierda: dibujo didáctico propio. Derecha: ecografía real con licencia libre, recortada, sin datos de pacientes.</p>
+  </section>
+
   <section class="lam" aria-labelledby="h-d">
-    <h2 id="h-d"><span class="tipo">P</span><span data-t="hD">Imágenes reales de referencia</span></h2>
+    <h2 id="h-d"><span class="tipo">P</span><span data-t="hD">Más ejemplos reales</span></h2>
     <div class="gal" id="gal"></div>
     <p class="nota" data-t="notaGal">Imágenes con licencia libre (CC BY o CC BY-SA), sin datos de pacientes, con crédito al autor.</p>
   </section>
@@ -66,7 +72,7 @@
   var UI = {
     es: { atlas: 'Atlas médico', volver: '← Volver a Academy', ruta: 'Ginecología · Ecografía', tit: 'IOTA: reglas simples B1–B5 y M1–M5',
       baj: 'Marcá los hallazgos de la masa: el flujograma muestra el resultado debajo.', hA: 'Hallazgos benignos (B) y malignos (M)',
-      hB: 'Rasgos B (sugieren benignidad)', hM: 'Rasgos M (sugieren malignidad)', limpiar: 'Limpiar', hD: 'Imágenes reales de referencia',
+      hB: 'Rasgos B (sugieren benignidad)', hM: 'Rasgos M (sugieren malignidad)', limpiar: 'Limpiar', hD: 'Más ejemplos reales', hP: 'Los 10 rasgos: esquema propio y ecografía real', notaPar: 'Izquierda: dibujo didáctico propio. Derecha: ecografía real con licencia libre, recortada, sin datos de pacientes.', esq: 'Esquema CaVeSal®', sinImg: 'Sin ecografía real con licencia libre que documente ≥100 mm; ver el esquema.',
       notaGal: 'Imágenes con licencia libre (CC BY o CC BY-SA), sin datos de pacientes, con crédito al autor.',
       rotulo: 'Algoritmo propio CaVeSal® · Basado en: reglas simples IOTA (Timmerman 2008) y su validación prospectiva (Timmerman 2010).',
       nota: 'Lámina didáctica; no reemplaza la evaluación del ecografista ni el estudio histológico.',
@@ -78,7 +84,7 @@
       e0: 'Marcá al menos un rasgo, o ninguno si no se aplica ninguno, y mirá el resultado.' },
     en: { atlas: 'Medical atlas', volver: '← Back to Academy', ruta: 'Gynecology · Ultrasound', tit: 'IOTA: Simple Rules B1–B5 and M1–M5',
       baj: 'Mark the findings of the mass: the flowchart shows the result below.', hA: 'Benign (B) and malignant (M) features',
-      hB: 'B features (suggest benign)', hM: 'M features (suggest malignant)', limpiar: 'Clear', hD: 'Real reference images',
+      hB: 'B features (suggest benign)', hM: 'M features (suggest malignant)', limpiar: 'Clear', hD: 'More real examples', hP: 'The 10 features: own drawing and real ultrasound', notaPar: 'Left: our own didactic drawing. Right: freely licensed real ultrasound, cropped, without patient data.', esq: 'CaVeSal® drawing', sinImg: 'No freely licensed real ultrasound documenting ≥100 mm; see the drawing.',
       notaGal: 'Freely licensed images (CC BY or CC BY-SA), without patient data, credited to the author.',
       rotulo: 'CaVeSal® own algorithm · Based on: IOTA Simple Rules (Timmerman 2008) and their prospective validation (Timmerman 2010).',
       nota: 'Didactic plate; it does not replace the sonographer’s assessment or histology.',
@@ -90,7 +96,7 @@
       e0: 'Mark at least one feature, or none if none applies, and see the result.' },
     pt: { atlas: 'Atlas médico', volver: '← Voltar ao Academy', ruta: 'Ginecologia · Ultrassom', tit: 'IOTA: regras simples B1–B5 e M1–M5',
       baj: 'Marque os achados da massa: o fluxograma mostra o resultado abaixo.', hA: 'Achados benignos (B) e malignos (M)',
-      hB: 'Características B (sugerem benignidade)', hM: 'Características M (sugerem malignidade)', limpiar: 'Limpar', hD: 'Imagens reais de referência',
+      hB: 'Características B (sugerem benignidade)', hM: 'Características M (sugerem malignidade)', limpiar: 'Limpar', hD: 'Mais exemplos reais', hP: 'As 10 características: esquema próprio e ultrassom real', notaPar: 'Esquerda: desenho didático próprio. Direita: ultrassom real com licença livre, recortado, sem dados de pacientes.', esq: 'Esquema CaVeSal®', sinImg: 'Sem ultrassom real com licença livre que documente ≥100 mm; ver o esquema.',
       notaGal: 'Imagens com licença livre (CC BY ou CC BY-SA), sem dados de pacientes, com crédito ao autor.',
       rotulo: 'Algoritmo próprio CaVeSal® · Baseado em: regras simples IOTA (Timmerman 2008) e sua validação prospectiva (Timmerman 2010).',
       nota: 'Lâmina didática; não substitui a avaliação do ultrassonografista nem o exame histológico.',
@@ -115,11 +121,30 @@
     { k: 'M4', t: { es: 'Tumor multilocular-sólido irregular con diámetro máximo ≥100 mm', en: 'Irregular multilocular-solid tumor, largest diameter ≥100 mm', pt: 'Tumor multilocular-sólido irregular com diâmetro máximo ≥100 mm' } },
     { k: 'M5', t: { es: 'Flujo muy intenso (score color 4)', en: 'Very strong blood flow (color score 4)', pt: 'Fluxo muito intenso (escore de cor 4)' } }
   ];
+  var PAR = {
+    B1: { img: 'antil-b1', c: 'antil', t: { es: 'Quiste unilocular anecoico de pared lisa.', en: 'Smooth-walled anechoic unilocular cyst.', pt: 'Cisto unilocular anecoico de parede lisa.' } },
+    B2: { img: 'iota-b2', c: 'iota', t: { es: 'Pequeño componente sólido en la pared (flecha) que no llega a ser papila. En B2, el mayor componente sólido mide <7 mm.', en: 'Small solid component on the wall (arrow), not a papillary projection. In B2 the largest solid component is <7 mm.', pt: 'Pequeno componente sólido na parede (seta), que não chega a ser papila. Em B2, o maior componente sólido mede <7 mm.' } },
+    B3: { img: 'iota-b3', c: 'iota', t: { es: 'Sombra acústica detrás de una “bola blanca” en un quiste dermoide.', en: 'Acoustic shadow behind a “white ball” in a dermoid cyst.', pt: 'Sombra acústica atrás de uma “bola branca” em um cisto dermoide.' } },
+    B4: { img: 'iota-b4', c: 'iota', t: { es: 'Quiste multilocular de pared lisa con cuatro lóculos. B4 exige diámetro máximo <100 mm.', en: 'Smooth multilocular cyst with four locules. B4 requires a largest diameter <100 mm.', pt: 'Cisto multilocular de parede lisa com quatro lóculos. B4 exige diâmetro máximo <100 mm.' } },
+    B5: { img: 'iota-b5', c: 'iota', t: { es: 'Doppler de potencia sin flujo en la lesión: score color 1.', en: 'Power Doppler without flow in the lesion: color score 1.', pt: 'Doppler de potência sem fluxo na lesão: escore de cor 1.' } },
+    M1: { img: 'iota-m1', c: 'iota', t: { es: 'Tumor sólido de contorno espiculado (irregular).', en: 'Solid tumor with spiculated (irregular) contour.', pt: 'Tumor sólido de contorno espiculado (irregular).' } },
+    M2: { img: 'iota-m2', c: 'iota', t: { es: 'Ascitis por encima del fondo uterino en ecografía transvaginal.', en: 'Ascites above the uterine fundus on transvaginal ultrasound.', pt: 'Ascite acima do fundo uterino no ultrassom transvaginal.' } },
+    M3: { img: 'antil-m3', c: 'antil', t: { es: 'Multilocular-sólido con al menos cuatro papilas (flechas).', en: 'Multilocular-solid with at least four papillary projections (arrows).', pt: 'Multilocular-sólido com ao menos quatro papilas (setas).' } },
+    M4: { img: '', t: { es: 'Masa grande con tabiques y áreas sólidas irregulares.', en: 'Large mass with septa and irregular solid areas.', pt: 'Massa grande com septos e áreas sólidas irregulares.' } },
+    M5: { img: 'iota-m5', c: 'iota', t: { es: 'Tumor sólido con flujo muy abundante: score color 4.', en: 'Solid tumor with very abundant flow: color score 4.', pt: 'Tumor sólido com fluxo muito abundante: escore de cor 4.' } }
+  };
+  function pares(u) {
+    return B.concat(M).map(function (x) {
+      var d = PAR[x.k], c = d.c ? A.CRED[d.c] : null, mal = x.k.charAt(0) === 'M';
+      var real = d.img ? '<figure><img src="img/' + d.img + '.jpg" alt="' + A.esc(x.k + ' · ' + x.t[A.lang]) + '" loading="lazy"><figcaption><a href="' + c.url + '" target="_blank" rel="noopener">' + A.esc(c.txt) + '</a></figcaption></figure>'
+        : '<div class="sin">' + A.esc(u.sinImg) + '</div>';
+      return '<article><h3><span class="k" style="background:' + (mal ? '#c62828' : '#1e8e4f') + ';color:#fff;border-radius:6px;padding:1px 6px;font-size:.78rem">' + x.k + '</span>' + A.esc(x.t[A.lang]) + '</h3>' +
+        '<div class="duo"><figure>' + A.DIB[x.k.toLowerCase()]() + '<figcaption>' + A.esc(u.esq) + '</figcaption></figure>' + real + '</div><p>' + A.esc(d.t[A.lang]) + '</p></article>';
+    }).join('');
+  }
   var GAL = [
-    { img: 'antil-b1', c: 'antil', t: { es: ['B1 · Unilocular', 'Quiste unilocular anecoico.'], en: ['B1 · Unilocular', 'Anechoic unilocular cyst.'], pt: ['B1 · Unilocular', 'Cisto unilocular anecoico.'] } },
     { img: 'antil-b3', c: 'antil', t: { es: ['B3 · Sombra acústica', 'Lesión ecogénica con sombra posterior.'], en: ['B3 · Acoustic shadow', 'Echogenic lesion with posterior shadowing.'], pt: ['B3 · Sombra acústica', 'Lesão ecogênica com sombra posterior.'] } },
     { img: 'wu-orads2', c: 'wu', t: { es: ['B1 + B5 · Benigna', 'Unilocular, score color 1: reglas simples benignas. Histología: cistoadenoma seroso.'], en: ['B1 + B5 · Benign', 'Unilocular, color score 1: Simple Rules benign. Histology: serous cystadenoma.'], pt: ['B1 + B5 · Benigna', 'Unilocular, escore de cor 1: regras simples benignas. Histologia: cistoadenoma seroso.'] } },
-    { img: 'antil-m3', c: 'antil', t: { es: ['M3 · ≥4 papilas', 'Multilocular-sólida con al menos cuatro papilas (flechas).'], en: ['M3 · ≥4 papillary projections', 'Multilocular-solid with at least four papillary projections (arrows).'], pt: ['M3 · ≥4 papilas', 'Multilocular-sólida com ao menos quatro papilas (setas).'] } },
     { img: 'antil-m5', c: 'antil', t: { es: ['M5 · Score color 4', 'Masa sólida con flujo Doppler abundante.'], en: ['M5 · Color score 4', 'Solid mass with abundant Doppler flow.'], pt: ['M5 · Escore de cor 4', 'Massa sólida com fluxo Doppler abundante.'] } },
     { img: 'auscities', c: 'heil', t: { es: ['M2 · Ascitis', 'Líquido libre abdominal con asas intestinales flotando.'], en: ['M2 · Ascites', 'Free abdominal fluid with floating bowel loops.'], pt: ['M2 · Ascite', 'Líquido livre abdominal com alças intestinais flutuando.'] } },
     { img: 'wu-orads5', c: 'wu', t: { es: ['Maligna por reglas simples', 'Masa predominantemente sólida. Histología: carcinoma de células claras.'], en: ['Malignant by Simple Rules', 'Predominantly solid mass. Histology: clear cell carcinoma.'], pt: ['Maligna pelas regras simples', 'Massa predominantemente sólida. Histologia: carcinoma de células claras.'] } },
@@ -150,6 +175,7 @@
     var e = r === 'B' ? u.eB : r === 'M' ? u.eM : r === 'I' ? u.eI : null;
     A.panel($('#exp'), e && e[0], e ? e.slice(1) : [], u.e0);
     A.galeria($('#gal'), GAL);
+    $('#par').innerHTML = pares(u);
   }
   document.addEventListener('click', function (ev) {
     var b = ev.target.closest('button'); if (!b) return;
