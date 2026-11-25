@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>IOTA — Atlas médico · CaVeSal® Academy</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="../img/favicon.png">
+<link rel="stylesheet" href="../styles.css">
+<style>
+.at{max-width:860px;margin:0 auto;padding:18px 16px 40px;flex:1}
+.at-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.at-top a.volver{font-weight:800;text-decoration:none;font-size:.92rem}
+.idi{margin-left:auto;display:flex;gap:4px}
+.idi button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px 11px;font-weight:800;font-size:.8rem;color:var(--muted);cursor:pointer}
+.idi button[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+.at .eyebrow{display:inline-block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-d);font-weight:800}
+.at h1{font-family:var(--ft);font-size:1.55rem;line-height:1.2;margin:4px 0 6px;color:var(--navy)}
+.at .baj{color:var(--muted);margin:0 0 14px;font-size:.95rem}
+.tipo{display:inline-block;background:var(--teal-bg);color:var(--teal-d);border:1px solid #bfe8ee;border-radius:8px;font-weight:800;font-size:.75rem;padding:2px 8px;margin-right:6px}
+.lam{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:12px;margin-bottom:16px}
+.lam h2{font-family:var(--ft);font-size:1.12rem;margin:2px 4px 10px;color:var(--navy)}
+.eco{display:block;width:100%;height:auto;border-radius:10px;background:#11161b;touch-action:manipulation}
+.pt{cursor:pointer;outline:none}
+.pt circle.h{fill:transparent}
+.pt circle.m{fill:#0EA5B7;stroke:#fff;stroke-width:2}
+.pt text{fill:#fff;font:800 12px var(--fb);text-anchor:middle;dominant-baseline:central;pointer-events:none}
+.pt.on circle.m{fill:#F4B400;stroke:#0D1B2D}
+.pt.on text{fill:#0D1B2D}
+.pt:focus-visible circle.m{stroke:#F4B400;stroke-width:3}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 0}
+.chips button{border:1px solid var(--line);background:var(--mist);border-radius:999px;padding:5px 10px;font-size:.8rem;font-weight:700;color:var(--ink);cursor:pointer}
+.chips button b{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;background:var(--teal);color:#fff;font-size:.68rem;margin-right:5px}
+.chips button[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+.chips button[aria-pressed=true] b{background:#F4B400;color:var(--navy)}
+.exp{margin-top:10px;border-left:4px solid var(--teal);background:var(--teal-bg);border-radius:0 10px 10px 0;padding:10px 12px;min-height:64px}
+.exp h3{margin:0 0 4px;font-size:1rem;color:var(--navy)}
+.exp p{margin:0;font-size:.92rem}
+.exp p+p{margin-top:6px}
+.exp .vacio{color:var(--muted);font-style:normal}
+.mini{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.mini.c4{grid-template-columns:repeat(4,1fr)}
+@media(min-width:640px){.mini{grid-template-columns:repeat(6,1fr)}}
+.mini button{border:1px solid var(--line);background:#fff;border-radius:10px;padding:6px 4px 8px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:.74rem;font-weight:800;color:var(--ink);line-height:1.15;text-align:center}
+.mini button svg{width:100%;height:auto;border-radius:6px;background:#11161b}
+.mini button[aria-pressed=true]{border-color:var(--navy);box-shadow:0 0 0 2px var(--navy)}
+.rot{margin-top:18px;font-size:.82rem;color:var(--muted);border-top:1px solid var(--line);padding-top:10px}
+.rot strong{color:var(--navy)}
+.rot ol{margin:6px 0 0;padding-left:18px}
+.rot li{margin-bottom:4px}
+.nota{font-size:.78rem;color:var(--muted);margin:8px 4px 0}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <a class="marca" href="../#/" aria-label="CaVeSal Academy">
+      <img src="../img/icon-192.png" alt="" width="40" height="40">
+      <span class="marca-txt"><strong>CaVeSal<sup>®</sup> Academy</strong><small data-t="atlas">Atlas médico</small></span>
+    </a>
+  </div>
+</header>
+<main class="at" id="main">
+  <div class="at-top">
+    <a class="volver" href="../#/" data-t="volver">← Volver a Academy</a>
+    <div class="idi" role="group" aria-label="Idioma">
+      <button type="button" data-l="es">ES</button><button type="button" data-l="en">EN</button><button type="button" data-l="pt">PT</button>
+    </div>
+  </div>
+  <span class="eyebrow" data-t="ruta">Ginecología · Ecografía</span>
+  <h1 data-t="tit">IOTA: términos para describir una masa anexial</h1>
+  <p class="baj" data-t="baj">Tocá un número del esquema o un botón de la lista: la explicación aparece debajo, sin tapar la imagen.</p>
+
+  <section class="lam" aria-labelledby="h-a">
+    <h2 id="h-a"><span class="tipo">P</span><span data-t="hA">Masa multilocular-sólida: qué se describe y cómo se mide</span></h2>
+    <svg class="eco" id="eco" viewBox="0 0 400 300" role="img" aria-labelledby="eco-t">
+      <title id="eco-t">Esquema propio CaVeSal de una masa anexial multilocular-sólida</title>
+      <defs>
+        <radialGradient id="fondo" cx="50%" cy="40%" r="75%"><stop offset="0" stop-color="#4a535c"/><stop offset="1" stop-color="#1b2127"/></radialGradient>
+        <radialGradient id="sol" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#d9dfe4"/><stop offset="1" stop-color="#8d989f"/></radialGradient>
+        <linearGradient id="somb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#05080a" stop-opacity=".95"/><stop offset="1" stop-color="#05080a" stop-opacity=".55"/></linearGradient>
+        <clipPath id="sector"><path d="M200 6 L392 120 Q392 296 200 296 Q8 296 8 120 Z"/></clipPath>
+        <clipPath id="masa"><path id="masaP" d="M70 140 C68 82 128 50 200 50 C276 50 334 86 334 142 C334 200 280 236 200 236 C122 236 72 200 70 140 Z"/></clipPath>
+      </defs>
+      <g clip-path="url(#sector)">
+        <rect width="400" height="300" fill="url(#fondo)"/>
+        <!-- ascitis: líquido libre fuera de la masa -->
+        <path d="M24 250 C60 232 118 246 150 270 C120 284 52 286 24 274 Z" fill="#06090b"/>
+        <!-- masa -->
+        <g clip-path="url(#masa)">
+          <rect x="60" y="40" width="290" height="210" fill="#06090b"/>
+          <!-- lóculo superior derecho: ecos de bajo nivel (contenido variable) -->
+          <g fill="#aab4ba" opacity=".8">
+            <circle cx="214" cy="78" r="1.3"/><circle cx="236" cy="92" r="1.1"/><circle cx="258" cy="70" r="1.4"/><circle cx="280" cy="88" r="1.2"/><circle cx="300" cy="104" r="1.3"/><circle cx="246" cy="120" r="1.1"/><circle cx="270" cy="126" r="1.4"/><circle cx="222" cy="112" r="1.2"/><circle cx="292" cy="76" r="1.1"/><circle cx="316" cy="124" r="1.2"/><circle cx="204" cy="96" r="1.1"/><circle cx="262" cy="104" r="1"/><circle cx="310" cy="96" r="1"/><circle cx="232" cy="134" r="1.2"/>
+          </g>
+          <!-- componente sólido en lóculo inferior derecho -->
+          <path d="M214 236 C212 214 224 196 244 190 C258 176 282 180 292 196 C306 204 310 222 306 236 Z" fill="url(#sol)"/>
+          <!-- Doppler color en el sólido -->
+          <g stroke-linecap="round" fill="none" stroke-width="2.6">
+            <path d="M236 228 C240 214 248 206 256 202" stroke="#e53935"/>
+            <path d="M268 230 C270 218 278 208 288 206" stroke="#1e88e5"/>
+            <path d="M252 232 C254 222 262 216 270 214" stroke="#e53935"/>
+            <path d="M282 232 C286 224 292 220 298 220" stroke="#e53935"/>
+          </g>
+          <!-- proyección papilar en pared izquierda -->
+          <path d="M72 150 C86 148 92 140 100 134 C108 128 118 132 116 142 C114 152 106 158 98 162 C90 166 80 166 72 164 Z" fill="url(#sol)"/>
+          <!-- irregularidad de pared < 3 mm -->
+          <path d="M104 78 q4 -2 6 2 q3 -3 6 1 q3 -3 6 1" fill="none" stroke="#c9d1d6" stroke-width="3"/>
+        </g>
+        <!-- pared de la masa -->
+        <use href="#masaP" fill="none" stroke="#e9eef1" stroke-width="4"/>
+        <!-- septo completo vertical -->
+        <path d="M176 51 C168 100 170 170 182 235" fill="none" stroke="#e9eef1" stroke-width="3"/>
+        <!-- septo completo horizontal (del septo a la pared) -->
+        <path d="M173 160 C220 150 280 152 332 158" fill="none" stroke="#e9eef1" stroke-width="3"/>
+        <!-- sombra acústica detrás de calcificación -->
+        <path d="M246 198 L258 198 L280 300 L226 300 Z" fill="url(#somb)"/>
+        <!-- septo incompleto -->
+        <path d="M126 222 C128 210 131 198 136 188" fill="none" stroke="#e9eef1" stroke-width="2.6" stroke-linecap="round"/>
+        <ellipse cx="252" cy="195" rx="7" ry="4.5" fill="#ffffff"/>
+        <!-- calibres: diámetro mayor -->
+        <g stroke="#ffe066" stroke-width="1.6">
+          <path d="M70 120 h264" stroke-dasharray="3 4" opacity=".85"/>
+          <path d="M66 120 h8 M70 116 v8 M330 120 h8 M334 116 v8"/>
+        </g>
+        <!-- altura de la papila -->
+        <g stroke="#ffe066" stroke-width="1.4">
+          <path d="M74 148 L114 138" stroke-dasharray="2 3"/>
+          <path d="M71 146 h6 M74 143 v6 M111 138 h6 M114 135 v6"/>
+        </g>
+      </g>
+      <path d="M200 6 L392 120 Q392 296 200 296 Q8 296 8 120 Z" fill="none" stroke="#3a434b" stroke-width="1"/>
+      <text x="200" y="22" fill="#9fb0bb" font-size="10" text-anchor="middle" font-family="sans-serif">CaVeSal®</text>
+      <g id="pts"></g>
+    </svg>
+    <div class="chips" id="chips" role="group"></div>
+    <div class="exp" id="exp" aria-live="polite"></div>
+  </section>
+
+  <section class="lam" aria-labelledby="h-b">
+    <h2 id="h-b"><span class="tipo">P</span><span data-t="hB">Los cinco tipos de masa según IOTA</span></h2>
+    <div class="mini" id="tipos" role="group"></div>
+    <div class="exp" id="expT" aria-live="polite"></div>
+  </section>
+
+  <section class="lam" aria-labelledby="h-c">
+    <h2 id="h-c"><span class="tipo">P</span><span data-t="hC">Score color (1 a 4)</span></h2>
+    <div class="mini c4" id="colores" role="group"></div>
+    <div class="exp" id="expC" aria-live="polite"></div>
+  </section>
+
+  <div class="rot">
+    <p><strong data-t="rotulo">Algoritmo propio CaVeSal® · Basado en: consenso IOTA 2000 y su actualización 2026.</strong></p>
+    <p class="nota" data-t="nota">Esquema vectorial propio, didáctico; no reemplaza la imagen real ni el criterio del ecografista.</p>
+    <ol>
+      <li>Timmerman D, Valentin L, Testa AC, Froyman W, Landolfo C, Kotlarz A, Fischerova D, Van Calster B, Bourne T. Terms, definitions and measurements to describe the sonographic features of adnexal tumors: updated consensus opinion from the International Ovarian Tumor Analysis (IOTA) Group. Ultrasound Obstet Gynecol. 2026;67(5):702–724. <a href="https://doi.org/10.1002/uog.70191" rel="noopener" target="_blank">doi:10.1002/uog.70191</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13136064/" rel="noopener" target="_blank">PMC13136064</a></li>
+      <li>Timmerman D, Valentin L, Bourne TH, Collins WP, Verrelst H, Vergote I. Terms, definitions and measurements to describe the sonographic features of adnexal tumors: a consensus opinion from the IOTA Group. Ultrasound Obstet Gynecol. 2000;16(5):500–505. <a href="https://doi.org/10.1046/j.1469-0705.2000.00287.x" rel="noopener" target="_blank">doi:10.1046/j.1469-0705.2000.00287.x</a></li>
+    </ol>
+  </div>
+</main>
+
+<script>
+(function () {
+  'use strict';
+  var K = 'cavesal_academy_lang';
+  var lang = 'es';
+  try { var g = localStorage.getItem(K); if (g === 'en' || g === 'pt') lang = g; } catch (e) {}
+
+  var UI = {
+    es: { atlas: 'Atlas médico', volver: '← Volver a Academy', ruta: 'Ginecología · Ecografía', tit: 'IOTA: términos para describir una masa anexial',
+      baj: 'Tocá un número del esquema o un botón de la lista: la explicación aparece debajo, sin tapar la imagen.',
+      hA: 'Masa multilocular-sólida: qué se describe y cómo se mide', hB: 'Los cinco tipos de masa según IOTA', hC: 'Score color (1 a 4)',
+      vacio: 'Elegí un punto para ver su definición.', vacioT: 'Elegí un tipo para ver su definición.', vacioC: 'Elegí un score para ver su definición.',
+      rotulo: 'Algoritmo propio CaVeSal® · Basado en: consenso IOTA 2000 y su actualización 2026.',
+      nota: 'Esquema vectorial propio, didáctico; no reemplaza la imagen real ni el criterio del ecografista.', idioma: 'Idioma' },
+    en: { atlas: 'Medical atlas', volver: '← Back to Academy', ruta: 'Gynecology · Ultrasound', tit: 'IOTA: terms to describe an adnexal mass',
+      baj: 'Tap a number on the diagram or a button in the list: the explanation appears below, without covering the image.',
+      hA: 'Multilocular-solid mass: what to describe and how to measure', hB: 'The five IOTA tumor types', hC: 'Color score (1 to 4)',
+      vacio: 'Choose a point to see its definition.', vacioT: 'Choose a type to see its definition.', vacioC: 'Choose a score to see its definition.',
+      rotulo: 'CaVeSal® own algorithm · Based on: IOTA consensus 2000 and its 2026 update.',
+      nota: 'Own didactic vector diagram; it does not replace the real image or the sonographer’s judgment.', idioma: 'Language' },
+    pt: { atlas: 'Atlas médico', volver: '← Voltar ao Academy', ruta: 'Ginecologia · Ultrassom', tit: 'IOTA: termos para descrever uma massa anexial',
+      baj: 'Toque um número do esquema ou um botão da lista: a explicação aparece abaixo, sem cobrir a imagem.',
+      hA: 'Massa multilocular-sólida: o que descrever e como medir', hB: 'Os cinco tipos de massa segundo a IOTA', hC: 'Escore de cor (1 a 4)',
+      vacio: 'Escolha um ponto para ver a definição.', vacioT: 'Escolha um tipo para ver a definição.', vacioC: 'Escolha um escore para ver a definição.',
+      rotulo: 'Algoritmo próprio CaVeSal® · Baseado em: consenso IOTA 2000 e sua atualização de 2026.',
+      nota: 'Esquema vetorial próprio, didático; não substitui a imagem real nem o critério do ultrassonografista.', idioma: 'Idioma' }
+  };
+
+  /* puntos del esquema: x, y, textos */
+  var PTS = [
+    { id: 'medida', x: 352, y: 104, t: {
+      es: ['Medición de la lesión', 'Tres diámetros ortogonales en dos planos perpendiculares, donde la lesión se ve más grande: longitudinal y anteroposterior en el corte sagital; luego rotar el transductor 90° y medir el transverso máximo. Incluir la cápsula si se ve.', 'Si la lesión se distingue del ovario, medir lesión y ovario por separado; si no se distinguen, medirlos como una sola masa.'],
+      en: ['Lesion measurement', 'Three orthogonal diameters in two perpendicular planes, where the lesion looks largest: length and anteroposterior diameter in the sagittal section; then rotate the probe 90° and measure the maximum transverse diameter. Include the capsule if visible.', 'If the lesion is distinguishable from the ovary, measure lesion and ovary separately; if not, measure them as a single mass.'],
+      pt: ['Medida da lesão', 'Três diâmetros ortogonais em dois planos perpendiculares, onde a lesão parece maior: longitudinal e anteroposterior no corte sagital; depois girar o transdutor 90° e medir o transverso máximo. Incluir a cápsula se visível.', 'Se a lesão se distingue do ovário, medir lesão e ovário separadamente; se não, medi-los como uma só massa.'] } },
+    { id: 'septo', x: 160, y: 64, t: {
+      es: ['Septo', 'Banda delgada de tejido que va entre dos paredes internas opuestas, o entre la pared interna y otro septo. Su presencia define la lesión multilocular.', 'Un septo, aunque sea grueso o tenga flujo Doppler, no es componente sólido.'],
+      en: ['Septum', 'A thin strand of tissue running between two opposing inner cyst walls, or between the inner wall and another septum. Its presence defines a multilocular lesion.', 'A septum, even if thick or with Doppler flow, is not a solid component.'],
+      pt: ['Septo', 'Faixa fina de tecido entre duas paredes internas opostas, ou entre a parede interna e outro septo. Sua presença define a lesão multilocular.', 'Um septo, mesmo espesso ou com fluxo ao Doppler, não é componente sólido.'] } },
+    { id: 'septoInc', x: 110, y: 200, t: {
+      es: ['Septo incompleto', 'No llega a la pared opuesta en algunos planos de barrido. Se ve, por ejemplo, en el hidrosálpinx.', 'Si la lesión tiene solo septos incompletos y ningún componente sólido, se clasifica como unilocular, aunque en algún plano parezca multilocular.'],
+      en: ['Incomplete septum', 'It does not reach the opposite inner wall in some scanning planes. It is seen, for example, in hydrosalpinx.', 'If the lesion has only incomplete septa and no solid component, it is classified as unilocular, even if it looks multilocular in some planes.'],
+      pt: ['Septo incompleto', 'Não alcança a parede oposta em alguns planos de varredura. É visto, por exemplo, na hidrossalpinge.', 'Se a lesão tem apenas septos incompletos e nenhum componente sólido, é classificada como unilocular, mesmo que pareça multilocular em algum plano.'] } },
+    { id: 'papila', x: 124, y: 148, t: {
+      es: ['Proyección papilar', 'Tejido sólido que protruye en la cavidad con altura ≥3 mm, sin límite superior. Puede nacer de la pared o de un septo (la altura se mide desde la superficie del septo). Superficie lisa o irregular (en coliflor); flujo presente o ausente.', 'Se mide la mayor en tres diámetros: altura, base 1 y base 2, sin sumar el espesor de la pared. Dos picos vecinos cuentan como una sola papila si el valle entre ellos mide ≥50 % de la altura del pico menor; si mide menos, son dos. Si protruye <3 mm pero su base mide ≥3 mm, es componente sólido, no papila.'],
+      en: ['Papillary projection', 'Solid tissue protruding into the cyst cavity with a height ≥3 mm, with no upper limit. It may arise from the wall or a septum (height measured from the septum surface). Smooth or irregular (cauliflower-like) surface; flow present or absent.', 'Measure the largest one in three diameters: height, base 1 and base 2, without the wall thickness. Two adjacent peaks count as one projection if the valley between them is ≥50% of the lower peak height; if less, they are two. A protrusion <3 mm high with a base ≥3 mm is a solid component, not a papillary projection.'],
+      pt: ['Projeção papilar', 'Tecido sólido que se projeta na cavidade com altura ≥3 mm, sem limite superior. Pode nascer da parede ou de um septo (altura medida a partir da superfície do septo). Superfície lisa ou irregular (em couve-flor); fluxo presente ou ausente.', 'Mede-se a maior em três diâmetros: altura, base 1 e base 2, sem somar a espessura da parede. Dois picos vizinhos contam como uma papila se o vale entre eles mede ≥50% da altura do pico menor; se menos, são duas. Protrusão <3 mm de altura com base ≥3 mm é componente sólido, não papila.'] } },
+    { id: 'pared', x: 104, y: 64, t: {
+      es: ['Pared interna irregular', 'La pared es irregular cuando cualquier tejido sólido protruye en la cavidad: <3 mm de altura es irregularidad de pared; ≥3 mm es proyección papilar. Una papila siempre vuelve irregular la pared, aunque su superficie sea lisa.', 'Si la irregularidad se explica por barro (sludge) o pelo, la pared se considera regular. Pared externa irregular: tejido sólido creciendo por fuera del quiste (se valora si hay líquido pélvico).'],
+      en: ['Irregular inner wall', 'The wall is irregular when any solid tissue protrudes into the cavity: <3 mm high is a wall irregularity; ≥3 mm is a papillary projection. A papillary projection always makes the wall irregular, even if its surface is smooth.', 'If the irregularity is explained by sludge or hair, the wall is regular. Irregular outer wall: solid tissue growing on the outside of the cyst (assessed when pelvic fluid is present).'],
+      pt: ['Parede interna irregular', 'A parede é irregular quando qualquer tecido sólido se projeta na cavidade: <3 mm de altura é irregularidade de parede; ≥3 mm é projeção papilar. Uma papila sempre torna a parede irregular, mesmo com superfície lisa.', 'Se a irregularidade se explica por sludge ou pelos, a parede é regular. Parede externa irregular: tecido sólido crescendo por fora do cisto (avaliada se houver líquido pélvico).'] } },
+    { id: 'contenido', x: 290, y: 64, t: {
+      es: ['Contenido de los lóculos', 'Anecoico: negro. Ecos de bajo nivel: ecos dispersos. Vidrio esmerilado: ecogenicidad homogénea, típica del endometrioma. Hemorrágico: fibrina en hilos, coágulo, patrón estrellado o en telaraña. Mixto: varios tipos en un mismo lóculo, como en el dermoide.', 'Si distintos lóculos tienen distinta ecogenicidad (en el esquema: uno anecoico y otro con ecos de bajo nivel), el contenido es variable.'],
+      en: ['Locule contents', 'Anechoic: black. Low-level: a few scattered echoes. Ground glass: homogeneous echogenicity, typical of endometrioma. Hemorrhagic: thread-like fibrin, clot, star-shaped or cobweb-like pattern. Mixed: several types in one locule, as in a dermoid.', 'If different locules have different echogenicity (in the diagram: one anechoic and one low-level), the cyst has variable contents.'],
+      pt: ['Conteúdo dos lóculos', 'Anecoico: preto. Ecos de baixo nível: ecos dispersos. Vidro fosco: ecogenicidade homogênea, típica do endometrioma. Hemorrágico: fibrina em fios, coágulo, padrão estrelado ou em teia. Misto: vários tipos no mesmo lóculo, como no dermoide.', 'Se lóculos diferentes têm ecogenicidade diferente (no esquema: um anecoico e outro com ecos de baixo nível), o conteúdo é variável.'] } },
+    { id: 'solido', x: 316, y: 196, t: {
+      es: ['Componente sólido', 'Ecogenicidad que sugiere tejido (miometrio, fibroma ovárico), con al menos un diámetro ≥3 mm. No son sólidos: coágulo, moco, sebo, la “bola blanca” del dermoide, el barro del endometrioma, la pared, los septos ni el estroma ovárico normal. Se mide el mayor en tres diámetros ortogonales.', 'Doppler positivo confirma tejido; su ausencia no lo descarta: ante la duda, clasificar como sólido. El coágulo no tiene flujo, suele tener contorno cóncavo y se deforma o se mueve con la presión del transductor.'],
+      en: ['Solid component', 'Echogenicity suggestive of tissue (myometrium, ovarian fibroma), with at least one diameter ≥3 mm. Not solid: clot, mucus, sebum, the dermoid “white ball”, endometrioma sludge, the wall, septa or normal ovarian stroma. Measure the largest one in three orthogonal diameters.', 'Doppler signal confirms tissue; its absence does not exclude it: if in doubt, classify as solid. A clot has no flow, often has a concave contour and deforms or moves with probe pressure.'],
+      pt: ['Componente sólido', 'Ecogenicidade sugestiva de tecido (miométrio, fibroma ovariano), com ao menos um diâmetro ≥3 mm. Não são sólidos: coágulo, muco, sebo, a “bola branca” do dermoide, o sludge do endometrioma, a parede, os septos nem o estroma ovariano normal. Mede-se o maior em três diâmetros ortogonais.', 'Doppler positivo confirma tecido; sua ausência não o exclui: na dúvida, classificar como sólido. O coágulo não tem fluxo, costuma ter contorno côncavo e se deforma ou se move com a pressão do transdutor.'] } },
+    { id: 'sombra', x: 254, y: 274, t: {
+      es: ['Sombra acústica', 'Pérdida de ecos por detrás de una estructura que absorbe o refleja el haz: calcificación, “bola blanca” del dermoide, papila fibrosa. La sombra en abanico es típica del fibroma ovárico y del mioma.', 'Debe originarse dentro de la lesión. La sombra de borde por un contorno redondeado es artefacto y no se informa; tampoco la atenuación gradual sin un área definida de pérdida de señal.'],
+      en: ['Acoustic shadow', 'Loss of echoes behind a structure that absorbs or reflects the beam: calcification, dermoid “white ball”, fibrous papillary projection. Fan-shaped shadowing is typical of ovarian fibroma and leiomyoma.', 'It must arise within the lesion. Edge shadowing from a rounded contour is an artifact and is not reported; neither is gradual attenuation without a defined area of signal loss.'],
+      pt: ['Sombra acústica', 'Perda de ecos atrás de uma estrutura que absorve ou reflete o feixe: calcificação, “bola branca” do dermoide, papila fibrosa. A sombra em leque é típica do fibroma ovariano e do mioma.', 'Deve originar-se dentro da lesão. A sombra de borda por contorno arredondado é artefato e não se informa; nem a atenuação gradual sem área definida de perda de sinal.'] } },
+    { id: 'color', x: 282, y: 236, t: {
+      es: ['Flujo Doppler y score color', 'Explorar pared, septos y sólido con Doppler color o power: PRF 0,3–0,6 kHz (escala 3–6 cm/s), empezar con ganancia alta y bajarla hasta que desaparezca el artefacto. No usar técnicas de microvascularización para el score IOTA.', 'El score se asigna a toda la masa según el área más vascularizada (peor escenario). Ver la tercera lámina.'],
+      en: ['Doppler flow and color score', 'Examine wall, septa and solid tissue with color or power Doppler: PRF 0.3–0.6 kHz (scale 3–6 cm/s), start with high gain and lower it until artifacts disappear. Do not use microvascular techniques for the IOTA score.', 'The score is assigned to the whole mass according to the most vascularized area (worst case). See the third plate.'],
+      pt: ['Fluxo Doppler e escore de cor', 'Examinar parede, septos e sólido com Doppler colorido ou power: PRF 0,3–0,6 kHz (escala 3–6 cm/s), começar com ganho alto e reduzi-lo até o artefato desaparecer. Não usar técnicas de microvascularização para o escore IOTA.', 'O escore é atribuído a toda a massa segundo a área mais vascularizada (pior cenário). Ver a terceira lâmina.'] } },
+    { id: 'ascitis', x: 62, y: 248, t: {
+      es: ['Ascitis', 'Líquido fuera del fondo de saco de Douglas. Transvaginal: líquido entre vejiga y útero o por encima del fondo uterino. Transabdominal: líquido en el espacio de Morison (entre hígado y riñón derechos).', 'La actualización 2026 ya no cuantifica el líquido del Douglas: solo se informa ascitis sí o no.'],
+      en: ['Ascites', 'Fluid outside the pouch of Douglas. Transvaginal: fluid between bladder and uterus or above the uterine fundus. Transabdominal: fluid in Morison’s pouch (between right liver lobe and right kidney).', 'The 2026 update no longer quantifies pouch of Douglas fluid: only ascites yes or no is reported.'],
+      pt: ['Ascite', 'Líquido fora do fundo de saco de Douglas. Transvaginal: líquido entre bexiga e útero ou acima do fundo uterino. Transabdominal: líquido no espaço de Morison (entre fígado e rim direitos).', 'A atualização de 2026 não quantifica mais o líquido do Douglas: informa-se apenas ascite sim ou não.'] } }
+  ];
+
+  /* mini esquemas de los tipos */
+  var W = 'stroke="#e9eef1" fill="none"';
+  var S = 'fill="#a9b3ba"';
+  var TIPOS = [
+    { id: 'u', svg: '<ellipse cx="40" cy="30" rx="28" ry="20" fill="#06090b" ' + W + ' stroke-width="2.5"/>', t: {
+      es: ['Unilocular', 'Un solo lóculo, sin septos y sin componente sólido. El estroma ovárico normal no cuenta como sólido. Con solo septos incompletos sigue siendo unilocular.'],
+      en: ['Unilocular', 'A single locule, without septa and without solid components. Normal ovarian stroma is not solid. With only incomplete septa it remains unilocular.'],
+      pt: ['Unilocular', 'Um único lóculo, sem septos e sem componente sólido. O estroma ovariano normal não conta como sólido. Com apenas septos incompletos continua unilocular.'] } },
+    { id: 'us', svg: '<ellipse cx="40" cy="30" rx="28" ry="20" fill="#06090b" ' + W + ' stroke-width="2.5"/><path d="M14 34 c6 0 9 -8 15 -8 c5 0 5 8 -1 11 c-4 2 -9 2 -14 1z" ' + S + '/>', t: {
+      es: ['Unilocular-sólida', 'Un lóculo con uno o más componentes sólidos (papila u otro sólido, con al menos un diámetro ≥3 mm). Si el sólido contiene microquistes, sigue siendo unilocular-sólida. Un hidrosálpinx con signo de rueda dentada o cuentas de rosario puede caer aquí si alguna protrusión mide ≥3 mm.'],
+      en: ['Unilocular-solid', 'One locule with one or more solid components (papillary projection or other solid tissue, with at least one diameter ≥3 mm). If the solid part contains microcysts, it is still unilocular-solid. A hydrosalpinx with cogwheel or beads-on-a-string sign may fall here if a protrusion measures ≥3 mm.'],
+      pt: ['Unilocular-sólida', 'Um lóculo com um ou mais componentes sólidos (papila ou outro sólido, com ao menos um diâmetro ≥3 mm). Se o sólido contém microcistos, continua unilocular-sólida. Uma hidrossalpinge com sinal da roda dentada ou contas de rosário pode entrar aqui se alguma protrusão medir ≥3 mm.'] } },
+    { id: 'm', svg: '<ellipse cx="40" cy="30" rx="28" ry="20" fill="#06090b" ' + W + ' stroke-width="2.5"/><path d="M36 10 C33 22 34 38 38 50 M35 30 C46 28 58 28 68 31" ' + W + ' stroke-width="2"/>', t: {
+      es: ['Multilocular', 'Al menos un septo completo y ningún componente sólido. Un quiste con pequeños “quistes hijos” también es multilocular. Se cuentan los lóculos en todo el volumen (para ADNEX importa si son más de 10).'],
+      en: ['Multilocular', 'At least one complete septum and no solid components. A cyst with small “daughter cysts” is also multilocular. Locules are counted through the whole volume (ADNEX asks whether there are more than 10).'],
+      pt: ['Multilocular', 'Ao menos um septo completo e nenhum componente sólido. Um cisto com pequenos “cistos filhos” também é multilocular. Contam-se os lóculos em todo o volume (para o ADNEX importa se são mais de 10).'] } },
+    { id: 'ms', svg: '<ellipse cx="40" cy="30" rx="28" ry="20" fill="#06090b" ' + W + ' stroke-width="2.5"/><path d="M36 10 C33 22 34 38 38 50" ' + W + ' stroke-width="2"/><path d="M44 50 c0 -8 6 -13 12 -13 c7 0 10 6 9 13z" ' + S + '/>', t: {
+      es: ['Multilocular-sólida', 'Al menos un septo y uno o más componentes sólidos. Es el tipo del esquema principal.'],
+      en: ['Multilocular-solid', 'At least one septum and one or more solid components. It is the type shown in the main diagram.'],
+      pt: ['Multilocular-sólida', 'Ao menos um septo e um ou mais componentes sólidos. É o tipo do esquema principal.'] } },
+    { id: 's', svg: '<ellipse cx="40" cy="30" rx="28" ry="20" ' + S + ' stroke="#e9eef1" stroke-width="2"/><ellipse cx="50" cy="24" rx="5" ry="3.5" fill="#06090b"/>', t: {
+      es: ['Sólida', 'El tejido sólido ocupa ≥80 % del volumen tumoral, valorado en planos 2D a lo largo de toda la masa. No se cuentan lóculos (para ADNEX, “más de 10 lóculos” es siempre “no”). Es irregular si tiene ángulos <90°, lobulaciones o bordes espiculados, o si algún quiste interno tiene pared irregular. Las papilas hacia áreas quísticas internas se informan y se cuentan.'],
+      en: ['Solid', 'Solid tissue makes up ≥80% of the tumor volume, assessed in 2D planes throughout the whole mass. Locules are not counted (for ADNEX, “more than 10 locules” is always “no”). It is irregular if it has angles <90°, lobulations or spiculated margins, or if any internal cyst has an irregular wall. Papillary projections into internal cystic areas are reported and counted.'],
+      pt: ['Sólida', 'O tecido sólido ocupa ≥80% do volume tumoral, avaliado em planos 2D ao longo de toda a massa. Não se contam lóculos (para o ADNEX, “mais de 10 lóculos” é sempre “não”). É irregular se tem ângulos <90°, lobulações ou bordas espiculadas, ou se algum cisto interno tem parede irregular. As papilas para áreas císticas internas são informadas e contadas.'] } },
+    { id: 'nc', svg: '<ellipse cx="40" cy="22" rx="26" ry="14" fill="#06090b" ' + W + ' stroke-width="2.5"/><ellipse cx="40" cy="15" rx="9" ry="4" fill="#fff"/><path d="M31 18 L49 18 L60 60 L20 60Z" fill="#05080a" opacity=".9"/>', t: {
+      es: ['No clasificable', 'La masa no se visualiza bien, por ejemplo por una sombra acústica intensa debida a calcificación.'],
+      en: ['Not classifiable', 'The mass cannot be adequately visualized, for example because of strong acoustic shadowing due to calcification.'],
+      pt: ['Não classificável', 'A massa não é bem visualizada, por exemplo por sombra acústica intensa devida a calcificação.'] } }
+  ];
+
+  function vasos(n) {
+    var r = '<ellipse cx="40" cy="30" rx="26" ry="19" fill="#06090b" stroke="#e9eef1" stroke-width="2"/><path d="M22 46 c0 -10 8 -16 18 -16 c10 0 18 6 18 16z" fill="#a9b3ba"/>';
+    var v = [
+      '',
+      '<path d="M38 44 c1 -4 3 -6 5 -7" stroke="#e53935"/>',
+      '<path d="M30 45 c1 -5 4 -8 8 -10" stroke="#e53935"/><path d="M46 45 c1 -4 4 -7 7 -7" stroke="#1e88e5"/><path d="M40 36 c3 -2 6 -2 8 0" stroke="#e53935"/>',
+      '<path d="M26 45 c1 -6 5 -10 10 -12" stroke="#e53935"/><path d="M34 46 c1 -6 5 -10 11 -11" stroke="#1e88e5"/><path d="M44 46 c1 -5 5 -9 10 -9" stroke="#e53935"/><path d="M50 46 c0 -4 2 -7 5 -8" stroke="#1e88e5"/><path d="M32 36 c4 -3 10 -4 16 -1" stroke="#e53935"/><path d="M18 30 c4 -8 12 -12 22 -12" stroke="#e53935"/><path d="M42 12 c8 0 16 6 20 14" stroke="#1e88e5"/>'
+    ][n - 1];
+    return r + '<g fill="none" stroke-width="2.6" stroke-linecap="round">' + v + '</g>';
+  }
+  var COLORES = [1, 2, 3, 4].map(function (n) {
+    var d = {
+      es: ['Sin señal Doppler detectable en la lesión.', 'Solo una cantidad mínima de señal color o power.', 'Cantidad moderada de señal color o power.', 'Señal color o power abundante.'],
+      en: ['No Doppler signal detectable in the lesion.', 'Only a minimal amount of color or power signal.', 'A moderate amount of color or power signal.', 'Abundant color or power signal.'],
+      pt: ['Nenhum sinal Doppler detectável na lesão.', 'Apenas quantidade mínima de sinal colorido ou power.', 'Quantidade moderada de sinal colorido ou power.', 'Sinal colorido ou power abundante.']
+    };
+    var cola = {
+      es: 'Se refiere a la cantidad de color en la imagen, no al espectro Doppler. Se asigna a toda la masa por el área más vascularizada: si un sólido tiene score 4, la masa es score 4 aunque la pared y los septos tengan poco flujo.',
+      en: 'It refers to the color content of the scan, not the Doppler spectrum. It is assigned to the whole mass by the most vascularized area: if one solid component is score 4, the mass is score 4 even if wall and septa show little flow.',
+      pt: 'Refere-se à quantidade de cor na imagem, não ao espectro Doppler. Atribui-se a toda a massa pela área mais vascularizada: se um sólido tem escore 4, a massa é escore 4 mesmo que parede e septos tenham pouco fluxo.'
+    };
+    var nom = { es: 'Score color ', en: 'Color score ', pt: 'Escore de cor ' };
+    return { id: 'c' + n, svg: vasos(n), t: {
+      es: [nom.es + n, d.es[n - 1], cola.es], en: [nom.en + n, d.en[n - 1], cola.en], pt: [nom.pt + n, d.pt[n - 1], cola.pt] }, corto: String(n) };
+  });
+
+  var sel = { a: null, t: null, c: null };
+  function $(s) { return document.querySelector(s); }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function panel(el, item, vacio) {
+    if (!item) { el.innerHTML = '<p class="vacio">' + esc(vacio) + '</p>'; return; }
+    var x = item.t[lang];
+    el.innerHTML = '<h3>' + esc(x[0]) + '</h3>' + x.slice(1).map(function (p) { return '<p>' + esc(p) + '</p>'; }).join('');
+  }
+
+  function pintar() {
+    var u = UI[lang];
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-t]').forEach(function (n) { var k = n.getAttribute('data-t'); if (u[k]) n.textContent = u[k]; });
+    document.querySelectorAll('.idi button').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-l') === lang); });
+    $('.idi').setAttribute('aria-label', u.idioma);
+
+    var ns = 'http://www.w3.org/2000/svg', g = $('#pts');
+    g.innerHTML = '';
+    PTS.forEach(function (p, i) {
+      var e = document.createElementNS(ns, 'g');
+      e.setAttribute('class', 'pt' + (sel.a === p.id ? ' on' : ''));
+      e.setAttribute('tabindex', '0'); e.setAttribute('role', 'button');
+      e.setAttribute('aria-label', (i + 1) + '. ' + p.t[lang][0]);
+      e.innerHTML = '<circle class="h" cx="' + p.x + '" cy="' + p.y + '" r="18"/><circle class="m" cx="' + p.x + '" cy="' + p.y + '" r="11"/><text x="' + p.x + '" y="' + p.y + '">' + (i + 1) + '</text>';
+      function ir() { sel.a = p.id; pintar(); }
+      e.addEventListener('click', ir);
+      e.addEventListener('keydown', function (ev) { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); ir(); } });
+      g.appendChild(e);
+    });
+    $('#chips').innerHTML = PTS.map(function (p, i) {
+      return '<button type="button" data-id="' + p.id + '" aria-pressed="' + (sel.a === p.id) + '"><b>' + (i + 1) + '</b>' + esc(p.t[lang][0]) + '</button>';
+    }).join('');
+    panel($('#exp'), PTS.find(function (p) { return p.id === sel.a; }), u.vacio);
+
+    function minis(cont, lista, key, vacio, expEl) {
+      cont.innerHTML = lista.map(function (x) {
+        return '<button type="button" data-id="' + x.id + '" aria-pressed="' + (sel[key] === x.id) + '"><svg viewBox="0 0 80 60" aria-hidden="true">' + x.svg + '</svg>' + esc(x.t[lang][0]) + '</button>';
+      }).join('');
+      panel(expEl, lista.find(function (x) { return x.id === sel[key]; }), vacio);
+    }
+    minis($('#tipos'), TIPOS, 't', u.vacioT, $('#expT'));
+    minis($('#colores'), COLORES, 'c', u.vacioC, $('#expC'));
+  }
+
+  document.addEventListener('click', function (ev) {
+    var b = ev.target.closest('button'); if (!b) return;
+    if (b.dataset.l) { lang = b.dataset.l; try { localStorage.setItem(K, lang); } catch (e) {} pintar(); return; }
+    var p = b.parentElement && b.parentElement.id;
+    if (p === 'chips') sel.a = b.dataset.id; else if (p === 'tipos') sel.t = b.dataset.id; else if (p === 'colores') sel.c = b.dataset.id; else return;
+    pintar();
+  });
+  pintar();
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('../sw.js', { scope: '../' }).catch(function () {});
+})();
+</script>
+</body>
+</html>
