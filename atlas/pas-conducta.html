@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>PAS: OSCS o histerectomía — Atlas médico · CaVeSal® Academy</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="../img/favicon.png">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="atlas.css">
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <a class="marca" href="../#/" aria-label="CaVeSal Academy">
+      <img src="../img/icon-192.png" alt="" width="40" height="40">
+      <span class="marca-txt"><strong>CaVeSal<sup>®</sup> Academy</strong><small data-t="atlas">Atlas médico</small></span>
+    </a>
+  </div>
+</header>
+<main class="at" id="main">
+  <div class="at-top">
+    <a class="volver" href="../#/" data-t="volver">← Volver a Academy</a>
+    <div class="idi" role="group" aria-label="Idioma">
+      <button type="button" data-l="es">ES</button><button type="button" data-l="en">EN</button><button type="button" data-l="pt">PT</button>
+    </div>
+  </div>
+  <nav class="nav-at" id="nav-at" aria-label="Láminas"></nav>
+  <span class="eyebrow" data-t="ruta">Obstetricia · Placenta</span>
+  <h1 data-t="tit">PAS: cirugía conservadora en un paso (OSCS), histerectomía total o subtotal modificada</h1>
+  <p class="baj" data-t="baj">Elegí el tipo topográfico encontrado en la estadificación intraoperatoria y respondé los criterios: el flujograma marca la conducta.</p>
+
+  <section class="lam" aria-labelledby="h-a">
+    <h2 id="h-a"><span class="tipo">F</span><span data-t="hA">Conducta según la topografía intraoperatoria</span></h2>
+    <h3 class="sub" data-t="sT">1. Tipo topográfico</h3>
+    <div class="cat c8" id="catT" role="group"></div>
+    <div id="crit"></div>
+    <div class="flu" id="flu" aria-live="polite"></div>
+    <div class="exp" id="exp" aria-live="polite"></div>
+    <p class="nota" data-t="ideal">La fuente aclara que no existe un tratamiento ideal del PAS: la mejor opción depende de las características de cada mujer, los recursos disponibles y la experiencia del equipo multidisciplinario.</p>
+  </section>
+
+  <section class="lam" aria-labelledby="h-b">
+    <h2 id="h-b"><span class="tipo">P</span><span data-t="hB">Criterios para OSCS</span></h2>
+    <div id="svgC"></div>
+    <ol class="pasos" id="cri"></ol>
+    <p class="nota" data-t="cNota">El aspecto externo (abultamiento, color violáceo) es similar en el PAS y en la dehiscencia sin adherencia anormal: solo en la cirugía o en el examen macroscópico se diferencian. Si la placenta se despega con tracción leve, lo más probable es una dehiscencia o “ventana uterina” (tipo 0).</p>
+  </section>
+
+  <section class="lam" aria-labelledby="h-c">
+    <h2 id="h-c"><span class="tipo">P</span><span data-t="hC">Pasos de cada técnica</span></h2>
+    <div class="reg" id="pas"></div>
+  </section>
+
+  <div class="rot">
+    <p><strong data-t="rotulo">Algoritmo propio CaVeSal® · Basado en: Nieto-Calvache AJ et al., BMC Pregnancy Childbirth 2026 y 2025.</strong></p>
+    <p class="nota" data-t="nota">Lámina didáctica.</p>
+    <ol>
+      <li>Nieto-Calvache AJ, Palacios-Jaraquemada JM, Fox KA, et al.; PAS Topography Official Working Group. Towards precision medicine in placenta accreta spectrum: results from a survey-based evaluation of interactive academic international webinars. BMC Pregnancy Childbirth. 2026;26:1143. <a href="https://doi.org/10.1186/s12884-026-09518-y" target="_blank" rel="noopener">doi:10.1186/s12884-026-09518-y</a></li>
+      <li>Nieto-Calvache AJ, Palacios-Jaraquemada JM, et al. Evaluation of the topographic classification of placenta accreta spectrum: protocol for an ongoing prospective multicenter study. BMC Pregnancy Childbirth. 2025;25:1266. <a href="https://doi.org/10.1186/s12884-025-08423-0" target="_blank" rel="noopener">doi:10.1186/s12884-025-08423-0</a></li>
+    </ol>
+  </div>
+</main>
+<script src="atlas.js"></script>
+<script>
+(function () {
+  'use strict';
+  var A = window.Atlas;
+  function $(s) { return document.querySelector(s); }
+  var COM = {
+    es: { atlas: 'Atlas médico', volver: '← Volver a Academy', nota: 'Lámina didáctica; no reemplaza la evaluación del ecografista ni el juicio clínico.', esq: 'Esquema CaVeSal®', vacio: 'Elegí una opción.' },
+    en: { atlas: 'Medical atlas', volver: '← Back to Academy', nota: 'Didactic plate; it does not replace the sonographer’s assessment or clinical judgment.', esq: 'CaVeSal® drawing', vacio: 'Choose an option.' },
+    pt: { atlas: 'Atlas médico', volver: '← Voltar ao Academy', nota: 'Lâmina didática; não substitui a avaliação do ultrassonografista nem o julgamento clínico.', esq: 'Esquema CaVeSal®', vacio: 'Escolha uma opção.' }
+  };
+  function U(UI) { ['es', 'en', 'pt'].forEach(function (l) { for (var k in COM[l]) if (!(k in UI[l])) UI[l][k] = COM[l][k]; }); return A.textos(UI); }
+  function real(img, c, txt) { var r = A.CRED[c]; return '<figure><img src="img/' + img + '.jpg" alt="" loading="lazy"><figcaption><a href="' + r.url + '" target="_blank" rel="noopener">' + A.esc(r.txt) + '</a></figcaption></figure>'; }
+  function chips(el, list, cur, g) { el.innerHTML = list.map(function (x, i) { return '<button type="button" data-g="' + g + '" data-i="' + i + '" aria-pressed="' + (cur === i) + '">' + (x.k ? '<b>' + A.esc(x.k) + '</b>' : '') + A.esc(x.n) + '</button>'; }).join(''); }
+  function lista(a) { return '<ul>' + a.map(function (x) { return '<li>' + A.esc(x) + '</li>'; }).join('') + '</ul>'; }
+
+  var UI = {
+    es: { ruta: 'Obstetricia · Placenta', tit: 'PAS: cirugía conservadora en un paso (OSCS), histerectomía total o subtotal modificada',
+      baj: 'Elegí el tipo topográfico encontrado en la estadificación intraoperatoria y respondé los criterios: el flujograma marca la conducta.',
+      hA: 'Conducta según la topografía intraoperatoria', sT: '1. Tipo topográfico', sC: '2. Criterios de tejido sano', hB: 'Criterios para OSCS', hC: 'Pasos de cada técnica',
+      ideal: 'La fuente aclara que no existe un tratamiento ideal del PAS: la mejor opción depende de las características de cada mujer, los recursos disponibles y la experiencia del equipo multidisciplinario.',
+      cNota: 'El aspecto externo (abultamiento, color violáceo) es similar en el PAS y en la dehiscencia sin adherencia anormal: solo en la cirugía o en el examen macroscópico se diferencian. Si la placenta se despega con tracción leve, lo más probable es una dehiscencia o “ventana uterina” (tipo 0).',
+      rotulo: 'Algoritmo propio CaVeSal® · Basado en: Nieto-Calvache AJ et al., BMC Pregnancy Childbirth 2026 y 2025.', nota: 'Lámina didáctica; no reemplaza el juicio clínico ni la experiencia quirúrgica.',
+      si: 'Sí', no: 'No', tipo: 'Tipo',
+      q: ['Más de 2 cm de miometrio sano por debajo del área afectada (por encima del cuello)', 'Más del 50% de la circunferencia uterina libre en el plano axial'],
+      f0: 'Estadificación intraoperatoria', f0b: 'Abrir los espacios parametriales y retrovesical; revisar paredes anterior, laterales y posterior.', fT: 'Topografía', fC: 'Criterios', fR: 'Conducta',
+      R: { oscs: 'OSCS', th: 'Histerectomía total', msth: 'Histerectomía subtotal modificada (MSTH)', res: 'Resección parcial y reconstrucción', dh: 'Dehiscencia (ventana uterina)', falta: 'Respondé los dos criterios' },
+      T: [['Tipo 0 · Anterior alta, la placenta se despega', ['La placenta se despega con tracción leve: lo más probable es una dehiscencia o ventana uterina, sin adherencia anormal.', 'Clasificación topográfica: cirugía conservadora en un paso (OSCS), sin procedimiento vascular adicional.']],
+        ['Tipo 1 · Anterior alta (S1)', ['Más fácil de tratar que el tipo 3: requiere menos disección retrovesical. Es el punto de partida recomendado para entrenar la OSCS.', 'Procedimientos adicionales: ninguno.']],
+        ['Tipo 2U · Lateral alta', ['En general no genera gran dificultad quirúrgica; el tratamiento depende del tejido sano caudal y de si hay compromiso de otras topografías.', 'Se puede intentar OSCS si hay tejido sano caudal suficiente y más del 50% de la circunferencia libre.']],
+        ['Tipo 2L · Lateral baja', ['Alta dificultad técnica: pelvis ósea estrecha, cercanía del uréter, nervios y grandes vasos, y espacio subperitoneal poco familiar.', 'Extracción fetal fúndica y luego histerectomía total.', 'Procedimientos adicionales: tunelizar el uréter, idealmente con catéter ureteral rígido, y control vascular proximal, idealmente a nivel aórtico.']],
+        ['Tipo 3 · Anterior baja (S2)', ['Tras la disección retrovesical: ¿se alcanza miometrio sano por debajo del área abultada?', 'OSCS si hay más de 2 cm de miometrio sano por encima del cuello; histerectomía total si el tejido sano no alcanza para la resección en bloque y la reconstrucción.']],
+        ['Tipo 4 · Anterior baja con fibrosis vesicouterina', ['Adherencias densas entre el segmento y la vejiga (sobre todo cerca del trígono): la disección retrovesical es difícil o imposible.', 'MSTH: se suspende la disección retrovesical donde no se puede continuar, histerectomía subtotal, extracción de la placenta del muñón con oclusión aórtica y suturas compresivas en las paredes anterior y posterior del muñón.', 'Procedimientos adicionales: control aórtico proximal (zona 3).']],
+        ['Tipo 5U · Posterior alta', ['Lesión poco frecuente; no requiere disección extensa y el sangrado se puede controlar con torniquete.', 'Puede alcanzar con la resección de la porción adelgazada y la reconstrucción. Si el miometrio es grueso, la placenta puede despegarse por tracción y se aplican suturas compresivas en el lecho placentario.']],
+        ['Tipo 5L · Posterior baja', ['Ocupa el fondo de saco posterior y dificulta la disección.', 'Requiere histerectomía total.', 'Procedimientos adicionales: puede ser necesaria la oclusión aórtica en zona 2.']]],
+      cri: ['Miometrio sano a nivel del segmento inferior de al menos 2 cm por debajo del área afectada.', 'Más del 50% de la circunferencia uterina libre de compromiso en un corte axial.', 'Sin compromiso parametrial bajo (tipo 2L): en ese caso la conducta es la histerectomía total.'],
+      lab: ['Sagital', 'Axial', '≥2 cm sano', 'PAS', 'Libre >50%', 'Cuello'],
+      P: [['OSCS', ['Movilizar la vejiga (disección retrovesical) hasta exponer miometrio sano caudal.', 'Ligar los pedículos colpouterinos con puntos profundos por debajo del área afectada, a las 3, 6 y 9 horas, antes de la resección; sin esa ligadura puede haber sangrado abundante.', 'Resección en bloque de la placenta y del área abultada.', 'Reconstrucción: suturar el miometrio sano caudal al borde superior de la histerotomía.']],
+        ['Histerectomía subtotal modificada (MSTH)', ['Suspender la disección retrovesical donde ya no se puede continuar.', 'Histerectomía subtotal.', 'Retirar la placenta del muñón, con el sangrado prevenido por oclusión aórtica.', 'Suturas compresivas en las paredes anterior y posterior del muñón.']],
+        ['Histerectomía total', ['Indicada en los tipos 2L y 5L, y en los tipos 1 y 3 sin tejido sano suficiente para la resección en bloque y la reconstrucción.', 'En el tipo 2L: extracción fetal fúndica y tunelización del uréter.']]] },
+    en: { ruta: 'Obstetrics · Placenta', tit: 'PAS: one-step conservative surgery (OSCS), total or modified subtotal hysterectomy',
+      baj: 'Choose the topographic type found at intraoperative staging and answer the criteria: the flowchart marks the management.',
+      hA: 'Management according to intraoperative topography', sT: '1. Topographic type', sC: '2. Healthy tissue criteria', hB: 'Criteria for OSCS', hC: 'Steps of each technique',
+      ideal: 'The source states that there is no ideal PAS treatment: the best option depends on each woman’s characteristics, available resources and the multidisciplinary team’s expertise.',
+      cNota: 'External appearance (bulging, purple coloration) is similar in PAS and in dehiscence without abnormal attachment: they can only be told apart at surgery or on gross examination. If the placenta detaches with mild traction, the most likely diagnosis is a dehiscence or “uterine window” (type 0).',
+      rotulo: 'CaVeSal® own algorithm · Based on: Nieto-Calvache AJ et al., BMC Pregnancy Childbirth 2026 and 2025.', nota: 'Didactic plate; it does not replace clinical judgment or surgical experience.',
+      si: 'Yes', no: 'No', tipo: 'Type',
+      q: ['More than 2 cm of healthy myometrium below the affected area (above the cervix)', 'More than 50% of the uterine circumference free in the axial plane'],
+      f0: 'Intraoperative staging', f0b: 'Open the parametrial and retrovesical spaces; check anterior, lateral and posterior walls.', fT: 'Topography', fC: 'Criteria', fR: 'Management',
+      R: { oscs: 'OSCS', th: 'Total hysterectomy', msth: 'Modified subtotal hysterectomy (MSTH)', res: 'Partial resection and reconstruction', dh: 'Dehiscence (uterine window)', falta: 'Answer both criteria' },
+      T: [['Type 0 · High anterior, the placenta detaches', ['The placenta detaches with mild traction: most likely a dehiscence or uterine window, without abnormal attachment.', 'Topographic classification: one-step conservative surgery (OSCS), with no additional vascular procedure.']],
+        ['Type 1 · High anterior (S1)', ['Easier to manage than type 3: it requires less retrovesical dissection. It is the recommended starting point for OSCS training.', 'Additional procedures: none.']],
+        ['Type 2U · High lateral', ['It generally does not pose major surgical difficulty; treatment depends on healthy caudal tissue and involvement of other topographies.', 'OSCS may be attempted if there is enough healthy caudal tissue and more than 50% of the circumference is free.']],
+        ['Type 2L · Low lateral', ['High technical difficulty: confined bony pelvis, proximity of the ureter, nerves and large vessels, and an unfamiliar subperitoneal space.', 'Fundal fetal extraction followed by total hysterectomy.', 'Additional procedures: ureteral tunneling, ideally with a rigid ureteral stent, and proximal vascular control, ideally at the aortic level.']],
+        ['Type 3 · Low anterior (S2)', ['After retrovesical dissection: is healthy myometrium reached below the bulging area?', 'OSCS if there is more than 2 cm of healthy myometrium above the cervix; total hysterectomy if healthy tissue is insufficient for en-bloc resection and reconstruction.']],
+        ['Type 4 · Low anterior with vesicouterine fibrosis', ['Dense adhesions between the segment and the bladder (especially near the trigone): retrovesical dissection is difficult or impossible.', 'MSTH: retrovesical dissection is stopped where it cannot continue, subtotal hysterectomy, removal of the placenta from the stump with aortic occlusion, and compression sutures on the anterior and posterior stump walls.', 'Additional procedures: proximal aortic control (zone 3).']],
+        ['Type 5U · High posterior', ['Uncommon lesion; it does not require extensive dissection and bleeding can be controlled with a tourniquet.', 'Resection of the thinned portion and reconstruction may be enough. If the myometrium is thick, the placenta may detach by traction and compression sutures are applied to the placental bed.']],
+        ['Type 5L · Low posterior', ['It occupies the posterior cul-de-sac and makes dissection more difficult.', 'It requires total hysterectomy.', 'Additional procedures: aortic occlusion at zone 2 may be needed.']]],
+      cri: ['Healthy myometrium at the lower segment of at least 2 cm below the affected area.', 'More than 50% of the uterine circumference free of involvement on an axial view.', 'No low parametrial involvement (type 2L): in that case management is total hysterectomy.'],
+      lab: ['Sagittal', 'Axial', '≥2 cm healthy', 'PAS', 'Free >50%', 'Cervix'],
+      P: [['OSCS', ['Mobilize the bladder (retrovesical dissection) until healthy caudal myometrium is exposed.', 'Ligate the colpouterine pedicles with deep sutures below the affected area at 3, 6 and 9 o’clock before resection; without this ligation heavy bleeding may occur.', 'En-bloc resection of the placenta and the bulging area.', 'Reconstruction: suture the healthy caudal myometrium to the upper edge of the hysterotomy.']],
+        ['Modified subtotal hysterectomy (MSTH)', ['Stop retrovesical dissection where it can no longer continue.', 'Subtotal hysterectomy.', 'Remove the placenta from the stump, with bleeding prevented by aortic occlusion.', 'Compression sutures on the anterior and posterior stump walls.']],
+        ['Total hysterectomy', ['Indicated in types 2L and 5L, and in types 1 and 3 without enough healthy tissue for en-bloc resection and reconstruction.', 'In type 2L: fundal fetal extraction and ureteral tunneling.']]] },
+    pt: { ruta: 'Obstetrícia · Placenta', tit: 'PAS: cirurgia conservadora em um tempo (OSCS), histerectomia total ou subtotal modificada',
+      baj: 'Escolha o tipo topográfico encontrado no estadiamento intraoperatório e responda os critérios: o fluxograma marca a conduta.',
+      hA: 'Conduta segundo a topografia intraoperatória', sT: '1. Tipo topográfico', sC: '2. Critérios de tecido sadio', hB: 'Critérios para OSCS', hC: 'Passos de cada técnica',
+      ideal: 'A fonte esclarece que não existe tratamento ideal do PAS: a melhor opção depende das características de cada mulher, dos recursos disponíveis e da experiência da equipe multidisciplinar.',
+      cNota: 'O aspecto externo (abaulamento, cor violácea) é semelhante no PAS e na deiscência sem aderência anormal: só na cirurgia ou no exame macroscópico se diferenciam. Se a placenta se descola com tração leve, o mais provável é uma deiscência ou “janela uterina” (tipo 0).',
+      rotulo: 'Algoritmo próprio CaVeSal® · Baseado em: Nieto-Calvache AJ et al., BMC Pregnancy Childbirth 2026 e 2025.', nota: 'Lâmina didática; não substitui o julgamento clínico nem a experiência cirúrgica.',
+      si: 'Sim', no: 'Não', tipo: 'Tipo',
+      q: ['Mais de 2 cm de miométrio sadio abaixo da área afetada (acima do colo)', 'Mais de 50% da circunferência uterina livre no plano axial'],
+      f0: 'Estadiamento intraoperatório', f0b: 'Abrir os espaços parametriais e retrovesical; revisar paredes anterior, laterais e posterior.', fT: 'Topografia', fC: 'Critérios', fR: 'Conduta',
+      R: { oscs: 'OSCS', th: 'Histerectomia total', msth: 'Histerectomia subtotal modificada (MSTH)', res: 'Ressecção parcial e reconstrução', dh: 'Deiscência (janela uterina)', falta: 'Responda os dois critérios' },
+      T: [['Tipo 0 · Anterior alta, a placenta se descola', ['A placenta se descola com tração leve: o mais provável é uma deiscência ou janela uterina, sem aderência anormal.', 'Classificação topográfica: cirurgia conservadora em um tempo (OSCS), sem procedimento vascular adicional.']],
+        ['Tipo 1 · Anterior alta (S1)', ['Mais fácil de tratar que o tipo 3: requer menos dissecção retrovesical. É o ponto de partida recomendado para treinar a OSCS.', 'Procedimentos adicionais: nenhum.']],
+        ['Tipo 2U · Lateral alta', ['Em geral não gera grande dificuldade cirúrgica; o tratamento depende do tecido sadio caudal e do comprometimento de outras topografias.', 'Pode-se tentar OSCS se houver tecido sadio caudal suficiente e mais de 50% da circunferência livre.']],
+        ['Tipo 2L · Lateral baixa', ['Alta dificuldade técnica: pelve óssea estreita, proximidade do ureter, nervos e grandes vasos, e espaço subperitoneal pouco familiar.', 'Extração fetal fúndica e depois histerectomia total.', 'Procedimentos adicionais: tunelizar o ureter, idealmente com cateter ureteral rígido, e controle vascular proximal, idealmente em nível aórtico.']],
+        ['Tipo 3 · Anterior baixa (S2)', ['Após a dissecção retrovesical: alcança-se miométrio sadio abaixo da área abaulada?', 'OSCS se houver mais de 2 cm de miométrio sadio acima do colo; histerectomia total se o tecido sadio não for suficiente para a ressecção em bloco e a reconstrução.']],
+        ['Tipo 4 · Anterior baixa com fibrose vesicouterina', ['Aderências densas entre o segmento e a bexiga (sobretudo perto do trígono): a dissecção retrovesical é difícil ou impossível.', 'MSTH: suspende-se a dissecção retrovesical onde não é possível continuar, histerectomia subtotal, retirada da placenta do coto com oclusão aórtica e suturas compressivas nas paredes anterior e posterior do coto.', 'Procedimentos adicionais: controle aórtico proximal (zona 3).']],
+        ['Tipo 5U · Posterior alta', ['Lesão pouco frequente; não requer dissecção extensa e o sangramento pode ser controlado com torniquete.', 'Pode bastar a ressecção da porção adelgaçada e a reconstrução. Se o miométrio for espesso, a placenta pode descolar por tração e aplicam-se suturas compressivas no leito placentário.']],
+        ['Tipo 5L · Posterior baixa', ['Ocupa o fundo de saco posterior e dificulta a dissecção.', 'Requer histerectomia total.', 'Procedimentos adicionais: pode ser necessária a oclusão aórtica na zona 2.']]],
+      cri: ['Miométrio sadio no segmento inferior de pelo menos 2 cm abaixo da área afetada.', 'Mais de 50% da circunferência uterina livre de comprometimento em um corte axial.', 'Sem comprometimento parametrial baixo (tipo 2L): nesse caso a conduta é a histerectomia total.'],
+      lab: ['Sagital', 'Axial', '≥2 cm sadio', 'PAS', 'Livre >50%', 'Colo'],
+      P: [['OSCS', ['Mobilizar a bexiga (dissecção retrovesical) até expor miométrio sadio caudal.', 'Ligar os pedículos colpouterinos com pontos profundos abaixo da área afetada, às 3, 6 e 9 horas, antes da ressecção; sem essa ligadura pode haver sangramento abundante.', 'Ressecção em bloco da placenta e da área abaulada.', 'Reconstrução: suturar o miométrio sadio caudal à borda superior da histerotomia.']],
+        ['Histerectomia subtotal modificada (MSTH)', ['Suspender a dissecção retrovesical onde não é mais possível continuar.', 'Histerectomia subtotal.', 'Retirar a placenta do coto, com o sangramento prevenido por oclusão aórtica.', 'Suturas compressivas nas paredes anterior e posterior do coto.']],
+        ['Histerectomia total', ['Indicada nos tipos 2L e 5L, e nos tipos 1 e 3 sem tecido sadio suficiente para a ressecção em bloco e a reconstrução.', 'No tipo 2L: extração fetal fúndica e tunelização do ureter.']]] }
+  };
+  var TT = ['0', '1', '2U', '2L', '3', '4', '5U', '5L'];
+  var COLT = ['#6b7a88', '#1e8e4f', '#2e9d5a', '#c62828', '#d9622b', '#a61b1b', '#1f8fa3', '#7b4fb3'];
+  var NEC = [false, true, true, false, true, false, false, false];
+  var sel = { t: null, a: null, b: null };
+  function res(u) {
+    var t = sel.t; if (t === null) return null;
+    if (t === 0) return ['ben', u.R.dh + ' → ' + u.R.oscs];
+    if (t === 3 || t === 7) return ['mal', u.R.th];
+    if (t === 5) return ['mal', u.R.msth];
+    if (t === 6) return ['ben', u.R.res];
+    if (sel.a === null || sel.b === null) return ['', u.R.falta];
+    return sel.a && sel.b ? ['ben', u.R.oscs] : ['mal', u.R.th];
+  }
+  function svgC(u) {
+    return '<svg class="eco" viewBox="0 0 360 200" role="img"><rect width="360" height="200" rx="12" fill="#11161b"/>' +
+      '<text x="90" y="18" fill="#9fb3c8" font-size="11" font-weight="800" text-anchor="middle">' + A.esc(u.lab[0]) + '</text><text x="270" y="18" fill="#9fb3c8" font-size="11" font-weight="800" text-anchor="middle">' + A.esc(u.lab[1]) + '</text><path d="M180 26 L180 190" stroke="#2a3036"/>' +
+      '<g transform="translate(30 0)"><ellipse cx="96" cy="88" rx="46" ry="62" fill="#767d85"/><rect x="82" y="140" width="28" height="40" rx="8" fill="#767d85"/>' +
+      '<path d="M54 74 Q48 96 56 116 L66 112 Q60 96 64 78Z" fill="#b9a6c9"/><path d="M50 72 Q44 96 52 118" stroke="#c62828" stroke-width="6" fill="none" stroke-linecap="round"/>' +
+      '<path d="M54 124 Q60 140 76 150" stroke="#3ddc84" stroke-width="6" fill="none" stroke-linecap="round"/>' +
+      '<path d="M40 122 L32 122 M40 152 L32 152 M36 122 L36 152" stroke="#ffd166" stroke-width="1.6"/>' +
+      '<text x="26" y="96" fill="#ff8a80" font-size="10" font-weight="800">' + A.esc(u.lab[3]) + '</text><text x="96" y="194" fill="#9fb3c8" font-size="9" font-weight="700" text-anchor="middle">' + A.esc(u.lab[5]) + '</text></g><text x="8" y="172" fill="#ffd166" font-size="9" font-weight="800">' + A.esc(u.lab[2]) + '</text>' +
+      '<circle cx="270" cy="104" r="58" fill="none" stroke="#767d85" stroke-width="20"/>' +
+      '<path d="M228 63 A58 58 0 0 1 312 63" stroke="#c62828" stroke-width="20" fill="none"/>' +
+      '<path d="M312 63 A58 58 0 1 1 228 63" stroke="#3ddc84" stroke-width="5" fill="none" stroke-dasharray="6 4"/>' +
+      '<text x="270" y="40" fill="#ff8a80" font-size="10" font-weight="800" text-anchor="middle">' + A.esc(u.lab[3]) + '</text><text x="270" y="108" fill="#3ddc84" font-size="11" font-weight="800" text-anchor="middle">' + A.esc(u.lab[4]) + '</text></svg>';
+  }
+  function pintar() {
+    var u = U(UI);
+    A.nav($('#nav-at'), 'pas-conducta.html');
+    $('#catT').innerHTML = TT.map(function (t, i) { return '<button type="button" data-g="t" data-i="' + i + '" style="background:' + COLT[i] + '" aria-pressed="' + (sel.t === i) + '">' + t + '</button>'; }).join('');
+    $('#crit').innerHTML = sel.t !== null && NEC[sel.t] ? '<h3 class="sub">' + A.esc(u.sC) + '</h3>' + u.q.map(function (q, j) { var k = j ? 'b' : 'a'; return '<div class="cri"><span>' + A.esc(q) + '</span><span class="sn"><button type="button" data-g="' + k + '" data-i="1" aria-pressed="' + (sel[k] === true) + '">' + A.esc(u.si) + '</button><button type="button" data-g="' + k + '" data-i="0" aria-pressed="' + (sel[k] === false) + '">' + A.esc(u.no) + '</button></span></div>'; }).join('') : '';
+    var r = res(u), crit = sel.t !== null && NEC[sel.t] ? (sel.a === null || sel.b === null ? '—' : (sel.a ? u.si : u.no) + ' · ' + (sel.b ? u.si : u.no)) : '—';
+    $('#flu').innerHTML = '<div class="n on"><b>' + A.esc(u.f0) + '</b>' + A.esc(u.f0b) + '</div><div class="fl"></div>' +
+      '<div class="n' + (sel.t !== null ? ' on' : '') + '"><b>' + A.esc(u.fT) + '</b>' + (sel.t === null ? '—' : A.esc(u.tipo) + ' ' + TT[sel.t]) + '</div><div class="fl"></div>' +
+      '<div class="n"><b>' + A.esc(u.fC) + '</b>' + A.esc(crit) + '</div><div class="fl"></div>' +
+      '<div class="n ' + (r ? r[0] + ' on' : '') + '"><b>' + A.esc(u.fR) + '</b>' + (r ? A.esc(r[1]) : '—') + '</div>';
+    A.panel($('#exp'), sel.t === null ? '' : u.T[sel.t][0], sel.t === null ? [] : u.T[sel.t][1], u.vacio);
+    $('#svgC').innerHTML = svgC(u);
+    $('#cri').innerHTML = u.cri.map(function (x) { return '<li>' + A.esc(x) + '</li>'; }).join('');
+    $('#pas').innerHTML = u.P.map(function (p) { return '<article class="exp"><h3>' + A.esc(p[0]) + '</h3><ol class="pasos">' + p[1].map(function (x) { return '<li>' + A.esc(x) + '</li>'; }).join('') + '</ol></article>'; }).join('');
+  }
+  document.addEventListener('click', function (ev) {
+    var b = ev.target.closest('[data-l],[data-g]'); if (!b) return;
+    if (b.dataset.l) { A.setLang(b.dataset.l); pintar(); return; }
+    var g = b.dataset.g;
+    if (g === 't') { sel.t = +b.dataset.i; sel.a = null; sel.b = null; } else sel[g] = b.dataset.i === '1';
+    pintar();
+  });
+  pintar();
+
+})();
+</script>
+</body>
+</html>

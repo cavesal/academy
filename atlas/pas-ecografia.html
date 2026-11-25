@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Ecografía del PAS: S1 y S2 — Atlas médico · CaVeSal® Academy</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="../img/favicon.png">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="atlas.css">
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <a class="marca" href="../#/" aria-label="CaVeSal Academy">
+      <img src="../img/icon-192.png" alt="" width="40" height="40">
+      <span class="marca-txt"><strong>CaVeSal<sup>®</sup> Academy</strong><small data-t="atlas">Atlas médico</small></span>
+    </a>
+  </div>
+</header>
+<main class="at" id="main">
+  <div class="at-top">
+    <a class="volver" href="../#/" data-t="volver">← Volver a Academy</a>
+    <div class="idi" role="group" aria-label="Idioma">
+      <button type="button" data-l="es">ES</button><button type="button" data-l="en">EN</button><button type="button" data-l="pt">PT</button>
+    </div>
+  </div>
+  <nav class="nav-at" id="nav-at" aria-label="Láminas"></nav>
+  <span class="eyebrow" data-t="ruta">Obstetricia · Placenta</span>
+  <h1 data-t="tit">Ecografía del PAS: S1 y S2 en cortes sagital, axial y coronal</h1>
+  <p class="baj" data-t="baj">Elegí un corte y tocá un número: la explicación aparece debajo.</p>
+
+  <section class="lam" aria-labelledby="h-a">
+    <h2 id="h-a"><span class="tipo">P</span><span data-t="hA">Tres cortes para ubicar la lesión</span></h2>
+    <div class="chips" id="pl" role="group"></div>
+    <div id="svgP"></div>
+    <div class="exp" id="exp" aria-live="polite"></div>
+  </section>
+
+  <section class="lam" aria-labelledby="h-b">
+    <h2 id="h-b"><span class="tipo">P</span><span data-t="hB">Preparación y vía de exploración por tipo</span></h2>
+    <p class="nota" data-t="prep">Vaciar la vejiga 30 minutos antes y tomar 500 mL de agua (vejiga semillena).</p>
+    <div class="scroll" id="tab"></div>
+    <p class="nota" data-t="rot2">En la mayoría de los casos con sospecha prenatal de lesión lateral, en la cirugía se encuentra una lesión anterior con el útero rotado. Las lesiones posteriores pueden pasar inadvertidas: la RM es un complemento útil.</p>
+  </section>
+
+  <div class="rot">
+    <p><strong data-t="rotulo">Algoritmo propio CaVeSal® · Basado en: Nieto-Calvache AJ et al., IJGO 2025 y BMC Pregnancy Childbirth 2025 y 2026.</strong></p>
+    <p class="nota" data-t="nota">Lámina didáctica.</p>
+    <ol>
+      <li>Nieto-Calvache AJ, Ramasauskaite D, Palacios-Jaraquemada JM, et al.; FIGO Committee on Childbirth and PPH. Complex cesarean section: surgical approach to reduce the risks of intraoperative complications and postpartum hemorrhage. Int J Gynaecol Obstet. 2025;168(3):987–998. <a href="https://doi.org/10.1002/ijgo.16094" target="_blank" rel="noopener">doi:10.1002/ijgo.16094</a></li>
+      <li>Nieto-Calvache AJ, Palacios-Jaraquemada JM, et al. Evaluation of the topographic classification of placenta accreta spectrum: protocol for an ongoing prospective multicenter study. BMC Pregnancy Childbirth. 2025;25:1266. <a href="https://doi.org/10.1186/s12884-025-08423-0" target="_blank" rel="noopener">doi:10.1186/s12884-025-08423-0</a></li>
+      <li>Nieto-Calvache AJ, Palacios-Jaraquemada JM, Fox KA, et al.; PAS Topography Official Working Group. Towards precision medicine in placenta accreta spectrum: results from a survey-based evaluation of interactive academic international webinars. BMC Pregnancy Childbirth. 2026;26:1143. <a href="https://doi.org/10.1186/s12884-026-09518-y" target="_blank" rel="noopener">doi:10.1186/s12884-026-09518-y</a></li>
+    </ol>
+  </div>
+</main>
+<script src="atlas.js"></script>
+<script>
+(function () {
+  'use strict';
+  var A = window.Atlas;
+  function $(s) { return document.querySelector(s); }
+  var COM = {
+    es: { atlas: 'Atlas médico', volver: '← Volver a Academy', nota: 'Lámina didáctica; no reemplaza la evaluación del ecografista ni el juicio clínico.', esq: 'Esquema CaVeSal®', vacio: 'Elegí una opción.' },
+    en: { atlas: 'Medical atlas', volver: '← Back to Academy', nota: 'Didactic plate; it does not replace the sonographer’s assessment or clinical judgment.', esq: 'CaVeSal® drawing', vacio: 'Choose an option.' },
+    pt: { atlas: 'Atlas médico', volver: '← Voltar ao Academy', nota: 'Lâmina didática; não substitui a avaliação do ultrassonografista nem o julgamento clínico.', esq: 'Esquema CaVeSal®', vacio: 'Escolha uma opção.' }
+  };
+  function U(UI) { ['es', 'en', 'pt'].forEach(function (l) { for (var k in COM[l]) if (!(k in UI[l])) UI[l][k] = COM[l][k]; }); return A.textos(UI); }
+  function real(img, c, txt) { var r = A.CRED[c]; return '<figure><img src="img/' + img + '.jpg" alt="" loading="lazy"><figcaption><a href="' + r.url + '" target="_blank" rel="noopener">' + A.esc(r.txt) + '</a></figcaption></figure>'; }
+  function chips(el, list, cur, g) { el.innerHTML = list.map(function (x, i) { return '<button type="button" data-g="' + g + '" data-i="' + i + '" aria-pressed="' + (cur === i) + '">' + (x.k ? '<b>' + A.esc(x.k) + '</b>' : '') + A.esc(x.n) + '</button>'; }).join(''); }
+  function lista(a) { return '<ul>' + a.map(function (x) { return '<li>' + A.esc(x) + '</li>'; }).join('') + '</ul>'; }
+
+  var UI = {
+    es: { ruta: 'Obstetricia · Placenta', tit: 'Ecografía del PAS: S1 y S2 en cortes sagital, axial y coronal', baj: 'Elegí un corte y tocá un número: la explicación aparece debajo.',
+      hA: 'Tres cortes para ubicar la lesión', hB: 'Preparación y vía de exploración por tipo', prep: 'Vaciar la vejiga 30 minutos antes y tomar 500 mL de agua (vejiga semillena).',
+      rot2: 'En la mayoría de los casos con sospecha prenatal de lesión lateral, en la cirugía se encuentra una lesión anterior con el útero rotado. Las lesiones posteriores pueden pasar inadvertidas: la RM es un complemento útil.',
+      rotulo: 'Algoritmo propio CaVeSal® · Basado en: Nieto-Calvache AJ et al., IJGO 2025 y BMC Pregnancy Childbirth 2025 y 2026.', nota: 'Lámina didáctica; no reemplaza la evaluación del ecografista ni el juicio clínico.',
+      pl: ['Sagital', 'Axial', 'Coronal'], lb: { an: 'Anterior', po: 'Posterior', v: 'Vejiga', p: 'Placenta', c: 'Cuello', d: 'D', i: 'I', il: 'Ilíacos' },
+      P: [[['Vejiga semillena', 'Referencia de la ecografía (y de la RM): con la vejiga llena, el límite entre S1 y S2 se toma en su pared posterior. En la cesárea, con la vejiga vacía, la referencia es la reflexión peritoneal vesicouterina.'],
+          ['Punto medio de la pared vesical posterior', 'Se traza una línea imaginaria perpendicular a ese punto.'],
+          ['Línea S1/S2', 'Divide las lesiones altas (por encima de la línea, sector S1) de las bajas (por debajo, sector S2).'],
+          ['Lesión anterior alta (S1): tipos 0 y 1', 'Transabdominal longitudinal. Requiere menos disección retrovesical.'],
+          ['Lesión anterior baja (S2): tipos 3 y 4', 'Transvaginal longitudinal medio. En el tipo 4, la fibrosis vesicouterina es difícil de ver; se sospecha cuando hay vascularización aumentada en el espacio vesicouterino.'],
+          ['Pared posterior: tipos 5U y 5L', 'El abultamiento posterior se ve mejor por vía transvaginal; puede pasar inadvertido y la RM ayuda.']],
+        [['Placenta anterior', 'Muestra qué porción de la circunferencia está comprometida. Para la cirugía conservadora se necesita más del 50% de la circunferencia libre en el plano axial.'],
+          ['Pared lateral derecha', 'Abultamiento lateral en el corte transversal bajo transabdominal y en el transversal transvaginal: tipo 2. Evaluar la relación del útero con los vasos ilíacos.'],
+          ['Pared lateral izquierda', 'Mismo criterio que el lado derecho. Antes de informar una lesión lateral, descartar un útero rotado.'],
+          ['Pared posterior', 'Libre en este ejemplo; si está comprometida, es un tipo 5.']],
+        [['Cuerpo y fondo (S1)', 'Por encima de la línea S1/S2.'],
+          ['Lateral alta: tipo 2U', 'Pared lateral por encima de la línea. En general sin gran dificultad quirúrgica.'],
+          ['Lateral baja: tipo 2L', 'Pared lateral por debajo de la línea, cerca del uréter y de los grandes vasos: la de mayor dificultad técnica.'],
+          ['Cuello', 'Forma parte de S2: el sector S2 corresponde al segmento inferior y al cuello.']]],
+      tabH: ['Tipo', 'Zona', 'Vía y corte'],
+      tabF: [['0 · 1', 'Anterior alta (S1)', 'Transabdominal longitudinal'], ['2U', 'Lateral alta', 'Transabdominal transversal'], ['2L', 'Lateral baja', 'Transvaginal longitudinal y transversal'], ['3 · 4', 'Anterior baja (S2)', 'Transvaginal longitudinal medio'], ['5U · 5L', 'Posterior', 'Transvaginal longitudinal; RM como complemento']] },
+    en: { ruta: 'Obstetrics · Placenta', tit: 'PAS ultrasound: S1 and S2 on sagittal, axial and coronal views', baj: 'Choose a view and tap a number: the explanation appears below.',
+      hA: 'Three views to locate the lesion', hB: 'Preparation and scanning route by type', prep: 'Empty the bladder 30 minutes before and drink 500 mL of water (half-full bladder).',
+      rot2: 'In most cases with a prenatal suspicion of a lateral lesion, an anterior lesion with a rotated uterus is found at surgery. Posterior lesions may go undetected: MRI is a useful complement.',
+      rotulo: 'CaVeSal® own algorithm · Based on: Nieto-Calvache AJ et al., IJGO 2025 and BMC Pregnancy Childbirth 2025 and 2026.', nota: 'Didactic plate; it does not replace the sonographer’s assessment or clinical judgment.',
+      pl: ['Sagittal', 'Axial', 'Coronal'], lb: { an: 'Anterior', po: 'Posterior', v: 'Bladder', p: 'Placenta', c: 'Cervix', d: 'R', i: 'L', il: 'Iliacs' },
+      P: [[['Half-full bladder', 'Ultrasound (and MRI) reference: with a full bladder, the S1/S2 boundary is taken on its posterior wall. At cesarean, with an empty bladder, the reference is the vesicouterine peritoneal reflection.'],
+          ['Midpoint of the posterior bladder wall', 'An imaginary line is drawn perpendicular to that point.'],
+          ['S1/S2 line', 'It divides upper lesions (above the line, sector S1) from lower lesions (below, sector S2).'],
+          ['High anterior lesion (S1): types 0 and 1', 'Transabdominal longitudinal. It requires less retrovesical dissection.'],
+          ['Low anterior lesion (S2): types 3 and 4', 'Transvaginal mid-longitudinal. In type 4, vesicouterine fibrosis is hard to see; it is suspected when vascularity in the vesicouterine space is increased.'],
+          ['Posterior wall: types 5U and 5L', 'Posterior bulging is best seen transvaginally; it may go undetected and MRI helps.']],
+        [['Anterior placenta', 'It shows how much of the circumference is involved. Conservative surgery requires more than 50% of the circumference free in the axial plane.'],
+          ['Right lateral wall', 'Lateral bulging on the low transverse transabdominal and transverse transvaginal views: type 2. Assess the relationship of the uterus with the iliac vessels.'],
+          ['Left lateral wall', 'Same criterion as the right side. Before reporting a lateral lesion, rule out a rotated uterus.'],
+          ['Posterior wall', 'Free in this example; if involved, it is a type 5.']],
+        [['Body and fundus (S1)', 'Above the S1/S2 line.'],
+          ['High lateral: type 2U', 'Lateral wall above the line. Usually without major surgical difficulty.'],
+          ['Low lateral: type 2L', 'Lateral wall below the line, close to the ureter and large vessels: the most technically difficult.'],
+          ['Cervix', 'It belongs to S2: sector S2 corresponds to the lower segment and the cervix.']]],
+      tabH: ['Type', 'Area', 'Route and view'],
+      tabF: [['0 · 1', 'High anterior (S1)', 'Transabdominal longitudinal'], ['2U', 'High lateral', 'Transabdominal transverse'], ['2L', 'Low lateral', 'Transvaginal longitudinal and transverse'], ['3 · 4', 'Low anterior (S2)', 'Transvaginal mid-longitudinal'], ['5U · 5L', 'Posterior', 'Transvaginal longitudinal; MRI as a complement']] },
+    pt: { ruta: 'Obstetrícia · Placenta', tit: 'Ultrassom do PAS: S1 e S2 nos cortes sagital, axial e coronal', baj: 'Escolha um corte e toque um número: a explicação aparece abaixo.',
+      hA: 'Três cortes para localizar a lesão', hB: 'Preparo e via de exame por tipo', prep: 'Esvaziar a bexiga 30 minutos antes e tomar 500 mL de água (bexiga semicheia).',
+      rot2: 'Na maioria dos casos com suspeita pré-natal de lesão lateral, na cirurgia encontra-se uma lesão anterior com o útero rodado. As lesões posteriores podem passar despercebidas: a RM é um complemento útil.',
+      rotulo: 'Algoritmo próprio CaVeSal® · Baseado em: Nieto-Calvache AJ et al., IJGO 2025 e BMC Pregnancy Childbirth 2025 e 2026.', nota: 'Lâmina didática; não substitui a avaliação do ultrassonografista nem o julgamento clínico.',
+      pl: ['Sagital', 'Axial', 'Coronal'], lb: { an: 'Anterior', po: 'Posterior', v: 'Bexiga', p: 'Placenta', c: 'Colo', d: 'D', i: 'E', il: 'Ilíacos' },
+      P: [[['Bexiga semicheia', 'Referência do ultrassom (e da RM): com a bexiga cheia, o limite entre S1 e S2 é tomado na sua parede posterior. Na cesárea, com a bexiga vazia, a referência é a reflexão peritoneal vesicouterina.'],
+          ['Ponto médio da parede vesical posterior', 'Traça-se uma linha imaginária perpendicular a esse ponto.'],
+          ['Linha S1/S2', 'Divide as lesões altas (acima da linha, setor S1) das baixas (abaixo, setor S2).'],
+          ['Lesão anterior alta (S1): tipos 0 e 1', 'Transabdominal longitudinal. Requer menos dissecção retrovesical.'],
+          ['Lesão anterior baixa (S2): tipos 3 e 4', 'Transvaginal longitudinal médio. No tipo 4, a fibrose vesicouterina é difícil de ver; suspeita-se quando há vascularização aumentada no espaço vesicouterino.'],
+          ['Parede posterior: tipos 5U e 5L', 'O abaulamento posterior é visto melhor por via transvaginal; pode passar despercebido e a RM ajuda.']],
+        [['Placenta anterior', 'Mostra que porção da circunferência está comprometida. Para a cirurgia conservadora é preciso mais de 50% da circunferência livre no plano axial.'],
+          ['Parede lateral direita', 'Abaulamento lateral no corte transversal baixo transabdominal e no transversal transvaginal: tipo 2. Avaliar a relação do útero com os vasos ilíacos.'],
+          ['Parede lateral esquerda', 'Mesmo critério do lado direito. Antes de relatar uma lesão lateral, descartar útero rodado.'],
+          ['Parede posterior', 'Livre neste exemplo; se comprometida, é um tipo 5.']],
+        [['Corpo e fundo (S1)', 'Acima da linha S1/S2.'],
+          ['Lateral alta: tipo 2U', 'Parede lateral acima da linha. Em geral sem grande dificuldade cirúrgica.'],
+          ['Lateral baixa: tipo 2L', 'Parede lateral abaixo da linha, perto do ureter e dos grandes vasos: a de maior dificuldade técnica.'],
+          ['Colo', 'Faz parte de S2: o setor S2 corresponde ao segmento inferior e ao colo.']]],
+      tabH: ['Tipo', 'Zona', 'Via e corte'],
+      tabF: [['0 · 1', 'Anterior alta (S1)', 'Transabdominal longitudinal'], ['2U', 'Lateral alta', 'Transabdominal transversal'], ['2L', 'Lateral baixa', 'Transvaginal longitudinal e transversal'], ['3 · 4', 'Anterior baixa (S2)', 'Transvaginal longitudinal médio'], ['5U · 5L', 'Posterior', 'Transvaginal longitudinal; RM como complemento']] }
+  };
+  var sel = { p: 0, i: null };
+  function pt(i, x, y) { return '<g class="pt' + (sel.i === i ? ' on' : '') + '" data-g="i" data-i="' + i + '" tabindex="0" role="button"><circle class="h" cx="' + x + '" cy="' + y + '" r="15"/><circle class="m" cx="' + x + '" cy="' + y + '" r="9"/><text x="' + x + '" y="' + y + '">' + (i + 1) + '</text></g>'; }
+  function T(x, y, t, c, a) { return '<text x="' + x + '" y="' + y + '" fill="' + (c || '#9fb3c8') + '" font-size="10" font-weight="800"' + (a ? ' text-anchor="' + a + '"' : '') + '>' + A.esc(t) + '</text>'; }
+  var LINE = '#ffd166';
+  function svg(u) {
+    var b = '<svg class="eco" viewBox="0 0 360 230" role="img"><rect width="360" height="230" rx="12" fill="#11161b"/>';
+    if (sel.p === 0) {
+      b += '<path d="M150 30 Q200 4 250 30 Q276 90 252 150 Q240 176 222 186 L222 214 L178 214 L178 186 Q160 176 148 150 Q124 90 150 30Z" fill="#767d85"/>' +
+        '<path d="M156 46 Q142 100 152 156 Q164 176 180 184 Q164 150 164 110 Q164 70 172 40Z" fill="#b9a6c9"/>' +
+        '<ellipse cx="102" cy="160" rx="42" ry="30" fill="#0a0c0e" stroke="#9fb3c8" stroke-width="1.6"/>' + T(102, 150, u.lb.v, null, 'middle') +
+        '<path d="M30 160 L330 160" stroke="' + LINE + '" stroke-width="1.6" stroke-dasharray="5 4"/>' + T(332, 154, 'S1', LINE, 'end') + T(332, 174, 'S2', LINE, 'end') +
+        '<path d="M146 40 Q126 92 138 150" stroke="#ff8a80" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M144 164 Q156 182 176 190" stroke="#d9622b" stroke-width="5" fill="none" stroke-linecap="round"/>' +
+        '<path d="M258 60 Q274 110 254 150" stroke="#7b4fb3" stroke-width="5" fill="none" stroke-linecap="round"/>' +
+        T(20, 24, u.lb.an) + T(340, 24, u.lb.po, null, 'end') + T(200, 226, u.lb.c, null, 'middle') +
+        pt(0, 102, 172) + pt(1, 144, 160) + pt(2, 300, 160) + pt(3, 120, 92) + pt(4, 150, 202) + pt(5, 286, 108);
+    } else if (sel.p === 1) {
+      b += '<ellipse cx="180" cy="124" rx="96" ry="76" fill="#767d85"/><ellipse cx="180" cy="124" rx="56" ry="40" fill="#30353a"/>' +
+        '<path d="M98 86 Q180 30 262 86 Q240 80 180 76 Q120 80 98 86Z" fill="#b9a6c9"/><path d="M96 88 Q180 34 264 88" stroke="#c62828" stroke-width="6" fill="none"/>' +
+        '<ellipse cx="180" cy="34" rx="44" ry="18" fill="#0a0c0e" stroke="#9fb3c8" stroke-width="1.4"/>' + T(180, 38, u.lb.v, null, 'middle') +
+        '<circle cx="50" cy="170" r="10" fill="#2f3a44" stroke="#9fb3c8"/><circle cx="310" cy="170" r="10" fill="#2f3a44" stroke="#9fb3c8"/>' + T(50, 196, u.lb.il, null, 'middle') + T(310, 196, u.lb.il, null, 'middle') +
+        T(24, 40, u.lb.d, '#ffffff') + T(330, 40, u.lb.i, '#ffffff') +
+        pt(0, 180, 70) + pt(1, 92, 130) + pt(2, 268, 130) + pt(3, 180, 196);
+    } else {
+      b += '<path d="M116 40 Q180 10 244 40 Q268 100 236 156 Q222 176 208 182 L208 214 L152 214 L152 182 Q138 176 124 156 Q92 100 116 40Z" fill="#767d85"/>' +
+        '<path d="M90 140 L270 140" stroke="' + LINE + '" stroke-width="1.6" stroke-dasharray="5 4"/>' + T(278, 134, 'S1', LINE) + T(278, 154, 'S2', LINE) +
+        '<path d="M120 50 Q102 96 120 136" stroke="#2e9d5a" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M126 146 Q138 166 152 178" stroke="#c62828" stroke-width="6" fill="none" stroke-linecap="round"/>' +
+        T(180, 224, u.lb.c, null, 'middle') +
+        pt(0, 180, 80) + pt(1, 96, 92) + pt(2, 118, 176) + pt(3, 180, 198);
+    }
+    return b + '</svg>';
+  }
+  function pintar() {
+    var u = U(UI);
+    A.nav($('#nav-at'), 'pas-ecografia.html');
+    chips($('#pl'), u.pl.map(function (n) { return { n: n }; }), sel.p, 'p');
+    $('#svgP').innerHTML = svg(u);
+    var it = sel.i === null ? null : u.P[sel.p][sel.i];
+    A.panel($('#exp'), it ? (sel.i + 1) + '. ' + it[0] : '', it ? [it[1]] : [], u.vacio);
+    $('#tab').innerHTML = '<table class="tb"><thead><tr>' + u.tabH.map(function (h) { return '<th>' + A.esc(h) + '</th>'; }).join('') + '</tr></thead><tbody>' + u.tabF.map(function (r) { return '<tr>' + r.map(function (c, i) { return i ? '<td>' + A.esc(c) + '</td>' : '<th>' + A.esc(c) + '</th>'; }).join('') + '</tr>'; }).join('') + '</tbody></table>';
+  }
+  document.addEventListener('click', function (ev) {
+    var b = ev.target.closest('[data-l],[data-g]'); if (!b) return;
+    if (b.dataset.l) { A.setLang(b.dataset.l); pintar(); return; }
+    if (b.dataset.g === 'p') { sel.p = +b.dataset.i; sel.i = null; } else sel.i = +b.dataset.i;
+    pintar();
+  });
+  document.addEventListener('keydown', function (ev) { if ((ev.key === 'Enter' || ev.key === ' ') && ev.target.matches && ev.target.matches('g[data-g]')) { ev.preventDefault(); ev.target.dispatchEvent(new MouseEvent('click', { bubbles: true })); } });
+  pintar();
+
+})();
+</script>
+</body>
+</html>

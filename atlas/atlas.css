@@ -107,3 +107,10 @@
 @media(min-width:640px){.cat.c8{grid-template-columns:repeat(8,1fr)}}
 .mini.c4{grid-template-columns:repeat(2,1fr)}
 #svgA,#svgF,#svgS,#svgT,#svgQ,#med{margin-bottom:10px}
+.cri{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;border:1px solid var(--line);border-radius:12px;padding:8px 10px;margin-bottom:6px;background:#fff;font-size:.86rem}
+.cri .sn{display:flex;gap:6px}
+.cri .sn button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 14px;font-weight:800;cursor:pointer;font-family:inherit}
+.cri .sn button[aria-pressed="true"]{background:var(--navy);color:#fff;border-color:var(--navy)}
+.bus{margin:4px 0 12px}
+.bus input{width:100%;border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:1rem;font-family:inherit;margin-bottom:8px;background:#fff}
+.bus .chips{margin-bottom:6px}

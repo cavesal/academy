@@ -17,7 +17,9 @@
     { href: 'ieta.html', t: { es: 'IETA: endometrio', en: 'IETA: endometrium', pt: 'IETA: endométrio' } },
     { href: 'ila.html', t: { es: 'ILA y bolsillo máximo', en: 'AFI and deepest pocket', pt: 'ILA e maior bolsão' } },
     { href: 'segmentos-utero.html', t: { es: 'Sectores S1, S2, S3', en: 'Sectors S1, S2, S3', pt: 'Setores S1, S2, S3' } },
-    { href: 'pas.html', t: { es: 'Acretismo (PAS)', en: 'Accreta (PAS)', pt: 'Acretismo (PAS)' } }
+    { href: 'pas.html', t: { es: 'Acretismo (PAS)', en: 'Accreta (PAS)', pt: 'Acretismo (PAS)' } },
+    { href: 'pas-ecografia.html', t: { es: 'PAS: ecografía S1/S2', en: 'PAS: S1/S2 ultrasound', pt: 'PAS: ultrassom S1/S2' } },
+    { href: 'pas-conducta.html', t: { es: 'PAS: OSCS o histerectomía', en: 'PAS: OSCS or hysterectomy', pt: 'PAS: OSCS ou histerectomia' } }
   ];
   A.nav = function (el, actual) {
     if (!el) return;
