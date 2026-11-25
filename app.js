@@ -39,7 +39,7 @@
       busTit: 'Buscador común', busTxt: 'Busca a la vez en Historia Clínica, Emergencias y Calculadora.',
       bibTit: 'Biblioteca', bibTxt: 'Bibliografía completa de cada app, con enlaces a las fuentes.',
       artTit: 'Artículos científicos', artTxt: 'PubMed, Cochrane, Epistemonikos, LILACS y más, con guías oficiales.',
-      atlasTit: 'Atlas médico', atlasTxt: 'Ecografía ginecológica: IETA, IOTA, O-RADS y MUSA, con imágenes y clasificaciones.',
+      atlasTit: 'Atlas médico', atlasTxt: 'Ecografía ginecológica: IOTA (términos y reglas simples B/M) y O-RADS, con imágenes reales y clasificaciones. Luego: MUSA, IETA e ILA.',
       clasTit: 'Tablas y clasificaciones', clasTxt: 'Escalas y clasificaciones de consulta rápida, con su fuente.',
       calc: 'Calculadora Prenatal', hc: 'Historia Clínica', em: 'Emergencias Obstétricas', gyn: 'CaVeSal® GYN',
       hcBajada: 'Elegí un capítulo. El contenido es el mismo que el de la Historia Clínica, en el idioma seleccionado.',
@@ -95,7 +95,7 @@
       busTit: 'Shared search', busTxt: 'Search Clinical Record, Emergencies and Calculator at once.',
       bibTit: 'Library', bibTxt: 'Complete bibliography for each app, with links to sources.',
       artTit: 'Scientific articles', artTxt: 'PubMed, Cochrane, Epistemonikos, LILACS and more, plus official guidelines.',
-      atlasTit: 'Medical atlas', atlasTxt: 'Gynecologic ultrasound: IETA, IOTA, O-RADS and MUSA, with images and classifications.',
+      atlasTit: 'Medical atlas', atlasTxt: 'Gynecologic ultrasound: IOTA (terms and B/M Simple Rules) and O-RADS, with real images and classifications. Next: MUSA, IETA and ILA.',
       clasTit: 'Tables and classifications', clasTxt: 'Quick-reference scores and classifications, with their source.',
       calc: 'Prenatal Calculator', hc: 'Clinical Record', em: 'Obstetric Emergencies', gyn: 'CaVeSal® GYN',
       hcBajada: 'Choose a chapter. Content is the same as in the Clinical Record, in the selected language.',
@@ -151,7 +151,7 @@
       busTit: 'Busca comum', busTxt: 'Busque ao mesmo tempo no Prontuário, em Emergências e na Calculadora.',
       bibTit: 'Biblioteca', bibTxt: 'Bibliografia completa de cada app, com links para as fontes.',
       artTit: 'Artigos científicos', artTxt: 'PubMed, Cochrane, Epistemonikos, LILACS e mais, com diretrizes oficiais.',
-      atlasTit: 'Atlas médico', atlasTxt: 'Ultrassom ginecológico: IETA, IOTA, O-RADS e MUSA, com imagens e classificações.',
+      atlasTit: 'Atlas médico', atlasTxt: 'Ultrassom ginecológico: IOTA (termos e regras simples B/M) e O-RADS, com imagens reais e classificações. Depois: MUSA, IETA e ILA.',
       clasTit: 'Tabelas e classificações', clasTxt: 'Escalas e classificações de consulta rápida, com sua fonte.',
       calc: 'Calculadora Pré-natal', hc: 'Prontuário Clínico', em: 'Emergências Obstétricas', gyn: 'CaVeSal® GYN',
       hcBajada: 'Escolha um capítulo. O conteúdo é o mesmo do Prontuário Clínico, no idioma selecionado.',
@@ -557,9 +557,9 @@
       tarjeta('#/biblioteca', t('bibTit'), t('bibTxt')) +
       tarjeta('#/articulos', t('artTit'), t('artTxt'), 'PubMed · Cochrane · LILACS · OMS · FIGO · ISUOG') +
       tarjeta(manualURL(), t('tutTit'), t('tutTxt'), 'ES · EN · PT') +
+      tarjeta('atlas/', t('atlasTit'), t('atlasTxt'), 'IOTA · B/M · O-RADS · ES · EN · PT') +
       '</div>' +
       '<h2 class="seccion">' + esc(t('secProx')) + '</h2><div class="grid">' +
-      tarjeta('', t('atlasTit'), t('atlasTxt'), 'IETA · IOTA · O-RADS · MUSA', ' prox') +
       tarjeta('', t('clasTit'), t('clasTxt'), '', ' prox') +
       '</div>' +
       '<h2 class="seccion">' + esc(t('secApps')) + '</h2><div class="grid">' +

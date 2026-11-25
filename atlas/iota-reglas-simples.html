@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>IOTA reglas simples — Atlas médico · CaVeSal® Academy</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="../img/favicon.png">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="atlas.css">
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <a class="marca" href="../#/" aria-label="CaVeSal Academy">
+      <img src="../img/icon-192.png" alt="" width="40" height="40">
+      <span class="marca-txt"><strong>CaVeSal<sup>®</sup> Academy</strong><small data-t="atlas">Atlas médico</small></span>
+    </a>
+  </div>
+</header>
+<main class="at" id="main">
+  <div class="at-top">
+    <a class="volver" href="../#/" data-t="volver">← Volver a Academy</a>
+    <div class="idi" role="group" aria-label="Idioma">
+      <button type="button" data-l="es">ES</button><button type="button" data-l="en">EN</button><button type="button" data-l="pt">PT</button>
+    </div>
+  </div>
+  <nav class="nav-at" id="nav-at" aria-label="Láminas"></nav>
+  <span class="eyebrow" data-t="ruta">Ginecología · Ecografía</span>
+  <h1 data-t="tit">IOTA: reglas simples B1–B5 y M1–M5</h1>
+  <p class="baj" data-t="baj">Marcá los hallazgos de la masa: el flujograma muestra el resultado debajo.</p>
+
+  <section class="lam" aria-labelledby="h-a">
+    <h2 id="h-a"><span class="tipo">F</span><span data-t="hA">Hallazgos benignos (B) y malignos (M)</span></h2>
+    <div class="reg">
+      <div><h3 data-t="hB">Rasgos B (sugieren benignidad)</h3><div id="lb" class="b" role="group"></div></div>
+      <div><h3 data-t="hM">Rasgos M (sugieren malignidad)</h3><div id="lm" class="m" role="group"></div></div>
+    </div>
+    <button type="button" class="btn-lim" id="lim" data-t="limpiar">Limpiar</button>
+    <div class="flu" id="flu" aria-live="polite"></div>
+    <div class="exp" id="exp" aria-live="polite"></div>
+  </section>
+
+  <section class="lam" aria-labelledby="h-d">
+    <h2 id="h-d"><span class="tipo">P</span><span data-t="hD">Imágenes reales de referencia</span></h2>
+    <div class="gal" id="gal"></div>
+    <p class="nota" data-t="notaGal">Imágenes con licencia libre (CC BY o CC BY-SA), sin datos de pacientes, con crédito al autor.</p>
+  </section>
+
+  <div class="rot">
+    <p><strong data-t="rotulo">Algoritmo propio CaVeSal® · Basado en: reglas simples IOTA (Timmerman 2008) y su validación prospectiva (Timmerman 2010).</strong></p>
+    <p class="nota" data-t="nota">Lámina didáctica; no reemplaza la evaluación del ecografista ni el estudio histológico.</p>
+    <ol>
+      <li>Timmerman D, Testa AC, Bourne T, Ameye L, Jurkovic D, Van Holsbeke C, et al. Simple ultrasound-based rules for the diagnosis of ovarian cancer. Ultrasound Obstet Gynecol. 2008;31(6):681–690. <a href="https://doi.org/10.1002/uog.5365" target="_blank" rel="noopener">doi:10.1002/uog.5365</a></li>
+      <li>Timmerman D, Ameye L, Fischerova D, Epstein E, Melis GB, Guerriero S, et al. Simple ultrasound rules to distinguish between benign and malignant adnexal masses before surgery: prospective validation by IOTA group. BMJ. 2010;341:c6839. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3001703/" target="_blank" rel="noopener">PMC3001703</a></li>
+      <li>Timmerman D, Van Calster B, Testa A, et al. Predicting the risk of malignancy in adnexal masses based on the Simple Rules from the International Ovarian Tumor Analysis group. Am J Obstet Gynecol. 2016;214(4):424–437. <a href="https://doi.org/10.1016/j.ajog.2016.01.007" target="_blank" rel="noopener">doi:10.1016/j.ajog.2016.01.007</a></li>
+      <li>Timmerman D, Valentin L, Testa AC, et al. Updated IOTA consensus on terms, definitions and measurements. Ultrasound Obstet Gynecol. 2026;67(5):702–724. <a href="https://doi.org/10.1002/uog.70191" target="_blank" rel="noopener">doi:10.1002/uog.70191</a></li>
+    </ol>
+  </div>
+</main>
+<script src="atlas.js"></script>
+<script>
+(function () {
+  'use strict';
+  var A = window.Atlas;
+  var UI = {
+    es: { atlas: 'Atlas médico', volver: '← Volver a Academy', ruta: 'Ginecología · Ecografía', tit: 'IOTA: reglas simples B1–B5 y M1–M5',
+      baj: 'Marcá los hallazgos de la masa: el flujograma muestra el resultado debajo.', hA: 'Hallazgos benignos (B) y malignos (M)',
+      hB: 'Rasgos B (sugieren benignidad)', hM: 'Rasgos M (sugieren malignidad)', limpiar: 'Limpiar', hD: 'Imágenes reales de referencia',
+      notaGal: 'Imágenes con licencia libre (CC BY o CC BY-SA), sin datos de pacientes, con crédito al autor.',
+      rotulo: 'Algoritmo propio CaVeSal® · Basado en: reglas simples IOTA (Timmerman 2008) y su validación prospectiva (Timmerman 2010).',
+      nota: 'Lámina didáctica; no reemplaza la evaluación del ecografista ni el estudio histológico.',
+      f0: 'Masa anexial descrita con términos IOTA', fq: '¿Qué rasgos se aplican?', fB: 'Solo rasgos B', fM: 'Solo rasgos M', fI: 'Ambos o ninguno',
+      rB: 'Benigna', rM: 'Maligna', rI: 'No concluyente', marcados: 'Marcados: ', ninguno: 'ninguno',
+      eB: ['Resultado: benigna', 'Hay uno o más rasgos B y ningún rasgo M.', 'En la validación prospectiva, cuando las reglas fueron concluyentes, la sensibilidad fue 92 % y la especificidad 96 % (Timmerman 2010).'],
+      eM: ['Resultado: maligna', 'Hay uno o más rasgos M y ningún rasgo B.', 'Una masa clasificada como maligna se discute con oncología ginecológica.'],
+      eI: ['Resultado: no concluyente', 'Hay rasgos B y M a la vez, o no se aplica ninguno. Ocurre en cerca de un cuarto de las masas (las reglas fueron aplicables al 76–77 %).', 'Conducta de la fuente original: evaluación subjetiva por un ecografista experto (Timmerman 2008).', 'Alternativas citadas por las fuentes: una segunda prueba (Timmerman 2010), el modelo ADNEX o el riesgo de malignidad según las reglas simples (Timmerman 2016).'],
+      e0: 'Marcá al menos un rasgo, o ninguno si no se aplica ninguno, y mirá el resultado.' },
+    en: { atlas: 'Medical atlas', volver: '← Back to Academy', ruta: 'Gynecology · Ultrasound', tit: 'IOTA: Simple Rules B1–B5 and M1–M5',
+      baj: 'Mark the findings of the mass: the flowchart shows the result below.', hA: 'Benign (B) and malignant (M) features',
+      hB: 'B features (suggest benign)', hM: 'M features (suggest malignant)', limpiar: 'Clear', hD: 'Real reference images',
+      notaGal: 'Freely licensed images (CC BY or CC BY-SA), without patient data, credited to the author.',
+      rotulo: 'CaVeSal® own algorithm · Based on: IOTA Simple Rules (Timmerman 2008) and their prospective validation (Timmerman 2010).',
+      nota: 'Didactic plate; it does not replace the sonographer’s assessment or histology.',
+      f0: 'Adnexal mass described with IOTA terms', fq: 'Which features apply?', fB: 'Only B features', fM: 'Only M features', fI: 'Both or none',
+      rB: 'Benign', rM: 'Malignant', rI: 'Inconclusive', marcados: 'Marked: ', ninguno: 'none',
+      eB: ['Result: benign', 'One or more B features and no M feature.', 'In the prospective validation, when the rules were conclusive, sensitivity was 92% and specificity 96% (Timmerman 2010).'],
+      eM: ['Result: malignant', 'One or more M features and no B feature.', 'A mass classified as malignant is discussed with gynecologic oncology.'],
+      eI: ['Result: inconclusive', 'Both B and M features are present, or none applies. This happens in about a quarter of masses (the rules applied to 76–77%).', 'Management in the original source: subjective assessment by an expert sonographer (Timmerman 2008).', 'Alternatives cited by the sources: a second-stage test (Timmerman 2010), the ADNEX model or the Simple Rules risk of malignancy (Timmerman 2016).'],
+      e0: 'Mark at least one feature, or none if none applies, and see the result.' },
+    pt: { atlas: 'Atlas médico', volver: '← Voltar ao Academy', ruta: 'Ginecologia · Ultrassom', tit: 'IOTA: regras simples B1–B5 e M1–M5',
+      baj: 'Marque os achados da massa: o fluxograma mostra o resultado abaixo.', hA: 'Achados benignos (B) e malignos (M)',
+      hB: 'Características B (sugerem benignidade)', hM: 'Características M (sugerem malignidade)', limpiar: 'Limpar', hD: 'Imagens reais de referência',
+      notaGal: 'Imagens com licença livre (CC BY ou CC BY-SA), sem dados de pacientes, com crédito ao autor.',
+      rotulo: 'Algoritmo próprio CaVeSal® · Baseado em: regras simples IOTA (Timmerman 2008) e sua validação prospectiva (Timmerman 2010).',
+      nota: 'Lâmina didática; não substitui a avaliação do ultrassonografista nem o exame histológico.',
+      f0: 'Massa anexial descrita com termos IOTA', fq: 'Quais características se aplicam?', fB: 'Só características B', fM: 'Só características M', fI: 'Ambas ou nenhuma',
+      rB: 'Benigna', rM: 'Maligna', rI: 'Inconclusiva', marcados: 'Marcadas: ', ninguno: 'nenhuma',
+      eB: ['Resultado: benigna', 'Uma ou mais características B e nenhuma M.', 'Na validação prospectiva, quando as regras foram conclusivas, a sensibilidade foi 92% e a especificidade 96% (Timmerman 2010).'],
+      eM: ['Resultado: maligna', 'Uma ou mais características M e nenhuma B.', 'Uma massa classificada como maligna é discutida com oncologia ginecológica.'],
+      eI: ['Resultado: inconclusivo', 'Há características B e M ao mesmo tempo, ou nenhuma se aplica. Ocorre em cerca de um quarto das massas (as regras foram aplicáveis a 76–77%).', 'Conduta da fonte original: avaliação subjetiva por ultrassonografista experiente (Timmerman 2008).', 'Alternativas citadas pelas fontes: um segundo teste (Timmerman 2010), o modelo ADNEX ou o risco de malignidade pelas regras simples (Timmerman 2016).'],
+      e0: 'Marque ao menos uma característica, ou nenhuma se nenhuma se aplica, e veja o resultado.' }
+  };
+  var B = [
+    { k: 'B1', t: { es: 'Quiste unilocular', en: 'Unilocular cyst', pt: 'Cisto unilocular' } },
+    { k: 'B2', t: { es: 'Componentes sólidos, el mayor <7 mm de diámetro máximo', en: 'Solid components, the largest <7 mm in largest diameter', pt: 'Componentes sólidos, o maior <7 mm de diâmetro máximo' } },
+    { k: 'B3', t: { es: 'Sombras acústicas', en: 'Acoustic shadows', pt: 'Sombras acústicas' } },
+    { k: 'B4', t: { es: 'Tumor multilocular liso con diámetro máximo <100 mm', en: 'Smooth multilocular tumor, largest diameter <100 mm', pt: 'Tumor multilocular liso com diâmetro máximo <100 mm' } },
+    { k: 'B5', t: { es: 'Sin flujo Doppler (score color 1)', en: 'No blood flow (color score 1)', pt: 'Sem fluxo Doppler (escore de cor 1)' } }
+  ];
+  var M = [
+    { k: 'M1', t: { es: 'Tumor sólido irregular', en: 'Irregular solid tumor', pt: 'Tumor sólido irregular' } },
+    { k: 'M2', t: { es: 'Ascitis', en: 'Ascites', pt: 'Ascite' } },
+    { k: 'M3', t: { es: 'Al menos cuatro proyecciones papilares', en: 'At least four papillary structures', pt: 'Ao menos quatro projeções papilares' } },
+    { k: 'M4', t: { es: 'Tumor multilocular-sólido irregular con diámetro máximo ≥100 mm', en: 'Irregular multilocular-solid tumor, largest diameter ≥100 mm', pt: 'Tumor multilocular-sólido irregular com diâmetro máximo ≥100 mm' } },
+    { k: 'M5', t: { es: 'Flujo muy intenso (score color 4)', en: 'Very strong blood flow (color score 4)', pt: 'Fluxo muito intenso (escore de cor 4)' } }
+  ];
+  var GAL = [
+    { img: 'antil-b1', c: 'antil', t: { es: ['B1 · Unilocular', 'Quiste unilocular anecoico.'], en: ['B1 · Unilocular', 'Anechoic unilocular cyst.'], pt: ['B1 · Unilocular', 'Cisto unilocular anecoico.'] } },
+    { img: 'antil-b3', c: 'antil', t: { es: ['B3 · Sombra acústica', 'Lesión ecogénica con sombra posterior.'], en: ['B3 · Acoustic shadow', 'Echogenic lesion with posterior shadowing.'], pt: ['B3 · Sombra acústica', 'Lesão ecogênica com sombra posterior.'] } },
+    { img: 'wu-orads2', c: 'wu', t: { es: ['B1 + B5 · Benigna', 'Unilocular, score color 1: reglas simples benignas. Histología: cistoadenoma seroso.'], en: ['B1 + B5 · Benign', 'Unilocular, color score 1: Simple Rules benign. Histology: serous cystadenoma.'], pt: ['B1 + B5 · Benigna', 'Unilocular, escore de cor 1: regras simples benignas. Histologia: cistoadenoma seroso.'] } },
+    { img: 'antil-m3', c: 'antil', t: { es: ['M3 · ≥4 papilas', 'Multilocular-sólida con al menos cuatro papilas (flechas).'], en: ['M3 · ≥4 papillary projections', 'Multilocular-solid with at least four papillary projections (arrows).'], pt: ['M3 · ≥4 papilas', 'Multilocular-sólida com ao menos quatro papilas (setas).'] } },
+    { img: 'antil-m5', c: 'antil', t: { es: ['M5 · Score color 4', 'Masa sólida con flujo Doppler abundante.'], en: ['M5 · Color score 4', 'Solid mass with abundant Doppler flow.'], pt: ['M5 · Escore de cor 4', 'Massa sólida com fluxo Doppler abundante.'] } },
+    { img: 'auscities', c: 'heil', t: { es: ['M2 · Ascitis', 'Líquido libre abdominal con asas intestinales flotando.'], en: ['M2 · Ascites', 'Free abdominal fluid with floating bowel loops.'], pt: ['M2 · Ascite', 'Líquido livre abdominal com alças intestinais flutuando.'] } },
+    { img: 'wu-orads5', c: 'wu', t: { es: ['Maligna por reglas simples', 'Masa predominantemente sólida. Histología: carcinoma de células claras.'], en: ['Malignant by Simple Rules', 'Predominantly solid mass. Histology: clear cell carcinoma.'], pt: ['Maligna pelas regras simples', 'Massa predominantemente sólida. Histologia: carcinoma de células claras.'] } },
+    { img: 'wu-orads4', c: 'wu', t: { es: ['No concluyente', 'Multilocular de 13,9 cm, score color 2–3. Histología: cistoadenoma mucinoso.'], en: ['Inconclusive', 'Multilocular, 13.9 cm, color score 2–3. Histology: mucinous cystadenoma.'], pt: ['Inconclusivo', 'Multilocular de 13,9 cm, escore de cor 2–3. Histologia: cistoadenoma mucinoso.'] } }
+  ];
+  var sel = {}, tocado = false;
+  function $(s) { return document.querySelector(s); }
+  function lista(el, arr) {
+    el.innerHTML = arr.map(function (x) {
+      return '<button type="button" data-k="' + x.k + '" aria-pressed="' + !!sel[x.k] + '"><span class="k">' + x.k + '</span><span>' + A.esc(x.t[A.lang]) + '</span></button>';
+    }).join('');
+  }
+  function pintar() {
+    var u = A.textos(UI);
+    A.nav($('#nav-at'), 'iota-reglas-simples.html');
+    lista($('#lb'), B); lista($('#lm'), M);
+    var nb = B.filter(function (x) { return sel[x.k]; }).map(function (x) { return x.k; });
+    var nm = M.filter(function (x) { return sel[x.k]; }).map(function (x) { return x.k; });
+    var r = !tocado ? '' : (nb.length && !nm.length ? 'B' : (nm.length && !nb.length ? 'M' : 'I'));
+    var mk = nb.concat(nm);
+    $('#flu').innerHTML =
+      '<div class="n"><b>' + A.esc(u.f0) + '</b>' + A.esc(u.marcados + (mk.length ? mk.join(' · ') : u.ninguno)) + '</div><div class="fl"></div>' +
+      '<div class="n"><b>' + A.esc(u.fq) + '</b></div><div class="fl"></div>' +
+      '<div class="ramas">' +
+      '<div class="n ben' + (r === 'B' ? ' on' : '') + '">' + A.esc(u.fB) + '<b>' + A.esc(u.rB) + '</b></div>' +
+      '<div class="n mal' + (r === 'M' ? ' on' : '') + '">' + A.esc(u.fM) + '<b>' + A.esc(u.rM) + '</b></div>' +
+      '<div class="n inc' + (r === 'I' ? ' on' : '') + '">' + A.esc(u.fI) + '<b>' + A.esc(u.rI) + '</b></div></div>';
+    var e = r === 'B' ? u.eB : r === 'M' ? u.eM : r === 'I' ? u.eI : null;
+    A.panel($('#exp'), e && e[0], e ? e.slice(1) : [], u.e0);
+    A.galeria($('#gal'), GAL);
+  }
+  document.addEventListener('click', function (ev) {
+    var b = ev.target.closest('button'); if (!b) return;
+    if (b.dataset.l) { A.setLang(b.dataset.l); pintar(); return; }
+    if (b.id === 'lim') { sel = {}; tocado = false; pintar(); return; }
+    if (b.dataset.k) { sel[b.dataset.k] = !sel[b.dataset.k]; tocado = true; pintar(); }
+  });
+  pintar();
+})();
+</script>
+</body>
+</html>

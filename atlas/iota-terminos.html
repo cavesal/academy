@@ -7,49 +7,7 @@
 <meta name="robots" content="noindex">
 <link rel="icon" href="../img/favicon.png">
 <link rel="stylesheet" href="../styles.css">
-<style>
-.at{max-width:860px;margin:0 auto;padding:18px 16px 40px;flex:1}
-.at-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px}
-.at-top a.volver{font-weight:800;text-decoration:none;font-size:.92rem}
-.idi{margin-left:auto;display:flex;gap:4px}
-.idi button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px 11px;font-weight:800;font-size:.8rem;color:var(--muted);cursor:pointer}
-.idi button[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
-.at .eyebrow{display:inline-block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-d);font-weight:800}
-.at h1{font-family:var(--ft);font-size:1.55rem;line-height:1.2;margin:4px 0 6px;color:var(--navy)}
-.at .baj{color:var(--muted);margin:0 0 14px;font-size:.95rem}
-.tipo{display:inline-block;background:var(--teal-bg);color:var(--teal-d);border:1px solid #bfe8ee;border-radius:8px;font-weight:800;font-size:.75rem;padding:2px 8px;margin-right:6px}
-.lam{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:12px;margin-bottom:16px}
-.lam h2{font-family:var(--ft);font-size:1.12rem;margin:2px 4px 10px;color:var(--navy)}
-.eco{display:block;width:100%;height:auto;border-radius:10px;background:#11161b;touch-action:manipulation}
-.pt{cursor:pointer;outline:none}
-.pt circle.h{fill:transparent}
-.pt circle.m{fill:#0EA5B7;stroke:#fff;stroke-width:2}
-.pt text{fill:#fff;font:800 12px var(--fb);text-anchor:middle;dominant-baseline:central;pointer-events:none}
-.pt.on circle.m{fill:#F4B400;stroke:#0D1B2D}
-.pt.on text{fill:#0D1B2D}
-.pt:focus-visible circle.m{stroke:#F4B400;stroke-width:3}
-.chips{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 0}
-.chips button{border:1px solid var(--line);background:var(--mist);border-radius:999px;padding:5px 10px;font-size:.8rem;font-weight:700;color:var(--ink);cursor:pointer}
-.chips button b{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;background:var(--teal);color:#fff;font-size:.68rem;margin-right:5px}
-.chips button[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
-.chips button[aria-pressed=true] b{background:#F4B400;color:var(--navy)}
-.exp{margin-top:10px;border-left:4px solid var(--teal);background:var(--teal-bg);border-radius:0 10px 10px 0;padding:10px 12px;min-height:64px}
-.exp h3{margin:0 0 4px;font-size:1rem;color:var(--navy)}
-.exp p{margin:0;font-size:.92rem}
-.exp p+p{margin-top:6px}
-.exp .vacio{color:var(--muted);font-style:normal}
-.mini{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.mini.c4{grid-template-columns:repeat(4,1fr)}
-@media(min-width:640px){.mini{grid-template-columns:repeat(6,1fr)}}
-.mini button{border:1px solid var(--line);background:#fff;border-radius:10px;padding:6px 4px 8px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:.74rem;font-weight:800;color:var(--ink);line-height:1.15;text-align:center}
-.mini button svg{width:100%;height:auto;border-radius:6px;background:#11161b}
-.mini button[aria-pressed=true]{border-color:var(--navy);box-shadow:0 0 0 2px var(--navy)}
-.rot{margin-top:18px;font-size:.82rem;color:var(--muted);border-top:1px solid var(--line);padding-top:10px}
-.rot strong{color:var(--navy)}
-.rot ol{margin:6px 0 0;padding-left:18px}
-.rot li{margin-bottom:4px}
-.nota{font-size:.78rem;color:var(--muted);margin:8px 4px 0}
-</style>
+<link rel="stylesheet" href="atlas.css">
 </head>
 <body>
 <header class="top">
@@ -67,6 +25,7 @@
       <button type="button" data-l="es">ES</button><button type="button" data-l="en">EN</button><button type="button" data-l="pt">PT</button>
     </div>
   </div>
+  <nav class="nav-at" id="nav-at" aria-label="Láminas"></nav>
   <span class="eyebrow" data-t="ruta">Ginecología · Ecografía</span>
   <h1 data-t="tit">IOTA: términos para describir una masa anexial</h1>
   <p class="baj" data-t="baj">Tocá un número del esquema o un botón de la lista: la explicación aparece debajo, sin tapar la imagen.</p>
@@ -149,6 +108,12 @@
     <div class="exp" id="expC" aria-live="polite"></div>
   </section>
 
+  <section class="lam" aria-labelledby="h-d">
+    <h2 id="h-d"><span class="tipo">P</span><span data-t="hD">Imágenes reales de referencia</span></h2>
+    <div class="gal" id="gal"></div>
+    <p class="nota" data-t="notaGal">Imágenes con licencia libre (CC0, CC BY o CC BY-SA), sin datos de pacientes, con crédito al autor.</p>
+  </section>
+
   <div class="rot">
     <p><strong data-t="rotulo">Algoritmo propio CaVeSal® · Basado en: consenso IOTA 2000 y su actualización 2026.</strong></p>
     <p class="nota" data-t="nota">Esquema vectorial propio, didáctico; no reemplaza la imagen real ni el criterio del ecografista.</p>
@@ -159,6 +124,7 @@
   </div>
 </main>
 
+<script src="atlas.js"></script>
 <script>
 (function () {
   'use strict';
@@ -171,18 +137,21 @@
       baj: 'Tocá un número del esquema o un botón de la lista: la explicación aparece debajo, sin tapar la imagen.',
       hA: 'Masa multilocular-sólida: qué se describe y cómo se mide', hB: 'Los cinco tipos de masa según IOTA', hC: 'Score color (1 a 4)',
       vacio: 'Elegí un punto para ver su definición.', vacioT: 'Elegí un tipo para ver su definición.', vacioC: 'Elegí un score para ver su definición.',
+      hD: 'Imágenes reales de referencia', notaGal: 'Imágenes con licencia libre (CC0, CC BY o CC BY-SA), sin datos de pacientes, con crédito al autor.',
       rotulo: 'Algoritmo propio CaVeSal® · Basado en: consenso IOTA 2000 y su actualización 2026.',
       nota: 'Esquema vectorial propio, didáctico; no reemplaza la imagen real ni el criterio del ecografista.', idioma: 'Idioma' },
     en: { atlas: 'Medical atlas', volver: '← Back to Academy', ruta: 'Gynecology · Ultrasound', tit: 'IOTA: terms to describe an adnexal mass',
       baj: 'Tap a number on the diagram or a button in the list: the explanation appears below, without covering the image.',
       hA: 'Multilocular-solid mass: what to describe and how to measure', hB: 'The five IOTA tumor types', hC: 'Color score (1 to 4)',
       vacio: 'Choose a point to see its definition.', vacioT: 'Choose a type to see its definition.', vacioC: 'Choose a score to see its definition.',
+      hD: 'Real reference images', notaGal: 'Freely licensed images (CC0, CC BY or CC BY-SA), without patient data, credited to the author.',
       rotulo: 'CaVeSal® own algorithm · Based on: IOTA consensus 2000 and its 2026 update.',
       nota: 'Own didactic vector diagram; it does not replace the real image or the sonographer’s judgment.', idioma: 'Language' },
     pt: { atlas: 'Atlas médico', volver: '← Voltar ao Academy', ruta: 'Ginecologia · Ultrassom', tit: 'IOTA: termos para descrever uma massa anexial',
       baj: 'Toque um número do esquema ou um botão da lista: a explicação aparece abaixo, sem cobrir a imagem.',
       hA: 'Massa multilocular-sólida: o que descrever e como medir', hB: 'Os cinco tipos de massa segundo a IOTA', hC: 'Escore de cor (1 a 4)',
       vacio: 'Escolha um ponto para ver a definição.', vacioT: 'Escolha um tipo para ver a definição.', vacioC: 'Escolha um escore para ver a definição.',
+      hD: 'Imagens reais de referência', notaGal: 'Imagens com licença livre (CC0, CC BY ou CC BY-SA), sem dados de pacientes, com crédito ao autor.',
       rotulo: 'Algoritmo próprio CaVeSal® · Baseado em: consenso IOTA 2000 e sua atualização de 2026.',
       nota: 'Esquema vetorial próprio, didático; não substitui a imagem real nem o critério do ultrassonografista.', idioma: 'Idioma' }
   };
@@ -287,6 +256,20 @@
       es: [nom.es + n, d.es[n - 1], cola.es], en: [nom.en + n, d.en[n - 1], cola.en], pt: [nom.pt + n, d.pt[n - 1], cola.pt] }, corto: String(n) };
   });
 
+
+  var H = 'https://commons.wikimedia.org/wiki/File:';
+  var GAL = [
+    { img: 'antil-b1', c: 'antil', t: { es: ['Unilocular anecoico', 'Un lóculo, sin septos ni componente sólido, contenido negro. Ejemplo de regla B1.'], en: ['Anechoic unilocular', 'One locule, no septa or solid component, black content. Example of rule B1.'], pt: ['Unilocular anecoico', 'Um lóculo, sem septos nem componente sólido, conteúdo preto. Exemplo da regra B1.'] } },
+    { img: 'hemorragico', c: 'hagg', url: H + 'Hemorrhagic_ovarian_cyst.jpg', t: { es: ['Contenido hemorrágico', 'Quiste hemorrágico: patrón reticular en hilos finos, sin flujo interno.'], en: ['Hemorrhagic contents', 'Hemorrhagic cyst: fine reticular, thread-like pattern, no internal flow.'], pt: ['Conteúdo hemorrágico', 'Cisto hemorrágico: padrão reticular em fios finos, sem fluxo interno.'] } },
+    { img: 'endometrioma', c: 'hagg', url: H + 'Endometrioma.jpg', t: { es: ['Vidrio esmerilado', 'Endometrioma: ecogenicidad homogénea en todo el lóculo.'], en: ['Ground glass', 'Endometrioma: homogeneous echogenicity throughout the locule.'], pt: ['Vidro fosco', 'Endometrioma: ecogenicidade homogênea em todo o lóculo.'] } },
+    { img: 'dermoide', c: 'hagg', url: H + 'Dermoid_cyst.jpg', t: { es: ['Ecogenicidad mixta', 'Dermoide: distintos tipos de ecos en un mismo lóculo, con foco hiperecogénico.'], en: ['Mixed echogenicity', 'Dermoid: different echo types within one locule, with a hyperechoic focus.'], pt: ['Ecogenicidade mista', 'Dermoide: diferentes tipos de ecos no mesmo lóculo, com foco hiperecogênico.'] } },
+    { img: 'antil-m3', c: 'antil', t: { es: ['Proyecciones papilares', 'Multilocular-sólida con al menos cuatro papilas (flechas). Ejemplo de regla M3.'], en: ['Papillary projections', 'Multilocular-solid with at least four papillary projections (arrows). Example of rule M3.'], pt: ['Projeções papilares', 'Multilocular-sólida com ao menos quatro papilas (setas). Exemplo da regra M3.'] } },
+    { img: 'antil-b3', c: 'antil', t: { es: ['Sombra acústica', 'Lesión ecogénica con sombra posterior. Ejemplo de regla B3.'], en: ['Acoustic shadow', 'Echogenic lesion with posterior shadowing. Example of rule B3.'], pt: ['Sombra acústica', 'Lesão ecogênica com sombra posterior. Exemplo da regra B3.'] } },
+    { img: 'fibroma', c: 'mim', t: { es: ['Sombra en abanico', 'Probable fibroma ovárico (según el autor, la RM lo sugiere): masa sólida con sombras en abanico.'], en: ['Fan-shaped shadowing', 'Probable ovarian fibroma (MRI-suggested, per the author): solid mass with fan-shaped shadows.'], pt: ['Sombra em leque', 'Provável fibroma ovariano (sugerido pela RM, segundo o autor): massa sólida com sombras em leque.'] } },
+    { img: 'antil-m5', c: 'antil', t: { es: ['Score color 4', 'Masa sólida con flujo Doppler abundante. Ejemplo de regla M5.'], en: ['Color score 4', 'Solid mass with abundant Doppler flow. Example of rule M5.'], pt: ['Escore de cor 4', 'Massa sólida com fluxo Doppler abundante. Exemplo da regra M5.'] } },
+    { img: 'hidrosalpinx', c: 'ekem', t: { es: ['Hidrosálpinx', 'Estructura tubular anecoica; sus pliegues pueden verse como septos incompletos.'], en: ['Hydrosalpinx', 'Anechoic tubular structure; its folds may look like incomplete septa.'], pt: ['Hidrossalpinge', 'Estrutura tubular anecoica; suas pregas podem parecer septos incompletos.'] } },
+    { img: 'auscities', c: 'heil', t: { es: ['Ascitis', 'Líquido libre abdominal con asas intestinales flotando (cáncer abdominal, según el autor).'], en: ['Ascites', 'Free abdominal fluid with floating bowel loops (abdominal cancer, per the author).'], pt: ['Ascite', 'Líquido livre abdominal com alças intestinais flutuando (câncer abdominal, segundo o autor).'] } }
+  ];
   var sel = { a: null, t: null, c: null };
   function $(s) { return document.querySelector(s); }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
@@ -329,6 +312,7 @@
     }
     minis($('#tipos'), TIPOS, 't', u.vacioT, $('#expT'));
     minis($('#colores'), COLORES, 'c', u.vacioC, $('#expC'));
+    Atlas.lang = lang; Atlas.nav($('#nav-at'), 'iota-terminos.html'); Atlas.galeria($('#gal'), GAL);
   }
 
   document.addEventListener('click', function (ev) {
@@ -339,7 +323,6 @@
     pintar();
   });
   pintar();
-  if ('serviceWorker' in navigator) navigator.serviceWorker.register('../sw.js', { scope: '../' }).catch(function () {});
 })();
 </script>
 </body>

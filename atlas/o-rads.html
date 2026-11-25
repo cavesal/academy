@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>O-RADS US — Atlas médico · CaVeSal® Academy</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="../img/favicon.png">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="atlas.css">
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <a class="marca" href="../#/" aria-label="CaVeSal Academy">
+      <img src="../img/icon-192.png" alt="" width="40" height="40">
+      <span class="marca-txt"><strong>CaVeSal<sup>®</sup> Academy</strong><small data-t="atlas">Atlas médico</small></span>
+    </a>
+  </div>
+</header>
+<main class="at" id="main">
+  <div class="at-top">
+    <a class="volver" href="../#/" data-t="volver">← Volver a Academy</a>
+    <div class="idi" role="group" aria-label="Idioma">
+      <button type="button" data-l="es">ES</button><button type="button" data-l="en">EN</button><button type="button" data-l="pt">PT</button>
+    </div>
+  </div>
+  <nav class="nav-at" id="nav-at" aria-label="Láminas"></nav>
+  <span class="eyebrow" data-t="ruta">Ginecología · Ecografía</span>
+  <h1 data-t="tit">O-RADS US v2022: categorías, descriptores y conducta</h1>
+  <p class="baj" data-t="baj">Tocá una categoría: los descriptores y la conducta aparecen debajo.</p>
+
+  <section class="lam" aria-labelledby="h-a">
+    <h2 id="h-a"><span class="tipo">P</span><span data-t="hA">O-RADS US v2022 (ACR)</span></h2>
+    <div class="cat" id="cat" role="group"></div>
+    <div class="exp" id="exp" aria-live="polite"></div>
+    <p class="nota" data-t="abrev">CS: score color (1 sin flujo, 2 mínimo, 3 moderado, 4 muy intenso). Liso o irregular: pared interna o contorno.</p>
+  </section>
+
+  <section class="lam" aria-labelledby="h-b">
+    <h2 id="h-b"><span class="tipo">P</span><span data-t="hB">O-RADS según IOTA (ADNEX)</span><span class="alt" data-t="altTag">Alternativa citada por la fuente</span></h2>
+    <div class="cat" id="cat2" role="group"></div>
+    <div class="exp" id="exp2" aria-live="polite"></div>
+  </section>
+
+  <section class="lam" aria-labelledby="h-d">
+    <h2 id="h-d"><span class="tipo">P</span><span data-t="hD">Imágenes reales: O-RADS 2 a 5 con histología</span></h2>
+    <div class="gal" id="gal"></div>
+    <p class="nota" data-t="notaGal">Imágenes con licencia CC BY 4.0, sin datos de pacientes, con crédito al autor.</p>
+  </section>
+
+  <div class="rot">
+    <p><strong data-t="rotulo">Algoritmo propio CaVeSal® · Basado en: O-RADS US v2022 (ACR) y consenso IOTA 2026.</strong></p>
+    <p class="nota" data-t="nota">Lámina didáctica; no reemplaza la evaluación del ecografista ni el estudio histológico.</p>
+    <ol>
+      <li>Strachowski LM, Jha P, Phillips CH, Blanchette Porter MM, Froyman W, Glanc P, et al. O-RADS US v2022: an update from the American College of Radiology’s Ovarian-Adnexal Reporting and Data System US Committee. Radiology. 2023;308(3):e230685. <a href="https://doi.org/10.1148/radiol.230685" target="_blank" rel="noopener">doi:10.1148/radiol.230685</a></li>
+      <li>Epstein K, Dillman J, Abu Ata N, et al. Assessment of ultrasound O-RADS for pediatric patients. Pediatr Radiol. 2026;56(4):856–866 (tabla de categorías O-RADS US v2022). <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13035678/" target="_blank" rel="noopener">PMC13035678</a></li>
+      <li>Timmerman D, Valentin L, Testa AC, et al. Terms, definitions and measurements to describe the sonographic features of adnexal tumors: updated consensus opinion from the IOTA Group. Ultrasound Obstet Gynecol. 2026;67(5):702–724. <a href="https://doi.org/10.1002/uog.70191" target="_blank" rel="noopener">doi:10.1002/uog.70191</a></li>
+      <li>American College of Radiology. O-RADS™ Ultrasound. <a href="https://www.acr.org/Clinical-Resources/Clinical-Tools-and-Reference/Reporting-and-Data-Systems/O-RADS/Ultrasound" target="_blank" rel="noopener">acr.org</a></li>
+    </ol>
+  </div>
+</main>
+<script src="atlas.js"></script>
+<script>
+(function () {
+  'use strict';
+  var A = window.Atlas;
+  var UI = {
+    es: { atlas: 'Atlas médico', volver: '← Volver a Academy', ruta: 'Ginecología · Ecografía', tit: 'O-RADS US v2022: categorías, descriptores y conducta',
+      baj: 'Tocá una categoría: los descriptores y la conducta aparecen debajo.', hA: 'O-RADS US v2022 (ACR)', hB: 'O-RADS según IOTA (ADNEX)', altTag: 'Alternativa citada por la fuente',
+      abrev: 'CS: score color (1 sin flujo, 2 mínimo, 3 moderado, 4 muy intenso). Liso o irregular: pared interna o contorno.',
+      hD: 'Imágenes reales: O-RADS 2 a 5 con histología', notaGal: 'Imágenes con licencia CC BY 4.0, sin datos de pacientes, con crédito al autor.',
+      rotulo: 'Algoritmo propio CaVeSal® · Basado en: O-RADS US v2022 (ACR) y consenso IOTA 2026.', nota: 'Lámina didáctica; no reemplaza la evaluación del ecografista ni el estudio histológico.',
+      desc: 'Descriptores', cond: 'Conducta', vacio: 'Elegí una categoría.',
+      c: ['Incompleta', 'Normal', 'Casi benigna', 'Riesgo bajo', 'Intermedio', 'Alto'] },
+    en: { atlas: 'Medical atlas', volver: '← Back to Academy', ruta: 'Gynecology · Ultrasound', tit: 'O-RADS US v2022: categories, descriptors and management',
+      baj: 'Tap a category: descriptors and management appear below.', hA: 'O-RADS US v2022 (ACR)', hB: 'O-RADS by IOTA (ADNEX)', altTag: 'Alternative cited by the source',
+      abrev: 'CS: color score (1 no flow, 2 minimal, 3 moderate, 4 very strong). Smooth or irregular: inner wall or contour.',
+      hD: 'Real images: O-RADS 2 to 5 with histology', notaGal: 'CC BY 4.0 licensed images, without patient data, credited to the author.',
+      rotulo: 'CaVeSal® own algorithm · Based on: O-RADS US v2022 (ACR) and IOTA consensus 2026.', nota: 'Didactic plate; it does not replace the sonographer’s assessment or histology.',
+      desc: 'Descriptors', cond: 'Management', vacio: 'Choose a category.',
+      c: ['Incomplete', 'Normal', 'Almost benign', 'Low risk', 'Intermediate', 'High'] },
+    pt: { atlas: 'Atlas médico', volver: '← Voltar ao Academy', ruta: 'Ginecologia · Ultrassom', tit: 'O-RADS US v2022: categorias, descritores e conduta',
+      baj: 'Toque uma categoria: os descritores e a conduta aparecem abaixo.', hA: 'O-RADS US v2022 (ACR)', hB: 'O-RADS segundo a IOTA (ADNEX)', altTag: 'Alternativa citada pela fonte',
+      abrev: 'CS: escore de cor (1 sem fluxo, 2 mínimo, 3 moderado, 4 muito intenso). Liso ou irregular: parede interna ou contorno.',
+      hD: 'Imagens reais: O-RADS 2 a 5 com histologia', notaGal: 'Imagens com licença CC BY 4.0, sem dados de pacientes, com crédito ao autor.',
+      rotulo: 'Algoritmo próprio CaVeSal® · Baseado em: O-RADS US v2022 (ACR) e consenso IOTA 2026.', nota: 'Lâmina didática; não substitui a avaliação do ultrassonografista nem o exame histológico.',
+      desc: 'Descritores', cond: 'Conduta', vacio: 'Escolha uma categoria.',
+      c: ['Incompleta', 'Normal', 'Quase benigna', 'Risco baixo', 'Intermediário', 'Alto'] }
+  };
+  var COL = ['#6b7a88', '#1e8e4f', '#2e9d5a', '#b7791f', '#d9622b', '#c62828'];
+  /* O-RADS US v2022: [riesgo, descriptores[], conducta[]] */
+  var OR = {
+    es: [
+      ['Técnicamente inadecuada', ['Factores técnicos (por ejemplo, el tamaño de la lesión) impiden evaluar los rasgos necesarios.', 'No se usa por duda en la caracterización.'], ['Repetir la ecografía si la limitación es variable; si no, considerar RM.']],
+      ['Ovario normal', ['Ovario sin lesión focal.', 'Quiste fisiológico: folículo o cuerpo lúteo, típicamente ≤3 cm.'], ['Por lo general, sin seguimiento por imágenes ni clínico.']],
+      ['Casi seguramente benigna (<1 %)', ['Quiste simple >3 cm y <10 cm.', 'Quiste unilocular liso no simple >3 cm y <10 cm.', 'Quiste bilocular liso >3 cm y <10 cm.', 'Lesión ovárica benigna típica <10 cm: quiste hemorrágico, dermoide o endometrioma.', 'Lesión extraovárica benigna típica, de cualquier tamaño (por ejemplo, hidrosálpinx).'], ['Quiste simple: ecografía a los 12 meses si mide >5 cm en premenopausia o >3 cm en posmenopausia; si mide ≥10 cm y no se opera, a los 6 meses.', 'Unilocular no simple liso o bilocular liso >3 y <10 cm: ecografía a los 6 meses.', 'Rasgos de lesión clásica dudosos: ecografía dentro de 3 meses.', 'Algunas lesiones necesitan manejo ginecológico por síntomas.']],
+      ['Riesgo bajo (1 a <10 %)', ['Lesión ovárica benigna típica ≥10 cm.', 'Quiste uni o bilocular liso ≥10 cm.', 'Quiste unilocular irregular, de cualquier tamaño.', 'Quiste multilocular liso <10 cm, CS <4.', 'Lesión sólida lisa, con o sin sombra, CS 1.', 'Lesión sólida lisa con sombra, CS 2–3.'], ['Si no se extirpa: ecografía dentro de 6 meses; si está estable, a los 12 y 24 meses.', 'En lesiones sólidas, considerar ecografista especialista o RM con score O-RADS MRI.', 'Puede manejarla el ginecólogo sin oncólogo ginecológico.']],
+      ['Riesgo intermedio (10 a <50 %)', ['Quiste bilocular sin sólido, irregular.', 'Quiste multilocular sin sólido: liso ≥10 cm con CS <4, liso con CS 4, o irregular.', 'Quiste unilocular con sólido: <4 papilas u otro componente sólido.', 'Quiste bi o multilocular con sólido, CS 1–2.', 'Lesión sólida lisa sin sombra, CS 2–3.'], ['Evaluación por ecografista especialista o RM con protocolo O-RADS MRI (más útil en sólidos y quísticos con sólido).', 'Ginecólogo junto con oncólogo ginecológico, o derivación a oncología ginecológica.']],
+      ['Riesgo alto (≥50 %)', ['Quiste unilocular con ≥4 papilas.', 'Quiste bi o multilocular con sólido, CS 3–4.', 'Lesión sólida lisa, CS 4.', 'Lesión sólida irregular, cualquier CS.', 'Ascitis o nódulos peritoneales.'], ['Derivación a oncología ginecológica.', 'Imágenes según el protocolo de oncología ginecológica: RM para caracterizar o TC para estadificar.']]
+    ],
+    en: [
+      ['Technically inadequate', ['Technical factors (for example, lesion size) prevent assessment of the needed features.', 'Not used for uncertain characterization.'], ['Repeat US if the limitation is variable; otherwise consider MRI.']],
+      ['Normal ovary', ['Ovary without a focal lesion.', 'Physiologic cyst: follicle or corpus luteum, typically ≤3 cm.'], ['Typically no imaging or clinical follow-up.']],
+      ['Almost certainly benign (<1%)', ['Simple cyst >3 cm and <10 cm.', 'Unilocular smooth non-simple cyst >3 cm and <10 cm.', 'Bilocular smooth cyst >3 cm and <10 cm.', 'Typical benign ovarian lesion <10 cm: hemorrhagic cyst, dermoid or endometrioma.', 'Typical benign extraovarian lesion, any size (for example, hydrosalpinx).'], ['Simple cyst: US at 12 months if >5 cm premenopausal or >3 cm postmenopausal; if ≥10 cm and not excised, at 6 months.', 'Unilocular smooth non-simple or bilocular smooth >3 and <10 cm: US at 6 months.', 'Uncertain classic-lesion features: US within 3 months.', 'Some lesions need gynecologic management because of symptoms.']],
+      ['Low risk (1 to <10%)', ['Typical benign ovarian lesion ≥10 cm.', 'Smooth uni- or bilocular cyst ≥10 cm.', 'Irregular unilocular cyst, any size.', 'Smooth multilocular cyst <10 cm, CS <4.', 'Smooth solid lesion, with or without shadowing, CS 1.', 'Smooth solid lesion with shadowing, CS 2–3.'], ['If not excised: US within 6 months; if stable, at 12 and 24 months.', 'For solid lesions, consider a US specialist or MRI with the O-RADS MRI score.', 'May be managed by a gynecologist without a gynecologic oncologist.']],
+      ['Intermediate risk (10 to <50%)', ['Bilocular cyst without solid component, irregular.', 'Multilocular cyst without solid component: smooth ≥10 cm with CS <4, smooth with CS 4, or irregular.', 'Unilocular cyst with solid component: <4 papillary projections or other solid component.', 'Bi- or multilocular cyst with solid component, CS 1–2.', 'Smooth non-shadowing solid lesion, CS 2–3.'], ['Assessment by a US specialist or MRI with the O-RADS MRI protocol (most useful for solid and cystic-solid lesions).', 'Gynecologist with a gynecologic oncologist, or referral to gynecologic oncology.']],
+      ['High risk (≥50%)', ['Unilocular cyst with ≥4 papillary projections.', 'Bi- or multilocular cyst with solid component, CS 3–4.', 'Smooth solid lesion, CS 4.', 'Irregular solid lesion, any CS.', 'Ascites or peritoneal nodules.'], ['Referral to gynecologic oncology.', 'Imaging per gynecologic oncology protocol: MRI for characterization or CT for staging.']]
+    ],
+    pt: [
+      ['Tecnicamente inadequada', ['Fatores técnicos (por exemplo, o tamanho da lesão) impedem avaliar as características necessárias.', 'Não se usa por dúvida na caracterização.'], ['Repetir o ultrassom se a limitação for variável; se não, considerar RM.']],
+      ['Ovário normal', ['Ovário sem lesão focal.', 'Cisto fisiológico: folículo ou corpo lúteo, tipicamente ≤3 cm.'], ['Em geral, sem seguimento por imagem nem clínico.']],
+      ['Quase certamente benigna (<1%)', ['Cisto simples >3 cm e <10 cm.', 'Cisto unilocular liso não simples >3 cm e <10 cm.', 'Cisto bilocular liso >3 cm e <10 cm.', 'Lesão ovariana benigna típica <10 cm: cisto hemorrágico, dermoide ou endometrioma.', 'Lesão extraovariana benigna típica, de qualquer tamanho (por exemplo, hidrossalpinge).'], ['Cisto simples: ultrassom aos 12 meses se >5 cm na pré-menopausa ou >3 cm na pós-menopausa; se ≥10 cm e não operado, aos 6 meses.', 'Unilocular liso não simples ou bilocular liso >3 e <10 cm: ultrassom aos 6 meses.', 'Características de lesão clássica duvidosas: ultrassom em até 3 meses.', 'Algumas lesões precisam de manejo ginecológico por sintomas.']],
+      ['Risco baixo (1 a <10%)', ['Lesão ovariana benigna típica ≥10 cm.', 'Cisto uni ou bilocular liso ≥10 cm.', 'Cisto unilocular irregular, de qualquer tamanho.', 'Cisto multilocular liso <10 cm, CS <4.', 'Lesão sólida lisa, com ou sem sombra, CS 1.', 'Lesão sólida lisa com sombra, CS 2–3.'], ['Se não for retirada: ultrassom em até 6 meses; se estável, aos 12 e 24 meses.', 'Em lesões sólidas, considerar ultrassonografista especialista ou RM com escore O-RADS MRI.', 'Pode ser manejada pelo ginecologista sem oncologista ginecológico.']],
+      ['Risco intermediário (10 a <50%)', ['Cisto bilocular sem sólido, irregular.', 'Cisto multilocular sem sólido: liso ≥10 cm com CS <4, liso com CS 4, ou irregular.', 'Cisto unilocular com sólido: <4 papilas ou outro componente sólido.', 'Cisto bi ou multilocular com sólido, CS 1–2.', 'Lesão sólida lisa sem sombra, CS 2–3.'], ['Avaliação por ultrassonografista especialista ou RM com protocolo O-RADS MRI (mais útil em sólidos e císticos com sólido).', 'Ginecologista junto com oncologista ginecológico, ou encaminhamento à oncologia ginecológica.']],
+      ['Risco alto (≥50%)', ['Cisto unilocular com ≥4 papilas.', 'Cisto bi ou multilocular com sólido, CS 3–4.', 'Lesão sólida lisa, CS 4.', 'Lesão sólida irregular, qualquer CS.', 'Ascite ou nódulos peritoneais.'], ['Encaminhamento à oncologia ginecológica.', 'Imagem segundo o protocolo de oncologia ginecológica: RM para caracterizar ou TC para estadiar.']]
+    ]
+  };
+  /* O-RADS según IOTA (consenso IOTA 2026, tabla 1) */
+  var IO = {
+    es: [null,
+      ['Ovario normal o cambios funcionales', ['Por ejemplo, quiste de cuerpo lúteo.'], ['Manejo conservador.']],
+      ['Descriptores benignos IOTA o riesgo ADNEX <1 %', ['BD1: unilocular en vidrio esmerilado <10 cm en premenopausia (endometrioma).', 'BD2: unilocular con ecogenicidad mixta y sombra <10 cm en premenopausia (dermoide).', 'BD3: unilocular de pared regular y contenido anecoico <10 cm (quiste simple o cistoadenoma).', 'BD4: otros uniloculares de pared regular <10 cm.'], ['Lesión casi seguramente benigna; manejo conservador posible si no hay síntomas.']],
+      ['Riesgo ADNEX 1 a <10 %', [], ['Riesgo bajo; manejo por el ginecólogo local.']],
+      ['Riesgo ADNEX 10 a <50 %', [], ['Riesgo intermedio; manejo por oncólogo ginecológico.']],
+      ['Riesgo ADNEX 50 a 100 %', [], ['Riesgo alto; manejo por oncólogo ginecológico.']]
+    ],
+    en: [null,
+      ['Normal ovary or functional changes', ['For example, corpus luteum cyst.'], ['Conservative management.']],
+      ['IOTA benign descriptors or ADNEX risk <1%', ['BD1: unilocular ground-glass <10 cm, premenopausal (endometrioma).', 'BD2: unilocular mixed echogenicity with shadowing <10 cm, premenopausal (dermoid).', 'BD3: unilocular, regular walls, anechoic fluid <10 cm (simple cyst or cystadenoma).', 'BD4: other unilocular cysts with regular walls <10 cm.'], ['Almost certainly benign; conservative management possible if asymptomatic.']],
+      ['ADNEX risk 1 to <10%', [], ['Low risk; managed by the local gynecologist.']],
+      ['ADNEX risk 10 to <50%', [], ['Intermediate risk; managed by a gynecologic oncologist.']],
+      ['ADNEX risk 50 to 100%', [], ['High risk; managed by a gynecologic oncologist.']]
+    ],
+    pt: [null,
+      ['Ovário normal ou alterações funcionais', ['Por exemplo, cisto de corpo lúteo.'], ['Manejo conservador.']],
+      ['Descritores benignos IOTA ou risco ADNEX <1%', ['BD1: unilocular em vidro fosco <10 cm na pré-menopausa (endometrioma).', 'BD2: unilocular com ecogenicidade mista e sombra <10 cm na pré-menopausa (dermoide).', 'BD3: unilocular de parede regular e conteúdo anecoico <10 cm (cisto simples ou cistoadenoma).', 'BD4: outros uniloculares de parede regular <10 cm.'], ['Lesão quase certamente benigna; manejo conservador possível se assintomática.']],
+      ['Risco ADNEX 1 a <10%', [], ['Risco baixo; manejo pelo ginecologista local.']],
+      ['Risco ADNEX 10 a <50%', [], ['Risco intermediário; manejo por oncologista ginecológico.']],
+      ['Risco ADNEX 50 a 100%', [], ['Risco alto; manejo por oncologista ginecológico.']]
+    ]
+  };
+  var GAL = [
+    { img: 'wu-orads2', c: 'wu', t: { es: ['O-RADS 2', 'Unilocular, score color 1. Histología: cistoadenoma seroso.'], en: ['O-RADS 2', 'Unilocular, color score 1. Histology: serous cystadenoma.'], pt: ['O-RADS 2', 'Unilocular, escore de cor 1. Histologia: cistoadenoma seroso.'] } },
+    { img: 'wu-orads3', c: 'wu', t: { es: ['O-RADS 3', 'Multilocular, score color 2. Histología: quiste paraovárico.'], en: ['O-RADS 3', 'Multilocular, color score 2. Histology: paraovarian cyst.'], pt: ['O-RADS 3', 'Multilocular, escore de cor 2. Histologia: cisto paraovariano.'] } },
+    { img: 'wu-orads4', c: 'wu', t: { es: ['O-RADS 4', 'Multilocular de 13,9 cm, score color 2–3. Histología: cistoadenoma mucinoso.'], en: ['O-RADS 4', 'Multilocular, 13.9 cm, color score 2–3. Histology: mucinous cystadenoma.'], pt: ['O-RADS 4', 'Multilocular de 13,9 cm, escore de cor 2–3. Histologia: cistoadenoma mucinoso.'] } },
+    { img: 'wu-orads5', c: 'wu', t: { es: ['O-RADS 5', 'Masa predominantemente sólida, score color 2–3. Histología: carcinoma de células claras.'], en: ['O-RADS 5', 'Predominantly solid mass, color score 2–3. Histology: clear cell carcinoma.'], pt: ['O-RADS 5', 'Massa predominantemente sólida, escore de cor 2–3. Histologia: carcinoma de células claras.'] } }
+  ];
+  var sel = { a: null, b: null };
+  function $(s) { return document.querySelector(s); }
+  function botones(el, key, desde, u) {
+    var h = '';
+    for (var i = desde; i <= 5; i++) h += '<button type="button" data-g="' + key + '" data-i="' + i + '" style="background:' + COL[i] + '" aria-pressed="' + (sel[key] === i) + '">' + i + '<small>' + A.esc(u.c[i]) + '</small></button>';
+    el.innerHTML = h;
+  }
+  function detalle(el, d, u) {
+    if (!d) { el.innerHTML = '<p class="vacio">' + A.esc(u.vacio) + '</p>'; return; }
+    var li = function (a) { return '<ul>' + a.map(function (x) { return '<li>' + A.esc(x) + '</li>'; }).join('') + '</ul>'; };
+    el.innerHTML = '<h3>' + A.esc(d[0]) + '</h3>' + (d[1].length ? '<h4>' + A.esc(u.desc) + '</h4>' + li(d[1]) : '') + '<h4>' + A.esc(u.cond) + '</h4>' + li(d[2]);
+  }
+  function pintar() {
+    var u = A.textos(UI);
+    A.nav($('#nav-at'), 'o-rads.html');
+    botones($('#cat'), 'a', 0, u); botones($('#cat2'), 'b', 1, u);
+    detalle($('#exp'), sel.a === null ? null : OR[A.lang][sel.a], u);
+    detalle($('#exp2'), sel.b === null ? null : IO[A.lang][sel.b], u);
+    A.galeria($('#gal'), GAL);
+  }
+  document.addEventListener('click', function (ev) {
+    var b = ev.target.closest('button'); if (!b) return;
+    if (b.dataset.l) { A.setLang(b.dataset.l); pintar(); return; }
+    if (b.dataset.g) { sel[b.dataset.g] = +b.dataset.i; pintar(); }
+  });
+  pintar();
+})();
+</script>
+</body>
+</html>
