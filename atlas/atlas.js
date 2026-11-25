@@ -29,6 +29,9 @@
     heil: { txt: 'James Heilman, MD · Wikimedia Commons · CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Auscities.PNG' },
     mim: { txt: 'Mme Mim · Wikimedia Commons · CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Fibroma_in_US.jpg' },
     iota: { txt: 'Timmerman D, et al. UOG 2026;67(5):702. CC BY 4.0', url: 'https://doi.org/10.1002/uog.70191' },
+    hou: { txt: 'Hou L, et al. Front Oncol 2026;16:1721601. CC BY 4.0', url: 'https://doi.org/10.3389/fonc.2026.1721601' },
+    roman: { txt: 'Román Cataña EA, et al. J Surg Case Rep 2026;(4):rjag297. CC BY 4.0', url: 'https://doi.org/10.1093/jscr/rjag297' },
+    haggcl: { txt: 'Mikael Häggström · Wikimedia Commons · CC0', url: 'https://commons.wikimedia.org/wiki/File:Ultrasonography_of_corpus_luteum.jpg' },
     ekem: { txt: 'Ekem · Wikimedia Commons · CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Hydrosalpinx_(left).jpg' }
   };
 
