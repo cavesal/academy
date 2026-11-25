@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>MUSA — Atlas médico · CaVeSal® Academy</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="../img/favicon.png">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="atlas.css">
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <a class="marca" href="../#/" aria-label="CaVeSal Academy">
+      <img src="../img/icon-192.png" alt="" width="40" height="40">
+      <span class="marca-txt"><strong>CaVeSal<sup>®</sup> Academy</strong><small data-t="atlas">Atlas médico</small></span>
+    </a>
+  </div>
+</header>
+<main class="at" id="main">
+  <div class="at-top">
+    <a class="volver" href="../#/" data-t="volver">← Volver a Academy</a>
+    <div class="idi" role="group" aria-label="Idioma">
+      <button type="button" data-l="es">ES</button><button type="button" data-l="en">EN</button><button type="button" data-l="pt">PT</button>
+    </div>
+  </div>
+  <nav class="nav-at" id="nav-at" aria-label="Láminas"></nav>
+  <span class="eyebrow" data-t="ruta">Ginecología · Ecografía</span>
+  <h1 data-t="tit">MUSA: miometrio, adenomiosis y miomas</h1>
+  <p class="baj" data-t="baj">Tocá un número del esquema o un botón: la definición aparece debajo.</p>
+
+  <section class="lam" aria-labelledby="h-a">
+    <h2 id="h-a"><span class="tipo">P</span><span data-t="hA">Rasgos MUSA de adenomiosis (revisión Delphi 2022)</span></h2>
+    <div id="svgA"></div>
+    <h3 class="sub" data-t="dir">Rasgos directos</h3><div class="chips" id="chD"></div>
+    <h3 class="sub" data-t="ind">Rasgos indirectos</h3><div class="chips" id="chI"></div>
+    <div class="exp" id="expA" aria-live="polite"></div>
+    <p class="nota" data-t="regla">Sin rasgos directos (quistes, islas hiperecogénicas, líneas o brotes subendometriales), los rasgos indirectos no son concluyentes de adenomiosis.</p>
+  </section>
+
+  <section class="lam" aria-labelledby="h-b">
+    <h2 id="h-b"><span class="tipo">P</span><span data-t="hB">Mioma o adenomiosis</span></h2>
+    <div class="tab2" id="tab"></div>
+  </section>
+
+  <section class="lam" aria-labelledby="h-c">
+    <h2 id="h-c"><span class="tipo">P</span><span data-t="hC">Clasificación FIGO de miomas, tipos 0 a 8</span></h2>
+    <div id="svgF"></div>
+    <div class="chips" id="chF"></div>
+    <div class="exp" id="expF" aria-live="polite"></div>
+    <p class="nota" data-t="hib">Tipos híbridos (por ejemplo, 2-5): se escriben dos números; el primero indica la relación con el endometrio y el segundo con la serosa.</p>
+  </section>
+
+  <section class="lam" aria-labelledby="h-d">
+    <h2 id="h-d"><span class="tipo">P</span><span data-t="hD">Esquema propio y ecografía real</span></h2>
+    <div class="par" id="gal"></div>
+    <p class="nota" data-t="notaGal">Izquierda: dibujo didáctico propio. Derecha: ecografía real con licencia libre (CC0), sin datos de pacientes.</p>
+  </section>
+
+  <div class="rot">
+    <p><strong data-t="rotulo">Algoritmo propio CaVeSal® · Basado en: consenso MUSA 2015, revisión MUSA 2022 y clasificación FIGO de miomas.</strong></p>
+    <p class="nota" data-t="nota">Lámina didáctica.</p>
+    <ol>
+      <li>Van den Bosch T, Dueholm M, Leone FPG, et al. Terms, definitions and measurements to describe sonographic features of myometrium and uterine masses: a consensus opinion from the Morphological Uterus Sonographic Assessment (MUSA) group. Ultrasound Obstet Gynecol. 2015;46(3):284–298. <a href="https://doi.org/10.1002/uog.14806" target="_blank" rel="noopener">doi:10.1002/uog.14806</a></li>
+      <li>Harmsen MJ, Van den Bosch T, de Leeuw RA, et al. Consensus on revised definitions of Morphological Uterus Sonographic Assessment (MUSA) features of adenomyosis: results of modified Delphi procedure. Ultrasound Obstet Gynecol. 2022;60(1):118–131. <a href="https://doi.org/10.1002/uog.24786" target="_blank" rel="noopener">doi:10.1002/uog.24786</a></li>
+      <li>Munro MG, Critchley HOD, Fraser IS; FIGO Menstrual Disorders Committee. The two FIGO systems for normal and abnormal uterine bleeding symptoms and classification of causes of abnormal uterine bleeding in the reproductive years: 2018 revisions. Int J Gynaecol Obstet. 2018;143(3):393–408. <a href="https://doi.org/10.1002/ijgo.12666" target="_blank" rel="noopener">doi:10.1002/ijgo.12666</a></li>
+    </ol>
+  </div>
+</main>
+<script src="atlas.js"></script>
+<script>
+(function () {
+  'use strict';
+  var A = window.Atlas;
+  function $(s) { return document.querySelector(s); }
+  var COM = {
+    es: { atlas: 'Atlas médico', volver: '← Volver a Academy', nota: 'Lámina didáctica; no reemplaza la evaluación del ecografista ni el juicio clínico.', esq: 'Esquema CaVeSal®', vacio: 'Elegí una opción.' },
+    en: { atlas: 'Medical atlas', volver: '← Back to Academy', nota: 'Didactic plate; it does not replace the sonographer’s assessment or clinical judgment.', esq: 'CaVeSal® drawing', vacio: 'Choose an option.' },
+    pt: { atlas: 'Atlas médico', volver: '← Voltar ao Academy', nota: 'Lâmina didática; não substitui a avaliação do ultrassonografista nem o julgamento clínico.', esq: 'Esquema CaVeSal®', vacio: 'Escolha uma opção.' }
+  };
+  function U(UI) { ['es', 'en', 'pt'].forEach(function (l) { for (var k in COM[l]) if (!(k in UI[l])) UI[l][k] = COM[l][k]; }); return A.textos(UI); }
+  function real(img, c, txt) { var r = A.CRED[c]; return '<figure><img src="img/' + img + '.jpg" alt="" loading="lazy"><figcaption><a href="' + r.url + '" target="_blank" rel="noopener">' + A.esc(r.txt) + '</a></figcaption></figure>'; }
+  function chips(el, list, cur, g) { el.innerHTML = list.map(function (x, i) { return '<button type="button" data-g="' + g + '" data-i="' + i + '" aria-pressed="' + (cur === i) + '">' + (x.k ? '<b>' + A.esc(x.k) + '</b>' : '') + A.esc(x.n) + '</button>'; }).join(''); }
+  function lista(a) { return '<ul>' + a.map(function (x) { return '<li>' + A.esc(x) + '</li>'; }).join('') + '</ul>'; }
+
+  var UI = {
+    es: { ruta: 'Ginecología · Ecografía', tit: 'MUSA: miometrio, adenomiosis y miomas', baj: 'Tocá un número del esquema o un botón: la definición aparece debajo.',
+      hA: 'Rasgos MUSA de adenomiosis (revisión Delphi 2022)', dir: 'Rasgos directos', ind: 'Rasgos indirectos',
+      regla: 'Sin rasgos directos (quistes, islas hiperecogénicas, líneas o brotes subendometriales), los rasgos indirectos no son concluyentes de adenomiosis.',
+      hB: 'Mioma o adenomiosis', hC: 'Clasificación FIGO de miomas, tipos 0 a 8', hib: 'Tipos híbridos (por ejemplo, 2-5): se escriben dos números; el primero indica la relación con el endometrio y el segundo con la serosa.',
+      hD: 'Esquema propio y ecografía real', notaGal: 'Izquierda: dibujo didáctico propio. Derecha: ecografía real con licencia libre (CC0), sin datos de pacientes.',
+      rotulo: 'Algoritmo propio CaVeSal® · Basado en: consenso MUSA 2015, revisión MUSA 2022 y clasificación FIGO de miomas.', nota: 'Lámina didáctica; no reemplaza la evaluación del ecografista ni el juicio clínico.',
+      ant: 'Anterior', post: 'Posterior', fondo: 'Fondo', cuello: 'Cuello', tipo: 'Tipo',
+      tabH: ['', 'Mioma', 'Adenomiosis'], tabF: [['Bordes', 'Bien definidos', 'Mal definidos'], ['Forma', 'Redonda u ovalada, a veces lobulada', 'Difusa o focal, sin contorno claro'], ['Sombras', 'De borde y en abanico interno', 'En abanico, en bandas'], ['Vascularización', 'Circunferencial', 'Translesional'], ['Quistes o islas', 'No típicos', 'Rasgos directos']],
+      galA: ['Líneas subendometriales ecogénicas', 'Líneas hiperecogénicas que parten del endometrio hacia el miometrio: rasgo directo de adenomiosis.'],
+      galM: ['Mioma subseroso', 'Mioma subseroso de 5 cm, bien delimitado, junto al útero (rótulos en inglés en la imagen original).'] },
+    en: { ruta: 'Gynecology · Ultrasound', tit: 'MUSA: myometrium, adenomyosis and fibroids', baj: 'Tap a number on the drawing or a button: the definition appears below.',
+      hA: 'MUSA features of adenomyosis (2022 Delphi revision)', dir: 'Direct features', ind: 'Indirect features',
+      regla: 'Without direct features (cysts, hyperechogenic islands, subendometrial lines or buds), indirect features are not conclusive for adenomyosis.',
+      hB: 'Fibroid or adenomyosis', hC: 'FIGO fibroid classification, types 0 to 8', hib: 'Hybrid types (for example, 2-5): two numbers are written; the first refers to the endometrium and the second to the serosa.',
+      hD: 'Own drawing and real ultrasound', notaGal: 'Left: our own didactic drawing. Right: freely licensed real ultrasound (CC0), without patient data.',
+      rotulo: 'CaVeSal® own algorithm · Based on: MUSA consensus 2015, MUSA revision 2022 and FIGO fibroid classification.', nota: 'Didactic plate; it does not replace the sonographer’s assessment or clinical judgment.',
+      ant: 'Anterior', post: 'Posterior', fondo: 'Fundus', cuello: 'Cervix', tipo: 'Type',
+      tabH: ['', 'Fibroid', 'Adenomyosis'], tabF: [['Margins', 'Well defined', 'Ill defined'], ['Shape', 'Round or oval, sometimes lobulated', 'Diffuse or focal, no clear contour'], ['Shadowing', 'Edge and internal fan-shaped', 'Fan-shaped, in stripes'], ['Vascularity', 'Circumferential', 'Translesional'], ['Cysts or islands', 'Not typical', 'Direct features']],
+      galA: ['Echogenic subendometrial lines', 'Hyperechogenic lines running from the endometrium into the myometrium: a direct feature of adenomyosis.'],
+      galM: ['Subserosal fibroid', 'Subserosal fibroid, 5 cm, well demarcated, next to the uterus.'] },
+    pt: { ruta: 'Ginecologia · Ultrassom', tit: 'MUSA: miométrio, adenomiose e miomas', baj: 'Toque um número do esquema ou um botão: a definição aparece abaixo.',
+      hA: 'Características MUSA de adenomiose (revisão Delphi 2022)', dir: 'Características diretas', ind: 'Características indiretas',
+      regla: 'Sem características diretas (cistos, ilhas hiperecogênicas, linhas ou brotos subendometriais), as indiretas não são conclusivas de adenomiose.',
+      hB: 'Mioma ou adenomiose', hC: 'Classificação FIGO de miomas, tipos 0 a 8', hib: 'Tipos híbridos (por exemplo, 2-5): escrevem-se dois números; o primeiro indica a relação com o endométrio e o segundo com a serosa.',
+      hD: 'Esquema próprio e ultrassom real', notaGal: 'Esquerda: desenho didático próprio. Direita: ultrassom real com licença livre (CC0), sem dados de pacientes.',
+      rotulo: 'Algoritmo próprio CaVeSal® · Baseado em: consenso MUSA 2015, revisão MUSA 2022 e classificação FIGO de miomas.', nota: 'Lâmina didática; não substitui a avaliação do ultrassonografista nem o julgamento clínico.',
+      ant: 'Anterior', post: 'Posterior', fondo: 'Fundo', cuello: 'Colo', tipo: 'Tipo',
+      tabH: ['', 'Mioma', 'Adenomiose'], tabF: [['Bordas', 'Bem definidas', 'Mal definidas'], ['Forma', 'Redonda ou oval, às vezes lobulada', 'Difusa ou focal, sem contorno claro'], ['Sombras', 'De borda e em leque interno', 'Em leque, em faixas'], ['Vascularização', 'Circunferencial', 'Translesional'], ['Cistos ou ilhas', 'Não típicos', 'Características diretas']],
+      galA: ['Linhas subendometriais ecogênicas', 'Linhas hiperecogênicas que partem do endométrio para o miométrio: característica direta de adenomiose.'],
+      galM: ['Mioma subseroso', 'Mioma subseroso de 5 cm, bem delimitado, junto ao útero (rótulos em inglês na imagem original).'] }
+  };
+  /* rasgos: [nombre, definición]; 0-2 directos, 3-8 indirectos */
+  var F = {
+    es: [['Quistes miometriales', 'Espacios quísticos redondos u ovalados de cualquier tamaño dentro del miometrio. Contenido anecoico, de baja ecogenicidad, en vidrio esmerilado o mixto. El halo hiperecogénico no es obligatorio. Usar Doppler color para diferenciarlos de vasos.'],
+      ['Islas hiperecogénicas', 'Áreas hiperecogénicas dentro del miometrio, regulares, irregulares o mal definidas. No hay diámetro ni número mínimo.'],
+      ['Líneas y brotes subendometriales ecogénicos', 'Líneas o brotes hiperecogénicos perpendiculares a la cavidad, en continuidad con el endometrio.'],
+      ['Útero globular', 'La serosa de la pared anterior y/o posterior diverge desde el cuello en lugar de seguir paralela al endometrio; el útero toma forma esférica.'],
+      ['Engrosamiento miometrial asimétrico', 'Diferencia de grosor entre las paredes anterior y posterior del miometrio.'],
+      ['Sombras en abanico', 'Bandas lineales hipoecogénicas, a veces alternadas con bandas hiperecogénicas, que atraviesan la pared uterina.'],
+      ['Vascularización translesional', 'Vasos que atraviesan la lesión, en lugar de rodearla.'],
+      ['Zona de unión irregular', 'Contorno irregular entre el endometrio y el miometrio interno.'],
+      ['Zona de unión interrumpida', 'Interrupción de la zona de unión; se ve mejor en el plano coronal 3D.']],
+    en: [['Myometrial cysts', 'Rounded or oval cystic spaces of any size within the myometrium. Contents anechoic, low-level, ground-glass or mixed. A hyperechogenic rim is not required. Use color Doppler to tell them from vessels.'],
+      ['Hyperechogenic islands', 'Hyperechogenic areas within the myometrium, regular, irregular or ill defined. No minimum diameter or number.'],
+      ['Echogenic subendometrial lines and buds', 'Hyperechogenic lines or buds perpendicular to the cavity, continuous with the endometrium.'],
+      ['Globular uterus', 'The serosa of the anterior and/or posterior wall diverges from the cervix instead of running parallel to the endometrium; the uterus becomes spherical.'],
+      ['Asymmetrical myometrial thickening', 'Difference in thickness between the anterior and posterior myometrial walls.'],
+      ['Fan-shaped shadowing', 'Linear hypoechogenic stripes, sometimes alternating with hyperechogenic stripes, crossing the uterine wall.'],
+      ['Translesional vascularity', 'Vessels crossing the lesion rather than surrounding it.'],
+      ['Irregular junctional zone', 'Irregular outline between the endometrium and the inner myometrium.'],
+      ['Interrupted junctional zone', 'Interruption of the junctional zone; best seen on the 3D coronal plane.']],
+    pt: [['Cistos miometriais', 'Espaços císticos redondos ou ovais de qualquer tamanho no miométrio. Conteúdo anecoico, de baixa ecogenicidade, em vidro fosco ou misto. O halo hiperecogênico não é obrigatório. Usar Doppler colorido para diferenciá-los de vasos.'],
+      ['Ilhas hiperecogênicas', 'Áreas hiperecogênicas no miométrio, regulares, irregulares ou mal definidas. Sem diâmetro nem número mínimo.'],
+      ['Linhas e brotos subendometriais ecogênicos', 'Linhas ou brotos hiperecogênicos perpendiculares à cavidade, em continuidade com o endométrio.'],
+      ['Útero globoso', 'A serosa da parede anterior e/ou posterior diverge a partir do colo em vez de seguir paralela ao endométrio; o útero fica esférico.'],
+      ['Espessamento miometrial assimétrico', 'Diferença de espessura entre as paredes anterior e posterior do miométrio.'],
+      ['Sombras em leque', 'Faixas lineares hipoecogênicas, às vezes alternadas com faixas hiperecogênicas, que atravessam a parede uterina.'],
+      ['Vascularização translesional', 'Vasos que atravessam a lesão, em vez de contorná-la.'],
+      ['Zona juncional irregular', 'Contorno irregular entre o endométrio e o miométrio interno.'],
+      ['Zona juncional interrompida', 'Interrupção da zona juncional; vê-se melhor no plano coronal 3D.']]
+  };
+  var FIGO = {
+    es: ['Submucoso pediculado, intracavitario.', 'Submucoso con menos del 50 % intramural.', 'Submucoso con 50 % o más intramural.', 'Contacta el endometrio; 100 % intramural.', 'Intramural.', 'Subseroso con 50 % o más intramural.', 'Subseroso con menos del 50 % intramural.', 'Subseroso pediculado.', 'Otros: cervical, parásito.'],
+    en: ['Pedunculated submucosal, intracavitary.', 'Submucosal, less than 50% intramural.', 'Submucosal, 50% or more intramural.', 'Contacts the endometrium; 100% intramural.', 'Intramural.', 'Subserosal, 50% or more intramural.', 'Subserosal, less than 50% intramural.', 'Pedunculated subserosal.', 'Other: cervical, parasitic.'],
+    pt: ['Submucoso pediculado, intracavitário.', 'Submucoso com menos de 50% intramural.', 'Submucoso com 50% ou mais intramural.', 'Contata o endométrio; 100% intramural.', 'Intramural.', 'Subseroso com 50% ou mais intramural.', 'Subseroso com menos de 50% intramural.', 'Subseroso pediculado.', 'Outros: cervical, parasita.']
+  };
+  var sel = { f: null, g: null };
+  function pt(g, i, x, y, n) { return '<g class="pt' + (sel[g] === i ? ' on' : '') + '" data-g="' + g + '" data-i="' + i + '" tabindex="0" role="button"><circle class="h" cx="' + x + '" cy="' + y + '" r="15"/><circle class="m" cx="' + x + '" cy="' + y + '" r="9"/><text x="' + x + '" y="' + y + '">' + n + '</text></g>'; }
+  function svgA(u) {
+    var s = '<svg class="eco" viewBox="0 0 360 220" role="img"><rect width="360" height="220" rx="12" fill="#11161b"/>' +
+      '<path d="M30 112 Q30 96 62 94 L104 88 Q140 36 228 34 Q330 36 334 112 Q330 196 226 196 Q140 192 104 136 L62 130 Q30 128 30 112Z" fill="#767d85"/>' +
+      '<path d="M228 34 Q300 30 344 70" fill="none" stroke="#ffd166" stroke-width="1.2" stroke-dasharray="4 3"/>' +
+      '<path d="M70 112 Q150 98 205 96 Q272 94 292 112 Q272 130 205 128 Q150 126 70 112Z" fill="none" stroke="#3b4046" stroke-width="9"/>' +
+      '<path d="M70 112 Q150 98 205 96 Q272 94 292 112 Q272 130 205 128 Q150 126 70 112Z" fill="#cfd4d9"/>' +
+      '<path d="M150 100 l4 -6 l4 5 l5 -7 l4 6 l5 -5" stroke="#3b4046" stroke-width="4" fill="none"/>' +
+      '<path d="M112 104 L120 104" stroke="#cfd4d9" stroke-width="12"/>' +
+      '<circle cx="252" cy="60" r="7" fill="#0a0c0e" stroke="#cfd4d9" stroke-width="1"/><circle cx="270" cy="72" r="5" fill="#0a0c0e"/>' +
+      '<path d="M182 58 q10 -8 18 0 q6 8 -4 12 q-12 4 -14 -12z" fill="#e6e9ec"/>' +
+      '<path d="M222 96 L226 78 M236 95 L242 80 M248 96 l2 -8" stroke="#e6e9ec" stroke-width="2.4"/>' +
+      '<path d="M186 130 L170 192 M198 130 L194 194 M210 130 L218 194" stroke="#0a0c0e" stroke-width="5" opacity=".6"/>' +
+      '<path d="M240 132 q6 20 -2 40 q-4 10 2 20" stroke="#ff3b30" stroke-width="2" fill="none"/><path d="M252 132 q-6 22 2 44" stroke="#2f7dff" stroke-width="2" fill="none"/>' +
+      '<path d="M300 150 L300 186 M296 154 l4 -6 l4 6 M296 182 l4 6 l4 -6" stroke="#ffd166" stroke-width="1.4" fill="none"/>' +
+      '<text x="200" y="22" fill="#9fb3c8" font-size="11" text-anchor="middle" font-weight="700">' + A.esc(u.ant) + '</text><text x="200" y="214" fill="#9fb3c8" font-size="11" text-anchor="middle" font-weight="700">' + A.esc(u.post) + '</text>' +
+      '<text x="350" y="116" fill="#9fb3c8" font-size="10" text-anchor="end" font-weight="700" transform="rotate(-90 350 116)">' + A.esc(u.fondo) + '</text><text x="8" y="116" fill="#9fb3c8" font-size="10" font-weight="700">' + A.esc(u.cuello) + '</text>' +
+      pt('f', 0, 286, 54, 1) + pt('f', 1, 172, 50, 2) + pt('f', 2, 236, 66, 3) + pt('f', 3, 330, 64, 4) + pt('f', 4, 318, 170, 5) + pt('f', 5, 194, 170, 6) + pt('f', 6, 262, 158, 7) + pt('f', 7, 160, 84, 8) + pt('f', 8, 116, 122, 9) + '</svg>';
+    return s;
+  }
+  function svgF(u) {
+    var c = function (i, x, y, r, n) { return '<circle cx="' + x + '" cy="' + y + '" r="' + r + '" fill="' + (sel.g === i ? '#F4B400' : '#9aa1a8') + '" stroke="#e6e9ec" stroke-width="1.4"/>' + pt('g', i, x, y, n); };
+    return '<svg class="eco" viewBox="0 0 360 220" role="img"><rect width="360" height="220" rx="12" fill="#11161b"/>' +
+      '<path d="M118 30 Q180 16 242 30 Q280 42 274 92 Q266 142 212 166 L208 204 L152 204 L148 166 Q94 142 86 92 Q80 42 118 30Z" fill="#767d85"/>' +
+      '<path d="M138 58 Q180 50 222 58 Q206 110 184 142 L176 142 Q154 110 138 58Z" fill="#cfd4d9"/>' +
+      '<path d="M180 60 L180 82" stroke="#e6e9ec" stroke-width="3"/><path d="M262 52 L294 40" stroke="#e6e9ec" stroke-width="3"/>' +
+      c(0, 180, 94, 11, 0) + c(1, 152, 72, 12, 1) + c(2, 214, 80, 12, 2) + c(3, 230, 108, 11, 3) + c(4, 112, 84, 12, 4) + c(5, 266, 70, 13, 5) + c(6, 96, 134, 14, 6) + c(7, 306, 36, 13, 7) + c(8, 180, 188, 11, 8) +
+      '</svg>';
+  }
+  function pintar() {
+    var u = U(UI), f = F[A.lang];
+    A.nav($('#nav-at'), 'musa.html');
+    $('#svgA').innerHTML = svgA(u); $('#svgF').innerHTML = svgF(u);
+    var it = f.map(function (x, i) { return { k: String(i + 1), n: x[0] }; });
+    chips($('#chD'), it.slice(0, 3), sel.f, 'f');
+    $('#chI').innerHTML = it.slice(3).map(function (x, j) { var i = j + 3; return '<button type="button" data-g="f" data-i="' + i + '" aria-pressed="' + (sel.f === i) + '"><b>' + x.k + '</b>' + A.esc(x.n) + '</button>'; }).join('');
+    A.panel($('#expA'), sel.f === null ? '' : (sel.f + 1) + '. ' + f[sel.f][0], sel.f === null ? [] : [f[sel.f][1]], u.vacio);
+    var fg = FIGO[A.lang];
+    chips($('#chF'), fg.map(function (x, i) { return { k: String(i), n: u.tipo + ' ' + i }; }), sel.g, 'g');
+    A.panel($('#expF'), sel.g === null ? '' : u.tipo + ' ' + sel.g, sel.g === null ? [] : [fg[sel.g]], u.vacio);
+    $('#tab').innerHTML = '<table class="tb"><thead><tr>' + u.tabH.map(function (h) { return '<th>' + A.esc(h) + '</th>'; }).join('') + '</tr></thead><tbody>' + u.tabF.map(function (r) { return '<tr>' + r.map(function (c, i) { return i ? '<td>' + A.esc(c) + '</td>' : '<th>' + A.esc(c) + '</th>'; }).join('') + '</tr>'; }).join('') + '</tbody></table>';
+    $('#gal').innerHTML =
+      '<article><h3>' + A.esc(u.galA[0]) + '</h3><div class="duo"><figure>' + A.DIB.musaL() + '<figcaption>' + A.esc(u.esq) + '</figcaption></figure>' + real('musa-adeno', 'haggad') + '</div><p>' + A.esc(u.galA[1]) + '</p></article>' +
+      '<article><h3>' + A.esc(u.galM[0]) + '</h3><div class="duo"><figure>' + A.DIB.musaM() + '<figcaption>' + A.esc(u.esq) + '</figcaption></figure>' + real('musa-mioma', 'haggmi') + '</div><p>' + A.esc(u.galM[1]) + '</p></article>';
+  }
+  document.addEventListener('click', function (ev) {
+    var b = ev.target.closest('[data-l],[data-g]'); if (!b) return;
+    if (b.dataset.l) { A.setLang(b.dataset.l); pintar(); return; }
+    sel[b.dataset.g] = +b.dataset.i; pintar();
+  });
+  document.addEventListener('keydown', function (ev) { if ((ev.key === 'Enter' || ev.key === ' ') && ev.target.matches && ev.target.matches('g[data-g]')) { ev.preventDefault(); ev.target.dispatchEvent(new MouseEvent('click', { bubbles: true })); } });
+  pintar();
+
+})();
+</script>
+</body>
+</html>

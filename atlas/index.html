@@ -26,24 +26,29 @@
       <button type="button" data-l="es">ES</button><button type="button" data-l="en">EN</button><button type="button" data-l="pt">PT</button>
     </div>
   </div>
-  <span class="eyebrow" data-t="ruta">Ginecología · Ecografía</span>
+  <span class="eyebrow" data-t="ruta">Ginecología y Obstetricia</span>
   <h1 data-t="tit">Atlas médico</h1>
   <p class="baj" data-t="baj">Láminas interactivas con esquemas propios e imágenes reales con licencia libre.</p>
   <div class="lst" id="lst"></div>
-  <p class="nota" data-t="prox">Próximas láminas: MUSA, IETA, ILA y topografía del acretismo (PAS).</p>
+  <p class="nota" data-t="prox">Próximas láminas: según la hoja de ruta del Atlas.</p>
 </main>
 <script src="atlas.js"></script>
 <script>
 (function () {
   var A = window.Atlas;
   var UI = {
-    es: { atlas: 'Atlas médico', volver: '← Volver a Academy', ruta: 'Ginecología · Ecografía', tit: 'Atlas médico', baj: 'Láminas interactivas con esquemas propios e imágenes reales con licencia libre.', prox: 'Próximas láminas: MUSA, IETA, ILA y topografía del acretismo (PAS).' },
-    en: { atlas: 'Medical atlas', volver: '← Back to Academy', ruta: 'Gynecology · Ultrasound', tit: 'Medical atlas', baj: 'Interactive plates with our own drawings and freely licensed real images.', prox: 'Coming plates: MUSA, IETA, ILA and placenta accreta (PAS) topography.' },
-    pt: { atlas: 'Atlas médico', volver: '← Voltar ao Academy', ruta: 'Ginecologia · Ultrassom', tit: 'Atlas médico', baj: 'Lâminas interativas com esquemas próprios e imagens reais com licença livre.', prox: 'Próximas lâminas: MUSA, IETA, ILA e topografia do acretismo (PAS).' }
+    es: { atlas: 'Atlas médico', volver: '← Volver a Academy', ruta: 'Ginecología y Obstetricia', tit: 'Atlas médico', baj: 'Láminas interactivas con esquemas propios e imágenes reales con licencia libre.', prox: 'Próximas láminas: según la hoja de ruta del Atlas.' },
+    en: { atlas: 'Medical atlas', volver: '← Back to Academy', ruta: 'Gynecology and Obstetrics', tit: 'Medical atlas', baj: 'Interactive plates with our own drawings and freely licensed real images.', prox: 'Coming plates: according to the Atlas roadmap.' },
+    pt: { atlas: 'Atlas médico', volver: '← Voltar ao Academy', ruta: 'Ginecologia e Obstetrícia', tit: 'Atlas médico', baj: 'Lâminas interativas com esquemas próprios e imagens reais com licença livre.', prox: 'Próximas lâminas: segundo o roteiro do Atlas.' }
   };
   var D = {
     'iota-terminos.html': { es: 'Tipos de tumor, componente sólido, score color y medidas (consenso IOTA).', en: 'Tumor types, solid component, color score and measurements (IOTA consensus).', pt: 'Tipos de tumor, componente sólido, escore de cor e medidas (consenso IOTA).' },
     'iota-reglas-simples.html': { es: 'Rasgos B1–B5 y M1–M5, resultado benigno, maligno o no concluyente.', en: 'B1–B5 and M1–M5 features; benign, malignant or inconclusive result.', pt: 'Características B1–B5 e M1–M5; resultado benigno, maligno ou inconclusivo.' },
+    'musa.html': { es: 'Rasgos directos e indirectos de adenomiosis, mioma o adenomiosis y tipos FIGO 0 a 8.', en: 'Direct and indirect adenomyosis features, fibroid or adenomyosis, and FIGO types 0 to 8.', pt: 'Características diretas e indiretas de adenomiose, mioma ou adenomiose e tipos FIGO 0 a 8.' },
+    'ieta.html': { es: 'Ecogenicidad, línea media, unión endometrio-miometrio, score color, patrón vascular y medición del grosor.', en: 'Echogenicity, midline, endometrial-myometrial junction, color score, vascular pattern and thickness measurement.', pt: 'Ecogenicidade, linha média, junção endométrio-miométrio, escore de cor, padrão vascular e medida da espessura.' },
+    'ila.html': { es: 'Técnica de 4 cuadrantes, bolsillo máximo, cálculo y puntos de corte.', en: 'Four-quadrant technique, deepest pocket, calculation and cut-offs.', pt: 'Técnica dos 4 quadrantes, maior bolsão, cálculo e pontos de corte.' },
+    'segmentos-utero.html': { es: 'Pedículos, patología típica y métodos hemostáticos de cada sector.', en: 'Pedicles, typical condition and hemostatic methods for each sector.', pt: 'Pedículos, patologia típica e métodos hemostáticos de cada setor.' },
+    'pas.html': { es: 'Grados FIGO y clasificación topográfica 0 a 5L con pedículos, procedimiento vascular y tratamiento.', en: 'FIGO grades and topographic classification 0 to 5L with pedicles, vascular procedure and treatment.', pt: 'Graus FIGO e classificação topográfica 0 a 5L com pedículos, procedimento vascular e tratamento.' },
     'o-rads.html': { es: 'Categorías 0–5 de O-RADS US v2022 con descriptores y conducta; versión IOTA/ADNEX.', en: 'O-RADS US v2022 categories 0–5 with descriptors and management; IOTA/ADNEX version.', pt: 'Categorias 0–5 do O-RADS US v2022 com descritores e conduta; versão IOTA/ADNEX.' }
   };
   function pintar() {

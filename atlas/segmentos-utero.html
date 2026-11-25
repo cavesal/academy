@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sectores vasculares del útero — Atlas médico · CaVeSal® Academy</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="../img/favicon.png">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="atlas.css">
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <a class="marca" href="../#/" aria-label="CaVeSal Academy">
+      <img src="../img/icon-192.png" alt="" width="40" height="40">
+      <span class="marca-txt"><strong>CaVeSal<sup>®</sup> Academy</strong><small data-t="atlas">Atlas médico</small></span>
+    </a>
+  </div>
+</header>
+<main class="at" id="main">
+  <div class="at-top">
+    <a class="volver" href="../#/" data-t="volver">← Volver a Academy</a>
+    <div class="idi" role="group" aria-label="Idioma">
+      <button type="button" data-l="es">ES</button><button type="button" data-l="en">EN</button><button type="button" data-l="pt">PT</button>
+    </div>
+  </div>
+  <nav class="nav-at" id="nav-at" aria-label="Láminas"></nav>
+  <span class="eyebrow" data-t="ruta">Obstetricia · Hemorragia posparto</span>
+  <h1 data-t="tit">Sectores vasculares del útero S1, S2 y S3</h1>
+  <p class="baj" data-t="baj">Tocá un sector: los pedículos, la patología típica y los métodos de control aparecen debajo.</p>
+
+  <section class="lam" aria-labelledby="h-a">
+    <h2 id="h-a"><span class="tipo">P</span><span data-t="hA">Tres pedículos arteriales y tres sectores</span></h2>
+    <div id="svgS"></div>
+    <div class="cat" id="cat" role="group"></div>
+    <div class="exp" id="exp" aria-live="polite"></div>
+    <p class="nota" data-t="lim">Límite S1/S2: la reflexión peritoneal vesicouterina en la cesárea, con la vejiga vacía. En ecografía o RM con la vejiga llena: el punto medio de la pared posterior de la vejiga.</p>
+  </section>
+
+  <section class="lam" aria-labelledby="h-b">
+    <h2 id="h-b"><span class="tipo">P</span><span data-t="hB">Métodos hemostáticos según el sector</span></h2>
+    <div class="tab2" id="tab"></div>
+  </section>
+
+  <section class="lam" aria-labelledby="h-c">
+    <h2 id="h-c"><span class="tipo">P</span><span data-t="hC">Control temporal inmediato</span></h2>
+    <ul class="pasos" id="temp"></ul>
+  </section>
+
+  <div class="rot">
+    <p><strong data-t="rotulo">Algoritmo propio CaVeSal® · Basado en: Nieto-Calvache AJ et al., FIGO 2025.</strong></p>
+    <p class="nota" data-t="nota">Lámina didáctica.</p>
+    <ol>
+      <li>Nieto-Calvache AJ, Ramasauskaite D, Wright A, et al. Complex cesarean section: Surgical approach to reduce the risks of intraoperative complications and postpartum hemorrhage. Int J Gynaecol Obstet. 2025;168(3):987–998. <a href="https://doi.org/10.1002/ijgo.16094" target="_blank" rel="noopener">doi:10.1002/ijgo.16094</a></li>
+    </ol>
+  </div>
+</main>
+<script src="atlas.js"></script>
+<script>
+(function () {
+  'use strict';
+  var A = window.Atlas;
+  function $(s) { return document.querySelector(s); }
+  var COM = {
+    es: { atlas: 'Atlas médico', volver: '← Volver a Academy', nota: 'Lámina didáctica; no reemplaza la evaluación del ecografista ni el juicio clínico.', esq: 'Esquema CaVeSal®', vacio: 'Elegí una opción.' },
+    en: { atlas: 'Medical atlas', volver: '← Back to Academy', nota: 'Didactic plate; it does not replace the sonographer’s assessment or clinical judgment.', esq: 'CaVeSal® drawing', vacio: 'Choose an option.' },
+    pt: { atlas: 'Atlas médico', volver: '← Voltar ao Academy', nota: 'Lâmina didática; não substitui a avaliação do ultrassonografista nem o julgamento clínico.', esq: 'Esquema CaVeSal®', vacio: 'Escolha uma opção.' }
+  };
+  function U(UI) { ['es', 'en', 'pt'].forEach(function (l) { for (var k in COM[l]) if (!(k in UI[l])) UI[l][k] = COM[l][k]; }); return A.textos(UI); }
+  function real(img, c, txt) { var r = A.CRED[c]; return '<figure><img src="img/' + img + '.jpg" alt="" loading="lazy"><figcaption><a href="' + r.url + '" target="_blank" rel="noopener">' + A.esc(r.txt) + '</a></figcaption></figure>'; }
+  function chips(el, list, cur, g) { el.innerHTML = list.map(function (x, i) { return '<button type="button" data-g="' + g + '" data-i="' + i + '" aria-pressed="' + (cur === i) + '">' + (x.k ? '<b>' + A.esc(x.k) + '</b>' : '') + A.esc(x.n) + '</button>'; }).join(''); }
+  function lista(a) { return '<ul>' + a.map(function (x) { return '<li>' + A.esc(x) + '</li>'; }).join('') + '</ul>'; }
+
+  var UI = {
+    es: { ruta: 'Obstetricia · Hemorragia posparto', tit: 'Sectores vasculares del útero S1, S2 y S3', baj: 'Tocá un sector: los pedículos, la patología típica y los métodos de control aparecen debajo.',
+      hA: 'Tres pedículos arteriales y tres sectores', hB: 'Métodos hemostáticos según el sector', hC: 'Control temporal inmediato',
+      lim: 'Límite S1/S2: la reflexión peritoneal vesicouterina en la cesárea, con la vejiga vacía. En ecografía o RM con la vejiga llena: el punto medio de la pared posterior de la vejiga.',
+      rotulo: 'Algoritmo propio CaVeSal® · Basado en: Nieto-Calvache AJ et al., FIGO 2025.', nota: 'Lámina didáctica; no reemplaza el juicio clínico ni la experiencia quirúrgica.',
+      ped: 'Pedículos', pat: 'Patología típica', ctl: 'Control', c: ['Cuerpo', 'Segmento y cuello', 'Vagina'],
+      art: ['Ovárica', 'Uterina', 'Colpouterinas', 'Vaginales'],
+      S: [['S1 · Cuerpo uterino', ['Arteria uterina, con aporte menor de la ovárica.'], ['Atonía uterina.'], ['El acceso fácil a sus vasos facilita el control: ligadura de uterinas, suturas compresivas, embolización de uterinas, balón intrauterino.']],
+        ['S2 · Segmento inferior y cuello', ['Arterias colpouterinas: ramas de las vaginales inferiores (ácigos vaginal en la línea media y una a cada lado), que se anastomosan con la uterina.'], ['Placenta previa y acretismo (PAS).'], ['Ubicación subperitoneal y retrovesical: hay que movilizar la vejiga para suturas compresivas bajas (B-Lynch 2 o Ho-Cho) y ligadura de colpouterinas.']],
+        ['S3 · Vagina', ['Arterias vaginales, ramas de la pudenda interna (división posterior de la ilíaca interna).'], ['Desgarros vaginales complejos (presentación compuesta, parto instrumental).'], ['Exponer la cara externa de la vagina disecando el espacio prevesical (Retzius).']]],
+      tabH: ['Sector', 'Pedículos', 'Suturas compresivas', 'Ligadura útil', 'Endovascular', 'Compresión intracavitaria', 'Otra compresión externa'],
+      tabF: [['S1', 'Uterina, ovárica', 'De cuerpo y fondo', 'Uterina', 'Uterina', 'Balón intrauterino', 'Envoltura elástica externa'], ['S2', 'Uterina, vaginales, colpouterinas', 'Del segmento inferior', 'Colpouterinas', 'Muy selectiva por ramas de la pudenda interna', 'Balón vaginal', 'No']],
+      temp: ['Torniquete con guante de látex estéril colocado por debajo del sitio de sangrado, mientras se aplica el control definitivo.', 'Compresión manual de la aorta infrarrenal contra la columna lumbar: control inmediato del sangrado pélvico de cualquier causa.'] },
+    en: { ruta: 'Obstetrics · Postpartum hemorrhage', tit: 'Uterine vascular sectors S1, S2 and S3', baj: 'Tap a sector: pedicles, typical condition and control methods appear below.',
+      hA: 'Three arterial pedicles and three sectors', hB: 'Hemostatic methods by sector', hC: 'Immediate temporary control',
+      lim: 'S1/S2 boundary: the vesicouterine peritoneal reflection at cesarean, with an empty bladder. On ultrasound or MRI with a full bladder: the midpoint of the posterior bladder wall.',
+      rotulo: 'CaVeSal® own algorithm · Based on: Nieto-Calvache AJ et al., FIGO 2025.', nota: 'Didactic plate; it does not replace clinical judgment or surgical experience.',
+      ped: 'Pedicles', pat: 'Typical condition', ctl: 'Control', c: ['Body', 'Segment and cervix', 'Vagina'],
+      art: ['Ovarian', 'Uterine', 'Colpouterine', 'Vaginal'],
+      S: [['S1 · Uterine body', ['Uterine artery, with a minor contribution from the ovarian artery.'], ['Uterine atony.'], ['Easy access to its vessels makes control easier: uterine artery ligation, compression sutures, uterine artery embolization, intrauterine balloon.']],
+        ['S2 · Lower segment and cervix', ['Colpouterine arteries: branches of the inferior vaginal arteries (azygos vaginal artery in the midline and one on each side), anastomosing with the uterine artery.'], ['Placenta previa and placenta accreta spectrum (PAS).'], ['Subperitoneal and retrovesical location: the bladder must be mobilized for low compression sutures (B-Lynch 2 or Ho-Cho) and colpouterine ligation.']],
+        ['S3 · Vagina', ['Vaginal arteries, branches of the internal pudendal artery (posterior division of the internal iliac).'], ['Complex vaginal tears (compound presentation, instrumental delivery).'], ['Expose the outer surface of the vagina by dissecting the prevesical space (Retzius).']]],
+      tabH: ['Sector', 'Pedicles', 'Compression sutures', 'Useful ligation', 'Endovascular', 'Intracavitary compression', 'Other external compression'],
+      tabF: [['S1', 'Uterine, ovarian', 'Body and fundal', 'Uterine', 'Uterine', 'Intrauterine balloon', 'External elastic wrapping'], ['S2', 'Uterine, vaginal, colpouterine', 'Lower uterine segment', 'Colpouterine', 'Highly selective via internal pudendal branches', 'Vaginal balloon', 'No']],
+      temp: ['Sterile latex glove tourniquet placed below the bleeding site while definitive control is applied.', 'Manual compression of the infrarenal aorta against the lumbar spine: immediate control of pelvic bleeding of any cause.'] },
+    pt: { ruta: 'Obstetrícia · Hemorragia pós-parto', tit: 'Setores vasculares do útero S1, S2 e S3', baj: 'Toque um setor: os pedículos, a patologia típica e os métodos de controle aparecem abaixo.',
+      hA: 'Três pedículos arteriais e três setores', hB: 'Métodos hemostáticos segundo o setor', hC: 'Controle temporário imediato',
+      lim: 'Limite S1/S2: a reflexão peritoneal vesicouterina na cesárea, com a bexiga vazia. No ultrassom ou RM com a bexiga cheia: o ponto médio da parede posterior da bexiga.',
+      rotulo: 'Algoritmo próprio CaVeSal® · Baseado em: Nieto-Calvache AJ et al., FIGO 2025.', nota: 'Lâmina didática; não substitui o julgamento clínico nem a experiência cirúrgica.',
+      ped: 'Pedículos', pat: 'Patologia típica', ctl: 'Controle', c: ['Corpo', 'Segmento e colo', 'Vagina'],
+      art: ['Ovariana', 'Uterina', 'Colpouterinas', 'Vaginais'],
+      S: [['S1 · Corpo uterino', ['Artéria uterina, com aporte menor da ovariana.'], ['Atonia uterina.'], ['O acesso fácil aos seus vasos facilita o controle: ligadura das uterinas, suturas compressivas, embolização das uterinas, balão intrauterino.']],
+        ['S2 · Segmento inferior e colo', ['Artérias colpouterinas: ramos das vaginais inferiores (ázigos vaginal na linha média e uma de cada lado), que se anastomosam com a uterina.'], ['Placenta prévia e acretismo (PAS).'], ['Localização subperitoneal e retrovesical: é preciso mobilizar a bexiga para suturas compressivas baixas (B-Lynch 2 ou Ho-Cho) e ligadura das colpouterinas.']],
+        ['S3 · Vagina', ['Artérias vaginais, ramos da pudenda interna (divisão posterior da ilíaca interna).'], ['Lacerações vaginais complexas (apresentação composta, parto instrumental).'], ['Expor a face externa da vagina dissecando o espaço pré-vesical (Retzius).']]],
+      tabH: ['Setor', 'Pedículos', 'Suturas compressivas', 'Ligadura útil', 'Endovascular', 'Compressão intracavitária', 'Outra compressão externa'],
+      tabF: [['S1', 'Uterina, ovariana', 'De corpo e fundo', 'Uterina', 'Uterina', 'Balão intrauterino', 'Envoltório elástico externo'], ['S2', 'Uterina, vaginais, colpouterinas', 'Do segmento inferior', 'Colpouterinas', 'Muito seletiva por ramos da pudenda interna', 'Balão vaginal', 'Não']],
+      temp: ['Torniquete com luva de látex estéril colocado abaixo do local do sangramento, enquanto se aplica o controle definitivo.', 'Compressão manual da aorta infrarrenal contra a coluna lombar: controle imediato do sangramento pélvico de qualquer causa.'] }
+  };
+  var COL = ['#1f8fa3', '#d9622b', '#7b4fb3'];
+  var sel = null;
+  function svgS(u) {
+    var op = function (i) { return sel === null || sel === i ? 1 : 0.25; };
+    return '<svg class="eco" viewBox="0 0 360 260" role="img"><rect width="360" height="260" rx="12" fill="#11161b"/>' +
+      '<g opacity="' + op(0) + '"><path d="M118 34 Q180 16 242 34 Q282 50 272 104 Q268 124 252 138 L108 138 Q92 124 88 104 Q78 50 118 34Z" fill="' + COL[0] + '"/><text x="180" y="88" fill="#fff" font-size="20" font-weight="900" text-anchor="middle">S1</text></g>' +
+      '<g opacity="' + op(1) + '"><path d="M108 138 L252 138 Q236 164 214 172 L212 196 L148 196 L146 172 Q124 164 108 138Z" fill="' + COL[1] + '"/><text x="180" y="174" fill="#fff" font-size="18" font-weight="900" text-anchor="middle">S2</text></g>' +
+      '<g opacity="' + op(2) + '"><path d="M148 196 L212 196 L222 246 L138 246Z" fill="' + COL[2] + '"/><text x="180" y="230" fill="#fff" font-size="16" font-weight="900" text-anchor="middle">S3</text></g>' +
+      '<path d="M96 138 L264 138" stroke="#ffd166" stroke-width="1.6" stroke-dasharray="5 4"/>' +
+      '<path d="M18 40 Q60 30 98 52 Q110 60 122 56" stroke="#ff3b30" stroke-width="3" fill="none"/><path d="M342 40 Q300 30 262 52 Q250 60 238 56" stroke="#ff3b30" stroke-width="3" fill="none"/>' +
+      '<path d="M30 150 Q70 150 96 128 Q100 110 110 96 M96 128 Q104 140 116 150" stroke="#ff3b30" stroke-width="3" fill="none"/><path d="M330 150 Q290 150 264 128 Q260 110 250 96 M264 128 Q256 140 244 150" stroke="#ff3b30" stroke-width="3" fill="none"/>' +
+      '<path d="M180 252 L180 200 M162 250 Q158 222 150 186 M198 250 Q202 222 210 186" stroke="#ff8a80" stroke-width="2.6" fill="none"/>' +
+      '<text x="16" y="30" fill="#ffb4ab" font-size="11" font-weight="800">' + A.esc(u.art[0]) + '</text><text x="16" y="166" fill="#ffb4ab" font-size="11" font-weight="800">' + A.esc(u.art[1]) + '</text>' +
+      '<text x="232" y="214" fill="#ffb4ab" font-size="11" font-weight="800">' + A.esc(u.art[2]) + '</text><text x="232" y="246" fill="#ffb4ab" font-size="11" font-weight="800">' + A.esc(u.art[3]) + ' (S3)</text></svg>';
+  }
+  function pintar() {
+    var u = U(UI);
+    A.nav($('#nav-at'), 'segmentos-utero.html');
+    $('#svgS').innerHTML = svgS(u);
+    $('#cat').innerHTML = [0, 1, 2].map(function (i) { return '<button type="button" data-g="s" data-i="' + i + '" style="background:' + COL[i] + '" aria-pressed="' + (sel === i) + '">S' + (i + 1) + '<small>' + A.esc(u.c[i]) + '</small></button>'; }).join('');
+    if (sel === null) $('#exp').innerHTML = '<p class="vacio">' + A.esc(u.vacio) + '</p>';
+    else { var s = u.S[sel]; $('#exp').innerHTML = '<h3>' + A.esc(s[0]) + '</h3><h4>' + A.esc(u.ped) + '</h4>' + lista(s[1]) + '<h4>' + A.esc(u.pat) + '</h4>' + lista(s[2]) + '<h4>' + A.esc(u.ctl) + '</h4>' + lista(s[3]); }
+    $('#tab').innerHTML = '<div class="scroll"><table class="tb"><thead><tr>' + u.tabH.map(function (h) { return '<th>' + A.esc(h) + '</th>'; }).join('') + '</tr></thead><tbody>' + u.tabF.map(function (r) { return '<tr>' + r.map(function (c, i) { return i ? '<td>' + A.esc(c) + '</td>' : '<th>' + A.esc(c) + '</th>'; }).join('') + '</tr>'; }).join('') + '</tbody></table></div>';
+    $('#temp').innerHTML = u.temp.map(function (p) { return '<li>' + A.esc(p) + '</li>'; }).join('');
+  }
+  document.addEventListener('click', function (ev) {
+    var b = ev.target.closest('[data-l],[data-g]'); if (!b) return;
+    if (b.dataset.l) { A.setLang(b.dataset.l); pintar(); return; }
+    sel = +b.dataset.i; pintar();
+  });
+  pintar();
+
+})();
+</script>
+</body>
+</html>

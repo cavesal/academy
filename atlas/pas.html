@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Acretismo placentario (PAS) — Atlas médico · CaVeSal® Academy</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="../img/favicon.png">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="atlas.css">
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <a class="marca" href="../#/" aria-label="CaVeSal Academy">
+      <img src="../img/icon-192.png" alt="" width="40" height="40">
+      <span class="marca-txt"><strong>CaVeSal<sup>®</sup> Academy</strong><small data-t="atlas">Atlas médico</small></span>
+    </a>
+  </div>
+</header>
+<main class="at" id="main">
+  <div class="at-top">
+    <a class="volver" href="../#/" data-t="volver">← Volver a Academy</a>
+    <div class="idi" role="group" aria-label="Idioma">
+      <button type="button" data-l="es">ES</button><button type="button" data-l="en">EN</button><button type="button" data-l="pt">PT</button>
+    </div>
+  </div>
+  <nav class="nav-at" id="nav-at" aria-label="Láminas"></nav>
+  <span class="eyebrow" data-t="ruta">Obstetricia · Placenta</span>
+  <h1 data-t="tit">Acretismo placentario (PAS): FIGO y clasificación topográfica</h1>
+  <p class="baj" data-t="baj">Tocá un grado o un tipo: el esquema marca la zona y la descripción aparece debajo.</p>
+
+  <section class="lam" aria-labelledby="h-a">
+    <h2 id="h-a"><span class="tipo">P</span><span data-t="hA">Clasificación clínica FIGO (intraoperatoria)</span></h2>
+    <div class="cat" id="catF" role="group"></div>
+    <div class="exp" id="expF" aria-live="polite"></div>
+  </section>
+
+  <section class="lam" aria-labelledby="h-b">
+    <h2 id="h-b"><span class="tipo">P</span><span data-t="hB">Clasificación topográfica: tipos 0 a 5L</span></h2>
+    <div id="svgT"></div>
+    <div class="cat c8" id="catT" role="group"></div>
+    <div class="exp" id="expT" aria-live="polite"></div>
+    <p class="nota" data-t="vej">Ecografía: vaciar la vejiga 30 minutos antes y tomar 500 mL de agua (vejiga semillena). Una línea perpendicular al punto medio de la pared posterior de la vejiga separa las lesiones altas (S1) de las bajas (S2).</p>
+    <p class="nota" data-t="sinc">PAS sincrónico: lesiones en más de una topografía, por ejemplo tipo 3 + tipo 2U. La estadificación definitiva es intraoperatoria, después de exponer las paredes anterior, laterales y posterior.</p>
+  </section>
+
+  <section class="lam" aria-labelledby="h-d">
+    <h2 id="h-d"><span class="tipo">P</span><span data-t="hD">Esquema propio y ecografía real</span></h2>
+    <div class="par" id="gal"></div>
+    <p class="nota" data-t="notaGal">Izquierda: dibujo didáctico propio. Derecha: ecografía real con licencia CC BY 4.0, recortada, sin datos de pacientes.</p>
+  </section>
+
+  <div class="rot">
+    <p><strong data-t="rotulo">Algoritmo propio CaVeSal® · Basado en: clasificación FIGO 2019 y clasificación topográfica (Nieto-Calvache 2025).</strong></p>
+    <p class="nota" data-t="nota">Lámina didáctica.</p>
+    <ol>
+      <li>Jauniaux E, Ayres-de-Campos D, Langhoff-Roos J, Fox KA, Collins S; FIGO Placenta Accreta Diagnosis and Management Expert Consensus Panel. FIGO classification for the clinical diagnosis of placenta accreta spectrum disorders. Int J Gynaecol Obstet. 2019;146(1):20–24. <a href="https://doi.org/10.1002/ijgo.12761" target="_blank" rel="noopener">doi:10.1002/ijgo.12761</a></li>
+      <li>Nieto-Calvache AJ, Palacios-Jaraquemada JM, et al. Evaluation of the topographic classification of placenta accreta spectrum: protocol for an ongoing prospective multicenter study. BMC Pregnancy Childbirth. 2025;25:1266. <a href="https://doi.org/10.1186/s12884-025-08423-0" target="_blank" rel="noopener">doi:10.1186/s12884-025-08423-0</a></li>
+      <li>Saedi N, Zare A, Ashtari S, et al. Case Rep Obstet Gynecol. 2026;2026:9537307 (imagen ecográfica, CC BY 4.0). <a href="https://doi.org/10.1155/crog/9537307" target="_blank" rel="noopener">doi:10.1155/crog/9537307</a></li>
+    </ol>
+  </div>
+</main>
+<script src="atlas.js"></script>
+<script>
+(function () {
+  'use strict';
+  var A = window.Atlas;
+  function $(s) { return document.querySelector(s); }
+  var COM = {
+    es: { atlas: 'Atlas médico', volver: '← Volver a Academy', nota: 'Lámina didáctica; no reemplaza la evaluación del ecografista ni el juicio clínico.', esq: 'Esquema CaVeSal®', vacio: 'Elegí una opción.' },
+    en: { atlas: 'Medical atlas', volver: '← Back to Academy', nota: 'Didactic plate; it does not replace the sonographer’s assessment or clinical judgment.', esq: 'CaVeSal® drawing', vacio: 'Choose an option.' },
+    pt: { atlas: 'Atlas médico', volver: '← Voltar ao Academy', nota: 'Lâmina didática; não substitui a avaliação do ultrassonografista nem o julgamento clínico.', esq: 'Esquema CaVeSal®', vacio: 'Escolha uma opção.' }
+  };
+  function U(UI) { ['es', 'en', 'pt'].forEach(function (l) { for (var k in COM[l]) if (!(k in UI[l])) UI[l][k] = COM[l][k]; }); return A.textos(UI); }
+  function real(img, c, txt) { var r = A.CRED[c]; return '<figure><img src="img/' + img + '.jpg" alt="" loading="lazy"><figcaption><a href="' + r.url + '" target="_blank" rel="noopener">' + A.esc(r.txt) + '</a></figcaption></figure>'; }
+  function chips(el, list, cur, g) { el.innerHTML = list.map(function (x, i) { return '<button type="button" data-g="' + g + '" data-i="' + i + '" aria-pressed="' + (cur === i) + '">' + (x.k ? '<b>' + A.esc(x.k) + '</b>' : '') + A.esc(x.n) + '</button>'; }).join(''); }
+  function lista(a) { return '<ul>' + a.map(function (x) { return '<li>' + A.esc(x) + '</li>'; }).join('') + '</ul>'; }
+
+  var UI = {
+    es: { ruta: 'Obstetricia · Placenta', tit: 'Acretismo placentario (PAS): FIGO y clasificación topográfica', baj: 'Tocá un grado o un tipo: el esquema marca la zona y la descripción aparece debajo.',
+      hA: 'Clasificación clínica FIGO (intraoperatoria)', hB: 'Clasificación topográfica: tipos 0 a 5L', hD: 'Esquema propio y ecografía real',
+      vej: 'Ecografía: vaciar la vejiga 30 minutos antes y tomar 500 mL de agua (vejiga semillena). Una línea perpendicular al punto medio de la pared posterior de la vejiga separa las lesiones altas (S1) de las bajas (S2).',
+      sinc: 'PAS sincrónico: lesiones en más de una topografía, por ejemplo tipo 3 + tipo 2U. La estadificación definitiva es intraoperatoria, después de exponer las paredes anterior, laterales y posterior.',
+      notaGal: 'Izquierda: dibujo didáctico propio. Derecha: ecografía real con licencia CC BY 4.0, recortada, sin datos de pacientes.',
+      rotulo: 'Algoritmo propio CaVeSal® · Basado en: clasificación FIGO 2019 y clasificación topográfica (Nieto-Calvache 2025).', nota: 'Lámina didáctica; no reemplaza el juicio clínico ni la experiencia quirúrgica.',
+      cF: ['Adherente', 'Increta', 'Serosa', 'Vejiga', 'Pelvis'], pared: 'Pared y relación con la reflexión peritoneal', eco: 'Ecografía', ped: 'Pedículos arteriales', proc: 'Procedimiento vascular', tto: 'Tratamiento propuesto',
+      tipo: 'Tipo', sag: 'Sagital', cor: 'Coronal', vjg: 'Vejiga', ant: 'Ant.', post: 'Post.',
+      gal: ['Sospecha de PAS', 'Placenta anterior baja, engrosada, con múltiples lagunas y un hematoma intraplacentario.'],
+      F: [['Grado 1 · Placenta adherente (accreta)', ['Sin separación con oxitocina y tracción controlada del cordón; el intento de extracción manual produce sangrado abundante.', 'En la laparotomía: sin distensión evidente del lecho placentario, sin tejido placentario a través de la serosa y con neovascularización mínima o nula.']],
+        ['Grado 2 · Placenta invasiva (increta)', ['En la laparotomía: coloración azulada o violácea y distensión del lecho placentario (abultamiento).', 'Neovascularización importante, sin tejido placentario a través de la serosa.', 'La tracción suave del cordón hunde el útero sin separar la placenta (signo del hoyuelo).']],
+        ['Grado 3a · Percreta limitada a la serosa', ['Tejido placentario que atraviesa la serosa uterina, sin invasión de otros órganos.']],
+        ['Grado 3b · Percreta con invasión vesical', ['No se identifica un plano quirúrgico claro entre la vejiga y el útero.']],
+        ['Grado 3c · Percreta con invasión de otros tejidos pélvicos', ['Invasión del ligamento ancho, la pared vaginal, la pared lateral de la pelvis u otro órgano pélvico.']]],
+      T: [['Anterior alta; la placenta se despega del útero (dehiscencia o “ventana uterina”).', 'Signos de PAS por encima del punto medio de la pared vesical posterior. Transabdominal longitudinal.', 'Uterina', 'Ninguno', 'Cirugía conservadora en un paso (OSCS)'],
+        ['Anterior alta; la placenta no se despega.', 'Signos de PAS por encima del punto medio de la pared vesical posterior. Transabdominal longitudinal.', 'Uterina y ramas de la vesical superior', 'Disección y ligadura de vasos neoformados', 'OSCS'],
+        ['Lateral alta (parametrial).', 'Signos de PAS en la pared lateral alta. Transabdominal transversal.', 'Obturatriz, colaterales de la ilíaca interna, uterina', 'Disección y ligadura de vasos neoformados', 'OSCS'],
+        ['Lateral baja (parametrial).', 'Signos de PAS en la pared lateral baja. Transvaginal longitudinal y transversal.', 'Colaterales de la ilíaca interna, cervical, vaginales', 'Oclusión temporal de la aorta infrarrenal o de ambas ilíacas comunes', 'Histerectomía total después de tunelizar el uréter'],
+        ['Anterior baja.', 'Signos de PAS por debajo del punto medio de la pared vesical posterior. Transvaginal longitudinal medio.', 'Vesical superior, vesical inferior, uterina, cervical, vaginales', 'Oclusión temporal de la aorta infrarrenal o de ambas ilíacas comunes', 'OSCS o histerectomía total'],
+        ['Anterior baja con fibrosis vesicouterina densa.', 'La fibrosis es difícil de ver; suele haber lesiones exuberantes con distorsión del segmento y vascularización cervical marcada.', 'Vesical superior, vesical inferior, uterina, cervical, vaginales', 'Oclusión temporal de la aorta infrarrenal o de ambas ilíacas comunes', 'Histerectomía subtotal modificada (MSTH)'],
+        ['Posterior alta.', 'Difícil de ver con placenta previa; a veces se sospecha por la ventana acústica.', 'Uterina, ovárica, flujo vicariante de la mesentérica inferior', 'Ligadura de uterinas', 'OSCS'],
+        ['Posterior baja.', 'Transvaginal longitudinal: alteraciones de la pared posterior del segmento.', 'Uterina, colaterales de la rectal anterior', 'Ligadura de colaterales; aorta infrarrenal a considerar', 'Histerectomía total']],
+      noRec: 'La fuente no recomienda la histerectomía total con resección vesical parcial, dejar parte del útero adherido a la vejiga ni dejar la placenta in situ.' },
+    en: { ruta: 'Obstetrics · Placenta', tit: 'Placenta accreta spectrum (PAS): FIGO and topographic classification', baj: 'Tap a grade or a type: the drawing marks the area and the description appears below.',
+      hA: 'FIGO clinical classification (intraoperative)', hB: 'Topographic classification: types 0 to 5L', hD: 'Own drawing and real ultrasound',
+      vej: 'Ultrasound: empty the bladder 30 minutes before and drink 500 mL of water (half-full bladder). A line perpendicular to the midpoint of the posterior bladder wall separates high (S1) from low (S2) lesions.',
+      sinc: 'Synchronous PAS: lesions in more than one topography, for example type 3 + type 2U. Final staging is intraoperative, after exposing the anterior, lateral and posterior walls.',
+      notaGal: 'Left: our own didactic drawing. Right: real ultrasound under CC BY 4.0, cropped, without patient data.',
+      rotulo: 'CaVeSal® own algorithm · Based on: FIGO 2019 classification and topographic classification (Nieto-Calvache 2025).', nota: 'Didactic plate; it does not replace clinical judgment or surgical experience.',
+      cF: ['Adherent', 'Increta', 'Serosa', 'Bladder', 'Pelvis'], pared: 'Wall and relation to the peritoneal reflection', eco: 'Ultrasound', ped: 'Arterial pedicles', proc: 'Vascular procedure', tto: 'Proposed treatment',
+      tipo: 'Type', sag: 'Sagittal', cor: 'Coronal', vjg: 'Bladder', ant: 'Ant.', post: 'Post.',
+      gal: ['Suspected PAS', 'Thickened low-lying anterior placenta with multiple lacunae and an intraplacental hematoma.'],
+      F: [['Grade 1 · Abnormally adherent placenta (accreta)', ['No separation with oxytocin and controlled cord traction; attempts at manual removal cause heavy bleeding.', 'At laparotomy: no obvious distension over the placental bed, no placental tissue through the serosa, and minimal or no neovascularity.']],
+        ['Grade 2 · Abnormally invasive placenta (increta)', ['At laparotomy: bluish or purple coloring and distension over the placental bed (bulge).', 'Significant neovascularity, without placental tissue through the serosa.', 'Gentle cord traction pulls the uterus inward without separating the placenta (dimple sign).']],
+        ['Grade 3a · Percreta limited to the serosa', ['Placental tissue through the uterine serosa, without invasion of other organs.']],
+        ['Grade 3b · Percreta with bladder invasion', ['No clear surgical plane can be identified between the bladder and the uterus.']],
+        ['Grade 3c · Percreta invading other pelvic tissue', ['Invasion of the broad ligament, vaginal wall, pelvic sidewall or another pelvic organ.']]],
+      T: [['Upper anterior; the placenta detaches from the uterus (dehiscence or “uterine window”).', 'PAS signs above the midpoint of the posterior bladder wall. Transabdominal longitudinal.', 'Uterine', 'None', 'One-step conservative surgery (OSCS)'],
+        ['Upper anterior; the placenta does not detach.', 'PAS signs above the midpoint of the posterior bladder wall. Transabdominal longitudinal.', 'Uterine and superior vesical branches', 'Dissection and ligation of newly formed vessels', 'OSCS'],
+        ['Upper lateral (parametrial).', 'PAS signs in the upper lateral wall. Transabdominal transverse.', 'Obturator, internal iliac collaterals, uterine', 'Dissection and ligation of newly formed vessels', 'OSCS'],
+        ['Lower lateral (parametrial).', 'PAS signs in the lower lateral wall. Transvaginal longitudinal and transverse.', 'Internal iliac collaterals, cervical, vaginal', 'Temporary occlusion of the infrarenal aorta or both common iliacs', 'Total hysterectomy after ureteral tunneling'],
+        ['Lower anterior.', 'PAS signs below the midpoint of the posterior bladder wall. Transvaginal midline longitudinal.', 'Superior vesical, inferior vesical, uterine, cervical, vaginal', 'Temporary occlusion of the infrarenal aorta or both common iliacs', 'OSCS or total hysterectomy'],
+        ['Lower anterior with dense vesicouterine fibrosis.', 'Fibrosis is hard to see; usually exuberant lesions with distortion of the segment and marked cervical vascularity.', 'Superior vesical, inferior vesical, uterine, cervical, vaginal', 'Temporary occlusion of the infrarenal aorta or both common iliacs', 'Modified subtotal hysterectomy (MSTH)'],
+        ['Upper posterior.', 'Hard to see with placenta previa; sometimes suspected depending on the acoustic window.', 'Uterine, ovarian, vicarious flow from the inferior mesenteric', 'Uterine artery ligation', 'OSCS'],
+        ['Lower posterior.', 'Transvaginal longitudinal: abnormalities of the posterior wall of the segment.', 'Uterine, anterior rectal collaterals', 'Collateral ligation; infrarenal aorta to consider', 'Total hysterectomy']],
+      noRec: 'The source does not recommend total hysterectomy with partial bladder resection, leaving part of the uterus attached to the bladder, or leaving the placenta in situ.' },
+    pt: { ruta: 'Obstetrícia · Placenta', tit: 'Acretismo placentário (PAS): FIGO e classificação topográfica', baj: 'Toque um grau ou um tipo: o esquema marca a zona e a descrição aparece abaixo.',
+      hA: 'Classificação clínica FIGO (intraoperatória)', hB: 'Classificação topográfica: tipos 0 a 5L', hD: 'Esquema próprio e ultrassom real',
+      vej: 'Ultrassom: esvaziar a bexiga 30 minutos antes e tomar 500 mL de água (bexiga semicheia). Uma linha perpendicular ao ponto médio da parede posterior da bexiga separa as lesões altas (S1) das baixas (S2).',
+      sinc: 'PAS sincrônico: lesões em mais de uma topografia, por exemplo tipo 3 + tipo 2U. O estadiamento definitivo é intraoperatório, após expor as paredes anterior, laterais e posterior.',
+      notaGal: 'Esquerda: desenho didático próprio. Direita: ultrassom real com licença CC BY 4.0, recortado, sem dados de pacientes.',
+      rotulo: 'Algoritmo próprio CaVeSal® · Baseado em: classificação FIGO 2019 e classificação topográfica (Nieto-Calvache 2025).', nota: 'Lâmina didática; não substitui o julgamento clínico nem a experiência cirúrgica.',
+      cF: ['Aderente', 'Increta', 'Serosa', 'Bexiga', 'Pelve'], pared: 'Parede e relação com a reflexão peritoneal', eco: 'Ultrassom', ped: 'Pedículos arteriais', proc: 'Procedimento vascular', tto: 'Tratamento proposto',
+      tipo: 'Tipo', sag: 'Sagital', cor: 'Coronal', vjg: 'Bexiga', ant: 'Ant.', post: 'Post.',
+      gal: ['Suspeita de PAS', 'Placenta anterior baixa, espessada, com múltiplas lacunas e um hematoma intraplacentário.'],
+      F: [['Grau 1 · Placenta aderente (accreta)', ['Sem separação com ocitocina e tração controlada do cordão; a tentativa de extração manual causa sangramento abundante.', 'Na laparotomia: sem distensão evidente do leito placentário, sem tecido placentário através da serosa e com neovascularização mínima ou nula.']],
+        ['Grau 2 · Placenta invasiva (increta)', ['Na laparotomia: coloração azulada ou violácea e distensão do leito placentário (abaulamento).', 'Neovascularização importante, sem tecido placentário através da serosa.', 'A tração suave do cordão afunda o útero sem separar a placenta (sinal da covinha).']],
+        ['Grau 3a · Percreta limitada à serosa', ['Tecido placentário que atravessa a serosa uterina, sem invasão de outros órgãos.']],
+        ['Grau 3b · Percreta com invasão vesical', ['Não se identifica um plano cirúrgico claro entre a bexiga e o útero.']],
+        ['Grau 3c · Percreta com invasão de outros tecidos pélvicos', ['Invasão do ligamento largo, da parede vaginal, da parede lateral da pelve ou de outro órgão pélvico.']]],
+      T: [['Anterior alta; a placenta se descola do útero (deiscência ou “janela uterina”).', 'Sinais de PAS acima do ponto médio da parede vesical posterior. Transabdominal longitudinal.', 'Uterina', 'Nenhum', 'Cirurgia conservadora em um tempo (OSCS)'],
+        ['Anterior alta; a placenta não se descola.', 'Sinais de PAS acima do ponto médio da parede vesical posterior. Transabdominal longitudinal.', 'Uterina e ramos da vesical superior', 'Dissecção e ligadura de vasos neoformados', 'OSCS'],
+        ['Lateral alta (parametrial).', 'Sinais de PAS na parede lateral alta. Transabdominal transversal.', 'Obturatória, colaterais da ilíaca interna, uterina', 'Dissecção e ligadura de vasos neoformados', 'OSCS'],
+        ['Lateral baixa (parametrial).', 'Sinais de PAS na parede lateral baixa. Transvaginal longitudinal e transversal.', 'Colaterais da ilíaca interna, cervical, vaginais', 'Oclusão temporária da aorta infrarrenal ou de ambas as ilíacas comuns', 'Histerectomia total após tunelizar o ureter'],
+        ['Anterior baixa.', 'Sinais de PAS abaixo do ponto médio da parede vesical posterior. Transvaginal longitudinal mediano.', 'Vesical superior, vesical inferior, uterina, cervical, vaginais', 'Oclusão temporária da aorta infrarrenal ou de ambas as ilíacas comuns', 'OSCS ou histerectomia total'],
+        ['Anterior baixa com fibrose vesicouterina densa.', 'A fibrose é difícil de ver; costuma haver lesões exuberantes com distorção do segmento e vascularização cervical marcada.', 'Vesical superior, vesical inferior, uterina, cervical, vaginais', 'Oclusão temporária da aorta infrarrenal ou de ambas as ilíacas comuns', 'Histerectomia subtotal modificada (MSTH)'],
+        ['Posterior alta.', 'Difícil de ver com placenta prévia; às vezes suspeita-se pela janela acústica.', 'Uterina, ovariana, fluxo vicariante da mesentérica inferior', 'Ligadura das uterinas', 'OSCS'],
+        ['Posterior baixa.', 'Transvaginal longitudinal: alterações da parede posterior do segmento.', 'Uterina, colaterais da retal anterior', 'Ligadura de colaterais; aorta infrarrenal a considerar', 'Histerectomia total']],
+      noRec: 'A fonte não recomenda a histerectomia total com ressecção vesical parcial, deixar parte do útero aderida à bexiga nem deixar a placenta in situ.' }
+  };
+  var TT = ['0', '1', '2U', '2L', '3', '4', '5U', '5L'], ZN = ['aA', 'aA', 'lA', 'lB', 'aB', 'aB', 'pA', 'pB'];
+  var COLF = ['#b7791f', '#d9622b', '#c62828', '#a61b1b', '#7f1212'];
+  var COLT = ['#6b7a88', '#1e8e4f', '#2e9d5a', '#c62828', '#d9622b', '#a61b1b', '#1f8fa3', '#7b4fb3'];
+  var sel = { f: null, t: null };
+  function svgT(u) {
+    var z = sel.t === null ? '' : ZN[sel.t], c = sel.t === null ? '#F4B400' : COLT[sel.t];
+    var band = function (k, d) { return '<path d="' + d + '" stroke="' + (z === k ? c : '#4a5058') + '" stroke-width="' + (z === k ? 13 : 9) + '" fill="none" stroke-linecap="round"/>'; };
+    return '<svg class="eco" viewBox="0 0 360 230" role="img"><rect width="360" height="230" rx="12" fill="#11161b"/>' +
+      '<text x="90" y="18" fill="#9fb3c8" font-size="11" font-weight="800" text-anchor="middle">' + A.esc(u.sag) + '</text><text x="270" y="18" fill="#9fb3c8" font-size="11" font-weight="800" text-anchor="middle">' + A.esc(u.cor) + '</text>' +
+      '<path d="M180 26 L180 214" stroke="#2a3036" stroke-width="1"/>' +
+      '<ellipse cx="96" cy="104" rx="50" ry="74" fill="#767d85"/><rect x="82" y="168" width="28" height="36" rx="8" fill="#767d85"/>' +
+      '<path d="M60 130 Q70 104 66 70 Q84 120 74 168 Q62 160 60 130Z" fill="#b9a6c9" opacity=".85"/>' +
+      '<ellipse cx="36" cy="170" rx="24" ry="20" fill="#0a0c0e" stroke="#9fb3c8" stroke-width="1.4"/><text x="36" y="174" fill="#9fb3c8" font-size="9" font-weight="700" text-anchor="middle">' + A.esc(u.vjg) + '</text>' +
+      (z === 'aB' && sel.t === 5 ? '<path d="M56 160 L66 152 M56 168 L68 160 M58 176 L70 168" stroke="' + c + '" stroke-width="2"/>' : '') +
+      band('aA', 'M62 50 Q40 100 47 146') + band('aB', 'M47 146 Q52 176 80 196') + band('pA', 'M130 50 Q152 100 145 146') + band('pB', 'M145 146 Q140 176 112 196') +
+      '<path d="M8 146 L172 146" stroke="#ffd166" stroke-width="1.4" stroke-dasharray="5 4"/><text x="166" y="140" fill="#ffd166" font-size="10" font-weight="800" text-anchor="end">S1</text><text x="166" y="160" fill="#ffd166" font-size="10" font-weight="800" text-anchor="end">S2</text>' +
+      '<text x="20" y="40" fill="#9fb3c8" font-size="10" font-weight="700">' + A.esc(u.ant) + '</text><text x="160" y="40" fill="#9fb3c8" font-size="10" font-weight="700" text-anchor="end">' + A.esc(u.post) + '</text>' +
+      '<path d="M226 52 Q270 18 314 52 Q330 100 304 146 Q292 166 284 172 L284 204 L256 204 L256 172 Q248 166 236 146 Q210 100 226 52Z" fill="#767d85"/>' +
+      band('lA', 'M226 56 Q212 100 230 144') + band('lA', 'M314 56 Q328 100 310 144') + band('lB', 'M230 144 Q242 166 256 176') + band('lB', 'M310 144 Q298 166 284 176') +
+      '<path d="M190 146 L350 146" stroke="#ffd166" stroke-width="1.4" stroke-dasharray="5 4"/></svg>';
+  }
+  function pintar() {
+    var u = U(UI);
+    A.nav($('#nav-at'), 'pas.html');
+    var gF = ['1', '2', '3a', '3b', '3c'];
+    $('#catF').innerHTML = gF.map(function (g, i) { return '<button type="button" data-g="f" data-i="' + i + '" style="background:' + COLF[i] + '" aria-pressed="' + (sel.f === i) + '">' + g + '<small>' + A.esc(u.cF[i]) + '</small></button>'; }).join('');
+    if (sel.f === null) $('#expF').innerHTML = '<p class="vacio">' + A.esc(u.vacio) + '</p>'; else $('#expF').innerHTML = '<h3>' + A.esc(u.F[sel.f][0]) + '</h3>' + lista(u.F[sel.f][1]);
+    $('#svgT').innerHTML = svgT(u);
+    $('#catT').innerHTML = TT.map(function (t, i) { return '<button type="button" data-g="t" data-i="' + i + '" style="background:' + COLT[i] + '" aria-pressed="' + (sel.t === i) + '">' + t + '</button>'; }).join('');
+    if (sel.t === null) $('#expT').innerHTML = '<p class="vacio">' + A.esc(u.vacio) + '</p>';
+    else { var t = u.T[sel.t]; $('#expT').innerHTML = '<h3>' + A.esc(u.tipo) + ' ' + TT[sel.t] + '</h3><h4>' + A.esc(u.pared) + '</h4>' + lista([t[0]]) + '<h4>' + A.esc(u.eco) + '</h4>' + lista([t[1]]) + '<h4>' + A.esc(u.ped) + '</h4>' + lista([t[2]]) + '<h4>' + A.esc(u.proc) + '</h4>' + lista([t[3]]) + '<h4>' + A.esc(u.tto) + '</h4>' + lista([t[4]]) + (sel.t === 5 ? '<p class="nota">' + A.esc(u.noRec) + '</p>' : ''); }
+    $('#gal').innerHTML = '<article><h3>' + A.esc(u.gal[0]) + '</h3><div class="duo"><figure>' + A.DIB.pasL() + '<figcaption>' + A.esc(u.esq) + '</figcaption></figure>' + real('pas-saedi', 'saedi') + '</div><p>' + A.esc(u.gal[1]) + '</p></article>';
+  }
+  document.addEventListener('click', function (ev) {
+    var b = ev.target.closest('[data-l],[data-g]'); if (!b) return;
+    if (b.dataset.l) { A.setLang(b.dataset.l); pintar(); return; }
+    sel[b.dataset.g] = +b.dataset.i; pintar();
+  });
+  pintar();
+
+})();
+</script>
+</body>
+</html>

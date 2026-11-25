@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>IETA — Atlas médico · CaVeSal® Academy</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="../img/favicon.png">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="atlas.css">
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <a class="marca" href="../#/" aria-label="CaVeSal Academy">
+      <img src="../img/icon-192.png" alt="" width="40" height="40">
+      <span class="marca-txt"><strong>CaVeSal<sup>®</sup> Academy</strong><small data-t="atlas">Atlas médico</small></span>
+    </a>
+  </div>
+</header>
+<main class="at" id="main">
+  <div class="at-top">
+    <a class="volver" href="../#/" data-t="volver">← Volver a Academy</a>
+    <div class="idi" role="group" aria-label="Idioma">
+      <button type="button" data-l="es">ES</button><button type="button" data-l="en">EN</button><button type="button" data-l="pt">PT</button>
+    </div>
+  </div>
+  <nav class="nav-at" id="nav-at" aria-label="Láminas"></nav>
+  <span class="eyebrow" data-t="ruta">Ginecología · Ecografía</span>
+  <h1 data-t="tit">IETA: términos para describir el endometrio</h1>
+  <p class="baj" data-t="baj">Elegí un rasgo y luego una opción: el esquema cambia y la definición aparece debajo.</p>
+
+  <section class="lam" aria-labelledby="h-a">
+    <h2 id="h-a"><span class="tipo">P</span><span data-t="hA">Rasgos IETA en escala de grises y Doppler</span></h2>
+    <div class="chips" id="grp"></div>
+    <div class="mini" id="opc"></div>
+    <div class="exp" id="exp" aria-live="polite"></div>
+  </section>
+
+  <section class="lam" aria-labelledby="h-b">
+    <h2 id="h-b"><span class="tipo">P</span><span data-t="hB">Cómo medir el grosor endometrial</span></h2>
+    <div id="med"></div>
+    <ol class="pasos" id="pasos"></ol>
+  </section>
+
+  <section class="lam" aria-labelledby="h-d">
+    <h2 id="h-d"><span class="tipo">P</span><span data-t="hD">Esquema propio y ecografía real</span></h2>
+    <div class="par" id="gal"></div>
+    <p class="nota" data-t="notaGal">Izquierda: dibujo didáctico propio. Derecha: ecografía real con licencia libre (CC0), sin datos de pacientes.</p>
+  </section>
+
+  <div class="rot">
+    <p><strong data-t="rotulo">Algoritmo propio CaVeSal® · Basado en: consenso IETA 2010.</strong></p>
+    <p class="nota" data-t="nota">Lámina didáctica.</p>
+    <ol>
+      <li>Leone FPG, Timmerman D, Bourne T, et al. Terms, definitions and measurements to describe the sonographic features of the endometrium and intrauterine lesions: a consensus opinion from the International Endometrial Tumor Analysis (IETA) group. Ultrasound Obstet Gynecol. 2010;35(1):103–112. <a href="https://doi.org/10.1002/uog.7487" target="_blank" rel="noopener">doi:10.1002/uog.7487</a></li>
+    </ol>
+  </div>
+</main>
+<script src="atlas.js"></script>
+<script>
+(function () {
+  'use strict';
+  var A = window.Atlas;
+  function $(s) { return document.querySelector(s); }
+  var COM = {
+    es: { atlas: 'Atlas médico', volver: '← Volver a Academy', nota: 'Lámina didáctica; no reemplaza la evaluación del ecografista ni el juicio clínico.', esq: 'Esquema CaVeSal®', vacio: 'Elegí una opción.' },
+    en: { atlas: 'Medical atlas', volver: '← Back to Academy', nota: 'Didactic plate; it does not replace the sonographer’s assessment or clinical judgment.', esq: 'CaVeSal® drawing', vacio: 'Choose an option.' },
+    pt: { atlas: 'Atlas médico', volver: '← Voltar ao Academy', nota: 'Lâmina didática; não substitui a avaliação do ultrassonografista nem o julgamento clínico.', esq: 'Esquema CaVeSal®', vacio: 'Escolha uma opção.' }
+  };
+  function U(UI) { ['es', 'en', 'pt'].forEach(function (l) { for (var k in COM[l]) if (!(k in UI[l])) UI[l][k] = COM[l][k]; }); return A.textos(UI); }
+  function real(img, c, txt) { var r = A.CRED[c]; return '<figure><img src="img/' + img + '.jpg" alt="" loading="lazy"><figcaption><a href="' + r.url + '" target="_blank" rel="noopener">' + A.esc(r.txt) + '</a></figcaption></figure>'; }
+  function chips(el, list, cur, g) { el.innerHTML = list.map(function (x, i) { return '<button type="button" data-g="' + g + '" data-i="' + i + '" aria-pressed="' + (cur === i) + '">' + (x.k ? '<b>' + A.esc(x.k) + '</b>' : '') + A.esc(x.n) + '</button>'; }).join(''); }
+  function lista(a) { return '<ul>' + a.map(function (x) { return '<li>' + A.esc(x) + '</li>'; }).join('') + '</ul>'; }
+
+  var UI = {
+    es: { ruta: 'Ginecología · Ecografía', tit: 'IETA: términos para describir el endometrio', baj: 'Elegí un rasgo y luego una opción: el esquema cambia y la definición aparece debajo.',
+      hA: 'Rasgos IETA en escala de grises y Doppler', hB: 'Cómo medir el grosor endometrial', hD: 'Esquema propio y ecografía real',
+      notaGal: 'Izquierda: dibujo didáctico propio. Derecha: ecografía real con licencia libre (CC0), sin datos de pacientes.',
+      rotulo: 'Algoritmo propio CaVeSal® · Basado en: consenso IETA 2010.', nota: 'Lámina didáctica; no reemplaza la evaluación del ecografista ni el juicio clínico.',
+      pasos: ['Corte sagital medio del útero, con el endometrio visible del fondo al cuello.', 'Medir donde el endometrio es más grueso, perpendicular a la línea media.', 'Medir de una interfase endometrio-miometrio a la otra: es la doble capa.', 'Si hay líquido en la cavidad, medir cada capa por separado y sumar; el líquido no se incluye.'],
+      gal: ['Endometrio trilaminar', 'Patrón de tres líneas en una mujer de 36 años: ecogenicidad uniforme, tipo trilaminar.'], dl: 'Doble capa', liq: 'Líquido' },
+    en: { ruta: 'Gynecology · Ultrasound', tit: 'IETA: terms to describe the endometrium', baj: 'Choose a feature and then an option: the drawing changes and the definition appears below.',
+      hA: 'IETA features on grayscale and Doppler', hB: 'How to measure endometrial thickness', hD: 'Own drawing and real ultrasound',
+      notaGal: 'Left: our own didactic drawing. Right: freely licensed real ultrasound (CC0), without patient data.',
+      rotulo: 'CaVeSal® own algorithm · Based on: IETA consensus 2010.', nota: 'Didactic plate; it does not replace the sonographer’s assessment or clinical judgment.',
+      pasos: ['Median sagittal plane of the uterus, with the endometrium visible from fundus to cervix.', 'Measure where the endometrium is thickest, perpendicular to the midline.', 'Measure from one endometrial-myometrial interface to the other: the double layer.', 'If there is fluid in the cavity, measure each layer separately and add them; fluid is not included.'],
+      gal: ['Three-layer endometrium', 'Triple-line pattern in a 36-year-old woman: uniform echogenicity, three-layer type.'], dl: 'Double layer', liq: 'Fluid' },
+    pt: { ruta: 'Ginecologia · Ultrassom', tit: 'IETA: termos para descrever o endométrio', baj: 'Escolha uma característica e depois uma opção: o esquema muda e a definição aparece abaixo.',
+      hA: 'Características IETA em escala de cinza e Doppler', hB: 'Como medir a espessura endometrial', hD: 'Esquema próprio e ultrassom real',
+      notaGal: 'Esquerda: desenho didático próprio. Direita: ultrassom real com licença livre (CC0), sem dados de pacientes.',
+      rotulo: 'Algoritmo próprio CaVeSal® · Baseado em: consenso IETA 2010.', nota: 'Lâmina didática; não substitui a avaliação do ultrassonografista nem o julgamento clínico.',
+      pasos: ['Corte sagital mediano do útero, com o endométrio visível do fundo ao colo.', 'Medir onde o endométrio é mais espesso, perpendicular à linha média.', 'Medir de uma interface endométrio-miométrio à outra: é a dupla camada.', 'Se houver líquido na cavidade, medir cada camada separadamente e somar; o líquido não é incluído.'],
+      gal: ['Endométrio trilaminar', 'Padrão de três linhas em mulher de 36 anos: ecogenicidade uniforme, tipo trilaminar.'], dl: 'Dupla camada', liq: 'Líquido' }
+  };
+  /* grupos: [nombre, [[opción, definición, dibujo]]] */
+  var G = {
+    es: [['Ecogenicidad', [['Uniforme hiperecogénica', 'Endometrio homogéneo, más brillante que el miometrio.', 'hiper'], ['Uniforme isoecogénica', 'Homogéneo, con ecogenicidad similar al miometrio.', 'iso'], ['Uniforme hipoecogénica', 'Homogéneo, más oscuro que el miometrio.', 'hipo'], ['Uniforme trilaminar', 'Patrón de tres líneas: línea media y dos interfases brillantes.', 'tri'], ['No uniforme, sin quistes', 'Heterogéneo, sin áreas quísticas.', 'het'], ['No uniforme, quistes regulares', 'Heterogéneo con quistes de pared regular.', 'qreg'], ['No uniforme, quistes irregulares', 'Heterogéneo con quistes de pared irregular.', 'qirr']]],
+      ['Línea media', [['Lineal', 'Línea media endometrial recta y bien visible.', 'lin'], ['No lineal', 'Línea media visible pero ondulada o curva.', 'nolin'], ['Irregular', 'Línea media con contorno irregular.', 'irr'], ['No definida', 'No se identifica la línea media.', 'nodef'], ['Borde brillante', 'Interfase ecogénica entre una lesión intracavitaria y el endometrio.', 'brillo']]],
+      ['Unión endometrio-miometrio', [['Regular', 'Interfase lisa y continua.', 'ureg'], ['Irregular', 'Interfase con contorno irregular.', 'uirr'], ['Interrumpida', 'Interfase con solución de continuidad.', 'uint'], ['No definida', 'No se distingue la interfase.', 'undef']]],
+      ['Score color', [['1', 'Sin flujo color.', 'cs1'], ['2', 'Flujo mínimo.', 'cs2'], ['3', 'Flujo moderado.', 'cs3'], ['4', 'Flujo abundante.', 'cs4']]],
+      ['Patrón vascular', [['Vaso dominante único', 'Un vaso que entra al endometrio, con o sin ramificaciones.', 'vd'], ['Múltiples vasos, origen focal', 'Varios vasos que nacen de un mismo punto de la unión.', 'mf'], ['Múltiples vasos, origen multifocal', 'Varios vasos que nacen de distintos puntos de la unión.', 'mm'], ['Vasos dispersos', 'Señales de color sin origen definido.', 'disp'], ['Flujo circular', 'Vasos que rodean una lesión.', 'circ']]]],
+    en: [['Echogenicity', [['Uniform hyperechogenic', 'Homogeneous endometrium, brighter than the myometrium.', 'hiper'], ['Uniform isoechogenic', 'Homogeneous, similar echogenicity to the myometrium.', 'iso'], ['Uniform hypoechogenic', 'Homogeneous, darker than the myometrium.', 'hipo'], ['Uniform three-layer', 'Triple-line pattern: midline and two bright interfaces.', 'tri'], ['Non-uniform, no cysts', 'Heterogeneous, without cystic areas.', 'het'], ['Non-uniform, regular cysts', 'Heterogeneous with regular-walled cysts.', 'qreg'], ['Non-uniform, irregular cysts', 'Heterogeneous with irregular-walled cysts.', 'qirr']]],
+      ['Midline', [['Linear', 'Straight, clearly visible endometrial midline.', 'lin'], ['Non-linear', 'Visible but wavy or curved midline.', 'nolin'], ['Irregular', 'Midline with an irregular outline.', 'irr'], ['Not defined', 'The midline cannot be identified.', 'nodef'], ['Bright edge', 'Echogenic interface between an intracavitary lesion and the endometrium.', 'brillo']]],
+      ['Endometrial-myometrial junction', [['Regular', 'Smooth, continuous interface.', 'ureg'], ['Irregular', 'Interface with an irregular outline.', 'uirr'], ['Interrupted', 'Interface with a break in continuity.', 'uint'], ['Not defined', 'The interface cannot be distinguished.', 'undef']]],
+      ['Color score', [['1', 'No color flow.', 'cs1'], ['2', 'Minimal flow.', 'cs2'], ['3', 'Moderate flow.', 'cs3'], ['4', 'Abundant flow.', 'cs4']]],
+      ['Vascular pattern', [['Single dominant vessel', 'One vessel entering the endometrium, with or without branching.', 'vd'], ['Multiple vessels, focal origin', 'Several vessels arising from one point of the junction.', 'mf'], ['Multiple vessels, multifocal origin', 'Several vessels arising from different points of the junction.', 'mm'], ['Scattered vessels', 'Color signals without a defined origin.', 'disp'], ['Circular flow', 'Vessels surrounding a lesion.', 'circ']]]],
+    pt: [['Ecogenicidade', [['Uniforme hiperecogênica', 'Endométrio homogêneo, mais brilhante que o miométrio.', 'hiper'], ['Uniforme isoecogênica', 'Homogêneo, com ecogenicidade semelhante ao miométrio.', 'iso'], ['Uniforme hipoecogênica', 'Homogêneo, mais escuro que o miométrio.', 'hipo'], ['Uniforme trilaminar', 'Padrão de três linhas: linha média e duas interfaces brilhantes.', 'tri'], ['Não uniforme, sem cistos', 'Heterogêneo, sem áreas císticas.', 'het'], ['Não uniforme, cistos regulares', 'Heterogêneo com cistos de parede regular.', 'qreg'], ['Não uniforme, cistos irregulares', 'Heterogêneo com cistos de parede irregular.', 'qirr']]],
+      ['Linha média', [['Linear', 'Linha média endometrial reta e bem visível.', 'lin'], ['Não linear', 'Linha média visível, mas ondulada ou curva.', 'nolin'], ['Irregular', 'Linha média com contorno irregular.', 'irr'], ['Não definida', 'A linha média não é identificada.', 'nodef'], ['Borda brilhante', 'Interface ecogênica entre uma lesão intracavitária e o endométrio.', 'brillo']]],
+      ['Junção endométrio-miométrio', [['Regular', 'Interface lisa e contínua.', 'ureg'], ['Irregular', 'Interface com contorno irregular.', 'uirr'], ['Interrompida', 'Interface com solução de continuidade.', 'uint'], ['Não definida', 'A interface não é distinguida.', 'undef']]],
+      ['Escore de cor', [['1', 'Sem fluxo colorido.', 'cs1'], ['2', 'Fluxo mínimo.', 'cs2'], ['3', 'Fluxo moderado.', 'cs3'], ['4', 'Fluxo abundante.', 'cs4']]],
+      ['Padrão vascular', [['Vaso dominante único', 'Um vaso que entra no endométrio, com ou sem ramificações.', 'vd'], ['Múltiplos vasos, origem focal', 'Vários vasos que nascem de um mesmo ponto da junção.', 'mf'], ['Múltiplos vasos, origem multifocal', 'Vários vasos que nascem de pontos diferentes da junção.', 'mm'], ['Vasos dispersos', 'Sinais de cor sem origem definida.', 'disp'], ['Fluxo circular', 'Vasos que contornam uma lesão.', 'circ']]]]
+  };
+  var sel = { g: 0, o: 0 };
+  function pintar() {
+    var u = U(UI), g = G[A.lang];
+    A.nav($('#nav-at'), 'ieta.html');
+    chips($('#grp'), g.map(function (x) { return { n: x[0] }; }), sel.g, 'g');
+    var op = g[sel.g][1];
+    $('#opc').innerHTML = op.map(function (x, i) { return '<button type="button" data-g="o" data-i="' + i + '" aria-pressed="' + (sel.o === i) + '">' + A.DIB.end(x[2]) + A.esc(x[0]) + '</button>'; }).join('');
+    var o = op[sel.o];
+    A.panel($('#exp'), g[sel.g][0] + ': ' + o[0], [o[1]], u.vacio);
+    $('#med').innerHTML = A.DIB.endMed(u.dl, u.liq);
+    $('#pasos').innerHTML = u.pasos.map(function (p) { return '<li>' + A.esc(p) + '</li>'; }).join('');
+    $('#gal').innerHTML = '<article><h3>' + A.esc(u.gal[0]) + '</h3><div class="duo"><figure>' + A.DIB.end('tri', 1) + '<figcaption>' + A.esc(u.esq) + '</figcaption></figure>' + real('ieta-trilaminar', 'haggtri') + '</div><p>' + A.esc(u.gal[1]) + '</p></article>';
+  }
+  document.addEventListener('click', function (ev) {
+    var b = ev.target.closest('[data-l],[data-g]'); if (!b) return;
+    if (b.dataset.l) { A.setLang(b.dataset.l); pintar(); return; }
+    if (b.dataset.g === 'g') { sel.g = +b.dataset.i; sel.o = 0; } else sel.o = +b.dataset.i;
+    pintar();
+  });
+  pintar();
+
+})();
+</script>
+</body>
+</html>

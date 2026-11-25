@@ -12,7 +12,12 @@
   A.LAMINAS = [
     { href: 'iota-terminos.html', t: { es: 'IOTA: términos', en: 'IOTA: terms', pt: 'IOTA: termos' } },
     { href: 'iota-reglas-simples.html', t: { es: 'IOTA: reglas simples B y M', en: 'IOTA: Simple Rules B and M', pt: 'IOTA: regras simples B e M' } },
-    { href: 'o-rads.html', t: { es: 'O-RADS US', en: 'O-RADS US', pt: 'O-RADS US' } }
+    { href: 'o-rads.html', t: { es: 'O-RADS US', en: 'O-RADS US', pt: 'O-RADS US' } },
+    { href: 'musa.html', t: { es: 'MUSA y miomas FIGO', en: 'MUSA and FIGO fibroids', pt: 'MUSA e miomas FIGO' } },
+    { href: 'ieta.html', t: { es: 'IETA: endometrio', en: 'IETA: endometrium', pt: 'IETA: endométrio' } },
+    { href: 'ila.html', t: { es: 'ILA y bolsillo máximo', en: 'AFI and deepest pocket', pt: 'ILA e maior bolsão' } },
+    { href: 'segmentos-utero.html', t: { es: 'Sectores S1, S2, S3', en: 'Sectors S1, S2, S3', pt: 'Setores S1, S2, S3' } },
+    { href: 'pas.html', t: { es: 'Acretismo (PAS)', en: 'Accreta (PAS)', pt: 'Acretismo (PAS)' } }
   ];
   A.nav = function (el, actual) {
     if (!el) return;
@@ -32,6 +37,10 @@
     hou: { txt: 'Hou L, et al. Front Oncol 2026;16:1721601. CC BY 4.0', url: 'https://doi.org/10.3389/fonc.2026.1721601' },
     roman: { txt: 'Román Cataña EA, et al. J Surg Case Rep 2026;(4):rjag297. CC BY 4.0', url: 'https://doi.org/10.1093/jscr/rjag297' },
     haggcl: { txt: 'Mikael Häggström · Wikimedia Commons · CC0', url: 'https://commons.wikimedia.org/wiki/File:Ultrasonography_of_corpus_luteum.jpg' },
+    haggad: { txt: 'Mikael Häggström · Wikimedia Commons · CC0', url: 'https://commons.wikimedia.org/wiki/File:Linear_striations_of_adenomyosis.jpg' },
+    haggmi: { txt: 'Mikael Häggström · Wikimedia Commons · CC0', url: 'https://commons.wikimedia.org/wiki/File:Subserosal_uterine_fibroid.png' },
+    haggtri: { txt: 'Mikael Häggström · Wikimedia Commons · CC0', url: 'https://commons.wikimedia.org/wiki/File:Triple-line_endometrium.jpg' },
+    saedi: { txt: 'Saedi N, et al. Case Rep Obstet Gynecol 2026:9537307. CC BY 4.0', url: 'https://doi.org/10.1155/crog/9537307' },
     ekem: { txt: 'Ekem · Wikimedia Commons · CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Hydrosalpinx_(left).jpg' }
   };
 
@@ -93,6 +102,58 @@
       '<path d="M74 22 Q82 64 70 106 M128 22 Q120 64 134 106" stroke="#dfe3e8" stroke-width="2" fill="none"/>' +
       '<path d="M84 46 Q76 64 90 86 Q114 92 118 70 Q124 50 104 44 Q92 36 84 46 Z" fill="#868d95"/>' + color([[92,58],[104,52],[110,66],[98,74],[106,82],[90,70]], 3.4), 'CS 3–4'); }
   };
+
+  /* láminas MUSA, IETA y PAS: dibujos propios */
+  var LENS = 'M28 70 Q100 38 172 70 Q100 102 28 70Z';
+  function puntos(n, seed) { var p = [], x = seed || 7; for (var i = 0; i < n; i++) { x = (x * 9301 + 49297) % 233280; var a = x / 233280; x = (x * 9301 + 49297) % 233280; var b = x / 233280; p.push([44 + a * 112, 60 + b * 20]); } return p; }
+  A.DIB.end = function (k, big) {
+    var e = '', ut = '<ellipse cx="100" cy="70" rx="92" ry="60" fill="#ST"/>', base = '<path d="' + LENS + '" fill="#cfd4d9"/>';
+    var mid = '<path d="M34 70 L166 70" stroke="#f4f6f8" stroke-width="2"/>';
+    switch (k) {
+      case 'hiper': e = base; break;
+      case 'iso': e = '<path d="' + LENS + '" fill="#8d939a" stroke="#c9ced4" stroke-width="1"/>'; break;
+      case 'hipo': e = '<path d="' + LENS + '" fill="#30353a" stroke="#c9ced4" stroke-width="1"/>'; break;
+      case 'tri': e = '<path d="' + LENS + '" fill="#30353a" stroke="#eef1f4" stroke-width="2.6"/>' + mid; break;
+      case 'het': e = base + puntos(14, 3).map(function (p, i) { return '<circle cx="' + p[0] + '" cy="' + p[1] + '" r="' + (3 + i % 3) + '" fill="' + (i % 2 ? '#7d848c' : '#eef1f4') + '"/>'; }).join(''); break;
+      case 'qreg': e = base + '<circle cx="70" cy="68" r="5" fill="#050607"/><circle cx="104" cy="72" r="6" fill="#050607"/><circle cx="134" cy="67" r="4" fill="#050607"/>'; break;
+      case 'qirr': e = base + '<path d="M62 64 l8 -2 l2 6 l-4 6 l-7 -3z M98 66 l9 1 l-1 9 l-9 1 l2 -5z M128 62 l7 3 l-3 8 l-6 -4z" fill="#050607"/>'; break;
+      case 'lin': e = base + mid; break;
+      case 'nolin': e = base + '<path d="M34 70 Q60 62 86 70 Q112 78 138 70 Q152 66 166 70" stroke="#050607" stroke-width="1.6" fill="none"/>'; break;
+      case 'irr': e = base + '<path d="M34 70 l12 -4 l10 7 l12 -6 l10 8 l12 -7 l10 6 l12 -5 l10 6 l12 -4 l10 2" stroke="#050607" stroke-width="1.6" fill="none"/>'; break;
+      case 'nodef': e = base; break;
+      case 'brillo': e = base + '<ellipse cx="100" cy="70" rx="26" ry="12" fill="#9aa1a8" stroke="#ffffff" stroke-width="2.4"/>'; break;
+      case 'ureg': e = '<path d="' + LENS + '" fill="#cfd4d9" stroke="#30353a" stroke-width="3"/>'; break;
+      case 'uirr': e = '<path d="M28 70 l10 -6 l8 2 l10 -8 l10 3 l10 -7 l12 2 l10 -5 l12 4 l10 -3 l10 5 l10 3 l10 6 l10 4 l-10 4 l-10 6 l-12 4 l-10 -2 l-12 6 l-10 -3 l-12 5 l-10 -4 l-10 3 l-10 -5 l-8 -3z" fill="#cfd4d9" stroke="#30353a" stroke-width="2.4"/>'; break;
+      case 'uint': e = '<path d="' + LENS + '" fill="#cfd4d9" stroke="#30353a" stroke-width="3" stroke-dasharray="40 10 70 14 200"/><path d="M96 46 l6 -10 l6 10" fill="#cfd4d9"/>'; break;
+      case 'undef': e = '<path d="' + LENS + '" fill="#b5bbc1" filter="url(#bl' + k + ')"/>'; break;
+      case 'cs1': case 'cs2': case 'cs3': case 'cs4': var n = { cs1: 0, cs2: 3, cs3: 8, cs4: 16 }[k]; e = base + color(puntos(n, 11), 3); break;
+      case 'vd': e = base + '<path d="M100 110 L100 72 M100 80 L86 68 M100 76 L114 66" stroke="#ff3b30" stroke-width="2.4" fill="none"/>'; break;
+      case 'mf': e = base + '<path d="M100 110 L100 90 M100 90 L76 66 M100 90 L92 64 M100 90 L110 64 M100 90 L126 68" stroke="#ff3b30" stroke-width="2" fill="none"/>'; break;
+      case 'mm': e = base + '<path d="M60 104 L66 70 M100 110 L98 68 M140 104 L132 70" stroke="#ff3b30" stroke-width="2" fill="none"/><path d="M80 106 L82 72 M120 106 L116 70" stroke="#2f7dff" stroke-width="2" fill="none"/>'; break;
+      case 'disp': e = base + color(puntos(7, 5), 2.6); break;
+      case 'circ': e = base + '<ellipse cx="100" cy="70" rx="24" ry="11" fill="#9aa1a8"/><ellipse cx="100" cy="70" rx="28" ry="14" fill="none" stroke="#ff3b30" stroke-width="2" stroke-dasharray="7 4"/><ellipse cx="100" cy="70" rx="28" ry="14" fill="none" stroke="#2f7dff" stroke-width="2" stroke-dasharray="4 7" stroke-dashoffset="5"/>'; break;
+    }
+    var f = k === 'undef' ? '<filter id="bl' + k + '"><feGaussianBlur stdDeviation="3"/></filter>' : '';
+    return S('e' + k + (big ? 'B' : ''), (f ? '<defs>' + f + '</defs>' : '') + ut + e, big ? 'IETA' : '');
+  };
+  A.DIB.endMed = function (dl, liq) {
+    return '<svg class="eco" viewBox="0 0 360 170" role="img"><rect width="360" height="170" rx="12" fill="#11161b"/>' +
+      '<ellipse cx="96" cy="86" rx="84" ry="62" fill="#767d85"/><path d="M28 86 Q96 52 164 86 Q96 120 28 86Z" fill="#cfd4d9"/>' +
+      '<path d="M96 66 L96 106" stroke="#ffd166" stroke-width="2"/><path d="M90 66 L102 66 M90 106 L102 106" stroke="#ffd166" stroke-width="2"/><text x="96" y="160" fill="#ffd166" font-size="11" font-weight="800" text-anchor="middle">' + A.esc(dl) + '</text>' +
+      '<ellipse cx="270" cy="86" rx="84" ry="62" fill="#767d85"/><path d="M202 86 Q270 48 338 86 Q270 124 202 86Z" fill="#cfd4d9"/><path d="M226 86 Q270 74 314 86 Q270 98 226 86Z" fill="#050607"/>' +
+      '<path d="M270 66 L270 79 M270 93 L270 106" stroke="#ffd166" stroke-width="2"/><path d="M264 66 L276 66 M264 79 L276 79 M264 93 L276 93 M264 106 L276 106" stroke="#ffd166" stroke-width="2"/>' +
+      '<text x="270" y="160" fill="#ffd166" font-size="11" font-weight="800" text-anchor="middle">a + b · ' + A.esc(liq) + ' ✕</text></svg>';
+  };
+  A.DIB.musaL = function () { return S('ml', '<ellipse cx="100" cy="72" rx="90" ry="58" fill="#ST"/><path d="' + LENS + '" fill="#cfd4d9" transform="translate(0 2)"/>' +
+    '<path d="M70 62 L64 34 M92 60 L90 28 M114 60 L120 30 M136 64 L146 40 M80 82 L74 108 M120 82 L128 110" stroke="#eef1f4" stroke-width="2.6"/>', 'MUSA'); };
+  A.DIB.musaM = function () { return S('mm', '<ellipse cx="80" cy="74" rx="66" ry="50" fill="#ST"/><path d="M30 74 Q80 52 130 74 Q80 96 30 74Z" fill="#cfd4d9"/>' +
+    '<circle cx="150" cy="56" r="34" fill="#8d939a" stroke="#dfe3e8" stroke-width="2"/><path d="M134 34 L126 18 M150 30 L150 12 M166 34 L176 18" stroke="#000" stroke-width="5" opacity=".45"/>' +
+    '<circle cx="150" cy="56" r="38" fill="none" stroke="#ff3b30" stroke-width="2" stroke-dasharray="6 5"/>', 'FIGO 6'); };
+  A.DIB.pasL = function () { return S('pl', '<rect x="10" y="10" width="180" height="120" rx="8" fill="#2b2f34"/>' +
+    '<path d="M10 92 Q100 70 190 92 L190 130 L10 130Z" fill="#767d85"/><path d="M10 40 Q100 20 190 40 L190 92 Q100 70 10 92Z" fill="#9aa1a8"/>' +
+    '<ellipse cx="60" cy="62" rx="14" ry="8" fill="#050607"/><ellipse cx="104" cy="54" rx="18" ry="9" fill="#050607"/><ellipse cx="148" cy="64" rx="12" ry="7" fill="#050607"/><path d="M80 80 Q100 74 120 80" stroke="#050607" stroke-width="4" fill="none"/>' +
+    '<path d="M10 104 Q100 84 190 104" stroke="#3ddc84" stroke-width="1.4" stroke-dasharray="4 3" fill="none"/>', 'PAS'); };
+
   A.RECORTE = { es: 'Recortada.', en: 'Cropped.', pt: 'Recortada.' };
 
   /* galería: items = [{img, c: clave de crédito, url?: enlace propio, t: {es:[título, texto], ...}}] */
