@@ -33,6 +33,8 @@
   <section class="lam" aria-labelledby="h-a">
     <h2 id="h-a"><span class="tipo">P</span><span data-t="hA">Técnica de los 4 cuadrantes</span></h2>
     <div id="svgQ"></div>
+    <div class="chips" id="cq" role="group"></div>
+    <div class="exp" id="expQ" aria-live="polite"></div>
     <ol class="pasos" id="pasos"></ol>
   </section>
 
@@ -78,7 +80,7 @@
   function lista(a) { return '<ul>' + a.map(function (x) { return '<li>' + A.esc(x) + '</li>'; }).join('') + '</ul>'; }
 
   var UI = {
-    es: { ruta: 'Obstetricia · Ecografía', tit: 'Líquido amniótico: ILA en 4 cuadrantes y bolsillo máximo', baj: 'Cargá el bolsillo vertical de cada cuadrante y el bolsillo máximo: el resultado aparece debajo.',
+    es: { qx: ['Medí el bolsillo vertical más profundo de este cuadrante, libre de cordón y de partes fetales.', 'Transductor perpendicular al piso y en sentido longitudinal; los calibres van del borde superior al inferior del bolsillo, en vertical.', 'Valor cargado:'], qb: 'Bolsillo máximo', qbx: ['Es el bolsillo vertical más profundo de todo el útero, libre de cordón y de partes fetales.', 'Para diagnosticar oligohidramnios se asoció a menos intervenciones innecesarias que el ILA (Cochrane).', 'Valor cargado:'], sinv: 'sin cargar', ruta: 'Obstetricia · Ecografía', tit: 'Líquido amniótico: ILA en 4 cuadrantes y bolsillo máximo', baj: 'Cargá el bolsillo vertical de cada cuadrante y el bolsillo máximo: el resultado aparece debajo.',
       hA: 'Técnica de los 4 cuadrantes', hB: 'Cálculo', hC: 'Puntos de corte', altH: 'Clasificación de Chamberlain por bolsillo', altTag: 'Alternativa citada por la fuente',
       pref: 'Para diagnosticar oligohidramnios, el bolsillo máximo se asoció a menos intervenciones innecesarias que el ILA, sin peor resultado perinatal (revisión Cochrane).',
       alt: 'Bolsillo máximo menor de 1 cm: disminuido. De 1 a 2 cm: marginal. De 2 a 8 cm: normal. Mayor de 8 cm: aumentado.',
@@ -88,7 +90,7 @@
       cat: { oli: 'Oligohidramnios', nor: 'Normal', pl: 'Polihidramnios leve', pm: 'Polihidramnios moderado', ps: 'Polihidramnios severo' }, por: 'según', mx: 'Bolsillo máximo',
       tabH: ['', 'ILA', 'Bolsillo máximo'], tabF: [['Oligohidramnios', '≤5 cm', '<2 cm'], ['Normal', '5,1–23,9 cm', '2–7,9 cm'], ['Polihidramnios leve', '24–29,9 cm', '8–11 cm'], ['Polihidramnios moderado', '30–34,9 cm', '12–15 cm'], ['Polihidramnios severo', '≥35 cm', '≥16 cm']],
       lado: ['Der.', 'Izq.'], omb: 'Ombligo' },
-    en: { ruta: 'Obstetrics · Ultrasound', tit: 'Amniotic fluid: four-quadrant AFI and deepest vertical pocket', baj: 'Enter the vertical pocket of each quadrant and the deepest pocket: the result appears below.',
+    en: { qx: ['Measure the deepest vertical pocket of this quadrant, free of cord and fetal parts.', 'Transducer perpendicular to the floor and longitudinal; calipers go from the upper to the lower edge of the pocket, vertically.', 'Entered value:'], qb: 'Deepest pocket', qbx: ['It is the deepest vertical pocket in the whole uterus, free of cord and fetal parts.', 'To diagnose oligohydramnios it was associated with fewer unnecessary interventions than the AFI (Cochrane).', 'Entered value:'], sinv: 'not entered', ruta: 'Obstetrics · Ultrasound', tit: 'Amniotic fluid: four-quadrant AFI and deepest vertical pocket', baj: 'Enter the vertical pocket of each quadrant and the deepest pocket: the result appears below.',
       hA: 'Four-quadrant technique', hB: 'Calculation', hC: 'Cut-offs', altH: 'Chamberlain classification by pocket', altTag: 'Alternative cited by the source',
       pref: 'To diagnose oligohydramnios, the deepest vertical pocket was associated with fewer unnecessary interventions than the AFI, without worse perinatal outcome (Cochrane review).',
       alt: 'Deepest pocket under 1 cm: decreased. 1 to 2 cm: marginal. 2 to 8 cm: normal. Over 8 cm: increased.',
@@ -98,7 +100,7 @@
       cat: { oli: 'Oligohydramnios', nor: 'Normal', pl: 'Mild polyhydramnios', pm: 'Moderate polyhydramnios', ps: 'Severe polyhydramnios' }, por: 'by', mx: 'Deepest pocket',
       tabH: ['', 'AFI', 'Deepest pocket'], tabF: [['Oligohydramnios', '≤5 cm', '<2 cm'], ['Normal', '5.1–23.9 cm', '2–7.9 cm'], ['Mild polyhydramnios', '24–29.9 cm', '8–11 cm'], ['Moderate polyhydramnios', '30–34.9 cm', '12–15 cm'], ['Severe polyhydramnios', '≥35 cm', '≥16 cm']],
       lado: ['R', 'L'], omb: 'Umbilicus' },
-    pt: { ruta: 'Obstetrícia · Ultrassom', tit: 'Líquido amniótico: ILA em 4 quadrantes e maior bolsão', baj: 'Informe o bolsão vertical de cada quadrante e o maior bolsão: o resultado aparece abaixo.',
+    pt: { qx: ['Meça o bolsão vertical mais profundo deste quadrante, livre de cordão e de partes fetais.', 'Transdutor perpendicular ao chão e em sentido longitudinal; os calibradores vão da borda superior à inferior do bolsão, na vertical.', 'Valor informado:'], qb: 'Maior bolsão', qbx: ['É o bolsão vertical mais profundo de todo o útero, livre de cordão e de partes fetais.', 'Para diagnosticar oligoidrâmnio associou-se a menos intervenções desnecessárias que o ILA (Cochrane).', 'Valor informado:'], sinv: 'não informado', ruta: 'Obstetrícia · Ultrassom', tit: 'Líquido amniótico: ILA em 4 quadrantes e maior bolsão', baj: 'Informe o bolsão vertical de cada quadrante e o maior bolsão: o resultado aparece abaixo.',
       hA: 'Técnica dos 4 quadrantes', hB: 'Cálculo', hC: 'Pontos de corte', altH: 'Classificação de Chamberlain por bolsão', altTag: 'Alternativa citada pela fonte',
       pref: 'Para diagnosticar oligoidrâmnio, o maior bolsão associou-se a menos intervenções desnecessárias que o ILA, sem pior resultado perinatal (revisão Cochrane).',
       alt: 'Maior bolsão menor que 1 cm: diminuído. De 1 a 2 cm: marginal. De 2 a 8 cm: normal. Maior que 8 cm: aumentado.',
@@ -109,7 +111,7 @@
       tabH: ['', 'ILA', 'Maior bolsão'], tabF: [['Oligoidrâmnio', '≤5 cm', '<2 cm'], ['Normal', '5,1–23,9 cm', '2–7,9 cm'], ['Polidrâmnio leve', '24–29,9 cm', '8–11 cm'], ['Polidrâmnio moderado', '30–34,9 cm', '12–15 cm'], ['Polidrâmnio grave', '≥35 cm', '≥16 cm']],
       lado: ['D', 'E'], omb: 'Umbigo' }
   };
-  var V = ['', '', '', '', ''];
+  var V = ['', '', '', '', '']; var selQ = null;
   function catILA(x) { return x <= 5 ? 'oli' : x < 24 ? 'nor' : x < 30 ? 'pl' : x < 35 ? 'pm' : 'ps'; }
   function catBVM(x) { return x < 2 ? 'oli' : x < 8 ? 'nor' : x < 12 ? 'pl' : x < 16 ? 'pm' : 'ps'; }
   var COLC = { oli: '#b7791f', nor: '#1e8e4f', pl: '#d9622b', pm: '#d9622b', ps: '#c62828' };
@@ -142,10 +144,12 @@
     var lab = u.q.map(function (x, i) { return (i + 1) + '. ' + x + ' (cm)'; }).concat([u.bvm]);
     $('#calc').innerHTML = lab.map(function (l, i) { return '<label>' + A.esc(l) + '<input type="text" inputmode="decimal" data-v="' + i + '" value="' + A.esc(V[i]) + '" autocomplete="off"></label>'; }).join('');
     $('#tab').innerHTML = '<table class="tb"><thead><tr>' + u.tabH.map(function (h) { return '<th>' + A.esc(h) + '</th>'; }).join('') + '</tr></thead><tbody>' + u.tabF.map(function (r) { return '<tr>' + r.map(function (c, i) { return i ? '<td>' + A.esc(c) + '</td>' : '<th>' + A.esc(c) + '</th>'; }).join('') + '</tr>'; }).join('') + '</tbody></table>';
+    chips($('#cq'), u.q.map(function (x, i) { return { k: String(i + 1), n: x }; }).concat([{ k: 'M', n: u.qb }]), selQ, 'q');
+    if (selQ === null) A.panel($('#expQ'), '', [], { es: 'Tocá un cuadrante para ver cómo medir.', en: 'Tap a quadrant to see how to measure.', pt: 'Toque um quadrante para ver como medir.' }[A.lang]); else { var vv = V[selQ] === '' ? u.sinv : V[selQ] + ' cm', ee = selQ < 4 ? u.qx : u.qbx; A.panel($('#expQ'), selQ < 4 ? (selQ + 1) + '. ' + u.q[selQ] : u.qb, [ee[0], ee[1], ee[2] + ' ' + vv], u.vacio); }
     resultado();
   }
   document.addEventListener('input', function (ev) { var i = ev.target.getAttribute('data-v'); if (i === null) return; V[+i] = ev.target.value; resultado(); });
-  document.addEventListener('click', function (ev) { var b = ev.target.closest('[data-l]'); if (b) { A.setLang(b.dataset.l); pintar(); } });
+  document.addEventListener('click', function (ev) { var b = ev.target.closest('[data-l],[data-g="q"]'); if (!b) return; if (b.dataset.l) A.setLang(b.dataset.l); else selQ = +b.dataset.i; pintar(); });
   pintar();
 
 })();

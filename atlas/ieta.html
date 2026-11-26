@@ -40,6 +40,8 @@
   <section class="lam" aria-labelledby="h-b">
     <h2 id="h-b"><span class="tipo">P</span><span data-t="hB">Cómo medir el grosor endometrial</span></h2>
     <div id="med"></div>
+    <div class="chips" id="cm" role="group"></div>
+    <div class="exp" id="expM" aria-live="polite"></div>
     <ol class="pasos" id="pasos"></ol>
   </section>
 
@@ -74,19 +76,19 @@
   function lista(a) { return '<ul>' + a.map(function (x) { return '<li>' + A.esc(x) + '</li>'; }).join('') + '</ul>'; }
 
   var UI = {
-    es: { ruta: 'Ginecología · Ecografía', tit: 'IETA: términos para describir el endometrio', baj: 'Elegí un rasgo y luego una opción: el esquema cambia y la definición aparece debajo.',
+    es: { mx: [['Doble capa', ['Corte sagital medio, en la zona más gruesa.', 'Calibres de una interfase endometrio-miometrio a la otra, perpendicular a la línea media: incluye las dos capas.']], ['Con líquido en la cavidad', ['Se mide cada capa por separado (a y b), de la interfase endometrio-miometrio al borde del líquido.', 'Se suman a + b; el líquido no se incluye.']]], ruta: 'Ginecología · Ecografía', tit: 'IETA: términos para describir el endometrio', baj: 'Elegí un rasgo y luego una opción: el esquema cambia y la definición aparece debajo.',
       hA: 'Rasgos IETA en escala de grises y Doppler', hB: 'Cómo medir el grosor endometrial', hD: 'Esquema propio y ecografía real',
       notaGal: 'Izquierda: dibujo didáctico propio. Derecha: ecografía real con licencia libre (CC0), sin datos de pacientes.',
       rotulo: 'Algoritmo propio CaVeSal® · Basado en: consenso IETA 2010.', nota: 'Lámina didáctica; no reemplaza la evaluación del ecografista ni el juicio clínico.',
       pasos: ['Corte sagital medio del útero, con el endometrio visible del fondo al cuello.', 'Medir donde el endometrio es más grueso, perpendicular a la línea media.', 'Medir de una interfase endometrio-miometrio a la otra: es la doble capa.', 'Si hay líquido en la cavidad, medir cada capa por separado y sumar; el líquido no se incluye.'],
       gal: ['Endometrio trilaminar', 'Patrón de tres líneas en una mujer de 36 años: ecogenicidad uniforme, tipo trilaminar.'], dl: 'Doble capa', liq: 'Líquido' },
-    en: { ruta: 'Gynecology · Ultrasound', tit: 'IETA: terms to describe the endometrium', baj: 'Choose a feature and then an option: the drawing changes and the definition appears below.',
+    en: { mx: [['Double layer', ['Mid-sagittal view, at the thickest area.', 'Calipers from one endometrial-myometrial interface to the other, perpendicular to the midline: both layers included.']], ['With fluid in the cavity', ['Each layer is measured separately (a and b), from the endometrial-myometrial interface to the fluid edge.', 'Add a + b; the fluid is not included.']]], ruta: 'Gynecology · Ultrasound', tit: 'IETA: terms to describe the endometrium', baj: 'Choose a feature and then an option: the drawing changes and the definition appears below.',
       hA: 'IETA features on grayscale and Doppler', hB: 'How to measure endometrial thickness', hD: 'Own drawing and real ultrasound',
       notaGal: 'Left: our own didactic drawing. Right: freely licensed real ultrasound (CC0), without patient data.',
       rotulo: 'CaVeSal® own algorithm · Based on: IETA consensus 2010.', nota: 'Didactic plate; it does not replace the sonographer’s assessment or clinical judgment.',
       pasos: ['Median sagittal plane of the uterus, with the endometrium visible from fundus to cervix.', 'Measure where the endometrium is thickest, perpendicular to the midline.', 'Measure from one endometrial-myometrial interface to the other: the double layer.', 'If there is fluid in the cavity, measure each layer separately and add them; fluid is not included.'],
       gal: ['Three-layer endometrium', 'Triple-line pattern in a 36-year-old woman: uniform echogenicity, three-layer type.'], dl: 'Double layer', liq: 'Fluid' },
-    pt: { ruta: 'Ginecologia · Ultrassom', tit: 'IETA: termos para descrever o endométrio', baj: 'Escolha uma característica e depois uma opção: o esquema muda e a definição aparece abaixo.',
+    pt: { mx: [['Dupla camada', ['Corte sagital mediano, na zona mais espessa.', 'Calibradores de uma interface endométrio-miométrio à outra, perpendicular à linha média: inclui as duas camadas.']], ['Com líquido na cavidade', ['Mede-se cada camada separadamente (a e b), da interface endométrio-miométrio até a borda do líquido.', 'Somam-se a + b; o líquido não é incluído.']]], ruta: 'Ginecologia · Ultrassom', tit: 'IETA: termos para descrever o endométrio', baj: 'Escolha uma característica e depois uma opção: o esquema muda e a definição aparece abaixo.',
       hA: 'Características IETA em escala de cinza e Doppler', hB: 'Como medir a espessura endometrial', hD: 'Esquema próprio e ultrassom real',
       notaGal: 'Esquerda: desenho didático próprio. Direita: ultrassom real com licença livre (CC0), sem dados de pacientes.',
       rotulo: 'Algoritmo próprio CaVeSal® · Baseado em: consenso IETA 2010.', nota: 'Lâmina didática; não substitui a avaliação do ultrassonografista nem o julgamento clínico.',
@@ -111,7 +113,7 @@
       ['Escore de cor', [['1', 'Sem fluxo colorido.', 'cs1'], ['2', 'Fluxo mínimo.', 'cs2'], ['3', 'Fluxo moderado.', 'cs3'], ['4', 'Fluxo abundante.', 'cs4']]],
       ['Padrão vascular', [['Vaso dominante único', 'Um vaso que entra no endométrio, com ou sem ramificações.', 'vd'], ['Múltiplos vasos, origem focal', 'Vários vasos que nascem de um mesmo ponto da junção.', 'mf'], ['Múltiplos vasos, origem multifocal', 'Vários vasos que nascem de pontos diferentes da junção.', 'mm'], ['Vasos dispersos', 'Sinais de cor sem origem definida.', 'disp'], ['Fluxo circular', 'Vasos que contornam uma lesão.', 'circ']]]]
   };
-  var sel = { g: 0, o: 0 };
+  var sel = { g: 0, o: 0, m: null };
   function pintar() {
     var u = U(UI), g = G[A.lang];
     A.nav($('#nav-at'), 'ieta.html');
@@ -121,13 +123,15 @@
     var o = op[sel.o];
     A.panel($('#exp'), g[sel.g][0] + ': ' + o[0], [o[1]], u.vacio);
     $('#med').innerHTML = A.DIB.endMed(u.dl, u.liq);
+    chips($('#cm'), u.mx.map(function (x) { return { n: x[0] }; }), sel.m, 'm');
+    if (sel.m === null) A.panel($('#expM'), '', [], { es: 'Tocá un caso para ver dónde van los calibres.', en: 'Tap a case to see where the calipers go.', pt: 'Toque um caso para ver onde vão os calibradores.' }[A.lang]); else A.panel($('#expM'), u.mx[sel.m][0], u.mx[sel.m][1], u.vacio);
     $('#pasos').innerHTML = u.pasos.map(function (p) { return '<li>' + A.esc(p) + '</li>'; }).join('');
     $('#gal').innerHTML = '<article><h3>' + A.esc(u.gal[0]) + '</h3><div class="duo"><figure>' + A.DIB.end('tri', 1) + '<figcaption>' + A.esc(u.esq) + '</figcaption></figure>' + real('ieta-trilaminar', 'haggtri') + '</div><p>' + A.esc(u.gal[1]) + '</p></article>';
   }
   document.addEventListener('click', function (ev) {
     var b = ev.target.closest('[data-l],[data-g]'); if (!b) return;
     if (b.dataset.l) { A.setLang(b.dataset.l); pintar(); return; }
-    if (b.dataset.g === 'g') { sel.g = +b.dataset.i; sel.o = 0; } else sel.o = +b.dataset.i;
+    if (b.dataset.g === 'm') sel.m = +b.dataset.i; else if (b.dataset.g === 'g') { sel.g = +b.dataset.i; sel.o = 0; } else sel.o = +b.dataset.i;
     pintar();
   });
   pintar();

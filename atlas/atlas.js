@@ -23,7 +23,9 @@
     { href: 'histerotomia-ward.html', t: { es: 'Histerotomía y maniobra de Ward', en: 'Hysterotomy and Ward maneuver', pt: 'Histerotomia e manobra de Ward' } },
     { href: 'zonas-ureterales.html', t: { es: 'Zonas de riesgo ureteral', en: 'Ureteral risk zones', pt: 'Zonas de risco ureteral' } },
     { href: 'suturas-compresivas.html', t: { es: 'Suturas compresivas S1/S2', en: 'Compression sutures S1/S2', pt: 'Suturas compressivas S1/S2' } },
-    { href: 'torniquete-uterino.html', t: { es: 'Torniquete uterino', en: 'Uterine tourniquet', pt: 'Torniquete uterino' } }
+    { href: 'torniquete-uterino.html', t: { es: 'Torniquete uterino', en: 'Uterine tourniquet', pt: 'Torniquete uterino' } },
+    { href: 'sop-rotterdam.html', t: { es: 'SOP: Rotterdam y mFG', en: 'PCOS: Rotterdam and mFG', pt: 'SOP: Rotterdam e mFG' } },
+    { href: 'tanner.html', t: { es: 'Estadios de Tanner', en: 'Tanner stages', pt: 'Estágios de Tanner' } }
   ];
   A.nav = function (el, actual) {
     if (!el) return;
@@ -183,5 +185,34 @@
     if (!titulo) { el.innerHTML = '<p class="vacio">' + A.esc(vacio) + '</p>'; return; }
     el.innerHTML = '<h3>' + A.esc(titulo) + '</h3>' + parrafos.map(function (p) { return '<p>' + A.esc(p) + '</p>'; }).join('');
   };
+
+  /* filas de tabla clicables con detalle (todas las láminas) */
+  var HINT = { es: 'Tocá una fila para ver el detalle.', en: 'Tap a row to see the details.', pt: 'Toque uma linha para ver o detalhe.' };
+  function prepTablas() {
+    document.querySelectorAll('section.lam table.tb').forEach(function (t) {
+      if (t.dataset.fx === A.lang && t.querySelector('tbody tr[tabindex]')) return;
+      t.dataset.fx = A.lang;
+      t.querySelectorAll('tbody tr').forEach(function (r) { r.setAttribute('tabindex', '0'); r.setAttribute('role', 'button'); r.classList.add('fila'); });
+      var cont = t.closest('.scroll, .tab2') || t;
+      var h = cont.previousElementSibling && cont.previousElementSibling.classList.contains('hint') ? cont.previousElementSibling : null;
+      if (!h) { h = document.createElement('p'); h.className = 'hint'; cont.parentNode.insertBefore(h, cont); }
+      h.textContent = HINT[A.lang];
+      var ex = cont.nextElementSibling;
+      if (!ex || !ex.classList.contains('exp-fila')) { ex = document.createElement('div'); ex.className = 'exp exp-fila'; ex.setAttribute('aria-live', 'polite'); cont.parentNode.insertBefore(ex, cont.nextSibling); }
+      ex.hidden = true; ex.innerHTML = '';
+    });
+  }
+  function abrirFila(r) {
+    var t = r.closest('table'), cont = t.closest('.scroll, .tab2') || t, ex = cont.nextElementSibling;
+    var hs = [].slice.call(t.querySelectorAll('thead th')).map(function (x) { return x.textContent.trim(); });
+    var cs = [].slice.call(r.children);
+    t.querySelectorAll('tbody tr').forEach(function (x) { x.classList.toggle('on', x === r); });
+    var tit = cs[0].textContent.trim();
+    ex.hidden = false;
+    ex.innerHTML = '<h3>' + A.esc(tit) + '</h3>' + cs.slice(1).map(function (c, i) { return '<p><b>' + A.esc(hs[i + 1] || '') + (hs[i + 1] ? ': ' : '') + '</b>' + A.esc(c.textContent.trim()) + '</p>'; }).join('');
+  }
+  document.addEventListener('click', function (ev) { var r = ev.target.closest && ev.target.closest('section.lam table.tb tbody tr'); if (r) abrirFila(r); });
+  document.addEventListener('keydown', function (ev) { var r = ev.target.closest && ev.target.closest('tr.fila'); if (r && (ev.key === 'Enter' || ev.key === ' ')) { ev.preventDefault(); abrirFila(r); } });
+  if (window.MutationObserver) { var mo = new MutationObserver(function () { mo.disconnect(); prepTablas(); obs(); }); var obs = function () { var m = document.querySelector('main'); if (m) mo.observe(m, { childList: true, subtree: true }); }; document.addEventListener('DOMContentLoaded', function () { prepTablas(); obs(); }); }
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('../sw.js', { scope: '../' }).catch(function () {});
 })();

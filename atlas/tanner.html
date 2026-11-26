@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Estadios de Tanner — Atlas médico · CaVeSal® Academy</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="../img/favicon.png">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="atlas.css">
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <a class="marca" href="../#/" aria-label="CaVeSal Academy">
+      <img src="../img/icon-192.png" alt="" width="40" height="40">
+      <span class="marca-txt"><strong>CaVeSal<sup>®</sup> Academy</strong><small data-t="atlas">Atlas médico</small></span>
+    </a>
+  </div>
+</header>
+<main class="at" id="main">
+  <div class="at-top">
+    <a class="volver" href="../#/" data-t="volver">← Volver a Academy</a>
+    <div class="idi" role="group" aria-label="Idioma">
+      <button type="button" data-l="es">ES</button><button type="button" data-l="en">EN</button><button type="button" data-l="pt">PT</button>
+    </div>
+  </div>
+  <nav class="nav-at" id="nav-at" aria-label="Láminas"></nav>
+  <span class="eyebrow" data-t="ruta">Ginecología infanto-juvenil · Pubertad</span>
+  <h1 data-t="tit">Estadios de Tanner</h1>
+  <p class="baj" data-t="baj">Elegí el estadio: el esquema cambia y debajo aparece la definición y la edad media.</p>
+  <section class="lam" aria-labelledby="h-a">
+    <h2 id="h-a"><span class="tipo">M</span><span data-t="hA">Mamas (niñas)</span></h2>
+    <div class="chips" id="cM" role="group"></div>
+    <div id="svgM"></div>
+    <div class="exp" id="expM" aria-live="polite"></div>
+  </section>
+  <section class="lam" aria-labelledby="h-b">
+    <h2 id="h-b"><span class="tipo">P</span><span data-t="hB">Vello púbico</span></h2>
+    <div class="chips" id="cP" role="group"></div>
+    <div id="svgP"></div>
+    <div class="exp" id="expP" aria-live="polite"></div>
+  </section>
+  <section class="lam" aria-labelledby="h-c">
+    <h2 id="h-c"><span class="tipo">G</span><span data-t="hC">Genitales (varones)</span></h2>
+    <div class="scroll"><table class="tb" id="tabG"></table></div>
+  </section>
+  <section class="lam" aria-labelledby="h-d">
+    <h2 id="h-d"><span class="tipo">T</span><span data-t="hD">Edades de referencia</span></h2>
+    <div class="scroll"><table class="tb" id="tabE"></table></div>
+    <div class="exp" id="nEd"></div>
+  </section>
+  <div class="rot">
+    <p><strong data-t="rotulo">Algoritmo propio CaVeSal® · Basado en: Marshall WA y Tanner JM, Arch Dis Child 1969 y 1970; Bruserud IS et al., J Clin Endocrinol Metab 2020.</strong></p>
+    <p class="nota" data-t="nota">Lámina didáctica.</p>
+    <ol><li>Marshall WA, Tanner JM. Variations in pattern of pubertal changes in girls. Arch Dis Child. 1969;44(235):291-303. <a href="https://doi.org/10.1136/adc.44.235.291" target="_blank" rel="noopener">doi:10.1136/adc.44.235.291</a></li><li>Marshall WA, Tanner JM. Variations in the pattern of pubertal changes in boys. Arch Dis Child. 1970;45(239):13-23. <a href="https://doi.org/10.1136/adc.45.239.13" target="_blank" rel="noopener">doi:10.1136/adc.45.239.13</a></li><li>Bruserud IS, Roelants M, Oehme NHB, Madsen A, Eide GE, Bjerknes R, Rosendahl K, Juliusson PB. References for ultrasound staging of breast maturation, Tanner breast staging, pubic hair, and menarche in Norwegian girls. J Clin Endocrinol Metab. 2020;105(5):1599-1607. CC BY 4.0. <a href="https://doi.org/10.1210/clinem/dgaa107" target="_blank" rel="noopener">doi:10.1210/clinem/dgaa107</a></li></ol>
+  </div>
+</main>
+<script src="atlas.js"></script>
+<script>
+(function () {
+  'use strict';
+  var A = window.Atlas;
+  function $(s) { return document.querySelector(s); }
+  var COM = {
+    es: { atlas: 'Atlas médico', volver: '← Volver a Academy', nota: 'Lámina didáctica; no reemplaza la evaluación del ecografista ni el juicio clínico.', esq: 'Esquema CaVeSal®', vacio: 'Elegí una opción.' },
+    en: { atlas: 'Medical atlas', volver: '← Back to Academy', nota: 'Didactic plate; it does not replace the sonographer’s assessment or clinical judgment.', esq: 'CaVeSal® drawing', vacio: 'Choose an option.' },
+    pt: { atlas: 'Atlas médico', volver: '← Voltar ao Academy', nota: 'Lâmina didática; não substitui a avaliação do ultrassonografista nem o julgamento clínico.', esq: 'Esquema CaVeSal®', vacio: 'Escolha uma opção.' }
+  };
+  function U(UI) { ['es', 'en', 'pt'].forEach(function (l) { for (var k in COM[l]) if (!(k in UI[l])) UI[l][k] = COM[l][k]; }); return A.textos(UI); }
+  function real(img, c, txt) { var r = A.CRED[c]; return '<figure><img src="img/' + img + '.jpg" alt="" loading="lazy"><figcaption><a href="' + r.url + '" target="_blank" rel="noopener">' + A.esc(r.txt) + '</a></figcaption></figure>'; }
+  function chips(el, list, cur, g) { el.innerHTML = list.map(function (x, i) { return '<button type="button" data-g="' + g + '" data-i="' + i + '" aria-pressed="' + (cur === i) + '">' + (x.k ? '<b>' + A.esc(x.k) + '</b>' : '') + A.esc(x.n) + '</button>'; }).join(''); }
+  function lista(a) { return '<ul>' + a.map(function (x) { return '<li>' + A.esc(x) + '</li>'; }).join('') + '</ul>'; }
+
+  var UI = {
+    es: { ruta: 'Ginecología infanto-juvenil · Pubertad', tit: 'Estadios de Tanner', baj: 'Elegí el estadio: el esquema cambia y debajo aparece la definición y la edad media.',
+      hA: 'Mamas (niñas)', hB: 'Vello púbico', hC: 'Genitales (varones)', hD: 'Edades de referencia',
+      rotulo: 'Algoritmo propio CaVeSal® · Basado en: Marshall WA y Tanner JM, Arch Dis Child 1969 y 1970; Bruserud IS et al., J Clin Endocrinol Metab 2020.',
+      nota: 'Lámina didáctica; la estadificación se hace por inspección y, en mamas, también por palpación.',
+      perf: 'Perfil', fte: 'Frente', ed: 'Edad media (Marshall y Tanner 1969):', a: 'años',
+      M: ['Preadolescente: solo se eleva la papila.', 'Botón mamario: mama y papila se elevan como un pequeño montículo; aumenta el diámetro de la areola.', 'Mayor crecimiento de mama y areola, sin separación de sus contornos.', 'La areola y la papila forman un montículo secundario por encima del nivel de la mama.', 'Madura: solo se proyecta la papila; la areola vuelve al contorno general de la mama.'],
+      P: ['Sin vello púbico: solo vello fino similar al de la pared abdominal.', 'Vello escaso, largo, poco pigmentado, liso o apenas rizado, sobre todo en los labios mayores (en varones, en la base del pene).', 'Vello más oscuro, grueso y rizado, que se extiende escasamente sobre el pubis.', 'Vello de tipo adulto, pero en un área menor; no llega a los muslos.', 'Adulto en cantidad y tipo, en triángulo invertido; se extiende a la cara interna de los muslos.'],
+      edM: ['—', '11,15', '12,15', '13,11', '15,33'], edP: ['—', '11,69', '12,36', '12,95', '14,41'],
+      tabG: [['Estadio', 'Descripción'], ['G1', 'Preadolescente: testículos, escroto y pene de tamaño infantil.'], ['G2', 'Aumentan escroto y testículos; la piel del escroto se enrojece y cambia de textura.'], ['G3', 'Crece el pene, primero en longitud; siguen creciendo testículos y escroto.'], ['G4', 'Pene más largo y grueso, con desarrollo del glande; escroto más grande y oscuro.'], ['G5', 'Genitales adultos en tamaño y forma.']],
+      tabE: [['Hito', 'Marshall y Tanner (Reino Unido, 1969–1970)', 'Bruserud 2020 (Noruega, Tanner)'], ['Telarca (M2)', '11,15 años; 95 % de las niñas inicia la pubertad entre 8,5 y 13 años', 'Mediana 10,4 años (−2 DE 8,0; +2 DE 12,7)'], ['Vello púbico P2 (niñas)', '11,69 años', 'Mediana 10,9 años'], ['Pico de velocidad de crecimiento', '12,14 años', '—'], ['Menarca', '13,47 años; 2,3 años después de M2 en promedio (rango 0,5 a 5,8)', 'Mediana 12,7 años'], ['Mama madura (M5)', '15,33 años (entre 11,8 y 18,9)', 'Mediana 14,7 años'], ['Inicio genital (G2, varones)', '11,6 años; 95 % entre 9,5 y 13,5 años', '—']],
+      nEd: ['Edades actuales', ['Las cohortes recientes inician la pubertad antes que la de 1969: usá referencias locales y actuales cuando existan (alternativa citada por la fuente: Bruserud 2020).']] },
+    en: { ruta: 'Pediatric and adolescent gynecology · Puberty', tit: 'Tanner stages', baj: 'Choose the stage: the drawing changes and the definition and mean age appear below.',
+      hA: 'Breasts (girls)', hB: 'Pubic hair', hC: 'Genitalia (boys)', hD: 'Reference ages',
+      rotulo: 'CaVeSal® own algorithm · Based on: Marshall WA and Tanner JM, Arch Dis Child 1969 and 1970; Bruserud IS et al., J Clin Endocrinol Metab 2020.',
+      nota: 'Didactic plate; staging is done by inspection and, for breasts, also by palpation.',
+      perf: 'Profile', fte: 'Front', ed: 'Mean age (Marshall and Tanner 1969):', a: 'years',
+      M: ['Pre-adolescent: elevation of the papilla only.', 'Breast bud: breast and papilla elevated as a small mound; areolar diameter enlarged.', 'Further enlargement of breast and areola, with no separation of their contours.', 'Areola and papilla form a secondary mound above the level of the breast.', 'Mature: only the papilla projects; the areola recedes to the general contour of the breast.'],
+      P: ['No pubic hair: only fine vellus similar to that over the abdominal wall.', 'Sparse, long, slightly pigmented, straight or slightly curled hair, mainly along the labia (in boys, at the base of the penis).', 'Darker, coarser and curlier hair, spreading sparsely over the pubis.', 'Adult-type hair, but over a smaller area; no spread to the thighs.', 'Adult in quantity and type, inverse triangle; spread to the medial thighs.'],
+      edM: ['—', '11.15', '12.15', '13.11', '15.33'], edP: ['—', '11.69', '12.36', '12.95', '14.41'],
+      tabG: [['Stage', 'Description'], ['G1', 'Pre-adolescent: testes, scrotum and penis of childhood size.'], ['G2', 'Enlargement of scrotum and testes; scrotal skin reddens and changes in texture.'], ['G3', 'Enlargement of the penis, first in length; further growth of testes and scrotum.'], ['G4', 'Penis larger in length and breadth, with development of the glans; scrotum larger and darker.'], ['G5', 'Adult genitalia in size and shape.']],
+      tabE: [['Milestone', 'Marshall and Tanner (UK, 1969–1970)', 'Bruserud 2020 (Norway, Tanner)'], ['Thelarche (B2)', '11.15 years; 95% of girls start puberty between 8.5 and 13 years', 'Median 10.4 years (−2 SD 8.0; +2 SD 12.7)'], ['Pubic hair PH2 (girls)', '11.69 years', 'Median 10.9 years'], ['Peak height velocity', '12.14 years', '—'], ['Menarche', '13.47 years; on average 2.3 years after B2 (range 0.5 to 5.8)', 'Median 12.7 years'], ['Mature breast (B5)', '15.33 years (between 11.8 and 18.9)', 'Median 14.7 years'], ['Genital onset (G2, boys)', '11.6 years; 95% between 9.5 and 13.5 years', '—']],
+      nEd: ['Current ages', ['Recent cohorts start puberty earlier than the 1969 cohort: use local, current references when available (alternative cited by the source: Bruserud 2020).']] },
+    pt: { ruta: 'Ginecologia infantojuvenil · Puberdade', tit: 'Estágios de Tanner', baj: 'Escolha o estágio: o esquema muda e abaixo aparecem a definição e a idade média.',
+      hA: 'Mamas (meninas)', hB: 'Pelos pubianos', hC: 'Genitais (meninos)', hD: 'Idades de referência',
+      rotulo: 'Algoritmo próprio CaVeSal® · Baseado em: Marshall WA e Tanner JM, Arch Dis Child 1969 e 1970; Bruserud IS et al., J Clin Endocrinol Metab 2020.',
+      nota: 'Lâmina didática; o estadiamento é feito por inspeção e, nas mamas, também por palpação.',
+      perf: 'Perfil', fte: 'Frente', ed: 'Idade média (Marshall e Tanner 1969):', a: 'anos',
+      M: ['Pré-adolescente: apenas elevação da papila.', 'Broto mamário: mama e papila elevam-se como um pequeno montículo; aumenta o diâmetro da aréola.', 'Maior crescimento da mama e da aréola, sem separação de seus contornos.', 'A aréola e a papila formam um montículo secundário acima do nível da mama.', 'Madura: apenas a papila se projeta; a aréola volta ao contorno geral da mama.'],
+      P: ['Sem pelos pubianos: apenas pelo fino semelhante ao da parede abdominal.', 'Pelos escassos, longos, pouco pigmentados, lisos ou levemente encaracolados, sobretudo nos grandes lábios (nos meninos, na base do pênis).', 'Pelos mais escuros, grossos e encaracolados, que se estendem escassamente sobre o púbis.', 'Pelos de tipo adulto, mas em área menor; não chegam às coxas.', 'Adulto em quantidade e tipo, em triângulo invertido; estende-se à face interna das coxas.'],
+      edM: ['—', '11,15', '12,15', '13,11', '15,33'], edP: ['—', '11,69', '12,36', '12,95', '14,41'],
+      tabG: [['Estágio', 'Descrição'], ['G1', 'Pré-adolescente: testículos, escroto e pênis de tamanho infantil.'], ['G2', 'Aumentam escroto e testículos; a pele do escroto avermelha e muda de textura.'], ['G3', 'Cresce o pênis, primeiro em comprimento; continuam crescendo testículos e escroto.'], ['G4', 'Pênis mais longo e grosso, com desenvolvimento da glande; escroto maior e mais escuro.'], ['G5', 'Genitais adultos em tamanho e forma.']],
+      tabE: [['Marco', 'Marshall e Tanner (Reino Unido, 1969–1970)', 'Bruserud 2020 (Noruega, Tanner)'], ['Telarca (M2)', '11,15 anos; 95% das meninas iniciam a puberdade entre 8,5 e 13 anos', 'Mediana 10,4 anos (−2 DP 8,0; +2 DP 12,7)'], ['Pelos pubianos P2 (meninas)', '11,69 anos', 'Mediana 10,9 anos'], ['Pico de velocidade de crescimento', '12,14 anos', '—'], ['Menarca', '13,47 anos; em média 2,3 anos após M2 (faixa 0,5 a 5,8)', 'Mediana 12,7 anos'], ['Mama madura (M5)', '15,33 anos (entre 11,8 e 18,9)', 'Mediana 14,7 anos'], ['Início genital (G2, meninos)', '11,6 anos; 95% entre 9,5 e 13,5 anos', '—']],
+      nEd: ['Idades atuais', ['As coortes recentes iniciam a puberdade antes que a de 1969: use referências locais e atuais quando existirem (alternativa citada pela fonte: Bruserud 2020).']] }
+  };
+
+  function P(x, y, g, i, n, on) { return '<g class="pt' + (on ? ' on' : '') + '" data-g="' + g + '" data-i="' + i + '" tabindex="0" role="button"><circle class="h" cx="' + x + '" cy="' + y + '" r="18"/><circle class="m" cx="' + x + '" cy="' + y + '" r="11"/><text x="' + x + '" y="' + y + '">' + n + '</text></g>'; }
+  function T(x, y, s, c, an, sz) { return '<text x="' + x + '" y="' + y + '" fill="' + (c || '#e6edf3') + '" font-size="' + (sz || 10) + '" font-weight="800" text-anchor="' + (an || 'middle') + '">' + A.esc(s) + '</text>'; }
+  document.addEventListener('keydown', function (ev) { var g = ev.target.closest && ev.target.closest('.pt'); if (g && (ev.key === 'Enter' || ev.key === ' ')) { ev.preventDefault(); g.dispatchEvent(new MouseEvent('click', { bubbles: true })); } });
+
+  var st = { m: 1, p: 1 };
+  function tabla(el, rows) { el.innerHTML = '<thead><tr>' + rows[0].map(function (h) { return '<th>' + A.esc(h) + '</th>'; }).join('') + '</tr></thead><tbody>' + rows.slice(1).map(function (r) { return '<tr><th>' + A.esc(r[0]) + '</th>' + r.slice(1).map(function (c) { return '<td>' + A.esc(c) + '</td>'; }).join('') + '</tr>'; }).join('') + '</tbody>'; }
+  var PIEL = '#d9c2b0', AR = '#a8705f', LN = '#6b4a3c';
+  function mama(k, u) {
+    /* perfil: pared torácica en x=60; frente: círculo areolar */
+    var pr = [
+      'M60 40 L60 200',
+      'M60 40 L60 112 Q66 116 60 120 L60 200',
+      'M60 40 C60 90 96 96 98 118 C96 140 60 150 60 200',
+      'M60 40 C60 84 112 92 116 116 C120 112 132 114 132 120 C132 126 120 128 116 124 C112 146 60 152 60 200',
+      'M60 40 C60 80 126 88 128 120 C128 150 80 160 60 200'];
+    var tip = [[62, 116], [66, 116], [100, 118], [134, 120], [126, 120]][k];
+    var s = '<svg class="eco" viewBox="0 0 360 230" role="img"><rect width="360" height="230" rx="12" fill="#f3f6f9"/>';
+    s += '<path d="' + pr[k] + ' L20 200 L20 40 Z" fill="' + PIEL + '" stroke="' + LN + '" stroke-width="2"/>';
+    if (k >= 3) s += '<path d="M' + (k === 3 ? '116 112 Q130 106 132 120 Q130 132 116 126' : '124 106 Q130 114 124 134') + '" fill="' + AR + '" opacity=".75"/>';
+    s += '<circle cx="' + (tip[0] + 2) + '" cy="' + tip[1] + '" r="3" fill="' + LN + '"/>' + T(80, 222, u.perf, '#33475b', 'middle', 11);
+    var ra = [10, 16, 20, 22, 20][k], rm = [0, 30, 50, 60, 66][k];
+    s += '<circle cx="260" cy="118" r="' + (rm || 70) + '" fill="' + (rm ? PIEL : 'none') + '" stroke="' + (rm ? LN : '#c9d2db') + '" stroke-width="2"' + (rm ? '' : ' stroke-dasharray="5 5"') + '/>';
+    s += '<circle cx="260" cy="118" r="' + ra + '" fill="' + AR + '"' + (k === 3 ? ' stroke="#7a4b3d" stroke-width="3"' : '') + '/><circle cx="260" cy="118" r="4" fill="' + LN + '"/>' + T(260, 222, u.fte, '#33475b', 'middle', 11);
+    return s + '</svg>';
+  }
+  function vello(k, u) {
+    var s = '<svg class="eco" viewBox="0 0 360 220" role="img"><rect width="360" height="220" rx="12" fill="#f3f6f9"/>';
+    s += '<path d="M90 20 L270 20 L276 110 Q240 150 214 210 L146 210 Q120 150 84 110 Z" fill="' + PIEL + '" stroke="' + LN + '" stroke-width="2"/><path d="M180 150 L180 205" stroke="' + LN + '" stroke-width="2"/>';
+    var zonas = [null, [[170, 150], [190, 150], [168, 170], [192, 170], [172, 188], [188, 188]], [150, 100, 210, 100, 180, 200], [120, 70, 240, 70, 180, 205], [96, 60, 264, 60, 180, 210]];
+    var n = [0, 6, 40, 90, 150][k], seed = 7;
+    function r() { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }
+    if (k === 1) zonas[1].forEach(function (p) { s += '<path d="M' + p[0] + ' ' + p[1] + ' q3 -8 1 -14" stroke="#5a3b2e" stroke-width="1.4" fill="none"/>'; });
+    else if (k > 1) {
+      var z = zonas[k];
+      for (var i = 0; i < n; i++) { var a = r(), b = r(); if (a + b > 1) { a = 1 - a; b = 1 - b; } var x = z[0] + a * (z[2] - z[0]) + b * (z[4] - z[0]), y = z[1] + a * (z[3] - z[1]) + b * (z[5] - z[1]); s += '<path d="M' + x.toFixed(1) + ' ' + y.toFixed(1) + ' q2 -4 0 -7 q-2 -3 1 -5" stroke="#3b2418" stroke-width="' + (k > 2 ? 1.6 : 1.2) + '" fill="none"/>'; }
+      if (k === 4) for (var j = 0; j < 24; j++) { var lx = j % 2 ? 100 + r() * 26 : 234 + r() * 26, ly = 110 + r() * 40; s += '<path d="M' + lx.toFixed(1) + ' ' + ly.toFixed(1) + ' q2 -4 0 -7" stroke="#3b2418" stroke-width="1.6" fill="none"/>'; }
+    }
+    return s + '</svg>';
+  }
+  function pintar() {
+    var u = U(UI);
+    A.nav($('#nav-at'), 'tanner.html');
+    chips($('#cM'), u.M.map(function (x, i) { return { k: 'M' + (i + 1), n: '' }; }), st.m, 'm');
+    chips($('#cP'), u.P.map(function (x, i) { return { k: 'P' + (i + 1), n: '' }; }), st.p, 'p');
+    $('#svgM').innerHTML = mama(st.m, u); $('#svgP').innerHTML = vello(st.p, u);
+    A.panel($('#expM'), 'M' + (st.m + 1), [u.M[st.m]].concat(st.m ? [u.ed + ' ' + u.edM[st.m] + ' ' + u.a] : []), '');
+    A.panel($('#expP'), 'P' + (st.p + 1), [u.P[st.p]].concat(st.p ? [u.ed + ' ' + u.edP[st.p] + ' ' + u.a] : []), '');
+    tabla($('#tabG'), u.tabG); tabla($('#tabE'), u.tabE);
+    A.panel($('#nEd'), u.nEd[0], u.nEd[1], '');
+  }
+  document.addEventListener('click', function (ev) {
+    var b = ev.target.closest('[data-l],[data-g]'); if (!b) return;
+    if (b.dataset.l) A.setLang(b.dataset.l); else if (b.dataset.g === 'm') st.m = +b.dataset.i; else if (b.dataset.g === 'p') st.p = +b.dataset.i; else return;
+    pintar();
+  });
+  pintar();
+
+})();
+</script>
+</body>
+</html>
