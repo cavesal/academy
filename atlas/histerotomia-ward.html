@@ -165,7 +165,7 @@
     s += '<path d="' + pl[0] + '" fill="#7b4fb3" opacity="' + pl[1] + '" stroke="#c9a6ef" stroke-dasharray="5 4"/>' + T(k === 2 ? 70 : 300, k === 1 ? 112 : 172, u.LL.plac, '#e9dcff', 'middle', 9);
     var inc = k === 1 || k === 2 ? 'M120 214 Q180 228 240 214' : 'M120 214 Q180 228 240 214';
     s += '<path d="' + inc + '" stroke="#fff" stroke-width="3.5" fill="none"/>';
-    if (k !== 1) s += '<path d="' + (k === 2 ? 'M196 212 Q206 196 222 184' : 'M200 214 Q236 200 262 182') + '" stroke="#ffd166" stroke-width="3.5" fill="none" marker-end="url(#fl)"/>' + T(k === 2 ? 236 : 286, k === 2 ? 178 : 172, u.LL.ward, '#ffd166', 'start', 9);
+    if (k !== 1) s += '<path d="' + (k === 2 ? 'M196 212 Q206 196 222 184' : 'M200 214 Q236 200 262 182') + '" stroke="#ffd166" stroke-width="3.5" fill="none" marker-end="url(#fl)"/>' + T(k === 2 ? 236 : 268, k === 2 ? 178 : 196, u.LL.ward, '#ffd166', 'start', 9);
     return '<svg class="eco" viewBox="0 0 360 260" role="img"><defs><marker id="fl" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#ffd166"/></marker></defs>' + s + '</svg>';
   }
   function pintar() {
