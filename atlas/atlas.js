@@ -33,7 +33,19 @@
     { href: 'corazon-situs.html', t: { es: 'Corazón: situs y 4 cámaras', en: 'Heart: situs and 4 chambers', pt: 'Coração: situs e 4 câmaras' } },
     { href: 'columna-pared-cordon.html', t: { es: 'Columna, pared y cordón', en: 'Spine, wall and cord', pt: 'Coluna, parede e cordão' } },
     { href: 'vacunas-semaforo.html', t: { es: 'Semáforo de vacunas', en: 'Vaccine traffic light', pt: 'Semáforo de vacinas' } },
-    { href: 'atrofia-vulvovaginal.html', t: { es: 'Atrofia vulvovaginal', en: 'Vulvovaginal atrophy', pt: 'Atrofia vulvovaginal' } }
+    { href: 'atrofia-vulvovaginal.html', t: { es: 'Atrofia vulvovaginal', en: 'Vulvovaginal atrophy', pt: 'Atrofia vulvovaginal' } },
+    { href: 'pelvis-hodge.html', t: { es: 'Pelvis: Hodge y Caldwell-Moloy', en: 'Pelvis: Hodge and Caldwell-Moloy', pt: 'Pelve: Hodge e Caldwell-Moloy' } },
+    { href: 'mecanismo-parto.html', t: { es: 'Mecanismo del parto', en: 'Mechanism of labor', pt: 'Mecanismo do parto' } },
+    { href: 'cervicometria.html', t: { es: 'Cervicometría', en: 'Cervical length', pt: 'Cervicometria' } },
+    { href: 'pop-q-pesarios.html', t: { es: 'POP-Q y pesarios', en: 'POP-Q and pessaries', pt: 'POP-Q e pessários' } },
+    { href: 'suelo-pelvico.html', t: { es: 'Suelo pélvico', en: 'Pelvic floor', pt: 'Assoalho pélvico' } },
+    { href: 'doppler-rciu.html', t: { es: 'Doppler RCIU: Barcelona', en: 'FGR Doppler: Barcelona', pt: 'Doppler RCF: Barcelona' } },
+    { href: 'bi-rads.html', t: { es: 'BI-RADS', en: 'BI-RADS', pt: 'BI-RADS' } },
+    { href: 'colposcopia-bethesda.html', t: { es: 'Colposcopia y Bethesda', en: 'Colposcopy and Bethesda', pt: 'Colposcopia e Bethesda' } },
+    { href: 'endometriosis-idea-enzian.html', t: { es: 'Endometriosis: IDEA y #Enzian', en: 'Endometriosis: IDEA and #Enzian', pt: 'Endometriose: IDEA e #Enzian' } },
+    { href: 'straw-10.html', t: { es: 'STRAW+10', en: 'STRAW+10', pt: 'STRAW+10' } },
+    { href: 'amsel-nugent.html', t: { es: 'Amsel y Nugent', en: 'Amsel and Nugent', pt: 'Amsel e Nugent' } },
+    { href: 'elegibilidad-anticonceptiva.html', t: { es: 'Elegibilidad anticonceptiva', en: 'Contraceptive eligibility', pt: 'Elegibilidade anticoncepcional' } }
   ];
   A.nav = function (el, actual) {
     if (!el) return;

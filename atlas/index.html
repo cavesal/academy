@@ -43,11 +43,23 @@
 (function () {
   var A = window.Atlas;
   var UI = {
-    es: { atlas: 'Atlas médico', volver: '← Volver a Academy', ruta: 'Ginecología y Obstetricia', tit: 'Atlas médico', baj: 'Láminas interactivas con esquemas propios e imágenes reales con licencia libre.', prox: 'Próximas láminas: según la hoja de ruta del Atlas.', ph: 'Buscar lámina, término o clasificación', nada: 'Ninguna lámina coincide con la búsqueda.', ax1: ['Todas', 'Ginecología', 'Obstetricia'], ax2: ['Todos los temas', 'Ecografía', 'Placenta', 'Hemorragia', 'Líquido amniótico', 'Endocrinología y pubertad'] },
-    en: { atlas: 'Medical atlas', volver: '← Back to Academy', ruta: 'Gynecology and Obstetrics', tit: 'Medical atlas', baj: 'Interactive plates with our own drawings and freely licensed real images.', prox: 'Coming plates: according to the Atlas roadmap.', ph: 'Search plate, term or classification', nada: 'No plate matches the search.', ax1: ['All', 'Gynecology', 'Obstetrics'], ax2: ['All topics', 'Ultrasound', 'Placenta', 'Hemorrhage', 'Amniotic fluid', 'Endocrinology and puberty'] },
-    pt: { atlas: 'Atlas médico', volver: '← Voltar ao Academy', ruta: 'Ginecologia e Obstetrícia', tit: 'Atlas médico', baj: 'Lâminas interativas com esquemas próprios e imagens reais com licença livre.', prox: 'Próximas lâminas: segundo o roteiro do Atlas.', ph: 'Buscar lâmina, termo ou classificação', nada: 'Nenhuma lâmina corresponde à busca.', ax1: ['Todas', 'Ginecologia', 'Obstetrícia'], ax2: ['Todos os temas', 'Ultrassom', 'Placenta', 'Hemorragia', 'Líquido amniótico', 'Endocrinologia e puberdade'] }
+    es: { atlas: 'Atlas médico', volver: '← Volver a Academy', ruta: 'Ginecología y Obstetricia', tit: 'Atlas médico', baj: 'Láminas interactivas con esquemas propios e imágenes reales con licencia libre.', prox: 'Próximas láminas: según la hoja de ruta del Atlas.', ph: 'Buscar lámina, término o clasificación', nada: 'Ninguna lámina coincide con la búsqueda.', ax1: ['Todas', 'Ginecología', 'Obstetricia'], ax2: ['Todos los temas', 'Ecografía', 'Placenta', 'Hemorragia', 'Líquido amniótico', 'Endocrinología y pubertad', 'Parto y periné', 'Climaterio'] },
+    en: { atlas: 'Medical atlas', volver: '← Back to Academy', ruta: 'Gynecology and Obstetrics', tit: 'Medical atlas', baj: 'Interactive plates with our own drawings and freely licensed real images.', prox: 'Coming plates: according to the Atlas roadmap.', ph: 'Search plate, term or classification', nada: 'No plate matches the search.', ax1: ['All', 'Gynecology', 'Obstetrics'], ax2: ['All topics', 'Ultrasound', 'Placenta', 'Hemorrhage', 'Amniotic fluid', 'Endocrinology and puberty', 'Labor and perineum', 'Climacteric'] },
+    pt: { atlas: 'Atlas médico', volver: '← Voltar ao Academy', ruta: 'Ginecologia e Obstetrícia', tit: 'Atlas médico', baj: 'Lâminas interativas com esquemas próprios e imagens reais com licença livre.', prox: 'Próximas lâminas: segundo o roteiro do Atlas.', ph: 'Buscar lâmina, termo ou classificação', nada: 'Nenhuma lâmina corresponde à busca.', ax1: ['Todas', 'Ginecologia', 'Obstetrícia'], ax2: ['Todos os temas', 'Ultrassom', 'Placenta', 'Hemorragia', 'Líquido amniótico', 'Endocrinologia e puberdade', 'Parto e períneo', 'Climatério'] }
   };
   var D = {
+    'elegibilidad-anticonceptiva.html': { es: 'Categorías 1–4 de la OMS y condiciones frecuentes por método (US MEC 2024).', en: 'WHO categories 1–4 and common conditions by method (US MEC 2024).', pt: 'Categorias 1–4 da OMS e condições frequentes por método (US MEC 2024).' },
+    'amsel-nugent.html': { es: 'Criterios de Amsel, célula clave y puntaje de Nugent para vaginosis bacteriana.', en: 'Amsel criteria, clue cell and Nugent score for bacterial vaginosis.', pt: 'Critérios de Amsel, célula-guia e escore de Nugent para vaginose bacteriana.' },
+    'straw-10.html': { es: 'Estadios del envejecimiento reproductivo de −5 a +2.', en: 'Stages of reproductive aging from −5 to +2.', pt: 'Estádios do envelhecimento reprodutivo de −5 a +2.' },
+    'endometriosis-idea-enzian.html': { es: 'Cuatro pasos ecográficos IDEA y compartimentos #Enzian con grados.', en: 'Four IDEA ultrasound steps and #Enzian compartments with grades.', pt: 'Quatro passos ultrassonográficos IDEA e compartimentos #Enzian com graus.' },
+    'colposcopia-bethesda.html': { es: 'Zona de transformación, hallazgos IFCPC 2011 y categorías Bethesda 2014.', en: 'Transformation zone, IFCPC 2011 findings and Bethesda 2014 categories.', pt: 'Zona de transformação, achados IFCPC 2011 e categorias Bethesda 2014.' },
+    'bi-rads.html': { es: 'Categorías 0–6 con conducta y probabilidad de cáncer; densidad mamaria a–d.', en: 'Categories 0–6 with management and likelihood of cancer; breast density a–d.', pt: 'Categorias 0–6 com conduta e probabilidade de câncer; densidade mamária a–d.' },
+    'doppler-rciu.html': { es: 'Estadios I–IV, control y momento del nacimiento; definición Delphi temprana y tardía.', en: 'Stages I–IV, follow-up and timing of birth; early and late Delphi definition.', pt: 'Estádios I–IV, controle e momento do nascimento; definição Delphi precoce e tardia.' },
+    'suelo-pelvico.html': { es: 'Músculos del elevador, niveles de DeLancey y desgarros perineales OASIS.', en: 'Levator muscles, DeLancey levels and OASIS perineal tears.', pt: 'Músculos do levantador, níveis de DeLancey e lacerações perineais OASIS.' },
+    'pop-q-pesarios.html': { es: 'Cuadrícula POP-Q, estadios 0–IV y tipos de pesario.', en: 'POP-Q grid, stages 0–IV and pessary types.', pt: 'Grade POP-Q, estádios 0–IV e tipos de pessário.' },
+    'cervicometria.html': { es: 'Técnica transvaginal ISUOG y conducta según la longitud cervical.', en: 'ISUOG transvaginal technique and management by cervical length.', pt: 'Técnica transvaginal ISUOG e conduta segundo o comprimento cervical.' },
+    'mecanismo-parto.html': { es: 'Los siete movimientos cardinales con rotación del occipucio y estación.', en: 'The seven cardinal movements with occiput rotation and station.', pt: 'Os sete movimentos cardinais com rotação do occipital e estação.' },
+    'pelvis-hodge.html': { es: 'Planos de Hodge, estaciones, conjugados, tipos de pelvis y diámetros de referencia.', en: 'Hodge planes, stations, conjugates, pelvic types and reference diameters.', pt: 'Planos de Hodge, estações, conjugatas, tipos de pelve e diâmetros de referência.' },
     'atrofia-vulvovaginal.html': { es: 'Tratamiento secuencial en tres opciones y terapias no recomendadas en el climaterio.', en: 'Three-step sequential treatment and non-recommended therapies in the climacteric.', pt: 'Tratamento sequencial em três opções e terapias não recomendadas no climatério.' },
     'vacunas-semaforo.html': { es: 'Vacunas en preconcepción, embarazo y lactancia en verde, ámbar y rojo, con VSR, Tdpa y vacunas vivas.', en: 'Vaccines in preconception, pregnancy and breastfeeding in green, amber and red, with RSV, Tdap and live vaccines.', pt: 'Vacinas na pré-concepção, gestação e lactação em verde, âmbar e vermelho, com VSR, dTpa e vacinas vivas.' },
     'placenta-previa.html': { es: 'Definición por eco transvaginal, línea de tiempo 32 y 36 sem, corticoides, nacimiento 36–37+6, factores de riesgo y recursos.', en: 'Transvaginal definition, 32 and 36 wk timeline, corticosteroids, birth at 36–37+6, risk factors and resources.', pt: 'Definição por ultrassom transvaginal, linha do tempo 32 e 36 sem, corticoide, nascimento 36–37+6, fatores de risco e recursos.' },
@@ -75,7 +87,19 @@
   };
   /* ejes: área (g/o) y tema (eco, pla, hpp, liq); clave extra para buscar siglas */
   var EJ = {
-    'atrofia-vulvovaginal.html': ['g', 'end', 'SGM GSM atrofia climaterio menopausia láser prasterona ospemifeno bioidénticas pellets cimicifuga testosterona'],
+    'elegibilidad-anticonceptiva.html': ['g', '', 'anticoncepción contraception MEC OMS WHO elegibilidad DIU implante combinados'],
+    'amsel-nugent.html': ['g', '', 'vaginosis vaginose Amsel Nugent clue cell célula clave Gram'],
+    'straw-10.html': ['g', 'cli', 'STRAW menopausia menopause transición climaterio FSH'],
+    'endometriosis-idea-enzian.html': ['g', 'eco', 'endometriosis endometriose IDEA Enzian sliding deslizamiento nódulo profunda'],
+    'colposcopia-bethesda.html': ['g', '', 'colposcopia colposcopy IFCPC Bethesda Papanicolaou ASC-US LSIL HSIL cuello'],
+    'bi-rads.html': ['g', '', 'BI-RADS mama breast mamografía densidad ACR'],
+    'doppler-rciu.html': ['o', 'eco', 'RCIU FGR Doppler Barcelona Figueras Gratacós ductus umbilical Delphi PEG SGA'],
+    'suelo-pelvico.html': ['g', 'par', 'suelo pélvico pelvic floor elevador DeLancey desgarro OASIS esfínter perineal'],
+    'pop-q-pesarios.html': ['g', '', 'POP-Q prolapso prolapse pesario pessary Gellhorn uroginecología'],
+    'cervicometria.html': ['o', 'eco', 'cervicometría cervical length cuello corto progesterona cerclaje pretérmino preterm'],
+    'mecanismo-parto.html': ['o', 'par', 'mecanismo parto labor encajamiento rotación interna extensión restitución occipito'],
+    'pelvis-hodge.html': ['o', 'par', 'pelvis pelve Hodge estación station Caldwell Moloy ginecoide androide conjugado pelvimetría'],
+    'atrofia-vulvovaginal.html': ['g', 'cli', 'SGM GSM atrofia climaterio menopausia láser prasterona ospemifeno bioidénticas pellets cimicifuga testosterona'],
     'vacunas-semaforo.html': ['o', '', 'vacuna vaccine vacina Tdpa Tdap VSR RSV Abrysvo SRP MMR fiebre amarilla dengue Qdenga lactancia'],
     'placenta-previa.html': ['o', 'pla eco', 'previa inserción baja low-lying sangrado bleeding RCOG Jenabi'],
     'sop-rotterdam.html': ['g', 'end eco', 'SOP PCOS PMOS Rotterdam hirsutismo Ferriman mFG AMH ovario poliquístico'], 'tanner.html': ['g', 'end', 'Tanner pubertad puberty telarca menarca pubarca'],
@@ -85,7 +109,7 @@
     'ila.html': ['o', 'liq', 'ILA AFI oligohidramnios polihidramnios bolsillo pocket Phelan'], 'segmentos-utero.html': ['o', 'hpp', 'S1 S2 S3 HPP PPH hemorragia pedículos torniquete'],
     'pas.html': ['o', 'pla', 'PAS acretismo accreta FIGO topografía'], 'pas-ecografia.html': ['o', 'pla eco', 'PAS S1 S2 vejiga bladder ecografía'], 'pas-conducta.html': ['o', 'pla hpp', 'PAS OSCS MSTH histerectomía hysterectomy'], 'histerotomia-ward.html': ['o', 'pla hpp', 'Ward previa histerotomía hysterotomy cesárea'], 'zonas-ureterales.html': ['o', 'hpp', 'uréter ureter vejiga histerectomía lesión'], 'suturas-compresivas.html': ['o', 'hpp', 'B-Lynch Hayman Cho sutura compresiva atonía'], 'torniquete-uterino.html': ['o', 'hpp', 'torniquete tourniquet guante aorta compresión']
   };
-  var A1 = ['', 'g', 'o'], A2 = ['', 'eco', 'pla', 'hpp', 'liq', 'end'], f = { a: 0, t: 0 };
+  var A1 = ['', 'g', 'o'], A2 = ['', 'eco', 'pla', 'hpp', 'liq', 'end', 'par', 'cli'], f = { a: 0, t: 0 };
   function norm(x) { return String(x).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); }
   function chip(el, list, cur, g) { el.innerHTML = list.map(function (n, i) { return '<button type="button" data-g="' + g + '" data-i="' + i + '" aria-pressed="' + (cur === i) + '">' + A.esc(n) + '</button>'; }).join(''); }
   function pintar() {

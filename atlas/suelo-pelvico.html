@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Suelo pélvico: músculos, niveles de DeLancey y desgarros — Atlas médico · CaVeSal® Academy</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="../img/favicon.png">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="atlas.css">
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <a class="marca" href="../#/" aria-label="CaVeSal Academy">
+      <img src="../img/icon-192.png" alt="" width="40" height="40">
+      <span class="marca-txt"><strong>CaVeSal<sup>®</sup> Academy</strong><small data-t="atlas">Atlas médico</small></span>
+    </a>
+  </div>
+</header>
+<main class="at" id="main">
+  <div class="at-top">
+    <a class="volver" href="../#/" data-t="volver">← Volver a Academy</a>
+    <div class="idi" role="group" aria-label="Idioma">
+      <button type="button" data-l="es">ES</button><button type="button" data-l="en">EN</button><button type="button" data-l="pt">PT</button>
+    </div>
+  </div>
+  <nav class="nav-at" id="nav-at" aria-label="Láminas"></nav>
+  <span class="eyebrow" data-t="ruta">Ginecología · Uroginecología</span>
+  <h1 data-t="tit">Suelo pélvico: músculos, niveles de DeLancey y desgarros</h1>
+  <p class="baj" data-t="baj">Tocá cada estructura, elegí un nivel de soporte y revisá la clasificación de desgarros.</p>
+  <section class="lam" aria-labelledby="s0h"><h2><span class="tipo">E</span><span id="s0h">Músculos y estructuras</span></h2><div id="s0v"></div><div class="exp" id="s0e" aria-live="polite"></div></section>
+  <section class="lam" aria-labelledby="s1h"><h2><span class="tipo">C</span><span id="s1h">Niveles de soporte de DeLancey</span></h2><div class="chips" id="s1c" role="group"></div><div class="exp" id="s1e" aria-live="polite"></div></section>
+  <section class="lam" aria-labelledby="s2h"><h2><span class="tipo">T</span><span id="s2h">Desgarros perineales (Sultan, RCOG)</span></h2><div class="scroll"><table class="tb" id="s2t"></table></div></section>
+  <div class="rot">
+    <p><strong data-t="rotulo">Algoritmo propio CaVeSal® · Basado en: DeLancey JO, Am J Obstet Gynecol 1992; RCOG Green-top Guideline No. 29, 2015.</strong></p>
+    <p class="nota" data-t="nota">Lámina didáctica.</p>
+    <ol><li>DeLancey JO. Anatomic aspects of vaginal eversion after hysterectomy. Am J Obstet Gynecol. 1992;166(6 Pt 1):1717-1724. <a href="https://doi.org/10.1016/0002-9378(92)91562-O" target="_blank" rel="noopener">doi:10.1016/0002-9378(92)91562-O</a></li><li>Royal College of Obstetricians and Gynaecologists. The Management of Third- and Fourth-Degree Perineal Tears. Green-top Guideline No. 29. London: RCOG; 2015.</li></ol>
+  </div>
+</main>
+<script src="atlas.js"></script>
+<script>
+(function () {
+  'use strict';
+  var A = window.Atlas;
+  function $(s) { return document.querySelector(s); }
+  var COM = {
+    es: { atlas: 'Atlas médico', volver: '← Volver a Academy', nota: 'Lámina didáctica; no reemplaza la evaluación del ecografista ni el juicio clínico.', esq: 'Esquema CaVeSal®', vacio: 'Elegí una opción.' },
+    en: { atlas: 'Medical atlas', volver: '← Back to Academy', nota: 'Didactic plate; it does not replace the sonographer’s assessment or clinical judgment.', esq: 'CaVeSal® drawing', vacio: 'Choose an option.' },
+    pt: { atlas: 'Atlas médico', volver: '← Voltar ao Academy', nota: 'Lâmina didática; não substitui a avaliação do ultrassonografista nem o julgamento clínico.', esq: 'Esquema CaVeSal®', vacio: 'Escolha uma opção.' }
+  };
+  function U(UI) { ['es', 'en', 'pt'].forEach(function (l) { for (var k in COM[l]) if (!(k in UI[l])) UI[l][k] = COM[l][k]; }); return A.textos(UI); }
+  function real(img, c, txt) { var r = A.CRED[c]; return '<figure><img src="img/' + img + '.jpg" alt="" loading="lazy"><figcaption><a href="' + r.url + '" target="_blank" rel="noopener">' + A.esc(r.txt) + '</a></figcaption></figure>'; }
+  function chips(el, list, cur, g) { el.innerHTML = list.map(function (x, i) { return '<button type="button" data-g="' + g + '" data-i="' + i + '" aria-pressed="' + (cur === i) + '">' + (x.k ? '<b>' + A.esc(x.k) + '</b>' : '') + A.esc(x.n) + '</button>'; }).join(''); }
+  function lista(a) { return '<ul>' + a.map(function (x) { return '<li>' + A.esc(x) + '</li>'; }).join('') + '</ul>'; }
+
+  var UI = {"es": {"ruta": "Ginecología · Uroginecología", "tit": "Suelo pélvico: músculos, niveles de DeLancey y desgarros", "baj": "Tocá cada estructura, elegí un nivel de soporte y revisá la clasificación de desgarros.", "rotulo": "Algoritmo propio CaVeSal® · Basado en: DeLancey JO, Am J Obstet Gynecol 1992; RCOG Green-top Guideline No. 29, 2015.", "nota": "Lámina didáctica; no reemplaza el juicio clínico."}, "en": {"ruta": "Gynecology · Urogynecology", "tit": "Pelvic floor: muscles, DeLancey levels and tears", "baj": "Tap each structure, choose a support level and review the tear classification.", "rotulo": "CaVeSal® own algorithm · Based on: DeLancey JO, Am J Obstet Gynecol 1992; RCOG Green-top Guideline No. 29, 2015.", "nota": "Didactic plate; it does not replace clinical judgment."}, "pt": {"ruta": "Ginecologia · Uroginecologia", "tit": "Assoalho pélvico: músculos, níveis de DeLancey e lacerações", "baj": "Toque cada estrutura, escolha um nível de suporte e revise a classificação das lacerações.", "rotulo": "Algoritmo próprio CaVeSal® · Baseado em: DeLancey JO, Am J Obstet Gynecol 1992; RCOG Green-top Guideline No. 29, 2015.", "nota": "Lâmina didática; não substitui o julgamento clínico."}}, SEC = [{"t": "pts", "h": {"es": "Músculos y estructuras", "en": "Muscles and structures", "pt": "Músculos e estruturas"}, "svg": {"es": "<svg class=\"eco\" viewBox=\"0 0 360 272\" role=\"img\"><rect width=\"360\" height=\"272\" rx=\"12\" fill=\"#11161b\"/><ellipse cx=\"180\" cy=\"130\" rx=\"150\" ry=\"105\" fill=\"#1d252d\" stroke=\"#8b98a5\" stroke-width=\"2\"/><rect x=\"160\" y=\"22\" width=\"40\" height=\"16\" rx=\"6\" fill=\"#c9a27a\"/><text x=\"180\" y=\"16\" fill=\"#c9d3dc\" font-size=\"9\" font-weight=\"800\" text-anchor=\"middle\">Pubis</text><path d=\"M175 40 Q90 70 85 140 Q110 215 170 228\" fill=\"none\" stroke=\"#e58a7a\" stroke-width=\"12\" opacity=\".75\"/><path d=\"M185 40 Q270 70 275 140 Q250 215 190 228\" fill=\"none\" stroke=\"#e58a7a\" stroke-width=\"12\" opacity=\".75\"/><path d=\"M155 60 Q150 170 180 196 Q210 170 205 60\" fill=\"none\" stroke=\"#f0b35a\" stroke-width=\"7\"/><path d=\"M70 120 Q120 210 175 232\" fill=\"none\" stroke=\"#c9a6ef\" stroke-width=\"7\"/><path d=\"M290 120 Q240 210 185 232\" fill=\"none\" stroke=\"#c9a6ef\" stroke-width=\"7\"/><ellipse cx=\"180\" cy=\"95\" rx=\"10\" ry=\"22\" fill=\"#11161b\" stroke=\"#c9d3dc\"/><circle cx=\"180\" cy=\"168\" r=\"14\" fill=\"#11161b\" stroke=\"#8fd3ff\" stroke-width=\"5\"/><rect x=\"170\" y=\"128\" width=\"20\" height=\"16\" rx=\"5\" fill=\"#3ddc84\" opacity=\".85\"/><circle cx=\"180\" cy=\"242\" r=\"6\" fill=\"#c9a27a\"/><text x=\"180\" y=\"262\" fill=\"#c9d3dc\" font-size=\"9\" font-weight=\"800\" text-anchor=\"middle\">Cóccix · vista perineal esquemática</text></svg>", "en": "<svg class=\"eco\" viewBox=\"0 0 360 272\" role=\"img\"><rect width=\"360\" height=\"272\" rx=\"12\" fill=\"#11161b\"/><ellipse cx=\"180\" cy=\"130\" rx=\"150\" ry=\"105\" fill=\"#1d252d\" stroke=\"#8b98a5\" stroke-width=\"2\"/><rect x=\"160\" y=\"22\" width=\"40\" height=\"16\" rx=\"6\" fill=\"#c9a27a\"/><text x=\"180\" y=\"16\" fill=\"#c9d3dc\" font-size=\"9\" font-weight=\"800\" text-anchor=\"middle\">Pubis</text><path d=\"M175 40 Q90 70 85 140 Q110 215 170 228\" fill=\"none\" stroke=\"#e58a7a\" stroke-width=\"12\" opacity=\".75\"/><path d=\"M185 40 Q270 70 275 140 Q250 215 190 228\" fill=\"none\" stroke=\"#e58a7a\" stroke-width=\"12\" opacity=\".75\"/><path d=\"M155 60 Q150 170 180 196 Q210 170 205 60\" fill=\"none\" stroke=\"#f0b35a\" stroke-width=\"7\"/><path d=\"M70 120 Q120 210 175 232\" fill=\"none\" stroke=\"#c9a6ef\" stroke-width=\"7\"/><path d=\"M290 120 Q240 210 185 232\" fill=\"none\" stroke=\"#c9a6ef\" stroke-width=\"7\"/><ellipse cx=\"180\" cy=\"95\" rx=\"10\" ry=\"22\" fill=\"#11161b\" stroke=\"#c9d3dc\"/><circle cx=\"180\" cy=\"168\" r=\"14\" fill=\"#11161b\" stroke=\"#8fd3ff\" stroke-width=\"5\"/><rect x=\"170\" y=\"128\" width=\"20\" height=\"16\" rx=\"5\" fill=\"#3ddc84\" opacity=\".85\"/><circle cx=\"180\" cy=\"242\" r=\"6\" fill=\"#c9a27a\"/><text x=\"180\" y=\"262\" fill=\"#c9d3dc\" font-size=\"9\" font-weight=\"800\" text-anchor=\"middle\">Coccyx · schematic perineal view</text></svg>", "pt": "<svg class=\"eco\" viewBox=\"0 0 360 272\" role=\"img\"><rect width=\"360\" height=\"272\" rx=\"12\" fill=\"#11161b\"/><ellipse cx=\"180\" cy=\"130\" rx=\"150\" ry=\"105\" fill=\"#1d252d\" stroke=\"#8b98a5\" stroke-width=\"2\"/><rect x=\"160\" y=\"22\" width=\"40\" height=\"16\" rx=\"6\" fill=\"#c9a27a\"/><text x=\"180\" y=\"16\" fill=\"#c9d3dc\" font-size=\"9\" font-weight=\"800\" text-anchor=\"middle\">Púbis</text><path d=\"M175 40 Q90 70 85 140 Q110 215 170 228\" fill=\"none\" stroke=\"#e58a7a\" stroke-width=\"12\" opacity=\".75\"/><path d=\"M185 40 Q270 70 275 140 Q250 215 190 228\" fill=\"none\" stroke=\"#e58a7a\" stroke-width=\"12\" opacity=\".75\"/><path d=\"M155 60 Q150 170 180 196 Q210 170 205 60\" fill=\"none\" stroke=\"#f0b35a\" stroke-width=\"7\"/><path d=\"M70 120 Q120 210 175 232\" fill=\"none\" stroke=\"#c9a6ef\" stroke-width=\"7\"/><path d=\"M290 120 Q240 210 185 232\" fill=\"none\" stroke=\"#c9a6ef\" stroke-width=\"7\"/><ellipse cx=\"180\" cy=\"95\" rx=\"10\" ry=\"22\" fill=\"#11161b\" stroke=\"#c9d3dc\"/><circle cx=\"180\" cy=\"168\" r=\"14\" fill=\"#11161b\" stroke=\"#8fd3ff\" stroke-width=\"5\"/><rect x=\"170\" y=\"128\" width=\"20\" height=\"16\" rx=\"5\" fill=\"#3ddc84\" opacity=\".85\"/><circle cx=\"180\" cy=\"242\" r=\"6\" fill=\"#c9a27a\"/><text x=\"180\" y=\"262\" fill=\"#c9d3dc\" font-size=\"9\" font-weight=\"800\" text-anchor=\"middle\">Cóccix · vista perineal esquemática</text></svg>"}, "pts": [[110, 75], [150, 185], [95, 200], [205, 136], [208, 168], [180, 95]], "it": {"es": [["Pubococcígeo (pubovisceral)", ["Del pubis al cóccix rodeando las vísceras; el más expuesto a avulsión en el parto."]], ["Puborrectal", ["Asa alrededor del recto: mantiene el ángulo anorrectal."]], ["Iliococcígeo", ["Desde el arco tendinoso del elevador al cóccix: forma la placa del elevador."]], ["Cuerpo perineal", ["Centro tendinoso donde convergen los músculos del periné (nivel III de DeLancey)."]], ["Esfínter anal externo", ["Su lesión define el desgarro de tercer grado (OASIS)."]], ["Hiato urogenital", ["Paso de uretra y vagina; su ampliación se asocia a prolapso."]]], "en": [["Pubococcygeus (pubovisceral)", ["From the pubis to the coccyx around the viscera; most exposed to avulsion at birth."]], ["Puborectalis", ["Sling around the rectum: maintains the anorectal angle."]], ["Iliococcygeus", ["From the levator tendinous arch to the coccyx: forms the levator plate."]], ["Perineal body", ["Tendinous center where perineal muscles converge (DeLancey level III)."]], ["External anal sphincter", ["Its injury defines a third-degree tear (OASIS)."]], ["Urogenital hiatus", ["Passage of urethra and vagina; its widening is associated with prolapse."]]], "pt": [["Pubococcígeo (pubovisceral)", ["Do púbis ao cóccix envolvendo as vísceras; o mais exposto à avulsão no parto."]], ["Puborretal", ["Alça ao redor do reto: mantém o ângulo anorretal."]], ["Iliococcígeo", ["Do arco tendíneo do levantador ao cóccix: forma a placa do levantador."]], ["Corpo perineal", ["Centro tendíneo onde convergem os músculos do períneo (nível III de DeLancey)."]], ["Esfíncter anal externo", ["Sua lesão define a laceração de terceiro grau (OASIS)."]], ["Hiato urogenital", ["Passagem de uretra e vagina; sua ampliação se associa a prolapso."]]]}}, {"t": "chips", "h": {"es": "Niveles de soporte de DeLancey", "en": "DeLancey support levels", "pt": "Níveis de suporte de DeLancey"}, "it": {"es": [["Nivel I", "Nivel I · suspensión", ["Complejo cardinal-uterosacro: sostiene cuello y tercio superior de la vagina.", "Su falla produce prolapso apical."]], ["Nivel II", "Nivel II · fijación", ["Fija el tercio medio de la vagina al arco tendinoso de la fascia pélvica.", "Su falla produce cistocele y rectocele."]], ["Nivel III", "Nivel III · fusión", ["Tercio inferior fusionado con cuerpo perineal, membrana perineal y elevador.", "Su falla produce descenso perineal y rectocele distal."]]], "en": [["Level I", "Level I · suspension", ["Cardinal-uterosacral complex: supports the cervix and upper third of the vagina.", "Its failure causes apical prolapse."]], ["Level II", "Level II · attachment", ["Attaches the mid vagina to the arcus tendineus fasciae pelvis.", "Its failure causes cystocele and rectocele."]], ["Level III", "Level III · fusion", ["Lower third fused with perineal body, perineal membrane and levator.", "Its failure causes perineal descent and distal rectocele."]]], "pt": [["Nível I", "Nível I · suspensão", ["Complexo cardinal-uterossacro: sustenta o colo e o terço superior da vagina.", "Sua falha produz prolapso apical."]], ["Nível II", "Nível II · fixação", ["Fixa o terço médio da vagina ao arco tendíneo da fáscia pélvica.", "Sua falha produz cistocele e retocele."]], ["Nível III", "Nível III · fusão", ["Terço inferior fundido com corpo perineal, membrana perineal e levantador.", "Sua falha produz descida perineal e retocele distal."]]]}, "def": 0}, {"t": "tab", "h": {"es": "Desgarros perineales (Sultan, RCOG)", "en": "Perineal tears (Sultan, RCOG)", "pt": "Lacerações perineais (Sultan, RCOG)"}, "rows": {"es": [["Grado", "Lesión"], ["1.º", "Solo piel perineal"], ["2.º", "Músculos perineales sin esfínter anal"], ["3a", "Menos del 50% del espesor del esfínter anal externo"], ["3b", "Más del 50% del esfínter anal externo"], ["3c", "Esfínter anal externo e interno"], ["4.º", "Complejo esfinteriano y mucosa anorrectal"]], "en": [["Degree", "Injury"], ["1st", "Perineal skin only"], ["2nd", "Perineal muscles without anal sphincter"], ["3a", "Less than 50% of external anal sphincter thickness"], ["3b", "More than 50% of external anal sphincter"], ["3c", "External and internal anal sphincter"], ["4th", "Sphincter complex and anorectal mucosa"]], "pt": [["Grau", "Lesão"], ["1.º", "Só pele perineal"], ["2.º", "Músculos perineais sem esfíncter anal"], ["3a", "Menos de 50% da espessura do esfíncter anal externo"], ["3b", "Mais de 50% do esfíncter anal externo"], ["3c", "Esfíncter anal externo e interno"], ["4.º", "Complexo esfincteriano e mucosa anorretal"]]}, "cls": [["v"], ["a"], ["r"], ["r"], ["r"], ["r"]]}];
+  ['es','en','pt'].forEach(function (l) { UI[l].vacP = {es:'Tocá un punto numerado del esquema.',en:'Tap a numbered point on the drawing.',pt:'Toque um ponto numerado do esquema.'}[l]; UI[l].vacC = {es:'Elegí una opción.',en:'Choose an option.',pt:'Escolha uma opção.'}[l]; });
+  var st = {};
+  function P(x, y, g, i, n, on) { return '<g class="pt' + (on ? ' on' : '') + '" data-g="' + g + '" data-i="' + i + '" tabindex="0" role="button"><circle class="h" cx="' + x + '" cy="' + y + '" r="18"/><circle class="m" cx="' + x + '" cy="' + y + '" r="11"/><text x="' + x + '" y="' + y + '">' + n + '</text></g>'; }
+  document.addEventListener('keydown', function (ev) { var g = ev.target.closest && ev.target.closest('.pt'); if (g && (ev.key === 'Enter' || ev.key === ' ')) { ev.preventDefault(); g.dispatchEvent(new MouseEvent('click', { bubbles: true })); } });
+  function tabla(el, rows, cls) { el.innerHTML = '<thead><tr>' + rows[0].map(function (h) { return '<th>' + A.esc(h) + '</th>'; }).join('') + '</tr></thead><tbody>' + rows.slice(1).map(function (r, i) { return '<tr><th>' + A.esc(r[0]) + '</th>' + r.slice(1).map(function (c, j) { var k = cls && cls[i] ? cls[i][j] : ''; return '<td' + (k ? ' class="c' + k + '"' : '') + '>' + A.esc(c) + '</td>'; }).join('') + '</tr>'; }).join('') + '</tbody>'; }
+  function pintar() {
+    var u = U(UI), l = A.lang;
+    A.nav($('#nav-at'), 'suelo-pelvico.html');
+    SEC.forEach(function (s, k) {
+      var g = 's' + k, el = function (x) { return document.getElementById(g + x); };
+      el('h').textContent = s.h[l];
+      if (s.t === 'pts') {
+        var v = s.svg[l], on = st[g];
+        el('v').innerHTML = v.replace('</svg>', s.pts.map(function (p, i) { return P(p[0], p[1], g, i, i + 1, on === i); }).join('') + '</svg>');
+        if (on == null) A.panel(el('e'), '', [], u.vacP); else A.panel(el('e'), (on + 1) + '. ' + s.it[l][on][0], s.it[l][on][1], '');
+      } else if (s.t === 'chips') {
+        var c = st[g] == null ? (s.def != null ? s.def : null) : st[g];
+        chips(el('c'), s.it[l].map(function (x, i) { return { k: s.num ? String(i + (s.num0 || 1)) : '', n: x[0] }; }), c, g);
+        if (s.svg) el('v').innerHTML = c == null ? s.svg[l][0] : s.svg[l][c];
+        if (c == null) A.panel(el('e'), '', [], u.vacC); else A.panel(el('e'), s.it[l][c][1], s.it[l][c][2], '');
+      } else if (s.t === 'tab') { tabla(el('t'), s.rows[l], s.cls); }
+      else if (s.t === 'txt') { A.panel(el('e'), s.p[l][0], s.p[l][1], ''); }
+    });
+  }
+  document.addEventListener('click', function (ev) {
+    var b = ev.target.closest('[data-l],[data-g]'); if (!b) return;
+    if (b.dataset.l) A.setLang(b.dataset.l); else if (/^s\d+$/.test(b.dataset.g)) st[b.dataset.g] = +b.dataset.i; else return;
+    pintar();
+  });
+  pintar();
+
+})();
+</script>
+</body>
+</html>

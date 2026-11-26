@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Endometriosis: pasos IDEA y clasificación #Enzian — Atlas médico · CaVeSal® Academy</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="../img/favicon.png">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="atlas.css">
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <a class="marca" href="../#/" aria-label="CaVeSal Academy">
+      <img src="../img/icon-192.png" alt="" width="40" height="40">
+      <span class="marca-txt"><strong>CaVeSal<sup>®</sup> Academy</strong><small data-t="atlas">Atlas médico</small></span>
+    </a>
+  </div>
+</header>
+<main class="at" id="main">
+  <div class="at-top">
+    <a class="volver" href="../#/" data-t="volver">← Volver a Academy</a>
+    <div class="idi" role="group" aria-label="Idioma">
+      <button type="button" data-l="es">ES</button><button type="button" data-l="en">EN</button><button type="button" data-l="pt">PT</button>
+    </div>
+  </div>
+  <nav class="nav-at" id="nav-at" aria-label="Láminas"></nav>
+  <span class="eyebrow" data-t="ruta">Ginecología · Endometriosis</span>
+  <h1 data-t="tit">Endometriosis: pasos IDEA y clasificación #Enzian</h1>
+  <p class="baj" data-t="baj">Tocá cada compartimento del esquema, seguí los cuatro pasos IDEA y revisá los grados #Enzian.</p>
+  <section class="lam" aria-labelledby="s0h"><h2><span class="tipo">E</span><span id="s0h">Compartimentos en corte sagital</span></h2><div id="s0v"></div><div class="exp" id="s0e" aria-live="polite"></div></section>
+  <section class="lam" aria-labelledby="s1h"><h2><span class="tipo">C</span><span id="s1h">Los cuatro pasos IDEA</span></h2><div class="chips" id="s1c" role="group"></div><div class="exp" id="s1e" aria-live="polite"></div></section>
+  <section class="lam" aria-labelledby="s2h"><h2><span class="tipo">T</span><span id="s2h">Clasificación #Enzian</span></h2><div class="scroll"><table class="tb" id="s2t"></table></div></section>
+  <div class="rot">
+    <p><strong data-t="rotulo">Algoritmo propio CaVeSal® · Basado en: Guerriero S et al., IDEA, Ultrasound Obstet Gynecol 2016; Keckstein J et al., #Enzian, Acta Obstet Gynecol Scand 2021.</strong></p>
+    <p class="nota" data-t="nota">Lámina didáctica.</p>
+    <ol><li>Guerriero S, Condous G, van den Bosch T, Valentin L, Leone FPG, Van Schoubroeck D, et al. Systematic approach to sonographic evaluation of the pelvis in women with suspected endometriosis, including terms, definitions and measurements: a consensus opinion from the International Deep Endometriosis Analysis (IDEA) group. Ultrasound Obstet Gynecol. 2016;48(3):318-332. <a href="https://doi.org/10.1002/uog.15955" target="_blank" rel="noopener">doi:10.1002/uog.15955</a></li><li>Keckstein J, Saridogan E, Ulrich UA, Sillem M, Oppelt P, Schweppe KW, Krentel H, Janschek E, Exacoustos C, Malzoni M, Mueller M, Roman H, Condous G, Forman A, Jansen FW, Bokor A, Simedrea V, Hudelist G. The #Enzian classification: a comprehensive non-invasive and surgical description system for endometriosis. Acta Obstet Gynecol Scand. 2021;100(7):1165-1175. <a href="https://doi.org/10.1111/aogs.14099" target="_blank" rel="noopener">doi:10.1111/aogs.14099</a></li></ol>
+  </div>
+</main>
+<script src="atlas.js"></script>
+<script>
+(function () {
+  'use strict';
+  var A = window.Atlas;
+  function $(s) { return document.querySelector(s); }
+  var COM = {
+    es: { atlas: 'Atlas médico', volver: '← Volver a Academy', nota: 'Lámina didáctica; no reemplaza la evaluación del ecografista ni el juicio clínico.', esq: 'Esquema CaVeSal®', vacio: 'Elegí una opción.' },
+    en: { atlas: 'Medical atlas', volver: '← Back to Academy', nota: 'Didactic plate; it does not replace the sonographer’s assessment or clinical judgment.', esq: 'CaVeSal® drawing', vacio: 'Choose an option.' },
+    pt: { atlas: 'Atlas médico', volver: '← Voltar ao Academy', nota: 'Lâmina didática; não substitui a avaliação do ultrassonografista nem o julgamento clínico.', esq: 'Esquema CaVeSal®', vacio: 'Escolha uma opção.' }
+  };
+  function U(UI) { ['es', 'en', 'pt'].forEach(function (l) { for (var k in COM[l]) if (!(k in UI[l])) UI[l][k] = COM[l][k]; }); return A.textos(UI); }
+  function real(img, c, txt) { var r = A.CRED[c]; return '<figure><img src="img/' + img + '.jpg" alt="" loading="lazy"><figcaption><a href="' + r.url + '" target="_blank" rel="noopener">' + A.esc(r.txt) + '</a></figcaption></figure>'; }
+  function chips(el, list, cur, g) { el.innerHTML = list.map(function (x, i) { return '<button type="button" data-g="' + g + '" data-i="' + i + '" aria-pressed="' + (cur === i) + '">' + (x.k ? '<b>' + A.esc(x.k) + '</b>' : '') + A.esc(x.n) + '</button>'; }).join(''); }
+  function lista(a) { return '<ul>' + a.map(function (x) { return '<li>' + A.esc(x) + '</li>'; }).join('') + '</ul>'; }
+
+  var UI = {"es": {"ruta": "Ginecología · Endometriosis", "tit": "Endometriosis: pasos IDEA y clasificación #Enzian", "baj": "Tocá cada compartimento del esquema, seguí los cuatro pasos IDEA y revisá los grados #Enzian.", "rotulo": "Algoritmo propio CaVeSal® · Basado en: Guerriero S et al., IDEA, Ultrasound Obstet Gynecol 2016; Keckstein J et al., #Enzian, Acta Obstet Gynecol Scand 2021.", "nota": "Lámina didáctica; no reemplaza el juicio clínico."}, "en": {"ruta": "Gynecology · Endometriosis", "tit": "Endometriosis: IDEA steps and #Enzian classification", "baj": "Tap each compartment of the drawing, follow the four IDEA steps and review the #Enzian grades.", "rotulo": "CaVeSal® own algorithm · Based on: Guerriero S et al., IDEA, Ultrasound Obstet Gynecol 2016; Keckstein J et al., #Enzian, Acta Obstet Gynecol Scand 2021.", "nota": "Didactic plate; it does not replace clinical judgment."}, "pt": {"ruta": "Ginecologia · Endometriose", "tit": "Endometriose: passos IDEA e classificação #Enzian", "baj": "Toque cada compartimento do esquema, siga os quatro passos IDEA e revise os graus #Enzian.", "rotulo": "Algoritmo próprio CaVeSal® · Baseado em: Guerriero S et al., IDEA, Ultrasound Obstet Gynecol 2016; Keckstein J et al., #Enzian, Acta Obstet Gynecol Scand 2021.", "nota": "Lâmina didática; não substitui o julgamento clínico."}}, SEC = [{"t": "pts", "h": {"es": "Compartimentos en corte sagital", "en": "Compartments in sagittal view", "pt": "Compartimentos em corte sagital"}, "svg": {"es": "<svg class=\"eco\" viewBox=\"0 0 360 290\" role=\"img\"><rect width=\"360\" height=\"290\" rx=\"12\" fill=\"#11161b\"/><ellipse cx=\"80\" cy=\"150\" rx=\"45\" ry=\"32\" fill=\"#e8c66a\" opacity=\".8\"/><text x=\"80\" y=\"154\" fill=\"#11161b\" font-size=\"9\" font-weight=\"800\" text-anchor=\"middle\">Vejiga</text><path d=\"M150 70 Q200 40 235 85 Q255 125 225 160 L205 190 L170 190 L155 160 Q130 115 150 70Z\" fill=\"#c4545d\"/><text x=\"195\" y=\"120\" fill=\"#fff\" font-size=\"9\" font-weight=\"800\" text-anchor=\"middle\">Útero</text><path d=\"M175 190 L150 260 M205 190 L180 260\" stroke=\"#e9a1a6\" stroke-width=\"6\" fill=\"none\"/><text x=\"140\" y=\"276\" fill=\"#c9d3dc\" font-size=\"9\" font-weight=\"800\" text-anchor=\"middle\">Vagina</text><path d=\"M300 40 Q275 140 255 200 L232 270\" stroke=\"#8b6a4e\" stroke-width=\"22\" fill=\"none\" stroke-linecap=\"round\"/><text x=\"318\" y=\"200\" fill=\"#c9d3dc\" font-size=\"9\" font-weight=\"800\" text-anchor=\"middle\">Recto</text><ellipse cx=\"262\" cy=\"60\" rx=\"18\" ry=\"12\" fill=\"#c9a6ef\"/><text x=\"262\" y=\"36\" fill=\"#c9d3dc\" font-size=\"9\" font-weight=\"800\" text-anchor=\"middle\">Ovario</text></svg>", "en": "<svg class=\"eco\" viewBox=\"0 0 360 290\" role=\"img\"><rect width=\"360\" height=\"290\" rx=\"12\" fill=\"#11161b\"/><ellipse cx=\"80\" cy=\"150\" rx=\"45\" ry=\"32\" fill=\"#e8c66a\" opacity=\".8\"/><text x=\"80\" y=\"154\" fill=\"#11161b\" font-size=\"9\" font-weight=\"800\" text-anchor=\"middle\">Bladder</text><path d=\"M150 70 Q200 40 235 85 Q255 125 225 160 L205 190 L170 190 L155 160 Q130 115 150 70Z\" fill=\"#c4545d\"/><text x=\"195\" y=\"120\" fill=\"#fff\" font-size=\"9\" font-weight=\"800\" text-anchor=\"middle\">Uterus</text><path d=\"M175 190 L150 260 M205 190 L180 260\" stroke=\"#e9a1a6\" stroke-width=\"6\" fill=\"none\"/><text x=\"140\" y=\"276\" fill=\"#c9d3dc\" font-size=\"9\" font-weight=\"800\" text-anchor=\"middle\">Vagina</text><path d=\"M300 40 Q275 140 255 200 L232 270\" stroke=\"#8b6a4e\" stroke-width=\"22\" fill=\"none\" stroke-linecap=\"round\"/><text x=\"318\" y=\"200\" fill=\"#c9d3dc\" font-size=\"9\" font-weight=\"800\" text-anchor=\"middle\">Rectum</text><ellipse cx=\"262\" cy=\"60\" rx=\"18\" ry=\"12\" fill=\"#c9a6ef\"/><text x=\"262\" y=\"36\" fill=\"#c9d3dc\" font-size=\"9\" font-weight=\"800\" text-anchor=\"middle\">Ovary</text></svg>", "pt": "<svg class=\"eco\" viewBox=\"0 0 360 290\" role=\"img\"><rect width=\"360\" height=\"290\" rx=\"12\" fill=\"#11161b\"/><ellipse cx=\"80\" cy=\"150\" rx=\"45\" ry=\"32\" fill=\"#e8c66a\" opacity=\".8\"/><text x=\"80\" y=\"154\" fill=\"#11161b\" font-size=\"9\" font-weight=\"800\" text-anchor=\"middle\">Bexiga</text><path d=\"M150 70 Q200 40 235 85 Q255 125 225 160 L205 190 L170 190 L155 160 Q130 115 150 70Z\" fill=\"#c4545d\"/><text x=\"195\" y=\"120\" fill=\"#fff\" font-size=\"9\" font-weight=\"800\" text-anchor=\"middle\">Útero</text><path d=\"M175 190 L150 260 M205 190 L180 260\" stroke=\"#e9a1a6\" stroke-width=\"6\" fill=\"none\"/><text x=\"140\" y=\"276\" fill=\"#c9d3dc\" font-size=\"9\" font-weight=\"800\" text-anchor=\"middle\">Vagina</text><path d=\"M300 40 Q275 140 255 200 L232 270\" stroke=\"#8b6a4e\" stroke-width=\"22\" fill=\"none\" stroke-linecap=\"round\"/><text x=\"318\" y=\"200\" fill=\"#c9d3dc\" font-size=\"9\" font-weight=\"800\" text-anchor=\"middle\">Reto</text><ellipse cx=\"262\" cy=\"60\" rx=\"18\" ry=\"12\" fill=\"#c9a6ef\"/><text x=\"262\" y=\"36\" fill=\"#c9d3dc\" font-size=\"9\" font-weight=\"800\" text-anchor=\"middle\">Ovário</text></svg>"}, "pts": [[80, 118], [170, 95], [214, 212], [272, 150], [262, 60], [232, 182], [245, 120]], "it": {"es": [["FB · vejiga", ["Nódulo en la pared vesical: compartimento anterior."]], ["FA · adenomiosis", ["Útero evaluado con criterios MUSA."]], ["A · vagina y tabique rectovaginal", ["Tamaño: 1 menos de 1 cm, 2 de 1 a 3 cm, 3 más de 3 cm."]], ["C · recto", ["Nódulo de la pared rectal; mismo criterio de tamaño 1–3."]], ["O · ovario", ["Endometrioma por lado según diámetro: 1 menos de 3 cm, 2 de 3 a 7 cm, 3 más de 7 cm."]], ["B · ligamentos uterosacros y parametrio", ["Por lado; mismo criterio de tamaño 1–3."]], ["Fondo de saco de Douglas", ["Signo de deslizamiento negativo: obliteración (paso 3 de IDEA)."]]], "en": [["FB · bladder", ["Nodule in the bladder wall: anterior compartment."]], ["FA · adenomyosis", ["Uterus assessed with MUSA criteria."]], ["A · vagina and rectovaginal septum", ["Size: 1 less than 1 cm, 2 from 1 to 3 cm, 3 more than 3 cm."]], ["C · rectum", ["Nodule in the rectal wall; same size criteria 1–3."]], ["O · ovary", ["Endometrioma per side by diameter: 1 less than 3 cm, 2 from 3 to 7 cm, 3 more than 7 cm."]], ["B · uterosacral ligaments and parametrium", ["Per side; same size criteria 1–3."]], ["Pouch of Douglas", ["Negative sliding sign: obliteration (IDEA step 3)."]]], "pt": [["FB · bexiga", ["Nódulo na parede vesical: compartimento anterior."]], ["FA · adenomiose", ["Útero avaliado com critérios MUSA."]], ["A · vagina e septo retovaginal", ["Tamanho: 1 menos de 1 cm, 2 de 1 a 3 cm, 3 mais de 3 cm."]], ["C · reto", ["Nódulo da parede retal; mesmo critério de tamanho 1–3."]], ["O · ovário", ["Endometrioma por lado segundo o diâmetro: 1 menos de 3 cm, 2 de 3 a 7 cm, 3 mais de 7 cm."]], ["B · ligamentos uterossacros e paramétrio", ["Por lado; mesmo critério de tamanho 1–3."]], ["Fundo de saco de Douglas", ["Sinal de deslizamento negativo: obliteração (passo 3 do IDEA)."]]]}}, {"t": "chips", "h": {"es": "Los cuatro pasos IDEA", "en": "The four IDEA steps", "pt": "Os quatro passos IDEA"}, "it": {"es": [["1. útero y anexos", "Paso 1 · útero y anexos", ["Adenomiosis (MUSA) y endometriomas."]], ["2. marcadores blandos", "Paso 2 · marcadores blandos", ["Dolor localizado a la presión del transductor y movilidad ovárica."]], ["3. fondo de saco de Douglas", "Paso 3 · fondo de saco de Douglas", ["Signo de deslizamiento en tiempo real: positivo libre, negativo obliterado."]], ["4. nódulos profundos", "Paso 4 · nódulos profundos", ["Compartimento anterior: vejiga y uréteres. Posterior: tabique rectovaginal, fondo vaginal, uterosacros, recto, rectosigma y sigma."]]], "en": [["1. uterus and adnexa", "Step 1 · uterus and adnexa", ["Adenomyosis (MUSA) and endometriomas."]], ["2. soft markers", "Step 2 · soft markers", ["Site-specific tenderness and ovarian mobility."]], ["3. pouch of Douglas", "Step 3 · pouch of Douglas", ["Real-time sliding sign: positive free, negative obliterated."]], ["4. deep nodules", "Step 4 · deep nodules", ["Anterior compartment: bladder and ureters. Posterior: rectovaginal septum, vaginal fornix, uterosacral ligaments, rectum, rectosigmoid and sigmoid."]]], "pt": [["1. útero e anexos", "Passo 1 · útero e anexos", ["Adenomiose (MUSA) e endometriomas."]], ["2. marcadores suaves", "Passo 2 · marcadores suaves", ["Dor localizada à pressão do transdutor e mobilidade ovariana."]], ["3. fundo de saco de Douglas", "Passo 3 · fundo de saco de Douglas", ["Sinal de deslizamento em tempo real: positivo livre, negativo obliterado."]], ["4. nódulos profundos", "Passo 4 · nódulos profundos", ["Compartimento anterior: bexiga e ureteres. Posterior: septo retovaginal, fórnice vaginal, uterossacros, reto, retossigmoide e sigmoide."]]]}, "def": 0}, {"t": "tab", "h": {"es": "Clasificación #Enzian", "en": "#Enzian classification", "pt": "Classificação #Enzian"}, "rows": {"es": [["Compartimento", "Qué describe", "Grado"], ["P", "Peritoneo", "Suma de lesiones: 1 < 3 cm, 2 de 3–7 cm, 3 > 7 cm"], ["O", "Ovario (endometrioma, por lado)", "1 < 3 cm, 2 de 3–7 cm, 3 > 7 cm"], ["T", "Adherencias tubo-ováricas", "1 a 3 según extensión"], ["A", "Vagina y tabique rectovaginal", "1 < 1 cm, 2 de 1–3 cm, 3 > 3 cm"], ["B", "Uterosacros, cardinales y pared pelviana", "1 < 1 cm, 2 de 1–3 cm, 3 > 3 cm (por lado)"], ["C", "Recto", "1 < 1 cm, 2 de 1–3 cm, 3 > 3 cm"], ["F", "Otras localizaciones", "FA adenomiosis, FB vejiga, FU uréter, FI intestino, FO otras"]], "en": [["Compartment", "What it describes", "Grade"], ["P", "Peritoneum", "Sum of lesions: 1 < 3 cm, 2 3–7 cm, 3 > 7 cm"], ["O", "Ovary (endometrioma, per side)", "1 < 3 cm, 2 3–7 cm, 3 > 7 cm"], ["T", "Tubo-ovarian adhesions", "1 to 3 by extent"], ["A", "Vagina and rectovaginal septum", "1 < 1 cm, 2 1–3 cm, 3 > 3 cm"], ["B", "Uterosacral, cardinal ligaments and pelvic sidewall", "1 < 1 cm, 2 1–3 cm, 3 > 3 cm (per side)"], ["C", "Rectum", "1 < 1 cm, 2 1–3 cm, 3 > 3 cm"], ["F", "Other locations", "FA adenomyosis, FB bladder, FU ureter, FI bowel, FO other"]], "pt": [["Compartimento", "O que descreve", "Grau"], ["P", "Peritônio", "Soma das lesões: 1 < 3 cm, 2 de 3–7 cm, 3 > 7 cm"], ["O", "Ovário (endometrioma, por lado)", "1 < 3 cm, 2 de 3–7 cm, 3 > 7 cm"], ["T", "Aderências tubo-ovarianas", "1 a 3 segundo extensão"], ["A", "Vagina e septo retovaginal", "1 < 1 cm, 2 de 1–3 cm, 3 > 3 cm"], ["B", "Uterossacros, cardinais e parede pélvica", "1 < 1 cm, 2 de 1–3 cm, 3 > 3 cm (por lado)"], ["C", "Reto", "1 < 1 cm, 2 de 1–3 cm, 3 > 3 cm"], ["F", "Outras localizações", "FA adenomiose, FB bexiga, FU ureter, FI intestino, FO outras"]]}}];
+  ['es','en','pt'].forEach(function (l) { UI[l].vacP = {es:'Tocá un punto numerado del esquema.',en:'Tap a numbered point on the drawing.',pt:'Toque um ponto numerado do esquema.'}[l]; UI[l].vacC = {es:'Elegí una opción.',en:'Choose an option.',pt:'Escolha uma opção.'}[l]; });
+  var st = {};
+  function P(x, y, g, i, n, on) { return '<g class="pt' + (on ? ' on' : '') + '" data-g="' + g + '" data-i="' + i + '" tabindex="0" role="button"><circle class="h" cx="' + x + '" cy="' + y + '" r="18"/><circle class="m" cx="' + x + '" cy="' + y + '" r="11"/><text x="' + x + '" y="' + y + '">' + n + '</text></g>'; }
+  document.addEventListener('keydown', function (ev) { var g = ev.target.closest && ev.target.closest('.pt'); if (g && (ev.key === 'Enter' || ev.key === ' ')) { ev.preventDefault(); g.dispatchEvent(new MouseEvent('click', { bubbles: true })); } });
+  function tabla(el, rows, cls) { el.innerHTML = '<thead><tr>' + rows[0].map(function (h) { return '<th>' + A.esc(h) + '</th>'; }).join('') + '</tr></thead><tbody>' + rows.slice(1).map(function (r, i) { return '<tr><th>' + A.esc(r[0]) + '</th>' + r.slice(1).map(function (c, j) { var k = cls && cls[i] ? cls[i][j] : ''; return '<td' + (k ? ' class="c' + k + '"' : '') + '>' + A.esc(c) + '</td>'; }).join('') + '</tr>'; }).join('') + '</tbody>'; }
+  function pintar() {
+    var u = U(UI), l = A.lang;
+    A.nav($('#nav-at'), 'endometriosis-idea-enzian.html');
+    SEC.forEach(function (s, k) {
+      var g = 's' + k, el = function (x) { return document.getElementById(g + x); };
+      el('h').textContent = s.h[l];
+      if (s.t === 'pts') {
+        var v = s.svg[l], on = st[g];
+        el('v').innerHTML = v.replace('</svg>', s.pts.map(function (p, i) { return P(p[0], p[1], g, i, i + 1, on === i); }).join('') + '</svg>');
+        if (on == null) A.panel(el('e'), '', [], u.vacP); else A.panel(el('e'), (on + 1) + '. ' + s.it[l][on][0], s.it[l][on][1], '');
+      } else if (s.t === 'chips') {
+        var c = st[g] == null ? (s.def != null ? s.def : null) : st[g];
+        chips(el('c'), s.it[l].map(function (x, i) { return { k: s.num ? String(i + (s.num0 || 1)) : '', n: x[0] }; }), c, g);
+        if (s.svg) el('v').innerHTML = c == null ? s.svg[l][0] : s.svg[l][c];
+        if (c == null) A.panel(el('e'), '', [], u.vacC); else A.panel(el('e'), s.it[l][c][1], s.it[l][c][2], '');
+      } else if (s.t === 'tab') { tabla(el('t'), s.rows[l], s.cls); }
+      else if (s.t === 'txt') { A.panel(el('e'), s.p[l][0], s.p[l][1], ''); }
+    });
+  }
+  document.addEventListener('click', function (ev) {
+    var b = ev.target.closest('[data-l],[data-g]'); if (!b) return;
+    if (b.dataset.l) A.setLang(b.dataset.l); else if (/^s\d+$/.test(b.dataset.g)) st[b.dataset.g] = +b.dataset.i; else return;
+    pintar();
+  });
+  pintar();
+
+})();
+</script>
+</body>
+</html>
