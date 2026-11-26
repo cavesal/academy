@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Situs, 4 cámaras e índice cardiotorácico — Atlas médico · CaVeSal® Academy</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="../img/favicon.png">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="atlas.css">
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <a class="marca" href="../#/" aria-label="CaVeSal Academy">
+      <img src="../img/icon-192.png" alt="" width="40" height="40">
+      <span class="marca-txt"><strong>CaVeSal<sup>®</sup> Academy</strong><small data-t="atlas">Atlas médico</small></span>
+    </a>
+  </div>
+</header>
+<main class="at" id="main">
+  <div class="at-top">
+    <a class="volver" href="../#/" data-t="volver">← Volver a Academy</a>
+    <div class="idi" role="group" aria-label="Idioma">
+      <button type="button" data-l="es">ES</button><button type="button" data-l="en">EN</button><button type="button" data-l="pt">PT</button>
+    </div>
+  </div>
+  <nav class="nav-at" id="nav-at" aria-label="Láminas"></nav>
+  <span class="eyebrow" data-t="ruta">Obstetricia · Corazón fetal</span>
+  <h1 data-t="tit">Situs, 4 cámaras e índice cardiotorácico</h1>
+  <p class="baj" data-t="baj">Elegí presentación y dorso para ubicar la izquierda fetal; después revisá las 4 cámaras y calculá el índice.</p>
+  <section class="lam" aria-labelledby="t0">
+    <h2><span class="tipo">S</span><span id="t0">Situs según situación, presentación y posición</span></h2>
+    <div class="chips" id="xp" role="group"></div>
+    <div class="chips" id="xd" role="group"></div>
+    <div class="chips" id="xs" role="group"></div>
+    <div id="xg"></div>
+    <div class="exp" id="xe" aria-live="polite"></div>
+  </section>
+  <section class="lam" aria-labelledby="t1">
+    <h2><span class="tipo">4</span><span id="t1">Corte de 4 cámaras con diagnóstico</span></h2>
+    <div class="chips" id="c1" role="group"></div>
+    <div id="g1"></div>
+    <div class="exp" id="e1" aria-live="polite"></div>
+  </section>
+  <section class="lam" aria-labelledby="t2">
+    <h2><span class="tipo">I</span><span id="t2">Índice cardiotorácico</span></h2>
+    <div class="calc">
+      <label><span id="l_hc">Circunferencia cardíaca (mm)</span><input id="i_hc" inputmode="decimal"></label>
+      <label><span id="l_tc">Circunferencia torácica (mm)</span><input id="i_tc" inputmode="decimal"></label>
+      <label><span id="l_ha">Área cardíaca (cm²)</span><input id="i_ha" inputmode="decimal"></label>
+      <label><span id="l_ta">Área torácica (cm²)</span><input id="i_ta" inputmode="decimal"></label>
+      <label><span id="l_eg">Edad gestacional (semanas)</span><input id="i_eg" inputmode="decimal"></label>
+    </div>
+    <div class="exp" id="xi" aria-live="polite"></div>
+    <div class="scroll"><table class="tb" id="tb2"></table></div>
+  </section>
+  <div class="rot">
+    <p><strong data-t="rotulo">Algoritmo propio CaVeSal® · Basado en: ISUOG cribado cardíaco 2023 (Carvalho JS et al.); ISUOG segundo trimestre 2022; Paladini D et al., Arch Dis Child 1990.</strong></p>
+    <p class="nota" data-t="nota">Lámina didáctica.</p>
+    <ol><li>Carvalho JS, Axt-Fliedner R, Chaoui R, Copel JA, Cuneo BF, Goff D, et al. ISUOG Practice Guidelines (updated): fetal cardiac screening. Ultrasound Obstet Gynecol. 2023;61(6):788-803. <a href="https://doi.org/10.1002/uog.26224" target="_blank" rel="noopener">doi:10.1002/uog.26224</a></li><li>Salomon LJ, Alfirevic Z, Berghella V, Bilardo CM, Chalouhi GE, Da Silva Costa F, et al. ISUOG Practice Guidelines (updated): performance of the routine mid-trimester fetal ultrasound scan. Ultrasound Obstet Gynecol. 2022;59(6):840-856. <a href="https://doi.org/10.1002/uog.24888" target="_blank" rel="noopener">doi:10.1002/uog.24888</a></li><li>Paladini D, Chita SK, Allan LD. Prenatal measurement of cardiothoracic ratio in evaluation of heart disease. Arch Dis Child. 1990;65(1 Spec No):20-23. <a href="https://doi.org/10.1136/adc.65.1_spec_no.20" target="_blank" rel="noopener">doi:10.1136/adc.65.1_spec_no.20</a></li></ol>
+  </div>
+</main>
+<script src="atlas.js"></script>
+<script>
+(function () {
+  'use strict';
+  var A = window.Atlas;
+  function $(s) { return document.querySelector(s); }
+  var COM = {
+    es: { atlas: 'Atlas médico', volver: '← Volver a Academy', nota: 'Lámina didáctica; no reemplaza la evaluación del ecografista ni el juicio clínico.', esq: 'Esquema CaVeSal®', vacio: 'Elegí una opción.' },
+    en: { atlas: 'Medical atlas', volver: '← Back to Academy', nota: 'Didactic plate; it does not replace the sonographer’s assessment or clinical judgment.', esq: 'CaVeSal® drawing', vacio: 'Choose an option.' },
+    pt: { atlas: 'Atlas médico', volver: '← Voltar ao Academy', nota: 'Lâmina didática; não substitui a avaliação do ultrassonografista nem o julgamento clínico.', esq: 'Esquema CaVeSal®', vacio: 'Escolha uma opção.' }
+  };
+  function U(UI) { ['es', 'en', 'pt'].forEach(function (l) { for (var k in COM[l]) if (!(k in UI[l])) UI[l][k] = COM[l][k]; }); return A.textos(UI); }
+  function real(img, c, txt) { var r = A.CRED[c]; return '<figure><img src="img/' + img + '.jpg" alt="" loading="lazy"><figcaption><a href="' + r.url + '" target="_blank" rel="noopener">' + A.esc(r.txt) + '</a></figcaption></figure>'; }
+  function chips(el, list, cur, g) { el.innerHTML = list.map(function (x, i) { return '<button type="button" data-g="' + g + '" data-i="' + i + '" aria-pressed="' + (cur === i) + '">' + (x.k ? '<b>' + A.esc(x.k) + '</b>' : '') + A.esc(x.n) + '</button>'; }).join(''); }
+  function lista(a) { return '<ul>' + a.map(function (x) { return '<li>' + A.esc(x) + '</li>'; }).join('') + '</ul>'; }
+
+  var FILE = "corazon-situs.html";
+  var UI = {"es": {"ruta": "Obstetricia · Corazón fetal", "tit": "Situs, 4 cámaras e índice cardiotorácico", "baj": "Elegí presentación y dorso para ubicar la izquierda fetal; después revisá las 4 cámaras y calculá el índice.", "rotulo": "Algoritmo propio CaVeSal® · Basado en: ISUOG cribado cardíaco 2023 (Carvalho JS et al.); ISUOG segundo trimestre 2022; Paladini D et al., Arch Dis Child 1990."}, "en": {"ruta": "Obstetrics · Fetal heart", "tit": "Situs, four-chamber view and cardiothoracic ratio", "baj": "Choose presentation and back to find the fetal left; then review the four chambers and calculate the ratio.", "rotulo": "CaVeSal® own algorithm · Based on: ISUOG cardiac screening 2023 (Carvalho JS et al.); ISUOG mid-trimester 2022; Paladini D et al., Arch Dis Child 1990."}, "pt": {"ruta": "Obstetrícia · Coração fetal", "tit": "Situs, 4 câmaras e índice cardiotorácico", "baj": "Escolha apresentação e dorso para localizar a esquerda fetal; depois revise as 4 câmaras e calcule o índice.", "rotulo": "Algoritmo próprio CaVeSal® · Baseado em: ISUOG rastreamento cardíaco 2023 (Carvalho JS et al.); ISUOG segundo trimestre 2022; Paladini D et al., Arch Dis Child 1990."}};
+  var D = [{"k": "S", "t": {"es": "Situs según situación, presentación y posición", "en": "Situs by lie, presentation and position", "pt": "Situs conforme situação, apresentação e posição"}, "v": [], "tab": null, "cu": "situs"}, {"k": "4", "t": {"es": "Corte de 4 cámaras con diagnóstico", "en": "Four-chamber view with diagnosis", "pt": "Corte de 4 câmaras com diagnóstico"}, "v": [{"n": {"es": "Normal", "en": "Normal", "pt": "Normal"}, "svg": "<rect width=\"360\" height=\"240\" rx=\"12\" fill=\"#0b0f13\"/><circle cx=\"180\" cy=\"120\" r=\"95\" fill=\"#3a4046\" stroke=\"#e9edf0\" stroke-width=\"3\"/><line x1=\"180\" y1=\"196\" x2=\"180\" y2=\"28\" stroke=\"#9aa3ab\" stroke-dasharray=\"4 4\"/><g transform=\"translate(195 105) rotate(-45) scale(1.05)\"><ellipse cx=\"0\" cy=\"0\" rx=\"58\" ry=\"44\" fill=\"#7a8188\"/><ellipse cx=\"18\" cy=\"-19\" rx=\"27\" ry=\"14\" fill=\"#050607\"/><ellipse cx=\"16\" cy=\"19\" rx=\"30\" ry=\"14\" fill=\"#050607\"/><ellipse cx=\"-33\" cy=\"-19\" rx=\"16\" ry=\"14\" fill=\"#050607\"/><ellipse cx=\"-35\" cy=\"19\" rx=\"16\" ry=\"13\" fill=\"#050607\"/><line x1=\"-8\" y1=\"-33\" x2=\"-8\" y2=\"-6\" stroke=\"#e9edf0\" stroke-width=\"2.5\"/><line x1=\"-15\" y1=\"6\" x2=\"-15\" y2=\"31\" stroke=\"#e9edf0\" stroke-width=\"2.5\"/><line x1=\"33\" y1=\"-31\" x2=\"37\" y2=\"-8\" stroke=\"#e9edf0\" stroke-width=\"3\"/><path d=\"M-38 8 q6 4 4 10\" stroke=\"#e9edf0\" stroke-width=\"1.6\" fill=\"none\"/><path d=\"M-50 30 l-8 6 M-44 33 l-4 8\" stroke=\"#050607\" stroke-width=\"4\"/></g><line x1=\"186\" y1=\"114\" x2=\"247\" y2=\"53\" stroke=\"#ffd166\" stroke-width=\"1.6\" stroke-dasharray=\"5 3\"/><circle cx=\"180\" cy=\"200\" r=\"6\" fill=\"#fff\"/><circle cx=\"170\" cy=\"190\" r=\"4\" fill=\"#fff\"/><circle cx=\"190\" cy=\"190\" r=\"4\" fill=\"#fff\"/><circle cx=\"208\" cy=\"180\" r=\"8\" fill=\"#050607\" stroke=\"#e9edf0\" stroke-width=\"2\"/><text x=\"180\" y=\"22\" fill=\"#9aa3ab\" font-size=\"10\" font-weight=\"800\" text-anchor=\"middle\">A</text><text x=\"30\" y=\"124\" fill=\"#9aa3ab\" font-size=\"11\" font-weight=\"800\" text-anchor=\"middle\">D</text><text x=\"330\" y=\"124\" fill=\"#9aa3ab\" font-size=\"11\" font-weight=\"800\" text-anchor=\"middle\">I</text>", "p": [[120, 44, {"es": ["Eje cardíaco", ["Ángulo entre la línea anteroposterior (columna-esternón) y el septum interventricular.", "Normal: 45° ± 20°. Fuera de ese rango, sospechar cardiopatía (por ejemplo, conotruncal) aunque las 4 cámaras parezcan normales."]], "en": ["Cardiac axis", ["Angle between the anteroposterior line (spine to sternum) and the interventricular septum.", "Normal: 45° ± 20°. Outside that range, suspect a heart defect (e.g. conotruncal) even if the four chambers look normal."]], "pt": ["Eixo cardíaco", ["Ângulo entre a linha anteroposterior (coluna-esterno) e o septo interventricular.", "Normal: 45° ± 20°. Fora dessa faixa, suspeitar de cardiopatia (por exemplo, conotruncal) mesmo que as 4 câmaras pareçam normais."]]}], [58, 170, {"es": ["Tamaño", ["El corazón ocupa alrededor de un tercio del área del tórax.", "Ver el índice cardiotorácico más abajo."]], "en": ["Size", ["The heart occupies about one third of the thoracic area.", "See the cardiothoracic ratio below."]], "pt": ["Tamanho", ["O coração ocupa cerca de um terço da área do tórax.", "Ver o índice cardiotorácico abaixo."]]}], [187, 113, {"es": ["Cruz del corazón", ["Íntegra: septum interauricular, interventricular y válvulas AV se unen en la cruz.", "La tricúspide se inserta algo más cerca del ápex que la mitral (offset)."]], "en": ["Crux of the heart", ["Intact: atrial septum, ventricular septum and AV valves meet at the crux.", "The tricuspid inserts slightly closer to the apex than the mitral (offset)."]], "pt": ["Cruz do coração", ["Íntegra: septo interatrial, interventricular e valvas AV se unem na cruz.", "A tricúspide se insere um pouco mais perto do ápice que a mitral (offset)."]]}], [183, 153, {"es": ["Aurícula izquierda y foramen oval", ["Aurículas de tamaño similar; la valva del foramen oval se abre hacia la aurícula izquierda.", "Las venas pulmonares llegan a la aurícula izquierda."]], "en": ["Left atrium and foramen ovale", ["Atria of similar size; the foramen ovale flap opens into the left atrium.", "The pulmonary veins enter the left atrium."]], "pt": ["Átrio esquerdo e forame oval", ["Átrios de tamanho semelhante; a valva do forame oval abre para o átrio esquerdo.", "As veias pulmonares chegam ao átrio esquerdo."]]}], [204, 60, {"es": ["Ventrículo derecho", ["Anterior, con la banda moderadora cerca del ápex; el izquierdo forma el ápex."]], "en": ["Right ventricle", ["Anterior, with the moderator band near the apex; the left ventricle forms the apex."]], "pt": ["Ventrículo direito", ["Anterior, com a banda moderadora perto do ápice; o esquerdo forma o ápice."]]}], [236, 196, {"es": ["Aorta descendente", ["Aorta descendente a la izquierda y por delante de la columna."]], "en": ["Descending aorta", ["Descending aorta to the left of and in front of the spine."]], "pt": ["Aorta descendente", ["Aorta descendente à esquerda e à frente da coluna."]]}], [140, 210, {"es": ["Columna", ["Referencia posterior; el ápex apunta a la izquierda fetal."]], "en": ["Spine", ["Posterior landmark; the apex points to the fetal left."]], "pt": ["Coluna", ["Referência posterior; o ápice aponta para a esquerda fetal."]]}]], "h": 240, "d": {"es": ["Cuatro cámaras normal", ["Frecuencia 120–160 lpm y ritmo regular; ápex a la izquierda; eje 45° ± 20°; un tercio del área torácica."]], "en": ["Normal four-chamber view", ["Rate 120–160 bpm and regular rhythm; apex to the left; axis 45° ± 20°; one third of the thoracic area."]], "pt": ["Quatro câmaras normal", ["Frequência 120–160 bpm e ritmo regular; ápice à esquerda; eixo 45° ± 20°; um terço da área torácica."]]}}, {"n": {"es": "Eje desviado", "en": "Abnormal axis", "pt": "Eixo desviado"}, "svg": "<rect width=\"360\" height=\"240\" rx=\"12\" fill=\"#0b0f13\"/><circle cx=\"180\" cy=\"120\" r=\"95\" fill=\"#3a4046\" stroke=\"#e9edf0\" stroke-width=\"3\"/><line x1=\"180\" y1=\"196\" x2=\"180\" y2=\"28\" stroke=\"#9aa3ab\" stroke-dasharray=\"4 4\"/><g transform=\"translate(190 118) rotate(-8) scale(1.05)\"><ellipse cx=\"0\" cy=\"0\" rx=\"58\" ry=\"44\" fill=\"#7a8188\"/><ellipse cx=\"18\" cy=\"-19\" rx=\"27\" ry=\"14\" fill=\"#050607\"/><ellipse cx=\"16\" cy=\"19\" rx=\"30\" ry=\"14\" fill=\"#050607\"/><ellipse cx=\"-33\" cy=\"-19\" rx=\"16\" ry=\"14\" fill=\"#050607\"/><ellipse cx=\"-35\" cy=\"19\" rx=\"16\" ry=\"13\" fill=\"#050607\"/><line x1=\"-8\" y1=\"-33\" x2=\"-8\" y2=\"-6\" stroke=\"#e9edf0\" stroke-width=\"2.5\"/><line x1=\"-15\" y1=\"6\" x2=\"-15\" y2=\"31\" stroke=\"#e9edf0\" stroke-width=\"2.5\"/><line x1=\"33\" y1=\"-31\" x2=\"37\" y2=\"-8\" stroke=\"#e9edf0\" stroke-width=\"3\"/><path d=\"M-38 8 q6 4 4 10\" stroke=\"#e9edf0\" stroke-width=\"1.6\" fill=\"none\"/><path d=\"M-50 30 l-8 6 M-44 33 l-4 8\" stroke=\"#050607\" stroke-width=\"4\"/></g><line x1=\"178\" y1=\"120\" x2=\"263\" y2=\"108\" stroke=\"#ffd166\" stroke-width=\"1.6\" stroke-dasharray=\"5 3\"/><circle cx=\"180\" cy=\"200\" r=\"6\" fill=\"#fff\"/><circle cx=\"170\" cy=\"190\" r=\"4\" fill=\"#fff\"/><circle cx=\"190\" cy=\"190\" r=\"4\" fill=\"#fff\"/><circle cx=\"208\" cy=\"180\" r=\"8\" fill=\"#050607\" stroke=\"#e9edf0\" stroke-width=\"2\"/><text x=\"180\" y=\"22\" fill=\"#9aa3ab\" font-size=\"10\" font-weight=\"800\" text-anchor=\"middle\">A</text><text x=\"30\" y=\"124\" fill=\"#9aa3ab\" font-size=\"11\" font-weight=\"800\" text-anchor=\"middle\">D</text><text x=\"330\" y=\"124\" fill=\"#9aa3ab\" font-size=\"11\" font-weight=\"800\" text-anchor=\"middle\">I</text>", "p": [[120, 44, {"es": ["Eje cardíaco", ["Ángulo entre la línea anteroposterior (columna-esternón) y el septum interventricular.", "Normal: 45° ± 20°. Fuera de ese rango, sospechar cardiopatía (por ejemplo, conotruncal) aunque las 4 cámaras parezcan normales."]], "en": ["Cardiac axis", ["Angle between the anteroposterior line (spine to sternum) and the interventricular septum.", "Normal: 45° ± 20°. Outside that range, suspect a heart defect (e.g. conotruncal) even if the four chambers look normal."]], "pt": ["Eixo cardíaco", ["Ângulo entre a linha anteroposterior (coluna-esterno) e o septo interventricular.", "Normal: 45° ± 20°. Fora dessa faixa, suspeitar de cardiopatia (por exemplo, conotruncal) mesmo que as 4 câmaras pareçam normais."]]}], [58, 170, {"es": ["Tamaño", ["El corazón ocupa alrededor de un tercio del área del tórax.", "Ver el índice cardiotorácico más abajo."]], "en": ["Size", ["The heart occupies about one third of the thoracic area.", "See the cardiothoracic ratio below."]], "pt": ["Tamanho", ["O coração ocupa cerca de um terço da área do tórax.", "Ver o índice cardiotorácico abaixo."]]}], [179, 120, {"es": ["Cruz del corazón", ["Íntegra: septum interauricular, interventricular y válvulas AV se unen en la cruz.", "La tricúspide se inserta algo más cerca del ápex que la mitral (offset)."]], "en": ["Crux of the heart", ["Intact: atrial septum, ventricular septum and AV valves meet at the crux.", "The tricuspid inserts slightly closer to the apex than the mitral (offset)."]], "pt": ["Cruz do coração", ["Íntegra: septo interatrial, interventricular e valvas AV se unem na cruz.", "A tricúspide se insere um pouco mais perto do ápice que a mitral (offset)."]]}], [152, 149, {"es": ["Aurícula izquierda y foramen oval", ["Aurículas de tamaño similar; la valva del foramen oval se abre hacia la aurícula izquierda.", "Las venas pulmonares llegan a la aurícula izquierda."]], "en": ["Left atrium and foramen ovale", ["Atria of similar size; the foramen ovale flap opens into the left atrium.", "The pulmonary veins enter the left atrium."]], "pt": ["Átrio esquerdo e forame oval", ["Átrios de tamanho semelhante; a valva do forame oval abre para o átrio esquerdo.", "As veias pulmonares chegam ao átrio esquerdo."]]}], [224, 88, {"es": ["Ventrículo derecho", ["Anterior, con la banda moderadora cerca del ápex; el izquierdo forma el ápex."]], "en": ["Right ventricle", ["Anterior, with the moderator band near the apex; the left ventricle forms the apex."]], "pt": ["Ventrículo direito", ["Anterior, com a banda moderadora perto do ápice; o esquerdo forma o ápice."]]}], [236, 196, {"es": ["Aorta descendente", ["Aorta descendente a la izquierda y por delante de la columna."]], "en": ["Descending aorta", ["Descending aorta to the left of and in front of the spine."]], "pt": ["Aorta descendente", ["Aorta descendente à esquerda e à frente da coluna."]]}], [140, 210, {"es": ["Columna", ["Referencia posterior; el ápex apunta a la izquierda fetal."]], "en": ["Spine", ["Posterior landmark; the apex points to the fetal left."]], "pt": ["Coluna", ["Referência posterior; o ápice aponta para a esquerda fetal."]]}]], "h": 240, "d": {"es": ["Eje desviado (más de 65°)", ["Desviación del eje: asociada con cardiopatías (especialmente conotruncales) y con masas torácicas que desplazan el corazón.", "Indicación de ecocardiografía fetal."]], "en": ["Abnormal axis (over 65°)", ["Axis deviation: associated with heart defects (especially conotruncal) and with thoracic masses displacing the heart.", "Indication for fetal echocardiography."]], "pt": ["Eixo desviado (mais de 65°)", ["Desvio do eixo: associado a cardiopatias (especialmente conotruncais) e a massas torácicas que deslocam o coração.", "Indicação de ecocardiografia fetal."]]}}, {"n": {"es": "Cardiomegalia", "en": "Cardiomegaly", "pt": "Cardiomegalia"}, "svg": "<rect width=\"360\" height=\"240\" rx=\"12\" fill=\"#0b0f13\"/><circle cx=\"180\" cy=\"120\" r=\"95\" fill=\"#3a4046\" stroke=\"#e9edf0\" stroke-width=\"3\"/><line x1=\"180\" y1=\"196\" x2=\"180\" y2=\"28\" stroke=\"#9aa3ab\" stroke-dasharray=\"4 4\"/><g transform=\"translate(190 112) rotate(-45) scale(1.4)\"><ellipse cx=\"0\" cy=\"0\" rx=\"58\" ry=\"44\" fill=\"#7a8188\"/><ellipse cx=\"18\" cy=\"-19\" rx=\"27\" ry=\"14\" fill=\"#050607\"/><ellipse cx=\"16\" cy=\"19\" rx=\"30\" ry=\"14\" fill=\"#050607\"/><ellipse cx=\"-33\" cy=\"-19\" rx=\"16\" ry=\"14\" fill=\"#050607\"/><ellipse cx=\"-35\" cy=\"19\" rx=\"16\" ry=\"13\" fill=\"#050607\"/><line x1=\"-8\" y1=\"-33\" x2=\"-8\" y2=\"-6\" stroke=\"#e9edf0\" stroke-width=\"2.5\"/><line x1=\"-15\" y1=\"6\" x2=\"-15\" y2=\"31\" stroke=\"#e9edf0\" stroke-width=\"2.5\"/><line x1=\"33\" y1=\"-31\" x2=\"37\" y2=\"-8\" stroke=\"#e9edf0\" stroke-width=\"3\"/><path d=\"M-38 8 q6 4 4 10\" stroke=\"#e9edf0\" stroke-width=\"1.6\" fill=\"none\"/><path d=\"M-50 30 l-8 6 M-44 33 l-4 8\" stroke=\"#050607\" stroke-width=\"4\"/></g><line x1=\"178\" y1=\"124\" x2=\"259\" y2=\"43\" stroke=\"#ffd166\" stroke-width=\"1.6\" stroke-dasharray=\"5 3\"/><circle cx=\"180\" cy=\"200\" r=\"6\" fill=\"#fff\"/><circle cx=\"170\" cy=\"190\" r=\"4\" fill=\"#fff\"/><circle cx=\"190\" cy=\"190\" r=\"4\" fill=\"#fff\"/><circle cx=\"208\" cy=\"180\" r=\"8\" fill=\"#050607\" stroke=\"#e9edf0\" stroke-width=\"2\"/><text x=\"180\" y=\"22\" fill=\"#9aa3ab\" font-size=\"10\" font-weight=\"800\" text-anchor=\"middle\">A</text><text x=\"30\" y=\"124\" fill=\"#9aa3ab\" font-size=\"11\" font-weight=\"800\" text-anchor=\"middle\">D</text><text x=\"330\" y=\"124\" fill=\"#9aa3ab\" font-size=\"11\" font-weight=\"800\" text-anchor=\"middle\">I</text>", "p": [[120, 44, {"es": ["Eje cardíaco", ["Ángulo entre la línea anteroposterior (columna-esternón) y el septum interventricular.", "Normal: 45° ± 20°. Fuera de ese rango, sospechar cardiopatía (por ejemplo, conotruncal) aunque las 4 cámaras parezcan normales."]], "en": ["Cardiac axis", ["Angle between the anteroposterior line (spine to sternum) and the interventricular septum.", "Normal: 45° ± 20°. Outside that range, suspect a heart defect (e.g. conotruncal) even if the four chambers look normal."]], "pt": ["Eixo cardíaco", ["Ângulo entre a linha anteroposterior (coluna-esterno) e o septo interventricular.", "Normal: 45° ± 20°. Fora dessa faixa, suspeitar de cardiopatia (por exemplo, conotruncal) mesmo que as 4 câmaras pareçam normais."]]}], [58, 170, {"es": ["Tamaño", ["El corazón ocupa alrededor de un tercio del área del tórax.", "Ver el índice cardiotorácico más abajo."]], "en": ["Size", ["The heart occupies about one third of the thoracic area.", "See the cardiothoracic ratio below."]], "pt": ["Tamanho", ["O coração ocupa cerca de um terço da área do tórax.", "Ver o índice cardiotorácico abaixo."]]}], [179, 123, {"es": ["Cruz del corazón", ["Íntegra: septum interauricular, interventricular y válvulas AV se unen en la cruz.", "La tricúspide se inserta algo más cerca del ápex que la mitral (offset)."]], "en": ["Crux of the heart", ["Intact: atrial septum, ventricular septum and AV valves meet at the crux.", "The tricuspid inserts slightly closer to the apex than the mitral (offset)."]], "pt": ["Cruz do coração", ["Íntegra: septo interatrial, interventricular e valvas AV se unem na cruz.", "A tricúspide se insere um pouco mais perto do ápice que a mitral (offset)."]]}], [174, 175, {"es": ["Aurícula izquierda y foramen oval", ["Aurículas de tamaño similar; la valva del foramen oval se abre hacia la aurícula izquierda.", "Las venas pulmonares llegan a la aurícula izquierda."]], "en": ["Left atrium and foramen ovale", ["Atria of similar size; the foramen ovale flap opens into the left atrium.", "The pulmonary veins enter the left atrium."]], "pt": ["Átrio esquerdo e forame oval", ["Átrios de tamanho semelhante; a valva do forame oval abre para o átrio esquerdo.", "As veias pulmonares chegam ao átrio esquerdo."]]}], [202, 53, {"es": ["Ventrículo derecho", ["Anterior, con la banda moderadora cerca del ápex; el izquierdo forma el ápex."]], "en": ["Right ventricle", ["Anterior, with the moderator band near the apex; the left ventricle forms the apex."]], "pt": ["Ventrículo direito", ["Anterior, com a banda moderadora perto do ápice; o esquerdo forma o ápice."]]}], [236, 196, {"es": ["Aorta descendente", ["Aorta descendente a la izquierda y por delante de la columna."]], "en": ["Descending aorta", ["Descending aorta to the left of and in front of the spine."]], "pt": ["Aorta descendente", ["Aorta descendente à esquerda e à frente da coluna."]]}], [140, 210, {"es": ["Columna", ["Referencia posterior; el ápex apunta a la izquierda fetal."]], "en": ["Spine", ["Posterior landmark; the apex points to the fetal left."]], "pt": ["Coluna", ["Referência posterior; o ápice aponta para a esquerda fetal."]]}]], "h": 240, "d": {"es": ["Cardiomegalia", ["El corazón supera claramente un tercio del área torácica.", "Causas citadas por la fuente: Ebstein, displasia tricuspídea, canal AV, bloqueo cardíaco completo"]], "en": ["Cardiomegaly", ["The heart clearly exceeds one third of the thoracic area.", "Causes cited by the source: Ebstein anomaly, tricuspid dysplasia, AV septal defect, complete heart block"]], "pt": ["Cardiomegalia", ["O coração supera claramente um terço da área torácica.", "Causas citadas pela fonte: Ebstein, displasia tricúspide, defeito do septo AV, bloqueio cardíaco total"]]}}], "tab": null, "cu": null}, {"k": "I", "t": {"es": "Índice cardiotorácico", "en": "Cardiothoracic ratio", "pt": "Índice cardiotorácico"}, "v": [], "tab": {"es": [["Método", "Cómo", "Referencia"], ["Circunferencias", "Elipse sobre el contorno del corazón y del tórax, en 4 cámaras, fin de diástole", "0,45 (17 semanas) a 0,50 (término)"], ["Áreas", "Área cardíaca / área torácica en el mismo corte", "Alrededor de un tercio"]], "en": [["Method", "How", "Reference"], ["Circumferences", "Ellipse on the outline of the heart and thorax, four-chamber view, end-diastole", "0.45 (17 weeks) to 0.50 (term)"], ["Areas", "Heart area / thoracic area in the same view", "About one third"]], "pt": [["Método", "Como", "Referência"], ["Circunferências", "Elipse sobre o contorno do coração e do tórax, em 4 câmaras, fim da diástole", "0,45 (17 semanas) a 0,50 (termo)"], ["Áreas", "Área cardíaca / área torácica no mesmo corte", "Cerca de um terço"]]}, "cu": "ict"}];
+
+  function P(x, y, g, i, n, on) { return '<g class="pt' + (on ? ' on' : '') + '" data-g="' + g + '" data-i="' + i + '" tabindex="0" role="button"><circle class="h" cx="' + x + '" cy="' + y + '" r="18"/><circle class="m" cx="' + x + '" cy="' + y + '" r="11"/><text x="' + x + '" y="' + y + '">' + n + '</text></g>'; }
+  function T(x, y, s, c, an, sz) { return '<text x="' + x + '" y="' + y + '" fill="' + (c || '#e6edf3') + '" font-size="' + (sz || 10) + '" font-weight="800" text-anchor="' + (an || 'middle') + '">' + A.esc(s) + '</text>'; }
+  document.addEventListener('keydown', function (ev) { var g = ev.target.closest && ev.target.closest('.pt'); if (g && (ev.key === 'Enter' || ev.key === ' ')) { ev.preventDefault(); g.dispatchEvent(new MouseEvent('click', { bubbles: true })); } });
+  function tabla(el, rows) { el.innerHTML = '<thead><tr>' + rows[0].map(function (h) { return '<th>' + A.esc(h) + '</th>'; }).join('') + '</tr></thead><tbody>' + rows.slice(1).map(function (r) { return '<tr><th>' + A.esc(r[0]) + '</th>' + r.slice(1).map(function (c) { return '<td>' + A.esc(c) + '</td>'; }).join('') + '</tr>'; }).join('') + '</tbody>'; }
+
+  var CU = {};
+
+  CU.situs = (function () {
+    var s = { p: 0, d: 0, x: 0 };
+    var Tx = {
+      es: { pres: ['Cefálica', 'Podálica'], dor: ['Dorso anterior', 'Dorso posterior', 'Dorso a la derecha materna', 'Dorso a la izquierda materna'], sit: ['Situs solitus', 'Situs inversus', 'Discordante'],
+        ant: 'Anterior materno', pos: 'Posterior materno', der: 'Derecha materna', izq: 'Izquierda materna', tor: 'Tórax: 4 cámaras', abd: 'Abdomen: estómago', iz: 'I fetal',
+        conv: 'Corte transverso materno, marca del transductor hacia la derecha materna: la derecha materna queda a la izquierda de la pantalla y el abdomen materno arriba.',
+        pasos: ['1. Situación longitudinal: ubicá la cabeza (presentación cefálica o podálica).', '2. Ubicá el dorso fetal (posición) en el corte transverso.', '3. Deducí dónde está la izquierda fetal (marca “I fetal”).', '4. Confirmá que el estómago y el ápex cardíaco están del lado izquierdo fetal y la aorta descendente a la izquierda de la columna, con la vena cava inferior a la derecha.'],
+        trans: 'En situación transversa, el corte axial del feto se obtiene con el transductor en sagital materno; se aplica la misma regla con la cabeza a la derecha o a la izquierda materna.',
+        R: ['Situs solitus: estómago y corazón a la izquierda fetal. Normal.', 'Situs inversus: estómago y corazón a la derecha fetal (imagen en espejo). Ecocardiografía fetal.', 'Discordancia estómago-corazón: sospechar heterotaxia (isomerismo) y cardiopatía compleja. Ecocardiografía fetal.'], lado: 'La izquierda fetal está hacia: ', dirs: { u: 'arriba (anterior materno)', d: 'abajo (posterior materno)', l: 'la izquierda de la pantalla (derecha materna)', r: 'la derecha de la pantalla (izquierda materna)' } },
+      en: { pres: ['Cephalic', 'Breech'], dor: ['Back anterior', 'Back posterior', 'Back to maternal right', 'Back to maternal left'], sit: ['Situs solitus', 'Situs inversus', 'Discordant'],
+        ant: 'Maternal anterior', pos: 'Maternal posterior', der: 'Maternal right', izq: 'Maternal left', tor: 'Chest: four-chamber', abd: 'Abdomen: stomach', iz: 'Fetal L',
+        conv: 'Maternal transverse section, transducer marker to the maternal right: the maternal right is on the left of the screen and the maternal abdomen at the top.',
+        pasos: ['1. Longitudinal lie: locate the head (cephalic or breech presentation).', '2. Locate the fetal back (position) in the transverse section.', '3. Work out where the fetal left is (“Fetal L” mark).', '4. Confirm that the stomach and cardiac apex are on the fetal left and the descending aorta to the left of the spine, with the inferior vena cava to the right.'],
+        trans: 'In a transverse lie, the fetal axial section is obtained with the transducer in maternal sagittal; the same rule applies with the head to the maternal right or left.',
+        R: ['Situs solitus: stomach and heart on the fetal left. Normal.', 'Situs inversus: stomach and heart on the fetal right (mirror image). Fetal echocardiography.', 'Stomach-heart discordance: suspect heterotaxy (isomerism) and complex heart disease. Fetal echocardiography.'], lado: 'The fetal left is toward: ', dirs: { u: 'the top (maternal anterior)', d: 'the bottom (maternal posterior)', l: 'the left of the screen (maternal right)', r: 'the right of the screen (maternal left)' } },
+      pt: { pres: ['Cefálica', 'Pélvica'], dor: ['Dorso anterior', 'Dorso posterior', 'Dorso à direita materna', 'Dorso à esquerda materna'], sit: ['Situs solitus', 'Situs inversus', 'Discordante'],
+        ant: 'Anterior materno', pos: 'Posterior materno', der: 'Direita materna', izq: 'Esquerda materna', tor: 'Tórax: 4 câmaras', abd: 'Abdome: estômago', iz: 'E fetal',
+        conv: 'Corte transverso materno, marca do transdutor para a direita materna: a direita materna fica à esquerda da tela e o abdome materno em cima.',
+        pasos: ['1. Situação longitudinal: localize a cabeça (apresentação cefálica ou pélvica).', '2. Localize o dorso fetal (posição) no corte transverso.', '3. Deduza onde está a esquerda fetal (marca “E fetal”).', '4. Confirme que o estômago e o ápice cardíaco estão do lado esquerdo fetal e a aorta descendente à esquerda da coluna, com a veia cava inferior à direita.'],
+        trans: 'Na situação transversa, o corte axial do feto é obtido com o transdutor em sagital materno; aplica-se a mesma regra com a cabeça à direita ou à esquerda materna.',
+        R: ['Situs solitus: estômago e coração à esquerda fetal. Normal.', 'Situs inversus: estômago e coração à direita fetal (imagem em espelho). Ecocardiografia fetal.', 'Discordância estômago-coração: suspeitar de heterotaxia (isomerismo) e cardiopatia complexa. Ecocardiografia fetal.'], lado: 'A esquerda fetal está para: ', dirs: { u: 'cima (anterior materno)', d: 'baixo (posterior materno)', l: 'a esquerda da tela (direita materna)', r: 'a direita da tela (esquerda materna)' } } };
+    /* pantalla: x a la derecha = izquierda materna; y hacia abajo = posterior materno */
+    var DOR = [[0, -1], [0, 1], [-1, 0], [1, 0]];
+    function corte(cx, cy, Pf, Lf, tipo, lado, t) {
+      var r = 52, o = '<circle cx="' + cx + '" cy="' + cy + '" r="' + r + '" fill="#3a4046" stroke="#e9edf0" stroke-width="3"/>';
+      var sx = cx + Pf[0] * 40, sy = cy + Pf[1] * 40;
+      o += '<circle cx="' + sx + '" cy="' + sy + '" r="6" fill="#fff"/>';
+      var ax = sx + Lf[0] * 14 - Pf[0] * 12, ay = sy + Lf[1] * 14 - Pf[1] * 12;
+      if (tipo === 'c') {
+        o += '<circle cx="' + ax + '" cy="' + ay + '" r="5" fill="#050607" stroke="#e9edf0" stroke-width="1.5"/>';
+        var hx = cx + lado * Lf[0] * 18 - Pf[0] * 10, hy = cy + lado * Lf[1] * 18 - Pf[1] * 10;
+        o += '<circle cx="' + hx + '" cy="' + hy + '" r="20" fill="#7a8188"/><circle cx="' + hx + '" cy="' + hy + '" r="12" fill="#050607"/>';
+        o += '<line x1="' + hx + '" y1="' + hy + '" x2="' + (hx + lado * Lf[0] * 26 - Pf[0] * 14) + '" y2="' + (hy + lado * Lf[1] * 26 - Pf[1] * 14) + '" stroke="#ffd166" stroke-width="2"/>';
+      } else {
+        var gx = cx + lado * Lf[0] * 24 - Pf[0] * 4, gy = cy + lado * Lf[1] * 24 - Pf[1] * 4;
+        o += '<ellipse cx="' + gx + '" cy="' + gy + '" rx="13" ry="10" fill="#050607"/>';
+      }
+      var lx = cx + Lf[0] * (r + 14), ly = cy + Lf[1] * (r + 14) + 4;
+      o += T(lx, ly, t.iz, '#ffd166', 'middle', 10);
+      return o;
+    }
+    function svg(t) {
+      var Pf = DOR[s.d], Af = [-Pf[0], -Pf[1]], Lf = s.p === 0 ? [Af[1], -Af[0]] : [-Af[1], Af[0]];
+      var lh = s.x === 1 ? -1 : 1, ls = s.x === 0 ? 1 : -1;
+      var o = '<svg class="eco" viewBox="0 0 360 250" role="img"><rect width="360" height="250" rx="12" fill="#0b0f13"/>';
+      o += T(180, 16, t.ant, '#9aa3ab', 'middle', 10) + T(180, 244, t.pos, '#9aa3ab', 'middle', 10);
+      o += '<text x="12" y="125" fill="#9aa3ab" font-size="10" font-weight="800" transform="rotate(-90 12 125)" text-anchor="middle">' + A.esc(t.der) + '</text>';
+      o += '<text x="350" y="125" fill="#9aa3ab" font-size="10" font-weight="800" transform="rotate(90 350 125)" text-anchor="middle">' + A.esc(t.izq) + '</text>';
+      o += corte(105, 126, Pf, Lf, 'c', lh, t) + corte(255, 126, Pf, Lf, 'a', ls, t);
+      o += T(105, 222, t.tor, '#e6edf3', 'middle', 10) + T(255, 222, t.abd, '#e6edf3', 'middle', 10);
+      return { svg: o + '</svg>', Lf: Lf };
+    }
+    return {
+      pintar: function (si, u, L) {
+        var t = Tx[L];
+        chips($('#xp'), t.pres.map(function (n) { return { k: '', n: n }; }), s.p, 'sp');
+        chips($('#xd'), t.dor.map(function (n) { return { k: '', n: n }; }), s.d, 'sd');
+        chips($('#xs'), t.sit.map(function (n) { return { k: '', n: n }; }), s.x, 'sx');
+        var r = svg(t); $('#xg').innerHTML = r.svg;
+        var k = r.Lf[1] < 0 ? 'u' : r.Lf[1] > 0 ? 'd' : r.Lf[0] < 0 ? 'l' : 'r';
+        A.panel($('#xe'), t.R[s.x], [t.lado + t.dirs[k] + '.', t.conv].concat(t.pasos, [t.trans]), '');
+      },
+      click: function (g, i) { if (g === 'sp') s.p = i; else if (g === 'sd') s.d = i; else if (g === 'sx') s.x = i; else return false; return true; }
+    };
+  })();
+
+  CU.ict = (function () {
+    var Tx = {
+      es: { hc: 'Circunferencia cardíaca (mm)', tc: 'Circunferencia torácica (mm)', ha: 'Área cardíaca (cm²)', ta: 'Área torácica (cm²)', eg: 'Edad gestacional (semanas)', vac: 'Ingresá las circunferencias o las áreas, medidas en 4 cámaras al final de la diástole.', ic: 'Índice de circunferencias', ia: 'Índice de áreas',
+        ref: function (eg) { return 'Referencia (Paladini 1990): índice de circunferencias de 0,45 a las 17 semanas a 0,50 al término' + (eg ? '; esperado aproximado para ' + eg + ' semanas: ' + esp(eg).toFixed(2).replace('.', ',') : '') + '.'; },
+        alto: 'Por encima de la referencia: sugiere cardiomegalia; ecocardiografía fetal.', ok: 'Dentro de la referencia aproximada.', area: 'Área: el corazón ocupa normalmente alrededor de un tercio del tórax (ISUOG 2023); más de un tercio sugiere cardiomegalia.', dec: ',' },
+      en: { hc: 'Heart circumference (mm)', tc: 'Thoracic circumference (mm)', ha: 'Heart area (cm²)', ta: 'Thoracic area (cm²)', eg: 'Gestational age (weeks)', vac: 'Enter the circumferences or areas, measured on the four-chamber view at end-diastole.', ic: 'Circumference ratio', ia: 'Area ratio',
+        ref: function (eg) { return 'Reference (Paladini 1990): circumference ratio from 0.45 at 17 weeks to 0.50 at term' + (eg ? '; approximate expected value at ' + eg + ' weeks: ' + esp(eg).toFixed(2) : '') + '.'; },
+        alto: 'Above the reference: suggests cardiomegaly; fetal echocardiography.', ok: 'Within the approximate reference.', area: 'Area: the heart normally occupies about one third of the thorax (ISUOG 2023); more than one third suggests cardiomegaly.', dec: '.' },
+      pt: { hc: 'Circunferência cardíaca (mm)', tc: 'Circunferência torácica (mm)', ha: 'Área cardíaca (cm²)', ta: 'Área torácica (cm²)', eg: 'Idade gestacional (semanas)', vac: 'Digite as circunferências ou as áreas, medidas em 4 câmaras no fim da diástole.', ic: 'Índice de circunferências', ia: 'Índice de áreas',
+        ref: function (eg) { return 'Referência (Paladini 1990): índice de circunferências de 0,45 com 17 semanas a 0,50 no termo' + (eg ? '; esperado aproximado para ' + eg + ' semanas: ' + esp(eg).toFixed(2).replace('.', ',') : '') + '.'; },
+        alto: 'Acima da referência: sugere cardiomegalia; ecocardiografia fetal.', ok: 'Dentro da referência aproximada.', area: 'Área: o coração ocupa normalmente cerca de um terço do tórax (ISUOG 2023); mais de um terço sugere cardiomegalia.', dec: ',' } };
+    function esp(eg) { var e = Math.max(17, Math.min(40, eg)); return 0.45 + (e - 17) * 0.05 / 23; }
+    function n(id) { var v = parseFloat(($(id).value || '').replace(',', '.')); return isFinite(v) && v > 0 ? v : 0; }
+    var hecho = false;
+    return {
+      pintar: function (si, u, L) {
+        var t = Tx[L];
+        if (!hecho) { hecho = true; }
+        ['hc', 'tc', 'ha', 'ta', 'eg'].forEach(function (k) { $('#l_' + k).textContent = t[k]; });
+        var hc = n('#i_hc'), tc = n('#i_tc'), ha = n('#i_ha'), ta = n('#i_ta'), eg = n('#i_eg'), par = [], tit = '';
+        function f(x) { return x.toFixed(2).replace('.', t.dec); }
+        if (hc && tc) { var r = hc / tc; tit = t.ic + ': ' + f(r); par.push(t.ref(eg)); par.push(r > (eg ? esp(eg) : 0.5) + 0.02 ? t.alto : t.ok); }
+        if (ha && ta) { var ra = ha / ta; if (!tit) tit = t.ia + ': ' + f(ra); else par.push(t.ia + ': ' + f(ra)); par.push(t.area + (ra > 1 / 3 ? ' → ' + t.alto : '')); }
+        A.panel($('#xi'), tit, par, t.vac);
+      }
+    };
+  })();
+
+  var st = D.map(function () { return { v: 0, p: null }; });
+  var HV = { es: 'Tocá los puntos numerados o elegí otra vista.', en: 'Tap the numbered points or choose another view.', pt: 'Toque os pontos numerados ou escolha outra vista.' };
+  function pintar() {
+    var u = U(UI), L = A.lang;
+    A.nav($('#nav-at'), FILE);
+    D.forEach(function (s, si) {
+      $('#t' + si).textContent = s.t[L];
+      if (s.v.length) {
+        var c = st[si], v = s.v[c.v];
+        if (s.v.length > 1) chips($('#c' + si), s.v.map(function (x) { return { k: '', n: x.n[L] }; }), c.v, 'v' + si);
+        var g = '<svg class="eco" viewBox="0 0 360 ' + v.h + '" role="img" aria-label="' + A.esc(v.n[L]) + '">' + v.svg;
+        v.p.forEach(function (p, i) { g += P(p[0], p[1], 'p' + si, i, i + 1, c.p === i); });
+        $('#g' + si).innerHTML = g + '</svg>';
+        if (c.p === null) A.panel($('#e' + si), v.d[L][0], v.d[L][1].concat(v.p.length ? [HV[L]] : []), '');
+        else { var q = v.p[c.p][2][L]; A.panel($('#e' + si), (c.p + 1) + '. ' + q[0], q[1], ''); }
+      }
+      if (s.tab) tabla($('#tb' + si), s.tab[L]);
+      if (s.cu && CU[s.cu]) CU[s.cu].pintar(si, u, L);
+    });
+  }
+  document.addEventListener('click', function (ev) {
+    var b = ev.target.closest('[data-l],[data-g]'); if (!b) return;
+    if (b.dataset.l) A.setLang(b.dataset.l);
+    else {
+      var g = b.dataset.g, i = +b.dataset.i, m = /^([vp])(\d+)$/.exec(g);
+      if (m) { var c = st[+m[2]]; if (m[1] === 'v') { c.v = i; c.p = null; } else c.p = (c.p === i ? null : i); }
+      else { var ok = false; for (var k in CU) if (CU[k].click && CU[k].click(g, i)) ok = true; if (!ok) return; }
+    }
+    pintar();
+  });
+  document.addEventListener('input', function (ev) { if (ev.target.closest('.calc')) pintar(); });
+  pintar();
+
+})();
+</script>
+</body>
+</html>

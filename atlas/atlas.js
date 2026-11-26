@@ -25,7 +25,12 @@
     { href: 'suturas-compresivas.html', t: { es: 'Suturas compresivas S1/S2', en: 'Compression sutures S1/S2', pt: 'Suturas compressivas S1/S2' } },
     { href: 'torniquete-uterino.html', t: { es: 'Torniquete uterino', en: 'Uterine tourniquet', pt: 'Torniquete uterino' } },
     { href: 'sop-rotterdam.html', t: { es: 'SOP: Rotterdam y mFG', en: 'PCOS: Rotterdam and mFG', pt: 'SOP: Rotterdam e mFG' } },
-    { href: 'tanner.html', t: { es: 'Estadios de Tanner', en: 'Tanner stages', pt: 'Estágios de Tanner' } }
+    { href: 'tanner.html', t: { es: 'Estadios de Tanner', en: 'Tanner stages', pt: 'Estágios de Tanner' } },
+    { href: 'eco-11-14.html', t: { es: 'Ecografía 11–14: TN', en: '11–14 scan: NT', pt: 'Ultrassom 11–14: TN' } },
+    { href: 'biometria-fetal.html', t: { es: 'Biometría fetal', en: 'Fetal biometry', pt: 'Biometria fetal' } },
+    { href: 'cabeza-cara-fetal.html', t: { es: 'Cabeza y cara fetal', en: 'Fetal head and face', pt: 'Cabeça e face fetal' } },
+    { href: 'corazon-situs.html', t: { es: 'Corazón: situs y 4 cámaras', en: 'Heart: situs and 4 chambers', pt: 'Coração: situs e 4 câmaras' } },
+    { href: 'columna-pared-cordon.html', t: { es: 'Columna, pared y cordón', en: 'Spine, wall and cord', pt: 'Coluna, parede e cordão' } }
   ];
   A.nav = function (el, actual) {
     if (!el) return;
