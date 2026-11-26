@@ -57,11 +57,11 @@
       bibHC: 'Bibliografía — Historia Clínica', bibEM: 'Bibliografía — Emergencias Obstétricas',
       artBajada: 'Escribí el tema y elegí dónde buscar. Se abre en una pestaña nueva. Para más resultados, escribí en inglés.',
       artPh: 'Ej.: magnesium sulfate neuroprotection preterm',
-      pubmed: 'Literatura biomédica indexada (NLM / NIH).', consensus: 'Respuestas basadas en estudios, con resumen de la evidencia.', scholar: 'Artículos, tesis, libros y citas.',
+      pubmed: 'Literatura biomédica indexada (NLM / NIH).', consensus: 'Respuestas basadas en estudios, con resumen de la evidencia.', scholar: 'Artículos, tesis, libros y citas.', sdir: 'Revistas y libros de Elsevier; resúmenes libres, texto completo según acceso.', redalyc: 'Revistas de acceso abierto de América Latina, España y Portugal.', scopus: 'Base de citas de Elsevier; requiere acceso institucional.', wos: 'Base de citas de Clarivate; requiere acceso institucional. Se abre su buscador.', artTipT: 'Antes de citar:', artTip: 'revisá la revista, los autores, la metodología y la fecha, y citá la fuente original.',
       cochrane: 'Revisiones sistemáticas Cochrane.', episte: 'Evidencia de revisiones sistemáticas, en español.', lilacs: 'Literatura latinoamericana (BVS / OPS).', trip: 'Guías y evidencia en una sola búsqueda.', epmc: 'Artículos con mucho texto completo gratuito.',
       volverA: 'Volver a', motTit: 'Buscar artículos', guiTit: 'Guías y fuentes oficiales', guiTxt: 'Accesos directos a las páginas oficiales. Los documentos se abren en su sitio de origen, siempre en la versión vigente.',
       gPy: 'Paraguay', gInt: 'Organismos internacionales', gSoc: 'Sociedades y guías clínicas', gFet: 'Medicina fetal y ecografía', pdf: 'PDF',
-      dPrenatal: 'Manual Nacional de Normas de Cuidados: Preconcepcional, Prenatal, Parto, Nacimiento y Puerperio (3.ª ed., 2022).', dPatol: 'Manual Nacional de Normas de Atención de las Principales Patologías Obstétricas (2018).', dCR: 'Guía de Código Rojo Materno Neonatal (2.ª ed., 2022).', dMat: 'Todos los manuales y guías del Ministerio para descargar.', dFPGO: 'Federación Paraguaya de Ginecología y Obstetricia.', dRevFPGO: 'Revista Ginecología Obstetricia, de acceso abierto (FPGO).',
+      dPrenatal: 'Manual Nacional de Normas de Cuidados: Preconcepcional, Prenatal, Parto, Nacimiento y Puerperio (3.ª ed., 2022).', dGine: 'Manual Nacional de Normas de Atención de Patologías Ginecológicas (1.ª ed., 2025).', dPatol: 'Manual Nacional de Normas de Atención de las Principales Patologías Obstétricas (2018).', dCR: 'Guía de Código Rojo Materno Neonatal (2.ª ed., 2022).', dMat: 'Todos los manuales y guías del Ministerio para descargar.', dFPGO: 'Federación Paraguaya de Ginecología y Obstetricia.', dRevFPGO: 'Revista Ginecología Obstetricia, de acceso abierto (FPGO).',
       dOMS: 'Guías y salud materna de la Organización Mundial de la Salud.', dIRIS: 'Repositorio de publicaciones de la OMS.', dCLAP: 'Centro Latinoamericano de Perinatología (OPS/OMS).', dFIGO: 'Federación Internacional de Ginecología y Obstetricia.', dCDC: 'Embarazo y salud materna (EE. UU.).',
       dNICE: 'Guías clínicas del Reino Unido.', dACOG: 'Guías clínicas del Colegio Americano de Obstetras y Ginecólogos.', dRCOG: 'Green-top Guidelines del Real Colegio de Obstetras y Ginecólogos.', dSMFM: 'Publicaciones de la Society for Maternal-Fetal Medicine.', dSOGC: 'Guías de la Sociedad de Obstetras y Ginecólogos de Canadá.',
       dISUOG: 'Guías de la Sociedad Internacional de Ecografía en Obstetricia y Ginecología.', dFMF: 'Fetal Medicine Foundation: calculadoras de riesgo y cursos.', dBCN: 'Protocolos de Medicina Fetal Barcelona.',
@@ -113,11 +113,11 @@
       bibHC: 'Bibliography — Clinical Record', bibEM: 'Bibliography — Obstetric Emergencies',
       artBajada: 'Type a topic and choose where to search. It opens in a new tab.',
       artPh: 'E.g. magnesium sulfate neuroprotection preterm',
-      pubmed: 'Indexed biomedical literature (NLM / NIH).', consensus: 'Study-based answers with an evidence summary.', scholar: 'Articles, theses, books and citations.',
+      pubmed: 'Indexed biomedical literature (NLM / NIH).', consensus: 'Study-based answers with an evidence summary.', scholar: 'Articles, theses, books and citations.', sdir: 'Elsevier journals and books; free abstracts, full text depending on access.', redalyc: 'Open-access journals from Latin America, Spain and Portugal.', scopus: 'Elsevier citation database; institutional access required.', wos: 'Clarivate citation database; institutional access required. Opens its search page.', artTipT: 'Before citing:', artTip: 'check the journal, authors, methods and date, and cite the original source.',
       cochrane: 'Cochrane systematic reviews.', episte: 'Evidence from systematic reviews.', lilacs: 'Latin American literature (VHL / PAHO).', trip: 'Guidelines and evidence in a single search.', epmc: 'Articles with plenty of free full text.',
       volverA: 'Back to', motTit: 'Search articles', guiTit: 'Guidelines and official sources', guiTxt: 'Direct links to official pages. Documents open on their original site, always in the current version.',
       gPy: 'Paraguay', gInt: 'International organizations', gSoc: 'Societies and clinical guidelines', gFet: 'Fetal medicine and ultrasound', pdf: 'PDF',
-      dPrenatal: 'National care standards: preconception, prenatal, birth and postpartum (3rd ed., 2022). In Spanish.', dPatol: 'National standards for the main obstetric conditions (2018). In Spanish.', dCR: 'Maternal-Neonatal Code Red guide (2nd ed., 2022). In Spanish.', dMat: 'All Ministry manuals and guides for download. In Spanish.', dFPGO: 'Paraguayan Federation of Obstetrics and Gynecology.', dRevFPGO: 'Open-access journal Ginecología Obstetricia (FPGO).',
+      dPrenatal: 'National care standards: preconception, prenatal, birth and postpartum (3rd ed., 2022). In Spanish.', dGine: 'National standards for gynecological conditions (1st ed., 2025). In Spanish.', dPatol: 'National standards for the main obstetric conditions (2018). In Spanish.', dCR: 'Maternal-Neonatal Code Red guide (2nd ed., 2022). In Spanish.', dMat: 'All Ministry manuals and guides for download. In Spanish.', dFPGO: 'Paraguayan Federation of Obstetrics and Gynecology.', dRevFPGO: 'Open-access journal Ginecología Obstetricia (FPGO).',
       dOMS: 'World Health Organization guidelines and maternal health.', dIRIS: 'WHO publications repository.', dCLAP: 'Latin American Center for Perinatology (PAHO/WHO).', dFIGO: 'International Federation of Gynecology and Obstetrics.', dCDC: 'Pregnancy and maternal health (USA).',
       dNICE: 'UK clinical guidelines.', dACOG: 'Clinical guidance from the American College of Obstetricians and Gynecologists.', dRCOG: 'Green-top Guidelines from the Royal College of Obstetricians and Gynaecologists.', dSMFM: 'Society for Maternal-Fetal Medicine publications.', dSOGC: 'Society of Obstetricians and Gynaecologists of Canada guidelines.',
       dISUOG: 'International Society of Ultrasound in Obstetrics and Gynecology guidelines.', dFMF: 'Fetal Medicine Foundation: risk calculators and courses.', dBCN: 'Fetal Medicine Barcelona protocols.',
@@ -169,11 +169,11 @@
       bibHC: 'Bibliografia — Prontuário Clínico', bibEM: 'Bibliografia — Emergências Obstétricas',
       artBajada: 'Digite o tema e escolha onde buscar. Abre em uma nova aba. Para mais resultados, escreva em inglês.',
       artPh: 'Ex.: magnesium sulfate neuroprotection preterm',
-      pubmed: 'Literatura biomédica indexada (NLM / NIH).', consensus: 'Respostas baseadas em estudos, com resumo da evidência.', scholar: 'Artigos, teses, livros e citações.',
+      pubmed: 'Literatura biomédica indexada (NLM / NIH).', consensus: 'Respostas baseadas em estudos, com resumo da evidência.', scholar: 'Artigos, teses, livros e citações.', sdir: 'Revistas e livros da Elsevier; resumos livres, texto completo conforme o acesso.', redalyc: 'Revistas de acesso aberto da América Latina, Espanha e Portugal.', scopus: 'Base de citações da Elsevier; requer acesso institucional.', wos: 'Base de citações da Clarivate; requer acesso institucional. Abre a página de busca.', artTipT: 'Antes de citar:', artTip: 'confira a revista, os autores, a metodologia e a data, e cite a fonte original.',
       cochrane: 'Revisões sistemáticas Cochrane.', episte: 'Evidência de revisões sistemáticas.', lilacs: 'Literatura latino-americana (BVS / OPAS).', trip: 'Diretrizes e evidência em uma única busca.', epmc: 'Artigos com muito texto completo gratuito.',
       volverA: 'Voltar para', motTit: 'Buscar artigos', guiTit: 'Diretrizes e fontes oficiais', guiTxt: 'Acesso direto às páginas oficiais. Os documentos abrem no site de origem, sempre na versão vigente.',
       gPy: 'Paraguai', gInt: 'Organismos internacionais', gSoc: 'Sociedades e diretrizes clínicas', gFet: 'Medicina fetal e ultrassonografia', pdf: 'PDF',
-      dPrenatal: 'Normas nacionais de cuidados: pré-concepção, pré-natal, parto e puerpério (3.ª ed., 2022). Em espanhol.', dPatol: 'Normas nacionais das principais patologias obstétricas (2018). Em espanhol.', dCR: 'Guia de Código Vermelho Materno-Neonatal (2.ª ed., 2022). Em espanhol.', dMat: 'Todos os manuais e guias do Ministério para baixar. Em espanhol.', dFPGO: 'Federação Paraguaia de Ginecologia e Obstetrícia.', dRevFPGO: 'Revista Ginecología Obstetricia, de acesso aberto (FPGO).',
+      dPrenatal: 'Normas nacionais de cuidados: pré-concepção, pré-natal, parto e puerpério (3.ª ed., 2022). Em espanhol.', dGine: 'Normas nacionais das patologias ginecológicas (1.ª ed., 2025). Em espanhol.', dPatol: 'Normas nacionais das principais patologias obstétricas (2018). Em espanhol.', dCR: 'Guia de Código Vermelho Materno-Neonatal (2.ª ed., 2022). Em espanhol.', dMat: 'Todos os manuais e guias do Ministério para baixar. Em espanhol.', dFPGO: 'Federação Paraguaia de Ginecologia e Obstetrícia.', dRevFPGO: 'Revista Ginecología Obstetricia, de acesso aberto (FPGO).',
       dOMS: 'Diretrizes e saúde materna da Organização Mundial da Saúde.', dIRIS: 'Repositório de publicações da OMS.', dCLAP: 'Centro Latino-Americano de Perinatologia (OPAS/OMS).', dFIGO: 'Federação Internacional de Ginecologia e Obstetrícia.', dCDC: 'Gravidez e saúde materna (EUA).',
       dNICE: 'Diretrizes clínicas do Reino Unido.', dACOG: 'Diretrizes do Colégio Americano de Obstetras e Ginecologistas.', dRCOG: 'Green-top Guidelines do Royal College of Obstetricians and Gynaecologists.', dSMFM: 'Publicações da Society for Maternal-Fetal Medicine.', dSOGC: 'Diretrizes da Sociedade de Obstetras e Ginecologistas do Canadá.',
       dISUOG: 'Diretrizes da Sociedade Internacional de Ultrassonografia em Obstetrícia e Ginecologia.', dFMF: 'Fetal Medicine Foundation: calculadoras de risco e cursos.', dBCN: 'Protocolos da Medicina Fetal Barcelona.',
@@ -830,13 +830,18 @@
       ['Trip Database', t('trip'), 'https://www.tripdatabase.com/Searchresult?criteria='],
       ['Europe PMC', t('epmc'), 'https://europepmc.org/search?query='],
       ['Consensus', t('consensus'), 'https://consensus.app/results/?q='],
-      ['Google Scholar', t('scholar'), 'https://scholar.google.com/scholar?q=']
+      ['Google Scholar', t('scholar'), 'https://scholar.google.com/scholar?q='],
+      ['ScienceDirect', t('sdir'), 'https://www.sciencedirect.com/search?qs='],
+      ['Redalyc', t('redalyc'), 'https://www.redalyc.org/busquedaArticuloFiltros.oa?q='],
+      ['Scopus', t('scopus'), 'https://www.scopus.com/results/results.uri?src=s&sot=b&sdt=b&s=TITLE-ABS-KEY(', ')'],
+      ['Web of Science', t('wos'), 'https://www.webofscience.com/wos/woscc/basic-search', '', 1]
     ];
     var MS = 'https://www.mspbs.gov.py/dependencias/progsalud/adjunto/';
     var fuentes = [
       [t('gPy'), [
         ['MSPBS — Manual Prenatal 2022', t('dPrenatal'), MS + '59c707-ManualNacionalPrenatal.pdf', 1],
         ['MSPBS — Patologías Obstétricas', t('dPatol'), MS + '717658-ManualNacionaldeNormasdeAtenciondelasPrincipalesPatologiasObstetricas.pdf', 1],
+        ['MSPBS — Patologías Ginecológicas 2025', t('dGine'), MS + 'af6451-ManualNacionaldeNormasdeAtencindePatologasGinecolgicasAo2025.pdf', 1],
         ['MSPBS — Código Rojo 2022', t('dCR'), MS + '7c281b-CodigoRojo.pdf', 1],
         ['MSPBS — Materiales', t('dMat'), 'https://www.mspbs.gov.py/progsalud/documentaciones-materiales.html'],
         ['FPGO', t('dFPGO'), 'https://fpgo.org.py/'],
@@ -868,7 +873,7 @@
       '<input class="campo" id="q-art" type="search" value="' + esc(q) + '" placeholder="' + esc(t('artPh')) + '"></form>' +
       '<div class="motores">' + motores.map(function (m, i) {
         return '<button type="button" class="motor" data-i="' + i + '"><strong>' + esc(m[0]) + '</strong><span>' + esc(m[1]) + '</span></button>';
-      }).join('') + '</div>' +
+      }).join('') + '</div><p class="bajada"><b>' + esc(t('artTipT')) + '</b> ' + esc(t('artTip')) + '</p>' +
       '<h2 class="art-sec">' + esc(t('guiTit')) + '</h2><p class="bajada">' + esc(t('guiTxt')) + '</p>' +
       fuentes.map(function (g) {
         return '<h3 class="art-grupo">' + esc(g[0]) + '</h3><div class="motores">' + g[1].map(function (f) {
@@ -877,8 +882,8 @@
       }).join('');
     function abrir(i) {
       var v = $('#q-art').value.trim();
-      if (!v) { $('#q-art').focus(); return; }
-      window.open(motores[i][2] + encodeURIComponent(v), '_blank', 'noopener');
+      if (!v && !motores[i][4]) { $('#q-art').focus(); return; }
+      var m = motores[i]; window.open(m[4] ? m[2] : m[2] + encodeURIComponent(v) + (m[3] || ''), '_blank', 'noopener');
     }
     document.querySelectorAll('button.motor').forEach(function (b) { b.addEventListener('click', function () { abrir(+b.getAttribute('data-i')); }); });
     $('#f-art').addEventListener('submit', function (ev) { ev.preventDefault(); abrir(0); });
