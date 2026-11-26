@@ -19,7 +19,11 @@
     { href: 'segmentos-utero.html', t: { es: 'Sectores S1, S2, S3', en: 'Sectors S1, S2, S3', pt: 'Setores S1, S2, S3' } },
     { href: 'pas.html', t: { es: 'Acretismo (PAS)', en: 'Accreta (PAS)', pt: 'Acretismo (PAS)' } },
     { href: 'pas-ecografia.html', t: { es: 'PAS: ecografía S1/S2', en: 'PAS: S1/S2 ultrasound', pt: 'PAS: ultrassom S1/S2' } },
-    { href: 'pas-conducta.html', t: { es: 'PAS: OSCS o histerectomía', en: 'PAS: OSCS or hysterectomy', pt: 'PAS: OSCS ou histerectomia' } }
+    { href: 'pas-conducta.html', t: { es: 'PAS: OSCS o histerectomía', en: 'PAS: OSCS or hysterectomy', pt: 'PAS: OSCS ou histerectomia' } },
+    { href: 'histerotomia-ward.html', t: { es: 'Histerotomía y maniobra de Ward', en: 'Hysterotomy and Ward maneuver', pt: 'Histerotomia e manobra de Ward' } },
+    { href: 'zonas-ureterales.html', t: { es: 'Zonas de riesgo ureteral', en: 'Ureteral risk zones', pt: 'Zonas de risco ureteral' } },
+    { href: 'suturas-compresivas.html', t: { es: 'Suturas compresivas S1/S2', en: 'Compression sutures S1/S2', pt: 'Suturas compressivas S1/S2' } },
+    { href: 'torniquete-uterino.html', t: { es: 'Torniquete uterino', en: 'Uterine tourniquet', pt: 'Torniquete uterino' } }
   ];
   A.nav = function (el, actual) {
     if (!el) return;

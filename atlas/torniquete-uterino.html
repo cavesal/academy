@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Torniquete uterino y compresión aórtica — Atlas médico · CaVeSal® Academy</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="../img/favicon.png">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="atlas.css">
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <a class="marca" href="../#/" aria-label="CaVeSal Academy">
+      <img src="../img/icon-192.png" alt="" width="40" height="40">
+      <span class="marca-txt"><strong>CaVeSal<sup>®</sup> Academy</strong><small data-t="atlas">Atlas médico</small></span>
+    </a>
+  </div>
+</header>
+<main class="at" id="main">
+  <div class="at-top">
+    <a class="volver" href="../#/" data-t="volver">← Volver a Academy</a>
+    <div class="idi" role="group" aria-label="Idioma">
+      <button type="button" data-l="es">ES</button><button type="button" data-l="en">EN</button><button type="button" data-l="pt">PT</button>
+    </div>
+  </div>
+  <nav class="nav-at" id="nav-at" aria-label="Láminas"></nav>
+  <span class="eyebrow" data-t="ruta">Obstetricia · Hemorragia posparto quirúrgica</span>
+  <h1 data-t="tit">Torniquete uterino con guante y compresión aórtica: hemostasia primaria</h1>
+  <p class="baj" data-t="baj">Control inmediato y transitorio del sangrado mientras el equipo define la hemostasia definitiva.</p>
+  <section class="lam" aria-labelledby="h-a">
+    <h2 id="h-a"><span class="tipo">A</span><span data-t="hA">Torniquete uterino paso a paso</span></h2>
+    <div id="svgT"></div>
+    <div id="rep"></div>
+    <ol class="pasos ju" id="pas"></ol>
+    <div class="exp" id="exp" aria-live="polite"></div>
+  </section>
+  <section class="lam" aria-labelledby="h-b">
+    <h2 id="h-b"><span class="tipo">P</span><span data-t="hB">Compresión manual de la aorta infrarrenal (zona 3)</span></h2>
+    <div class="exp" id="aor"></div>
+    <div class="exp" id="alt"></div>
+  </section>
+  <div class="rot">
+    <p><strong data-t="rotulo">Algoritmo propio CaVeSal® · Basado en: Nieto-Calvache AJ et al., IJGO 2024 y 2025; GLOWM, cesárea compleja.</strong></p>
+    <p class="nota" data-t="nota">Lámina didáctica.</p>
+    <ol><li>Nieto-Calvache AJ, Barona JS, Burgos-Luna JM, Muñoz-Córdoba L, Sarria-Ortiz D, Galindo-Velasco V, Meade Triviño P, Mondragón K, Messa-Byron A. The uterine tourniquet, a simple maneuver that may facilitate surgical management of postpartum hemorrhage. Int J Gynaecol Obstet. 2024;164(1):345-347. <a href="https://doi.org/10.1002/ijgo.15110" target="_blank" rel="noopener">doi:10.1002/ijgo.15110</a></li><li>Nieto-Calvache AJ, Ramasauskaite D, Palacios-Jaraquemada JM, Hussein AM, Jauniaux E, Ubom AEB, et al.; FIGO Committee on Childbirth and PPH. Complex cesarean section: surgical approach to reduce the risks of intraoperative complications and postpartum hemorrhage. Int J Gynaecol Obstet. 2025;168(3):987-998. CC BY 4.0. <a href="https://doi.org/10.1002/ijgo.16094" target="_blank" rel="noopener">doi:10.1002/ijgo.16094</a></li><li>GLOWM. Surgical techniques in obstetrics: complex cesarean section. <a href="https://www.glowm.com/article/heading/vol-20--surgical-techniques-in-obstetrics--complex-cesarean-section/id/422193" target="_blank" rel="noopener">glowm.com</a></li></ol>
+  </div>
+</main>
+<script src="atlas.js"></script>
+<script>
+(function () {
+  'use strict';
+  var A = window.Atlas;
+  function $(s) { return document.querySelector(s); }
+  var COM = {
+    es: { atlas: 'Atlas médico', volver: '← Volver a Academy', nota: 'Lámina didáctica; no reemplaza la evaluación del ecografista ni el juicio clínico.', esq: 'Esquema CaVeSal®', vacio: 'Elegí una opción.' },
+    en: { atlas: 'Medical atlas', volver: '← Back to Academy', nota: 'Didactic plate; it does not replace the sonographer’s assessment or clinical judgment.', esq: 'CaVeSal® drawing', vacio: 'Choose an option.' },
+    pt: { atlas: 'Atlas médico', volver: '← Voltar ao Academy', nota: 'Lâmina didática; não substitui a avaliação do ultrassonografista nem o julgamento clínico.', esq: 'Esquema CaVeSal®', vacio: 'Escolha uma opção.' }
+  };
+  function U(UI) { ['es', 'en', 'pt'].forEach(function (l) { for (var k in COM[l]) if (!(k in UI[l])) UI[l][k] = COM[l][k]; }); return A.textos(UI); }
+  function real(img, c, txt) { var r = A.CRED[c]; return '<figure><img src="img/' + img + '.jpg" alt="" loading="lazy"><figcaption><a href="' + r.url + '" target="_blank" rel="noopener">' + A.esc(r.txt) + '</a></figcaption></figure>'; }
+  function chips(el, list, cur, g) { el.innerHTML = list.map(function (x, i) { return '<button type="button" data-g="' + g + '" data-i="' + i + '" aria-pressed="' + (cur === i) + '">' + (x.k ? '<b>' + A.esc(x.k) + '</b>' : '') + A.esc(x.n) + '</button>'; }).join(''); }
+  function lista(a) { return '<ul>' + a.map(function (x) { return '<li>' + A.esc(x) + '</li>'; }).join('') + '</ul>'; }
+
+  var UI = {
+    es: { ruta: 'Obstetricia · Hemorragia posparto quirúrgica', tit: 'Torniquete uterino con guante y compresión aórtica: hemostasia primaria', baj: 'Control inmediato y transitorio del sangrado mientras el equipo define la hemostasia definitiva.',
+      hA: 'Torniquete uterino paso a paso', hB: 'Compresión manual de la aorta infrarrenal (zona 3)',
+      rotulo: 'Algoritmo propio CaVeSal® · Basado en: Nieto-Calvache AJ et al., IJGO 2024 y 2025; GLOWM, cesárea compleja.', nota: 'Lámina didáctica; no reemplaza el juicio clínico ni la experiencia quirúrgica.',
+      S: ['Exteriorizar el útero de la cavidad pélvica.', 'El ayudante tracciona el útero hacia adelante y arriba, hacia el techo del quirófano.', 'Con un guante de látex estéril, compresión circunferencial en la porción más caudal del útero, idealmente en el tercio superior de la vagina, incluyendo ambos ligamentos anchos y los ovarios (idealmente con la vejiga movilizada).', 'Nudo simple con la máxima tracción posible del guante, por debajo del cuello, sin soltar la tracción del útero.', 'Hemostasia definitiva con el torniquete colocado.'],
+      L: { pared: 'Pared abdominal', trac: 'Tracción', guante: 'Guante', nudo: 'Nudo', ov: 'Ovario', la: 'Lig. ancho', cu: 'Cuello', def: 'Hemostasia definitiva' },
+      X: ['Qué hace y qué no', ['No resuelve la causa: controla la pérdida mientras el equipo define y ejecuta la intervención definitiva.', 'Con el torniquete puesto se pueden hacer suturas compresivas, reparar un desgarro de la histerotomía, ligar vasos uterinos, colocar un balón intrauterino o avanzar buena parte de una histerectomía.', 'Si no se puede colocar por debajo del cuello, su eficacia probablemente disminuye, sobre todo si el sangrado viene de esa zona.', 'Si el sangrado reaparece al retirarlo: identificar el sitio, elegir otra estrategia y recolocar el torniquete.', 'La fuente no indica un tiempo máximo de permanencia y aclara que falta evidencia de calidad sobre su eficacia y seguridad.']],
+      aorT: 'Técnica', aor: ['Controla de inmediato el sangrado pélvico de cualquier causa.', 'Un integrante del equipo se ubica al costado, localiza la aorta por palpación y la comprime contra las vértebras lumbares con el peso del torso.', 'Brazo a 90° respecto de la horizontal, con el codo en extensión completa; usar un banquito para lograr la posición.', 'Se puede mantener hasta 60 minutos continuos sin impacto metabólico significativo, mientras se aplica la hemostasia definitiva.'],
+      altT: 'Alternativa citada por la fuente', alt: ['Compresión aórtica interna o externa como medida inmediata (IJGO 2025).', 'Torniquete con dren de Penrose en lugar de guante (GLOWM).'] },
+    en: { ruta: 'Obstetrics · Surgical postpartum hemorrhage', tit: 'Uterine glove tourniquet and aortic compression: primary hemostasis', baj: 'Immediate, temporary bleeding control while the team defines definitive hemostasis.',
+      hA: 'Uterine tourniquet step by step', hB: 'Manual compression of the infrarenal aorta (zone 3)',
+      rotulo: 'CaVeSal® own algorithm · Based on: Nieto-Calvache AJ et al., IJGO 2024 and 2025; GLOWM, complex cesarean section.', nota: 'Didactic plate; it does not replace clinical judgment or surgical experience.',
+      S: ['Exteriorize the uterus from the pelvic cavity.', 'The assistant pulls the uterus anteriorly and upward, toward the operating room ceiling.', 'With a sterile latex glove, circumferential compression at the most caudal portion of the uterus, ideally at the upper third of the vagina, including both broad ligaments and ovaries (ideally with the bladder mobilized).', 'Simple knot with the greatest possible traction on the glove, below the cervix, while maintaining uterine traction.', 'Definitive hemostasis with the tourniquet in place.'],
+      L: { pared: 'Abdominal wall', trac: 'Traction', guante: 'Glove', nudo: 'Knot', ov: 'Ovary', la: 'Broad lig.', cu: 'Cervix', def: 'Definitive hemostasis' },
+      X: ['What it does and does not do', ['It does not solve the cause: it controls blood loss while the team defines and performs the definitive intervention.', 'With the tourniquet in place, compression sutures, repair of a hysterotomy tear, uterine vessel ligation, an intrauterine balloon or a large part of a hysterectomy can be performed.', 'If it cannot be placed below the cervix, its efficacy is probably reduced, especially if bleeding comes from that area.', 'If bleeding reappears on removal: identify the site, choose another strategy and reposition the tourniquet.', 'The source gives no maximum duration and states that quality evidence on its efficacy and safety is lacking.']],
+      aorT: 'Technique', aor: ['It immediately controls pelvic bleeding of any cause.', 'A team member stands beside the patient, locates the aorta by palpation and compresses it against the lumbar vertebrae with the weight of the torso.', 'Arm at 90° to the horizontal, elbow fully extended; use a step stool to achieve the position.', 'It can be maintained up to 60 continuous minutes without significant metabolic impact while definitive hemostasis is applied.'],
+      altT: 'Alternative cited by the source', alt: ['Internal or external aortic compression as an immediate measure (IJGO 2025).', 'Tourniquet with a Penrose drain instead of a glove (GLOWM).'] },
+    pt: { ruta: 'Obstetrícia · Hemorragia pós-parto cirúrgica', tit: 'Torniquete uterino com luva e compressão aórtica: hemostasia primária', baj: 'Controle imediato e transitório do sangramento enquanto a equipe define a hemostasia definitiva.',
+      hA: 'Torniquete uterino passo a passo', hB: 'Compressão manual da aorta infrarrenal (zona 3)',
+      rotulo: 'Algoritmo próprio CaVeSal® · Baseado em: Nieto-Calvache AJ et al., IJGO 2024 e 2025; GLOWM, cesárea complexa.', nota: 'Lâmina didática; não substitui o julgamento clínico nem a experiência cirúrgica.',
+      S: ['Exteriorizar o útero da cavidade pélvica.', 'O auxiliar traciona o útero para frente e para cima, em direção ao teto da sala.', 'Com uma luva de látex estéril, compressão circunferencial na porção mais caudal do útero, idealmente no terço superior da vagina, incluindo ambos os ligamentos largos e os ovários (idealmente com a bexiga mobilizada).', 'Nó simples com a máxima tração possível da luva, abaixo do colo, sem soltar a tração do útero.', 'Hemostasia definitiva com o torniquete colocado.'],
+      L: { pared: 'Parede abdominal', trac: 'Tração', guante: 'Luva', nudo: 'Nó', ov: 'Ovário', la: 'Lig. largo', cu: 'Colo', def: 'Hemostasia definitiva' },
+      X: ['O que faz e o que não faz', ['Não resolve a causa: controla a perda enquanto a equipe define e executa a intervenção definitiva.', 'Com o torniquete colocado podem-se fazer suturas compressivas, reparar uma laceração da histerotomia, ligar vasos uterinos, colocar um balão intrauterino ou avançar boa parte de uma histerectomia.', 'Se não puder ser colocado abaixo do colo, sua eficácia provavelmente diminui, sobretudo se o sangramento vem dessa área.', 'Se o sangramento reaparecer ao retirá-lo: identificar o local, escolher outra estratégia e recolocar o torniquete.', 'A fonte não indica tempo máximo de permanência e esclarece que falta evidência de qualidade sobre sua eficácia e segurança.']],
+      aorT: 'Técnica', aor: ['Controla de imediato o sangramento pélvico de qualquer causa.', 'Um membro da equipe se posiciona ao lado, localiza a aorta por palpação e a comprime contra as vértebras lombares com o peso do tronco.', 'Braço a 90° em relação à horizontal, com o cotovelo em extensão completa; usar um banquinho para obter a posição.', 'Pode ser mantida por até 60 minutos contínuos sem impacto metabólico significativo, enquanto se aplica a hemostasia definitiva.'],
+      altT: 'Alternativa citada pela fonte', alt: ['Compressão aórtica interna ou externa como medida imediata (IJGO 2025).', 'Torniquete com dreno de Penrose em vez de luva (GLOWM).'] }
+  };
+
+  var J = { es: { ant: '← Anterior', sig: 'Siguiente →', repro: '▶ Reproducir', pausa: '❚❚ Pausa', paso: 'Paso' },
+    en: { ant: '← Previous', sig: 'Next →', repro: '▶ Play', pausa: '❚❚ Pause', paso: 'Step' },
+    pt: { ant: '← Anterior', sig: 'Próximo →', repro: '▶ Reproduzir', pausa: '❚❚ Pausa', paso: 'Passo' } };
+  ['es', 'en', 'pt'].forEach(function (l) { for (var x in J[l]) UI[l][x] = J[l][x]; });
+  var st = { k: 0, e: 0 }, tim = null;
+  function parar() { if (tim) { clearInterval(tim); tim = null; } }
+  function rep(u) { return '<div class="rep"><button type="button" data-g="prev">' + A.esc(u.ant) + '</button><button type="button" data-g="play" aria-pressed="' + !!tim + '">' + A.esc(tim ? u.pausa : u.repro) + '</button><button type="button" data-g="next">' + A.esc(u.sig) + '</button></div>'; }
+  function olp(arr) { return arr.map(function (x, i) { return '<li data-g="k" data-i="' + i + '" class="' + (i === st.k ? 'on' : i > st.k ? 'fut' : '') + '">' + A.esc(x) + '</li>'; }).join(''); }
+  function T(x, y, s, c, an, sz) { return '<text x="' + x + '" y="' + y + '" fill="' + (c || '#e6edf3') + '" font-size="' + (sz || 10) + '" font-weight="800" text-anchor="' + (an || 'middle') + '">' + A.esc(s) + '</text>'; }
+  function clic(ev, n) {
+    var b = ev.target.closest('[data-l],[data-g]'); if (!b) return false;
+    if (b.dataset.l) { A.setLang(b.dataset.l); return true; }
+    var g = b.dataset.g;
+    if (g === 'prev') { parar(); st.k = Math.max(0, st.k - 1); }
+    else if (g === 'next') { parar(); st.k = Math.min(n() - 1, st.k + 1); }
+    else if (g === 'k') { parar(); st.k = +b.dataset.i; }
+    else if (g === 'play') {
+      if (tim) parar(); else { if (st.k >= n() - 1) st.k = 0; tim = setInterval(function () { if (st.k >= n() - 1) parar(); else st.k++; pintar(); }, 2600); }
+    } else if (g === 'e') { parar(); st.e = +b.dataset.i; st.k = 0; }
+    else return false;
+    return true;
+  }
+  var BG = '<rect width="360" height="260" rx="12" fill="#11161b"/>';
+  var MIO = 'fill="#9c5f66" stroke="#e3a1a8" stroke-width="2"';
+  function utero(dy) { dy = dy || 0; return '<path transform="translate(0 ' + dy + ')" d="M180 22 C260 22 292 80 286 130 C281 172 250 196 222 212 L214 238 L146 238 L138 212 C110 196 79 172 74 130 C68 80 100 22 180 22Z" ' + MIO + '/>'; }
+
+  function n() { return U(UI).S.length; }
+  function svg(u) {
+    var L = u.L, k = st.k, up = k >= 1 ? -26 : 0, s = BG;
+    s += '<path d="M10 200 L130 200 M230 200 L350 200" stroke="#c9a27a" stroke-width="6"/>' + T(60, 220, L.pared, '#c9a27a', 'middle', 9);
+    var g = '<g transform="translate(0 ' + up + ')">';
+    g += '<path d="M180 40 C238 40 258 84 254 120 C250 150 230 168 212 178 L208 214 L152 214 L148 178 C130 168 110 150 106 120 C102 84 122 40 180 40Z" fill="#9c5f66" stroke="#e3a1a8" stroke-width="2"/>';
+    g += '<path d="M150 168 Q120 176 92 196 M210 168 Q240 176 268 196" stroke="#c48a8f" stroke-width="10" fill="none" opacity=".8"/>' + T(80, 190, L.la, '#e3a1a8', 'middle', 8) + T(282, 190, L.la, '#e3a1a8', 'middle', 8);
+    g += '<ellipse cx="96" cy="150" rx="12" ry="8" fill="#e9c7b5"/><ellipse cx="264" cy="150" rx="12" ry="8" fill="#e9c7b5"/>' + T(96, 138, L.ov, '#e9c7b5', 'middle', 8);
+    g += '<rect x="160" y="214" width="40" height="30" rx="6" fill="#8a5258"/>' + T(180, 234, L.cu, '#fff', 'middle', 8);
+    if (k >= 2) g += '<path d="M82 196 Q180 236 278 196 Q180 250 82 196Z" fill="#8fd3ff" opacity="' + (k >= 3 ? '.9' : '.6') + '"/>' + T(300, 214, L.guante, '#8fd3ff', 'start', 9);
+    if (k >= 3) g += '<circle cx="212" cy="214" r="7" fill="#3ddc84"/>' + T(230, 232, L.nudo, '#3ddc84', 'middle', 9);
+    g += '</g>';
+    s += g;
+    if (k === 0) s += '<path d="M180 30 L180 10" stroke="#ffd166" stroke-width="3" marker-end="url(#fa)" opacity=".6"/>';
+    if (k >= 1) s += '<path d="M180 22 L180 4" stroke="#ffd166" stroke-width="4" marker-end="url(#fa)"/>' + T(196, 16, L.trac, '#ffd166', 'start', 9);
+    if (k >= 4) s += '<rect x="12" y="12" width="120" height="22" rx="6" fill="#1e8e4f"/>' + T(72, 27, L.def, '#fff', 'middle', 9);
+    return '<svg class="eco" viewBox="0 0 360 260" role="img"><defs><marker id="fa" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#ffd166"/></marker></defs>' + s + '</svg>';
+  }
+  function pintar() {
+    var u = U(UI);
+    A.nav($('#nav-at'), 'torniquete-uterino.html');
+    $('#svgT').innerHTML = svg(u);
+    $('#rep').innerHTML = rep(u);
+    $('#pas').innerHTML = olp(u.S);
+    A.panel($('#exp'), u.X[0], u.X[1], u.vacio);
+    $('#aor').innerHTML = '<h3>' + A.esc(u.aorT) + '</h3>' + lista(u.aor);
+    $('#alt').innerHTML = '<h3>' + A.esc(u.altT) + '</h3>' + lista(u.alt);
+  }
+  document.addEventListener('click', function (ev) { if (clic(ev, n)) pintar(); });
+  pintar();
+
+})();
+</script>
+</body>
+</html>

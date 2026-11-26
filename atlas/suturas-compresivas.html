@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Suturas compresivas S1 y S2 — Atlas médico · CaVeSal® Academy</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="../img/favicon.png">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="atlas.css">
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <a class="marca" href="../#/" aria-label="CaVeSal Academy">
+      <img src="../img/icon-192.png" alt="" width="40" height="40">
+      <span class="marca-txt"><strong>CaVeSal<sup>®</sup> Academy</strong><small data-t="atlas">Atlas médico</small></span>
+    </a>
+  </div>
+</header>
+<main class="at" id="main">
+  <div class="at-top">
+    <a class="volver" href="../#/" data-t="volver">← Volver a Academy</a>
+    <div class="idi" role="group" aria-label="Idioma">
+      <button type="button" data-l="es">ES</button><button type="button" data-l="en">EN</button><button type="button" data-l="pt">PT</button>
+    </div>
+  </div>
+  <nav class="nav-at" id="nav-at" aria-label="Láminas"></nav>
+  <span class="eyebrow" data-t="ruta">Obstetricia · Hemorragia posparto quirúrgica</span>
+  <h1 data-t="tit">Suturas compresivas según el sector que sangra (S1 o S2)</h1>
+  <p class="baj" data-t="baj">Elegí la técnica: el esquema muestra el trayecto paso a paso. Línea continua: cara anterior; línea punteada: cara posterior.</p>
+  <section class="lam" aria-labelledby="h-a">
+    <h2 id="h-a"><span class="tipo">A</span><span data-t="hA">Trayecto de cada sutura</span></h2>
+    <div class="chips" id="esc" role="group"></div>
+    <div id="svgC"></div>
+    <div id="rep"></div>
+    <ol class="pasos ju" id="pas"></ol>
+    <div class="exp" id="exp" aria-live="polite"></div>
+  </section>
+  <section class="lam" aria-labelledby="h-b">
+    <h2 id="h-b"><span class="tipo">P</span><span data-t="hB">Elección por sector y cuidados</span></h2>
+    <div class="scroll"><table class="tb" id="tab"></table></div>
+    <div class="exp" id="cui"></div>
+  </section>
+  <div class="rot">
+    <p><strong data-t="rotulo">Algoritmo propio CaVeSal® · Basado en: Nieto-Calvache AJ et al., IJGO 2025; B-Lynch C et al., BJOG 1997; Hayman RG et al., Obstet Gynecol 2002; Cho JH et al., Obstet Gynecol 2000; Ursache A et al., Med Sci 2026; Matsuzaki S et al., BMC Surg 2019.</strong></p>
+    <p class="nota" data-t="nota">Lámina didáctica.</p>
+    <ol><li>Nieto-Calvache AJ, Ramasauskaite D, Palacios-Jaraquemada JM, Hussein AM, Jauniaux E, Ubom AEB, et al.; FIGO Committee on Childbirth and PPH. Complex cesarean section: surgical approach to reduce the risks of intraoperative complications and postpartum hemorrhage. Int J Gynaecol Obstet. 2025;168(3):987-998. CC BY 4.0. <a href="https://doi.org/10.1002/ijgo.16094" target="_blank" rel="noopener">doi:10.1002/ijgo.16094</a></li><li>B-Lynch C, Coker A, Lawal AH, Abu J, Cowen MJ. The B-Lynch surgical technique for the control of massive postpartum haemorrhage: an alternative to hysterectomy? Five cases reported. BJOG. 1997;104(3):372-375. <a href="https://doi.org/10.1111/j.1471-0528.1997.tb11471.x" target="_blank" rel="noopener">doi:10.1111/j.1471-0528.1997.tb11471.x</a></li><li>Hayman RG, Arulkumaran S, Steer PJ. Uterine compression sutures: surgical management of postpartum hemorrhage. Obstet Gynecol. 2002;99(3):502-506. <a href="https://doi.org/10.1016/s0029-7844(01)01643-x" target="_blank" rel="noopener">doi:10.1016/s0029-7844(01)01643-x</a></li><li>Cho JH, Jun HS, Lee CN. Hemostatic suturing technique for uterine bleeding during cesarean delivery. Obstet Gynecol. 2000;96(1):129-131. <a href="https://doi.org/10.1016/s0029-7844(00)00852-8" target="_blank" rel="noopener">doi:10.1016/s0029-7844(00)00852-8</a></li><li>Ursache A, Socolov DG, Bujor IE, et al. Contemporary approaches to postpartum hemorrhage with focus on uterine compression sutures: an updated comprehensive systematic review. Med Sci (Basel). 2026;14(6):619. CC BY. <a href="https://doi.org/10.3390/medsci14060619" target="_blank" rel="noopener">doi:10.3390/medsci14060619</a></li><li>Matsuzaki S, Jitsumori M, Hara T, et al. Systematic review on the needle and suture types for uterine compression sutures: a literature review. BMC Surg. 2019;19:196. CC BY 4.0. <a href="https://doi.org/10.1186/s12893-019-0660-z" target="_blank" rel="noopener">doi:10.1186/s12893-019-0660-z</a></li></ol>
+  </div>
+</main>
+<script src="atlas.js"></script>
+<script>
+(function () {
+  'use strict';
+  var A = window.Atlas;
+  function $(s) { return document.querySelector(s); }
+  var COM = {
+    es: { atlas: 'Atlas médico', volver: '← Volver a Academy', nota: 'Lámina didáctica; no reemplaza la evaluación del ecografista ni el juicio clínico.', esq: 'Esquema CaVeSal®', vacio: 'Elegí una opción.' },
+    en: { atlas: 'Medical atlas', volver: '← Back to Academy', nota: 'Didactic plate; it does not replace the sonographer’s assessment or clinical judgment.', esq: 'CaVeSal® drawing', vacio: 'Choose an option.' },
+    pt: { atlas: 'Atlas médico', volver: '← Voltar ao Academy', nota: 'Lâmina didática; não substitui a avaliação do ultrassonografista nem o julgamento clínico.', esq: 'Esquema CaVeSal®', vacio: 'Escolha uma opção.' }
+  };
+  function U(UI) { ['es', 'en', 'pt'].forEach(function (l) { for (var k in COM[l]) if (!(k in UI[l])) UI[l][k] = COM[l][k]; }); return A.textos(UI); }
+  function real(img, c, txt) { var r = A.CRED[c]; return '<figure><img src="img/' + img + '.jpg" alt="" loading="lazy"><figcaption><a href="' + r.url + '" target="_blank" rel="noopener">' + A.esc(r.txt) + '</a></figcaption></figure>'; }
+  function chips(el, list, cur, g) { el.innerHTML = list.map(function (x, i) { return '<button type="button" data-g="' + g + '" data-i="' + i + '" aria-pressed="' + (cur === i) + '">' + (x.k ? '<b>' + A.esc(x.k) + '</b>' : '') + A.esc(x.n) + '</button>'; }).join(''); }
+  function lista(a) { return '<ul>' + a.map(function (x) { return '<li>' + A.esc(x) + '</li>'; }).join('') + '</ul>'; }
+
+  var UI = {
+    es: { ruta: 'Obstetricia · Hemorragia posparto quirúrgica', tit: 'Suturas compresivas según el sector que sangra (S1 o S2)', baj: 'Elegí la técnica: el esquema muestra el trayecto paso a paso. Línea continua: cara anterior; línea punteada: cara posterior.',
+      hA: 'Trayecto de cada sutura', hB: 'Elección por sector y cuidados',
+      rotulo: 'Algoritmo propio CaVeSal® · Basado en: Nieto-Calvache AJ et al., IJGO 2025; B-Lynch C et al., BJOG 1997; Hayman RG et al., Obstet Gynecol 2002; Cho JH et al., Obstet Gynecol 2000; Ursache A et al., Med Sci 2026; Matsuzaki S et al., BMC Surg 2019.', nota: 'Lámina didáctica; no reemplaza el juicio clínico ni la experiencia quirúrgica. Trayectos esquemáticos, sin medidas.',
+      E: ['B-Lynch (S1)', 'Hayman (S1)', 'Ho-Cho en cuadrados (S2)', 'B-Lynch 2 transversa (S2)'],
+      S: [['Vejiga movilizada: el primer punto queda varios centímetros por debajo del borde inferior de la histerotomía, en la cara anterior derecha.', 'Salida por encima de la histerotomía y paso por encima del fondo hacia la cara posterior.', 'Entrada en la cara posterior a la altura de la histerotomía y cruce horizontal por la cavidad hacia el lado izquierdo.', 'Salida posterior izquierda y paso por encima del fondo hacia la cara anterior.', 'Entrada por encima y salida por debajo de la histerotomía del lado izquierdo, en espejo.', 'El ayudante comprime el útero y se anuda con tensión, lejos de la histerorrafia.'],
+        ['Puntos de anterior a posterior en el segmento inferior, a cada lado.', 'Cada hilo sube como un tirante vertical por encima del fondo, sin cruce horizontal en el fondo.', 'Se anuda en el fondo uterino con el útero comprimido.'],
+        ['Movilización vesical: sin ella, la sutura baja puede lesionar la vejiga.', 'Cada cuadrado une la pared anterior con la posterior en la zona que sangra, con cuatro pasadas.', 'Se agregan cuadrados en cada sector sangrante del segmento.'],
+        ['Movilización vesical completa para exponer el segmento inferior (S2).', 'Sutura que comprime transversalmente el tejido que sangra del segmento.']],
+      L: { hist: 'Histerotomía', s1: 'S1 cuerpo y fondo', s2: 'S2 segmento inferior', vej: 'Vejiga movilizada', nudo: 'Nudo', ant: 'Anterior', post: 'Posterior', nd: 'Trayecto no descripto en el texto de la fuente: ver video de la fuente.' },
+      X: [['B-Lynch', ['Sutura más reconocida para el sangrado del cuerpo y el fondo (S1), típicamente por atonía.', 'Si se aplica sin movilizar la vejiga, los puntos quedan pegados al borde de la histerotomía, la tensión se apoya en poco tejido y puede fallar.']],
+        ['Hayman', ['Tirantes verticales para S1 (alternativa a B-Lynch citada por la fuente, junto con Pereira y otras).', 'Comprime más directamente las paredes anterior y posterior: puede tener más riesgo de cicatrización endometrial que B-Lynch.']],
+        ['Ho-Cho (cuadrados múltiples)', ['Indicada para el sangrado del segmento inferior (S2) por placenta previa o dehiscencia amplia.', 'Serie original de Cho: 23 mujeres, se evitó la histerectomía en todas.']],
+        ['B-Lynch 2 (transversa)', ['La fuente la nombra junto con Ho-Cho como las suturas más reconocidas para S2.', 'Su aplicación es imposible sin movilización vesical previa.']]],
+      th: ['Sector', 'Pedículos', 'Suturas', 'Ligadura útil'],
+      tr: [['S1 · cuerpo, fondo y parte alta del segmento', 'Uterina, ovárica', 'B-Lynch; Hayman, Pereira y otras', 'Uterina'], ['S2 · segmento inferior', 'Uterina, vesical, vaginal', 'B-Lynch 2 (transversa), Ho-Cho', 'Colpouterina']],
+      cuiT: 'Cuidados', cui: ['La ligadura de la arteria uterina no sirve para el sangrado del segmento inferior: reservarla para el cuerpo.', 'Eficacia publicada de las suturas compresivas: 73,9% a 100%, sobre todo en series sin grupo control (Ursache 2026).', 'Complicaciones descriptas: hematometra, piometra, sinequias e isquemia o necrosis uterina, sobre todo combinadas con ligaduras.', 'Material: cerca del 80% de los reportes usó catgut o poliglactina 910; no hay estudios que demuestren cuál hilo es superior (Matsuzaki 2019).'] },
+    en: { ruta: 'Obstetrics · Surgical postpartum hemorrhage', tit: 'Compression sutures by bleeding sector (S1 or S2)', baj: 'Choose the technique: the drawing shows the path step by step. Solid line: anterior surface; dotted line: posterior surface.',
+      hA: 'Path of each suture', hB: 'Choice by sector and precautions',
+      rotulo: 'CaVeSal® own algorithm · Based on: Nieto-Calvache AJ et al., IJGO 2025; B-Lynch C et al., BJOG 1997; Hayman RG et al., Obstet Gynecol 2002; Cho JH et al., Obstet Gynecol 2000; Ursache A et al., Med Sci 2026; Matsuzaki S et al., BMC Surg 2019.', nota: 'Didactic plate; it does not replace clinical judgment or surgical experience. Schematic paths, no measurements.',
+      E: ['B-Lynch (S1)', 'Hayman (S1)', 'Ho-Cho square sutures (S2)', 'Transverse B-Lynch 2 (S2)'],
+      S: [['Bladder mobilized: the first stitch lies several centimeters below the lower edge of the hysterotomy, on the right anterior surface.', 'Exit above the hysterotomy and pass over the fundus to the posterior surface.', 'Entry on the posterior surface at the level of the hysterotomy and horizontal crossing through the cavity to the left side.', 'Left posterior exit and pass over the fundus to the anterior surface.', 'Entry above and exit below the hysterotomy on the left side, mirroring the right.', 'The assistant compresses the uterus and the knot is tied under tension, away from the hysterorrhaphy.'],
+        ['Stitches from anterior to posterior in the lower segment, on each side.', 'Each thread rises as a vertical brace over the fundus, with no horizontal fundal crossing.', 'Tied at the fundus with the uterus compressed.'],
+        ['Bladder mobilization: without it, the low suture may injure the bladder.', 'Each square joins the anterior and posterior walls at the bleeding area, with four passes.', 'Squares are added at each bleeding area of the segment.'],
+        ['Complete bladder mobilization to expose the lower segment (S2).', 'Suture that transversely compresses the bleeding tissue of the segment.']],
+      L: { hist: 'Hysterotomy', s1: 'S1 body and fundus', s2: 'S2 lower segment', vej: 'Mobilized bladder', nudo: 'Knot', ant: 'Anterior', post: 'Posterior', nd: 'Path not described in the source text: see the source video.' },
+      X: [['B-Lynch', ['Most recognized suture for bleeding from the body and fundus (S1), typically due to atony.', 'If applied without bladder mobilization, the stitches lie right at the hysterotomy edge, tension rests on little tissue and it may fail.']],
+        ['Hayman', ['Vertical braces for S1 (alternative to B-Lynch cited by the source, together with Pereira and others).', 'It compresses the anterior and posterior walls more directly: it may carry a higher risk of endometrial scarring than B-Lynch.']],
+        ['Ho-Cho (multiple squares)', ['Indicated for lower-segment bleeding (S2) due to placenta previa or major dehiscence.', 'Cho’s original series: 23 women, hysterectomy was avoided in all.']],
+        ['B-Lynch 2 (transverse)', ['The source names it together with Ho-Cho as the most recognized sutures for S2.', 'It cannot be applied without prior bladder mobilization.']]],
+      th: ['Sector', 'Pedicles', 'Sutures', 'Useful ligation'],
+      tr: [['S1 · body, fundus and upper segment', 'Uterine, ovarian', 'B-Lynch; Hayman, Pereira and others', 'Uterine'], ['S2 · lower segment', 'Uterine, vesical, vaginal', 'B-Lynch 2 (transverse), Ho-Cho', 'Colpouterine']],
+      cuiT: 'Precautions', cui: ['Uterine artery ligation is not useful for lower-segment bleeding: reserve it for the body.', 'Published efficacy of compression sutures: 73.9% to 100%, mostly from series without a control group (Ursache 2026).', 'Reported complications: hematometra, pyometra, synechiae and uterine ischemia or necrosis, especially when combined with ligations.', 'Material: about 80% of reports used catgut or polyglactin 910; no study shows which thread is superior (Matsuzaki 2019).'] },
+    pt: { ruta: 'Obstetrícia · Hemorragia pós-parto cirúrgica', tit: 'Suturas compressivas segundo o setor que sangra (S1 ou S2)', baj: 'Escolha a técnica: o esquema mostra o trajeto passo a passo. Linha contínua: face anterior; linha pontilhada: face posterior.',
+      hA: 'Trajeto de cada sutura', hB: 'Escolha por setor e cuidados',
+      rotulo: 'Algoritmo próprio CaVeSal® · Baseado em: Nieto-Calvache AJ et al., IJGO 2025; B-Lynch C et al., BJOG 1997; Hayman RG et al., Obstet Gynecol 2002; Cho JH et al., Obstet Gynecol 2000; Ursache A et al., Med Sci 2026; Matsuzaki S et al., BMC Surg 2019.', nota: 'Lâmina didática; não substitui o julgamento clínico nem a experiência cirúrgica. Trajetos esquemáticos, sem medidas.',
+      E: ['B-Lynch (S1)', 'Hayman (S1)', 'Ho-Cho em quadrados (S2)', 'B-Lynch 2 transversa (S2)'],
+      S: [['Bexiga mobilizada: o primeiro ponto fica vários centímetros abaixo da borda inferior da histerotomia, na face anterior direita.', 'Saída acima da histerotomia e passagem por cima do fundo para a face posterior.', 'Entrada na face posterior na altura da histerotomia e cruzamento horizontal pela cavidade para o lado esquerdo.', 'Saída posterior esquerda e passagem por cima do fundo para a face anterior.', 'Entrada acima e saída abaixo da histerotomia do lado esquerdo, em espelho.', 'O auxiliar comprime o útero e o nó é dado com tensão, longe da histerorrafia.'],
+        ['Pontos de anterior para posterior no segmento inferior, de cada lado.', 'Cada fio sobe como um suspensório vertical por cima do fundo, sem cruzamento horizontal no fundo.', 'O nó é dado no fundo uterino com o útero comprimido.'],
+        ['Mobilização vesical: sem ela, a sutura baixa pode lesar a bexiga.', 'Cada quadrado une a parede anterior à posterior na zona que sangra, com quatro passagens.', 'Acrescentam-se quadrados em cada área sangrante do segmento.'],
+        ['Mobilização vesical completa para expor o segmento inferior (S2).', 'Sutura que comprime transversalmente o tecido que sangra do segmento.']],
+      L: { hist: 'Histerotomia', s1: 'S1 corpo e fundo', s2: 'S2 segmento inferior', vej: 'Bexiga mobilizada', nudo: 'Nó', ant: 'Anterior', post: 'Posterior', nd: 'Trajeto não descrito no texto da fonte: ver vídeo da fonte.' },
+      X: [['B-Lynch', ['Sutura mais reconhecida para o sangramento do corpo e do fundo (S1), tipicamente por atonia.', 'Se aplicada sem mobilizar a bexiga, os pontos ficam colados à borda da histerotomia, a tensão se apoia em pouco tecido e pode falhar.']],
+        ['Hayman', ['Suspensórios verticais para S1 (alternativa à B-Lynch citada pela fonte, junto com Pereira e outras).', 'Comprime mais diretamente as paredes anterior e posterior: pode ter mais risco de cicatrização endometrial que a B-Lynch.']],
+        ['Ho-Cho (quadrados múltiplos)', ['Indicada para o sangramento do segmento inferior (S2) por placenta prévia ou deiscência ampla.', 'Série original de Cho: 23 mulheres, evitou-se a histerectomia em todas.']],
+        ['B-Lynch 2 (transversa)', ['A fonte a nomeia junto com Ho-Cho como as suturas mais reconhecidas para S2.', 'Sua aplicação é impossível sem mobilização vesical prévia.']]],
+      th: ['Setor', 'Pedículos', 'Suturas', 'Ligadura útil'],
+      tr: [['S1 · corpo, fundo e parte alta do segmento', 'Uterina, ovariana', 'B-Lynch; Hayman, Pereira e outras', 'Uterina'], ['S2 · segmento inferior', 'Uterina, vesical, vaginal', 'B-Lynch 2 (transversa), Ho-Cho', 'Colpouterina']],
+      cuiT: 'Cuidados', cui: ['A ligadura da artéria uterina não serve para o sangramento do segmento inferior: reservá-la para o corpo.', 'Eficácia publicada das suturas compressivas: 73,9% a 100%, sobretudo em séries sem grupo controle (Ursache 2026).', 'Complicações descritas: hematometra, piometra, sinéquias e isquemia ou necrose uterina, sobretudo combinadas com ligaduras.', 'Material: cerca de 80% dos relatos usaram categute ou poliglactina 910; não há estudos que mostrem qual fio é superior (Matsuzaki 2019).'] }
+  };
+
+  var J = { es: { ant: '← Anterior', sig: 'Siguiente →', repro: '▶ Reproducir', pausa: '❚❚ Pausa', paso: 'Paso' },
+    en: { ant: '← Previous', sig: 'Next →', repro: '▶ Play', pausa: '❚❚ Pause', paso: 'Step' },
+    pt: { ant: '← Anterior', sig: 'Próximo →', repro: '▶ Reproduzir', pausa: '❚❚ Pausa', paso: 'Passo' } };
+  ['es', 'en', 'pt'].forEach(function (l) { for (var x in J[l]) UI[l][x] = J[l][x]; });
+  var st = { k: 0, e: 0 }, tim = null;
+  function parar() { if (tim) { clearInterval(tim); tim = null; } }
+  function rep(u) { return '<div class="rep"><button type="button" data-g="prev">' + A.esc(u.ant) + '</button><button type="button" data-g="play" aria-pressed="' + !!tim + '">' + A.esc(tim ? u.pausa : u.repro) + '</button><button type="button" data-g="next">' + A.esc(u.sig) + '</button></div>'; }
+  function olp(arr) { return arr.map(function (x, i) { return '<li data-g="k" data-i="' + i + '" class="' + (i === st.k ? 'on' : i > st.k ? 'fut' : '') + '">' + A.esc(x) + '</li>'; }).join(''); }
+  function T(x, y, s, c, an, sz) { return '<text x="' + x + '" y="' + y + '" fill="' + (c || '#e6edf3') + '" font-size="' + (sz || 10) + '" font-weight="800" text-anchor="' + (an || 'middle') + '">' + A.esc(s) + '</text>'; }
+  function clic(ev, n) {
+    var b = ev.target.closest('[data-l],[data-g]'); if (!b) return false;
+    if (b.dataset.l) { A.setLang(b.dataset.l); return true; }
+    var g = b.dataset.g;
+    if (g === 'prev') { parar(); st.k = Math.max(0, st.k - 1); }
+    else if (g === 'next') { parar(); st.k = Math.min(n() - 1, st.k + 1); }
+    else if (g === 'k') { parar(); st.k = +b.dataset.i; }
+    else if (g === 'play') {
+      if (tim) parar(); else { if (st.k >= n() - 1) st.k = 0; tim = setInterval(function () { if (st.k >= n() - 1) parar(); else st.k++; pintar(); }, 2600); }
+    } else if (g === 'e') { parar(); st.e = +b.dataset.i; st.k = 0; }
+    else return false;
+    return true;
+  }
+  var BG = '<rect width="360" height="260" rx="12" fill="#11161b"/>';
+  var MIO = 'fill="#9c5f66" stroke="#e3a1a8" stroke-width="2"';
+  function utero(dy) { dy = dy || 0; return '<path transform="translate(0 ' + dy + ')" d="M180 22 C260 22 292 80 286 130 C281 172 250 196 222 212 L214 238 L146 238 L138 212 C110 196 79 172 74 130 C68 80 100 22 180 22Z" ' + MIO + '/>'; }
+
+  function n() { return U(UI).S[st.e].length; }
+  function svg(u) {
+    var L = u.L, k = st.k, e = st.e, s = BG + utero();
+    s += '<path d="M90 166 Q180 180 270 166" stroke="#e6edf3" stroke-width="1" stroke-dasharray="3 4" fill="none" opacity=".6"/>' + T(296, 120, L.s1, '#9fb3c8', 'middle', 9) + T(300, 214, L.s2, '#9fb3c8', 'middle', 9);
+    s += '<path d="M124 150 Q180 162 236 150" stroke="#fff" stroke-width="3" fill="none"/>' + T(180, 146, L.hist, '#fff', 'middle', 9);
+    s += '<ellipse cx="180" cy="250" rx="54" ry="8" fill="#d8c25a" opacity=".85"/>' + T(180, 253, L.vej, '#11161b', 'middle', 8);
+    var Y = '#ffd166', W = 'stroke="' + Y + '" stroke-width="3.2" fill="none" stroke-linecap="round"', D = W + ' stroke-dasharray="5 4"';
+    function c(i) { return k >= i; }
+    if (e === 0) {
+      if (c(0)) s += '<circle cx="134" cy="184" r="4" fill="' + Y + '"/>';
+      if (c(1)) s += '<path d="M134 184 L134 130" ' + W + '/><path d="M134 130 Q130 40 150 26" ' + W + '/>';
+      if (c(2)) s += '<path d="M150 26 Q128 60 134 172" ' + D + '/><path d="M134 172 Q180 184 226 172" ' + D + '/>';
+      if (c(3)) s += '<path d="M226 172 Q232 60 210 26" ' + D + '/><path d="M210 26 Q230 40 226 130" ' + W + '/>';
+      if (c(4)) s += '<path d="M226 130 L226 184" ' + W + '/><circle cx="226" cy="184" r="4" fill="' + Y + '"/>';
+      if (c(5)) s += '<path d="M134 184 Q180 200 226 184" ' + W + '/><circle cx="180" cy="194" r="6" fill="#3ddc84"/>' + T(180, 214, L.nudo, '#3ddc84', 'middle', 9) + '<path d="M56 90 L78 90" stroke="#3ddc84" stroke-width="3" marker-end="url(#fv)"/><path d="M304 90 L282 90" stroke="#3ddc84" stroke-width="3" marker-end="url(#fv)"/>';
+    } else if (e === 1) {
+      if (c(0)) s += '<circle cx="146" cy="190" r="4" fill="' + Y + '"/><circle cx="214" cy="190" r="4" fill="' + Y + '"/>';
+      if (c(1)) s += '<path d="M146 190 Q136 60 164 26" ' + W + '/><path d="M214 190 Q224 60 196 26" ' + W + '/>';
+      if (c(2)) s += '<circle cx="180" cy="26" r="7" fill="#3ddc84"/>' + T(180, 14, L.nudo, '#3ddc84', 'middle', 9);
+    } else if (e === 2) {
+      if (c(0)) s += '<ellipse cx="180" cy="250" rx="54" ry="8" fill="#3ddc84" opacity=".35"/>';
+      if (c(1)) s += '<rect x="148" y="186" width="22" height="22" ' + W + '/>';
+      if (c(2)) s += '<rect x="190" y="186" width="22" height="22" ' + W + '/><rect x="169" y="212" width="22" height="18" ' + W + '/>';
+    } else {
+      s += '<path d="M120 196 Q180 214 240 196 L232 236 L128 236Z" fill="#ffd166" opacity="' + (k >= 1 ? '.35' : '.12') + '"/>' + T(180, 226, '?', '#ffd166', 'middle', 14);
+    }
+    return '<svg class="eco" viewBox="0 0 360 260" role="img"><defs><marker id="fv" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#3ddc84"/></marker></defs>' + s + '</svg>' + (e === 3 ? '<p class="nota">' + A.esc(L.nd) + '</p>' : '');
+  }
+  function pintar() {
+    var u = U(UI);
+    A.nav($('#nav-at'), 'suturas-compresivas.html');
+    chips($('#esc'), u.E.map(function (x) { return { n: x }; }), st.e, 'e');
+    $('#svgC').innerHTML = svg(u);
+    $('#rep').innerHTML = rep(u);
+    $('#pas').innerHTML = olp(u.S[st.e]);
+    A.panel($('#exp'), u.X[st.e][0], u.X[st.e][1], u.vacio);
+    $('#tab').innerHTML = '<thead><tr>' + u.th.map(function (h) { return '<th>' + A.esc(h) + '</th>'; }).join('') + '</tr></thead><tbody>' + u.tr.map(function (r) { return '<tr><th>' + A.esc(r[0]) + '</th>' + r.slice(1).map(function (x) { return '<td>' + A.esc(x) + '</td>'; }).join('') + '</tr>'; }).join('') + '</tbody>';
+    $('#cui').innerHTML = '<h3>' + A.esc(u.cuiT) + '</h3>' + lista(u.cui);
+  }
+  document.addEventListener('click', function (ev) { if (clic(ev, n)) pintar(); });
+  pintar();
+
+})();
+</script>
+</body>
+</html>

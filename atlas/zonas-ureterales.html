@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Zonas de riesgo ureteral — Atlas médico · CaVeSal® Academy</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="../img/favicon.png">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="atlas.css">
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <a class="marca" href="../#/" aria-label="CaVeSal Academy">
+      <img src="../img/icon-192.png" alt="" width="40" height="40">
+      <span class="marca-txt"><strong>CaVeSal<sup>®</sup> Academy</strong><small data-t="atlas">Atlas médico</small></span>
+    </a>
+  </div>
+</header>
+<main class="at" id="main">
+  <div class="at-top">
+    <a class="volver" href="../#/" data-t="volver">← Volver a Academy</a>
+    <div class="idi" role="group" aria-label="Idioma">
+      <button type="button" data-l="es">ES</button><button type="button" data-l="en">EN</button><button type="button" data-l="pt">PT</button>
+    </div>
+  </div>
+  <nav class="nav-at" id="nav-at" aria-label="Láminas"></nav>
+  <span class="eyebrow" data-t="ruta">Obstetricia · Hemorragia posparto quirúrgica</span>
+  <h1 data-t="tit">Zonas de riesgo ureteral en la cesárea y la histerectomía obstétrica</h1>
+  <p class="baj" data-t="baj">Tocá cada punto numerado del trayecto del uréter para ver el riesgo y cómo prevenir la lesión.</p>
+  <section class="lam" aria-labelledby="h-a">
+    <h2 id="h-a"><span class="tipo">P</span><span data-t="hA">Trayecto pelviano del uréter</span></h2>
+    <div id="svgU"></div>
+    <div class="chips" id="zon" role="group"></div>
+    <div class="exp" id="exp" aria-live="polite"></div>
+  </section>
+  <section class="lam" aria-labelledby="h-b">
+    <h2 id="h-b"><span class="tipo">P</span><span data-t="hB">Prevención</span></h2>
+    <div class="exp" id="pre"></div>
+    <div class="exp" id="alt"></div>
+    <p class="nota" id="dat"></p>
+  </section>
+  <div class="rot">
+    <p><strong data-t="rotulo">Algoritmo propio CaVeSal® · Basado en: Ade-Ojo IP y Tijani O, Int J Womens Health 2021; Mansouri G, Medicina 2025; Horgan R et al., AJOG MFM 2023; Nieto-Calvache AJ et al., IJGO 2025 y BMC Pregnancy Childbirth 2025.</strong></p>
+    <p class="nota" data-t="nota">Lámina didáctica.</p>
+    <ol><li>Ade-Ojo IP, Tijani O. A review on the etiology, prevention, and management of ureteral injuries during obstetric and gynecologic surgeries. Int J Womens Health. 2021;13:895-902 (CC BY-NC 3.0: solo texto). <a href="https://doi.org/10.2147/IJWH.S330060" target="_blank" rel="noopener">doi:10.2147/IJWH.S330060</a></li><li>Mansouri G. Causes and factors affecting cesarean hysterectomy: a retrospective study. Medicina (Kaunas). 2025;61(3):371. CC BY 4.0. <a href="https://doi.org/10.3390/medicina61030371" target="_blank" rel="noopener">doi:10.3390/medicina61030371</a></li><li>Horgan R, Hessami K, Hage Diab Y, et al. Prophylactic ureteral stent placement for the prevention of genitourinary tract injury during hysterectomy for placenta accreta spectrum: systematic review and meta-analysis. Am J Obstet Gynecol MFM. 2023:101120. <a href="https://doi.org/10.1016/j.ajogmf.2023.101120" target="_blank" rel="noopener">doi:10.1016/j.ajogmf.2023.101120</a></li><li>Nieto-Calvache AJ, Ramasauskaite D, Palacios-Jaraquemada JM, Hussein AM, Jauniaux E, Ubom AEB, et al.; FIGO Committee on Childbirth and PPH. Complex cesarean section: surgical approach to reduce the risks of intraoperative complications and postpartum hemorrhage. Int J Gynaecol Obstet. 2025;168(3):987-998. CC BY 4.0. <a href="https://doi.org/10.1002/ijgo.16094" target="_blank" rel="noopener">doi:10.1002/ijgo.16094</a></li><li>Nieto-Calvache AJ, Palacios-Jaraquemada JM, et al. Evaluation of the topographic classification of placenta accreta spectrum: protocol for an ongoing prospective multicenter study. BMC Pregnancy Childbirth. 2025;25:1266. <a href="https://doi.org/10.1186/s12884-025-08423-0" target="_blank" rel="noopener">doi:10.1186/s12884-025-08423-0</a></li></ol>
+  </div>
+</main>
+<script src="atlas.js"></script>
+<script>
+(function () {
+  'use strict';
+  var A = window.Atlas;
+  function $(s) { return document.querySelector(s); }
+  var COM = {
+    es: { atlas: 'Atlas médico', volver: '← Volver a Academy', nota: 'Lámina didáctica; no reemplaza la evaluación del ecografista ni el juicio clínico.', esq: 'Esquema CaVeSal®', vacio: 'Elegí una opción.' },
+    en: { atlas: 'Medical atlas', volver: '← Back to Academy', nota: 'Didactic plate; it does not replace the sonographer’s assessment or clinical judgment.', esq: 'CaVeSal® drawing', vacio: 'Choose an option.' },
+    pt: { atlas: 'Atlas médico', volver: '← Voltar ao Academy', nota: 'Lâmina didática; não substitui a avaliação do ultrassonografista nem o julgamento clínico.', esq: 'Esquema CaVeSal®', vacio: 'Escolha uma opção.' }
+  };
+  function U(UI) { ['es', 'en', 'pt'].forEach(function (l) { for (var k in COM[l]) if (!(k in UI[l])) UI[l][k] = COM[l][k]; }); return A.textos(UI); }
+  function real(img, c, txt) { var r = A.CRED[c]; return '<figure><img src="img/' + img + '.jpg" alt="" loading="lazy"><figcaption><a href="' + r.url + '" target="_blank" rel="noopener">' + A.esc(r.txt) + '</a></figcaption></figure>'; }
+  function chips(el, list, cur, g) { el.innerHTML = list.map(function (x, i) { return '<button type="button" data-g="' + g + '" data-i="' + i + '" aria-pressed="' + (cur === i) + '">' + (x.k ? '<b>' + A.esc(x.k) + '</b>' : '') + A.esc(x.n) + '</button>'; }).join(''); }
+  function lista(a) { return '<ul>' + a.map(function (x) { return '<li>' + A.esc(x) + '</li>'; }).join('') + '</ul>'; }
+
+  var UI = {
+    es: { ruta: 'Obstetricia · Hemorragia posparto quirúrgica', tit: 'Zonas de riesgo ureteral en la cesárea y la histerectomía obstétrica', baj: 'Tocá cada punto numerado del trayecto del uréter para ver el riesgo y cómo prevenir la lesión.',
+      hA: 'Trayecto pelviano del uréter', hB: 'Prevención', rotulo: 'Algoritmo propio CaVeSal® · Basado en: Ade-Ojo IP y Tijani O, Int J Womens Health 2021; Mansouri G, Medicina 2025; Horgan R et al., AJOG MFM 2023; Nieto-Calvache AJ et al., IJGO 2025 y BMC Pregnancy Childbirth 2025.', nota: 'Lámina didáctica; esquema frontal simplificado, no a escala.',
+      L: { ur: 'Uréter', ov: 'Vasos ováricos', ua: 'A. uterina', vej: 'Vejiga', ut: 'Útero' },
+      Z: [['Ligamento infundibulopélvico', ['El uréter corre paralelo a los vasos ováricos y forma el borde posterior de la fosa ovárica.', 'Riesgo: ligadura del infundibulopélvico en la anexectomía o la histerectomía, adherencias, endometriosis o masas anexiales.']],
+        ['Espina ciática · ligamento uterosacro', ['A la altura de la espina ciática el uréter pasa lateral al peritoneo del ligamento uterosacro.', 'Riesgo: puntos o clampeos en el uterosacro durante la histerectomía.']],
+        ['Cruce con la arteria uterina', ['A nivel del orificio cervical interno, unos 1,5 cm lateral al cuello, la arteria uterina cruza por encima del uréter.', 'Riesgo: ligadura de las uterinas, clampeo a ciegas ante el sangrado, extensión lateral de la histerotomía hacia el ligamento ancho.']],
+        ['Túnel ureteral (Wertheim) · fondo de saco vaginal anterior', ['Sobre el fondo de saco vaginal anterior el uréter gira hacia adelante y adentro dentro del túnel del ligamento cardinal.', 'Riesgo: placenta adherida baja y lateral (PAS tipo 2L) y reparación de desgarros laterales de la histerotomía.']],
+        ['Unión ureterovesical · porción intramural', ['Tramo final que atraviesa la musculatura vesical.', 'Riesgo: disección retrovesical en el PAS, fibrosis vesicouterina (tipo 4) y puntos profundos en el segmento sin vejiga movilizada.']]],
+      pre: ['Exposición amplia y movilización de la vejiga hacia caudal: aleja el tramo final de los uréteres.', 'Evitar clampeos y ligaduras a ciegas cuando hay sangrado; identificar los uréteres en el campo.', 'Ligar los pedículos lo más cerca posible del útero y desplazar los uréteres hacia lateral.', 'Ante una extensión lateral de la histerotomía: reparar con cuidado e identificar el uréter después de la reparación.', 'PAS tipo 2L: tunelizar el uréter, idealmente con catéter ureteral rígido, con control vascular proximal.', 'Cirujanos en curva de aprendizaje: preferir la histerectomía subtotal cuando sea posible.'],
+      altT: 'Alternativa citada por la fuente', alt: ['Catéter ureteral profiláctico en la histerectomía por PAS: la revisión de 2021 lo menciona como medida preventiva; el metaanálisis de Horgan (2023) no mostró menos lesiones genitourinarias, aunque sí menor pérdida de sangre.'],
+      dat: 'Dato: en una serie de histerectomías obstétricas (Mansouri 2025), de 45 complicaciones, el 33,3% fueron lesiones vesicales y el 13,3% lesiones ureterales; la histerectomía se asoció con cesáreas previas.' },
+    en: { ruta: 'Obstetrics · Surgical postpartum hemorrhage', tit: 'Ureteral risk zones in cesarean section and obstetric hysterectomy', baj: 'Tap each numbered point along the ureter to see the risk and how to prevent injury.',
+      hA: 'Pelvic course of the ureter', hB: 'Prevention', rotulo: 'CaVeSal® own algorithm · Based on: Ade-Ojo IP and Tijani O, Int J Womens Health 2021; Mansouri G, Medicina 2025; Horgan R et al., AJOG MFM 2023; Nieto-Calvache AJ et al., IJGO 2025 and BMC Pregnancy Childbirth 2025.', nota: 'Didactic plate; simplified frontal drawing, not to scale.',
+      L: { ur: 'Ureter', ov: 'Ovarian vessels', ua: 'Uterine a.', vej: 'Bladder', ut: 'Uterus' },
+      Z: [['Infundibulopelvic ligament', ['The ureter runs parallel to the ovarian vessels and forms the posterior boundary of the ovarian fossa.', 'Risk: ligation of the infundibulopelvic ligament during adnexectomy or hysterectomy, adhesions, endometriosis or adnexal masses.']],
+        ['Ischial spine · uterosacral ligament', ['At the ischial spine the ureter lies lateral to the peritoneum of the uterosacral ligament.', 'Risk: sutures or clamps on the uterosacral ligament during hysterectomy.']],
+        ['Crossing with the uterine artery', ['At the level of the internal os, about 1.5 cm lateral to the cervix, the uterine artery crosses above the ureter.', 'Risk: uterine artery ligation, blind clamping when bleeding, lateral extension of the hysterotomy into the broad ligament.']],
+        ['Ureteric tunnel (Wertheim) · anterior vaginal fornix', ['Over the anterior vaginal fornix the ureter turns anteriorly and medially within the tunnel of the cardinal ligament.', 'Risk: low lateral adherent placenta (PAS type 2L) and repair of lateral hysterotomy tears.']],
+        ['Ureterovesical junction · intramural part', ['Final segment crossing the bladder musculature.', 'Risk: retrovesical dissection in PAS, vesicouterine fibrosis (type 4) and deep sutures in the segment without bladder mobilization.']]],
+      pre: ['Wide exposure and caudal bladder mobilization: it moves the distal ureters away.', 'Avoid blind clamping and ligation when bleeding; identify the ureters in the field.', 'Ligate pedicles as close to the uterus as possible and displace the ureters laterally.', 'After a lateral hysterotomy extension: repair carefully and identify the ureter after the repair.', 'PAS type 2L: tunnel the ureter, ideally with a rigid ureteral stent, with proximal vascular control.', 'Surgeons on the learning curve: prefer subtotal hysterectomy when possible.'],
+      altT: 'Alternative cited by the source', alt: ['Prophylactic ureteral stent in hysterectomy for PAS: the 2021 review mentions it as a preventive measure; Horgan’s meta-analysis (2023) showed no fewer genitourinary injuries, although blood loss was lower.'],
+      dat: 'Data: in a series of obstetric hysterectomies (Mansouri 2025), of 45 complications, 33.3% were bladder injuries and 13.3% ureteral injuries; hysterectomy was associated with previous cesarean sections.' },
+    pt: { ruta: 'Obstetrícia · Hemorragia pós-parto cirúrgica', tit: 'Zonas de risco ureteral na cesárea e na histerectomia obstétrica', baj: 'Toque cada ponto numerado do trajeto do ureter para ver o risco e como prevenir a lesão.',
+      hA: 'Trajeto pélvico do ureter', hB: 'Prevenção', rotulo: 'Algoritmo próprio CaVeSal® · Baseado em: Ade-Ojo IP e Tijani O, Int J Womens Health 2021; Mansouri G, Medicina 2025; Horgan R et al., AJOG MFM 2023; Nieto-Calvache AJ et al., IJGO 2025 e BMC Pregnancy Childbirth 2025.', nota: 'Lâmina didática; esquema frontal simplificado, sem escala.',
+      L: { ur: 'Ureter', ov: 'Vasos ovarianos', ua: 'A. uterina', vej: 'Bexiga', ut: 'Útero' },
+      Z: [['Ligamento infundibulopélvico', ['O ureter corre paralelo aos vasos ovarianos e forma o limite posterior da fossa ovariana.', 'Risco: ligadura do infundibulopélvico na anexectomia ou histerectomia, aderências, endometriose ou massas anexiais.']],
+        ['Espinha isquiática · ligamento uterossacro', ['Na altura da espinha isquiática o ureter passa lateral ao peritônio do ligamento uterossacro.', 'Risco: pontos ou pinçamentos no uterossacro durante a histerectomia.']],
+        ['Cruzamento com a artéria uterina', ['No nível do orifício cervical interno, cerca de 1,5 cm lateral ao colo, a artéria uterina cruza por cima do ureter.', 'Risco: ligadura das uterinas, pinçamento às cegas diante do sangramento, extensão lateral da histerotomia para o ligamento largo.']],
+        ['Túnel ureteral (Wertheim) · fórnice vaginal anterior', ['Sobre o fórnice vaginal anterior o ureter gira para frente e para dentro no túnel do ligamento cardinal.', 'Risco: placenta aderida baixa e lateral (PAS tipo 2L) e reparo de lacerações laterais da histerotomia.']],
+        ['Junção ureterovesical · porção intramural', ['Trecho final que atravessa a musculatura vesical.', 'Risco: dissecção retrovesical no PAS, fibrose vesicouterina (tipo 4) e pontos profundos no segmento sem bexiga mobilizada.']]],
+      pre: ['Exposição ampla e mobilização da bexiga para caudal: afasta o trecho final dos ureteres.', 'Evitar pinçamentos e ligaduras às cegas quando há sangramento; identificar os ureteres no campo.', 'Ligar os pedículos o mais perto possível do útero e deslocar os ureteres para lateral.', 'Diante de extensão lateral da histerotomia: reparar com cuidado e identificar o ureter após o reparo.', 'PAS tipo 2L: tunelizar o ureter, idealmente com cateter ureteral rígido, com controle vascular proximal.', 'Cirurgiões em curva de aprendizado: preferir a histerectomia subtotal quando possível.'],
+      altT: 'Alternativa citada pela fonte', alt: ['Cateter ureteral profilático na histerectomia por PAS: a revisão de 2021 o menciona como medida preventiva; a metanálise de Horgan (2023) não mostrou menos lesões geniturinárias, embora a perda de sangue tenha sido menor.'],
+      dat: 'Dado: em uma série de histerectomias obstétricas (Mansouri 2025), de 45 complicações, 33,3% foram lesões vesicais e 13,3% lesões ureterais; a histerectomia associou-se a cesáreas prévias.' }
+  };
+  var sel = null;
+  var P = [[92, 70], [100, 128], [121, 168], [138, 198], [158, 220]];
+  function T(x, y, s, c, an, sz) { return '<text x="' + x + '" y="' + y + '" fill="' + (c || '#e6edf3') + '" font-size="' + (sz || 10) + '" font-weight="800" text-anchor="' + (an || 'middle') + '">' + A.esc(s) + '</text>'; }
+  function svg(u) {
+    var L = u.L, s = '<rect width="360" height="260" rx="12" fill="#11161b"/>';
+    s += '<path d="M180 40 C222 40 236 76 232 110 C229 136 214 150 204 158 L200 196 L160 196 L156 158 C146 150 131 136 128 110 C124 76 138 40 180 40Z" fill="#9c5f66" stroke="#e3a1a8" stroke-width="2"/>' + T(180, 100, L.ut, '#fff');
+    s += '<ellipse cx="180" cy="226" rx="70" ry="22" fill="#d8c25a" opacity=".9"/>' + T(180, 238, L.vej, '#11161b', 'middle', 9);
+    s += '<ellipse cx="100" cy="92" rx="14" ry="9" fill="#e9c7b5"/><ellipse cx="260" cy="92" rx="14" ry="9" fill="#e9c7b5"/>';
+    s += '<path d="M40 14 Q70 50 96 86 M320 14 Q290 50 264 86" stroke="#e05656" stroke-width="3" fill="none"/><path d="M48 12 Q76 48 100 84 M312 12 Q284 48 260 84" stroke="#5b8def" stroke-width="2" fill="none"/>' + T(40, 32, L.ov, '#ff8a80', 'start', 9);
+    s += '<path d="M78 14 Q92 70 100 128 Q108 168 138 198 Q150 212 160 220 M282 14 Q268 70 260 128 Q252 168 222 198 Q210 212 200 220" stroke="#f5e6a8" stroke-width="4" fill="none" stroke-linecap="round"/>' + T(66, 110, L.ur, '#f5e6a8', 'end', 9);
+    s += '<path d="M40 160 Q100 160 158 162 M320 160 Q260 160 202 162" stroke="#e05656" stroke-width="4" fill="none"/>' + T(36, 152, L.ua, '#ff8a80', 'start', 9);
+    P.forEach(function (p, i) { s += '<g class="pt' + (sel === i ? ' on' : '') + '" data-g="z" data-i="' + i + '" tabindex="0" role="button"><circle class="h" cx="' + p[0] + '" cy="' + p[1] + '" r="16"/><circle class="m" cx="' + p[0] + '" cy="' + p[1] + '" r="9"/><text x="' + p[0] + '" y="' + (p[1] + 4) + '" text-anchor="middle">' + (i + 1) + '</text></g>'; });
+    return '<svg class="eco" viewBox="0 0 360 260" role="img">' + s + '</svg>';
+  }
+  function pintar() {
+    var u = U(UI);
+    A.nav($('#nav-at'), 'zonas-ureterales.html');
+    $('#svgU').innerHTML = svg(u);
+    chips($('#zon'), u.Z.map(function (z, i) { return { k: String(i + 1), n: z[0] }; }), sel, 'z');
+    A.panel($('#exp'), sel === null ? '' : u.Z[sel][0], sel === null ? [] : u.Z[sel][1], u.vacio);
+    $('#pre').innerHTML = '<h3>' + A.esc(u.hB) + '</h3>' + lista(u.pre);
+    $('#alt').innerHTML = '<h3>' + A.esc(u.altT) + '</h3>' + lista(u.alt);
+    $('#dat').textContent = u.dat;
+  }
+  document.addEventListener('click', function (ev) {
+    var b = ev.target.closest('[data-l],[data-g]'); if (!b) return;
+    if (b.dataset.l) A.setLang(b.dataset.l); else if (b.dataset.g === 'z') sel = +b.dataset.i;
+    pintar();
+  });
+  document.addEventListener('keydown', function (ev) { var g = ev.target.closest && ev.target.closest('.pt'); if (g && (ev.key === 'Enter' || ev.key === ' ')) { ev.preventDefault(); sel = +g.dataset.i; pintar(); } });
+  pintar();
+
+})();
+</script>
+</body>
+</html>

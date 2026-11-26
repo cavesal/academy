@@ -114,3 +114,9 @@
 .bus{margin:4px 0 12px}
 .bus input{width:100%;border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:1rem;font-family:inherit;margin-bottom:8px;background:#fff}
 .bus .chips{margin-bottom:6px}
+.rep{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 0}
+.rep button{border:1px solid var(--line);background:var(--mist);border-radius:999px;padding:6px 12px;font-size:.82rem;font-weight:700;color:var(--ink);cursor:pointer}
+.rep button[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+.pasos.ju li{cursor:pointer;padding:3px 6px;border-radius:8px}
+.pasos.ju li.on{background:var(--mist);font-weight:800;color:var(--navy)}
+.pasos.ju li.fut{opacity:.55}
