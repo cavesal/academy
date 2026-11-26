@@ -126,3 +126,4 @@ tr.fila:hover td,tr.fila:hover th{background:var(--mist)}
 tr.fila.on td,tr.fila.on th{background:#fff4cc!important}
 tr.fila:focus-visible{outline:2px solid var(--teal)}
 a.ir{font-weight:700;color:var(--teal);white-space:nowrap}
+.tb td.cv{background:#e6f4ea}.tb td.ca{background:#fff4d6}.tb td.cr{background:#fde2e1}.tb td.cn{background:#f1f3f4;color:var(--muted)}

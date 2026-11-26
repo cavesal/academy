@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Semáforo de vacunas: preconcepción, embarazo y lactancia — Atlas médico · CaVeSal® Academy</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="../img/favicon.png">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="atlas.css">
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <a class="marca" href="../#/" aria-label="CaVeSal Academy">
+      <img src="../img/icon-192.png" alt="" width="40" height="40">
+      <span class="marca-txt"><strong>CaVeSal<sup>®</sup> Academy</strong><small data-t="atlas">Atlas médico</small></span>
+    </a>
+  </div>
+</header>
+<main class="at" id="main">
+  <div class="at-top">
+    <a class="volver" href="../#/" data-t="volver">← Volver a Academy</a>
+    <div class="idi" role="group" aria-label="Idioma">
+      <button type="button" data-l="es">ES</button><button type="button" data-l="en">EN</button><button type="button" data-l="pt">PT</button>
+    </div>
+  </div>
+  <nav class="nav-at" id="nav-at" aria-label="Láminas"></nav>
+  <span class="eyebrow" data-t="ruta">Obstetricia · Prevención</span>
+  <h1 data-t="tit">Semáforo de vacunas: preconcepción, embarazo y lactancia</h1>
+  <p class="baj" data-t="baj">Tocá una fila del semáforo para ver el detalle y elegí la etapa para ver las reglas clave.</p>
+  <section class="lam" aria-labelledby="s0h"><h2><span class="tipo">S</span><span id="s0h">Semáforo: verde indicada, ámbar según riesgo o precaución, rojo no aplicar</span></h2><div class="scroll"><table class="tb" id="s0t"></table></div></section>
+  <section class="lam" aria-labelledby="s1h"><h2><span class="tipo">C</span><span id="s1h">Reglas clave por etapa</span></h2><div class="chips" id="s1c" role="group"></div><div class="exp" id="s1e" aria-live="polite"></div></section>
+  <div class="rot">
+    <p><strong data-t="rotulo">Algoritmo propio CaVeSal® · Basado en: CDC 2026; ACIP 2013; OMS, documento de posición VSR 2025; ficha técnica de Qdenga; Debbag R et al., Vaccines 2026; Méndez Trujeque J, FLASOG 2026 (semáforo de consultorio); PAI Paraguay.</strong></p>
+    <p class="nota" data-t="nota">Lámina didáctica.</p>
+    <ol><li>Centers for Disease Control and Prevention. Guidelines for Vaccinating Pregnant Women. 2026. <a href="https://www.cdc.gov/vaccines-pregnancy/hcp/vaccination-guidelines/index.html" target="_blank" rel="noopener">cdc.gov</a></li><li>Centers for Disease Control and Prevention. RSV vaccine guidance for pregnant people. <a href="https://www.cdc.gov/rsv/hcp/vaccine-clinical-guidance/pregnant-people.html" target="_blank" rel="noopener">cdc.gov</a></li><li>World Health Organization. WHO position paper on immunization to protect infants against respiratory syncytial virus disease, May 2025. Wkly Epidemiol Rec. 2025;100(22):193-218. <a href="https://www.who.int/publications/i/item/who-wer-10022-193-218" target="_blank" rel="noopener">who.int</a></li><li>McLean HQ, Fiebelkorn AP, Temte JL, Wallace GS. Prevention of measles, rubella, congenital rubella syndrome, and mumps, 2013: summary recommendations of the Advisory Committee on Immunization Practices (ACIP). MMWR Recomm Rep. 2013;62(RR-4):1-34. <a href="https://www.cdc.gov/mmwr/preview/mmwrhtml/rr6204a1.htm" target="_blank" rel="noopener">cdc.gov</a></li><li>Qdenga. Summary of Product Characteristics, secciones 4.3 y 4.6. <a href="https://www.medicines.org.uk/emc/medicine/43091/spc" target="_blank" rel="noopener">medicines.org.uk</a></li><li>Debbag R, Ávila-Agüero ML, Brea J, et al. Impact of Vaccines Across the Lifespan: A New Perspective in Public Health—Conclusions of an Expert Panel—Part 1. Vaccines. 2026;14(2):183. <a href="https://doi.org/10.3390/vaccines14020183" target="_blank" rel="noopener">doi:10.3390/vaccines14020183</a></li></ol>
+  </div>
+</main>
+<script src="atlas.js"></script>
+<script>
+(function () {
+  'use strict';
+  var A = window.Atlas;
+  function $(s) { return document.querySelector(s); }
+  var COM = {
+    es: { atlas: 'Atlas médico', volver: '← Volver a Academy', nota: 'Lámina didáctica; no reemplaza la evaluación del ecografista ni el juicio clínico.', esq: 'Esquema CaVeSal®', vacio: 'Elegí una opción.' },
+    en: { atlas: 'Medical atlas', volver: '← Back to Academy', nota: 'Didactic plate; it does not replace the sonographer’s assessment or clinical judgment.', esq: 'CaVeSal® drawing', vacio: 'Choose an option.' },
+    pt: { atlas: 'Atlas médico', volver: '← Voltar ao Academy', nota: 'Lâmina didática; não substitui a avaliação do ultrassonografista nem o julgamento clínico.', esq: 'Esquema CaVeSal®', vacio: 'Escolha uma opção.' }
+  };
+  function U(UI) { ['es', 'en', 'pt'].forEach(function (l) { for (var k in COM[l]) if (!(k in UI[l])) UI[l][k] = COM[l][k]; }); return A.textos(UI); }
+  function real(img, c, txt) { var r = A.CRED[c]; return '<figure><img src="img/' + img + '.jpg" alt="" loading="lazy"><figcaption><a href="' + r.url + '" target="_blank" rel="noopener">' + A.esc(r.txt) + '</a></figcaption></figure>'; }
+  function chips(el, list, cur, g) { el.innerHTML = list.map(function (x, i) { return '<button type="button" data-g="' + g + '" data-i="' + i + '" aria-pressed="' + (cur === i) + '">' + (x.k ? '<b>' + A.esc(x.k) + '</b>' : '') + A.esc(x.n) + '</button>'; }).join(''); }
+  function lista(a) { return '<ul>' + a.map(function (x) { return '<li>' + A.esc(x) + '</li>'; }).join('') + '</ul>'; }
+
+  var UI = {"es": {"ruta": "Obstetricia · Prevención", "tit": "Semáforo de vacunas: preconcepción, embarazo y lactancia", "baj": "Tocá una fila del semáforo para ver el detalle y elegí la etapa para ver las reglas clave.", "rotulo": "Algoritmo propio CaVeSal® · Basado en: CDC 2026; ACIP 2013; OMS, documento de posición VSR 2025; ficha técnica de Qdenga; Debbag R et al., Vaccines 2026; Méndez Trujeque J, FLASOG 2026 (semáforo de consultorio); PAI Paraguay.", "nota": "Lámina didáctica; no reemplaza el juicio clínico."}, "en": {"ruta": "Obstetrics · Prevention", "tit": "Vaccine traffic light: preconception, pregnancy and breastfeeding", "baj": "Tap a row of the traffic light for details and choose the stage to see the key rules.", "rotulo": "CaVeSal® own algorithm · Based on: CDC 2026; ACIP 2013; WHO RSV position paper 2025; Qdenga SmPC; Debbag R et al., Vaccines 2026; Méndez Trujeque J, FLASOG 2026 (office traffic light); Paraguay EPI.", "nota": "Didactic plate; it does not replace clinical judgment."}, "pt": {"ruta": "Obstetrícia · Prevenção", "tit": "Semáforo de vacinas: pré-concepção, gestação e lactação", "baj": "Toque uma linha do semáforo para ver o detalhe e escolha a etapa para ver as regras-chave.", "rotulo": "Algoritmo próprio CaVeSal® · Baseado em: CDC 2026; ACIP 2013; OMS, documento de posição VSR 2025; bula da Qdenga; Debbag R et al., Vaccines 2026; Méndez Trujeque J, FLASOG 2026 (semáforo de consultório); PAI Paraguai.", "nota": "Lâmina didática; não substitui o julgamento clínico."}}, SEC = [{"t": "tab", "tipo": "S", "h": {"es": "Semáforo: verde indicada, ámbar según riesgo o precaución, rojo no aplicar", "en": "Traffic light: green indicated, amber if at risk or precaution, red do not give", "pt": "Semáforo: verde indicada, âmbar conforme risco ou precaução, vermelho não aplicar"}, "rows": {"es": [["Vacuna", "Preconcepción", "Embarazo", "Lactancia"], ["Tdpa", "Td si la serie está incompleta", "Sí, en cada embarazo", "Sí, si no la recibió"], ["Influenza inactivada", "Sí, en temporada", "Sí, cualquier trimestre", "Sí"], ["COVID-19", "Sí", "Sí, cualquier trimestre", "Sí"], ["VSR materna (Abrysvo)", "No aplica", "Sí: OMS desde 28 sem; CDC 32–36 sem", "No aplica"], ["Hepatitis B", "Sí, si no es inmune", "Sí, si es susceptible", "Sí"], ["Hepatitis A · neumococo · MenACWY", "Según riesgo", "Según riesgo", "Según riesgo"], ["VPH", "Sí, completar", "No: diferir al posparto", "Sí"], ["SRP · varicela (vivas)", "Sí; evitar embarazo 4 semanas", "No: contraindicadas", "Sí"], ["Fiebre amarilla (viva)", "Según riesgo; evitar embarazo 4 semanas", "Precaución: solo si el viaje es inevitable", "Evitar, sobre todo con lactante menor de 9 meses"], ["Dengue (Qdenga, viva)", "Zona endémica; evitar embarazo 1 mes", "No: contraindicada", "No: contraindicada"]], "en": [["Vaccine", "Preconception", "Pregnancy", "Breastfeeding"], ["Tdap", "Td if series incomplete", "Yes, every pregnancy", "Yes, if not received"], ["Inactivated influenza", "Yes, in season", "Yes, any trimester", "Yes"], ["COVID-19", "Yes", "Yes, any trimester", "Yes"], ["Maternal RSV (Abrysvo)", "Not applicable", "Yes: WHO from 28 wk; CDC 32–36 wk", "Not applicable"], ["Hepatitis B", "Yes, if not immune", "Yes, if susceptible", "Yes"], ["Hepatitis A · pneumococcal · MenACWY", "If at risk", "If at risk", "If at risk"], ["HPV", "Yes, complete series", "No: defer to postpartum", "Yes"], ["MMR · varicella (live)", "Yes; avoid pregnancy 4 weeks", "No: contraindicated", "Yes"], ["Yellow fever (live)", "If at risk; avoid pregnancy 4 weeks", "Precaution: only if travel is unavoidable", "Avoid, especially with infant under 9 months"], ["Dengue (Qdenga, live)", "Endemic area; avoid pregnancy 1 month", "No: contraindicated", "No: contraindicated"]], "pt": [["Vacina", "Pré-concepção", "Gestação", "Lactação"], ["dTpa", "dT se esquema incompleto", "Sim, em cada gestação", "Sim, se não recebeu"], ["Influenza inativada", "Sim, na temporada", "Sim, qualquer trimestre", "Sim"], ["COVID-19", "Sim", "Sim, qualquer trimestre", "Sim"], ["VSR materna (Abrysvo)", "Não se aplica", "Sim: OMS a partir de 28 sem; CDC 32–36 sem", "Não se aplica"], ["Hepatite B", "Sim, se não imune", "Sim, se suscetível", "Sim"], ["Hepatite A · pneumocócica · MenACWY", "Conforme risco", "Conforme risco", "Conforme risco"], ["HPV", "Sim, completar", "Não: adiar ao pós-parto", "Sim"], ["SCR · varicela (vivas)", "Sim; evitar gestação 4 semanas", "Não: contraindicadas", "Sim"], ["Febre amarela (viva)", "Conforme risco; evitar gestação 4 semanas", "Precaução: só se a viagem for inevitável", "Evitar, sobretudo com lactente menor de 9 meses"], ["Dengue (Qdenga, viva)", "Área endêmica; evitar gestação 1 mês", "Não: contraindicada", "Não: contraindicada"]]}, "cls": [["a", "v", "v"], ["v", "v", "v"], ["v", "v", "v"], ["n", "v", "n"], ["v", "v", "v"], ["a", "a", "a"], ["v", "r", "v"], ["v", "r", "v"], ["a", "a", "a"], ["a", "r", "r"]]}, {"t": "chips", "h": {"es": "Reglas clave por etapa", "en": "Key rules by stage", "pt": "Regras-chave por etapa"}, "it": {"es": [["Preconcepción", "Preconcepción", ["Revisar el carné y la serología (rubéola, varicela, hepatitis B).", "Vacunas vivas (SRP, varicela, fiebre amarilla): evitar el embarazo 4 semanas (CDC/ACIP). Alternativa citada por la fuente: el prospecto de la SRP indica 3 meses.", "Qdenga: evitar el embarazo al menos 1 mes (ficha técnica).", "Completar VPH y hepatitis B antes de concebir."]], ["Embarazo", "Embarazo", ["Tdpa en cada embarazo: CDC y ACOG 27–36 sem; PAI Paraguay 16–20 sem.", "Influenza inactivada y COVID-19 en cualquier trimestre (PAI: COVID-19 desde 20 sem).", "VSR: solo Abrysvo; OMS 2025 desde 28 sem sin límite superior salvo el trabajo de parto. Alternativa citada por la fuente: CDC 32+0 a 36+6 sem, de septiembre a enero. Puede darse el mismo día que otras vacunas.", "Vivas contraindicadas; la vacunación inadvertida no es indicación de interrupción."]], ["Lactancia", "Lactancia", ["Todas las vacunas son compatibles excepto viruela y fiebre amarilla (CDC).", "Fiebre amarilla: evitar salvo viaje inevitable, sobre todo con lactante menor de 9 meses.", "Qdenga: contraindicada en la lactancia (ficha técnica).", "Tdpa posparto si no la recibió en el embarazo."]], ["Desde los 50 años", "Climaterio y adulta mayor", ["La inmunosenescencia reduce la respuesta y aumenta la gravedad de las infecciones: revisar influenza, COVID-19, neumococo, zóster, Td/Tdpa y VSR según edad y riesgo.", "Fuente: Debbag et al., Vaccines 2026 (revisión narrativa de expertos, sin grados de evidencia)."]]], "en": [["Preconception", "Preconception", ["Check the vaccination record and serology (rubella, varicella, hepatitis B).", "Live vaccines (MMR, varicella, yellow fever): avoid pregnancy for 4 weeks (CDC/ACIP). Alternative cited by the source: the MMR package insert states 3 months.", "Qdenga: avoid pregnancy for at least 1 month (SmPC).", "Complete HPV and hepatitis B before conception."]], ["Pregnancy", "Pregnancy", ["Tdap in every pregnancy: CDC and ACOG 27–36 wk; Paraguay EPI 16–20 wk.", "Inactivated influenza and COVID-19 in any trimester (EPI: COVID-19 from 20 wk).", "RSV: Abrysvo only; WHO 2025 from 28 wk with no upper limit except labour. Alternative cited by the source: CDC 32+0 to 36+6 wk, September to January. It can be given on the same day as other vaccines.", "Live vaccines contraindicated; inadvertent vaccination is not an indication for termination."]], ["Breastfeeding", "Breastfeeding", ["All vaccines are compatible except smallpox and yellow fever (CDC).", "Yellow fever: avoid unless travel is unavoidable, especially with an infant under 9 months.", "Qdenga: contraindicated during breastfeeding (SmPC).", "Postpartum Tdap if not given in pregnancy."]], ["From age 50", "Climacteric and older women", ["Immunosenescence reduces response and increases infection severity: review influenza, COVID-19, pneumococcal, zoster, Td/Tdap and RSV by age and risk.", "Source: Debbag et al., Vaccines 2026 (narrative expert review, no evidence grading)."]]], "pt": [["Pré-concepção", "Pré-concepção", ["Revisar a caderneta e a sorologia (rubéola, varicela, hepatite B).", "Vacinas vivas (SCR, varicela, febre amarela): evitar a gestação por 4 semanas (CDC/ACIP). Alternativa citada pela fonte: a bula da SCR indica 3 meses.", "Qdenga: evitar a gestação por pelo menos 1 mês (bula).", "Completar HPV e hepatite B antes de conceber."]], ["Gestação", "Gestação", ["dTpa em cada gestação: CDC e ACOG 27–36 sem; PAI Paraguai 16–20 sem.", "Influenza inativada e COVID-19 em qualquer trimestre (PAI: COVID-19 a partir de 20 sem).", "VSR: só Abrysvo; OMS 2025 a partir de 28 sem sem limite superior exceto o trabalho de parto. Alternativa citada pela fonte: CDC 32+0 a 36+6 sem, de setembro a janeiro. Pode ser dada no mesmo dia que outras vacinas.", "Vivas contraindicadas; a vacinação inadvertida não é indicação de interrupção."]], ["Lactação", "Lactação", ["Todas as vacinas são compatíveis exceto varíola e febre amarela (CDC).", "Febre amarela: evitar salvo viagem inevitável, sobretudo com lactente menor de 9 meses.", "Qdenga: contraindicada na lactação (bula).", "dTpa pós-parto se não recebeu na gestação."]], ["A partir dos 50 anos", "Climatério e idosa", ["A imunossenescência reduz a resposta e aumenta a gravidade das infecções: revisar influenza, COVID-19, pneumocócica, zóster, dT/dTpa e VSR conforme idade e risco.", "Fonte: Debbag et al., Vaccines 2026 (revisão narrativa de especialistas, sem graus de evidência)."]]]}, "def": 1}];
+  ['es','en','pt'].forEach(function (l) { UI[l].vacP = {es:'Tocá un punto numerado del esquema.',en:'Tap a numbered point on the drawing.',pt:'Toque um ponto numerado do esquema.'}[l]; UI[l].vacC = {es:'Elegí una opción.',en:'Choose an option.',pt:'Escolha uma opção.'}[l]; });
+  var st = {};
+  function P(x, y, g, i, n, on) { return '<g class="pt' + (on ? ' on' : '') + '" data-g="' + g + '" data-i="' + i + '" tabindex="0" role="button"><circle class="h" cx="' + x + '" cy="' + y + '" r="18"/><circle class="m" cx="' + x + '" cy="' + y + '" r="11"/><text x="' + x + '" y="' + y + '">' + n + '</text></g>'; }
+  document.addEventListener('keydown', function (ev) { var g = ev.target.closest && ev.target.closest('.pt'); if (g && (ev.key === 'Enter' || ev.key === ' ')) { ev.preventDefault(); g.dispatchEvent(new MouseEvent('click', { bubbles: true })); } });
+  function tabla(el, rows, cls) { el.innerHTML = '<thead><tr>' + rows[0].map(function (h) { return '<th>' + A.esc(h) + '</th>'; }).join('') + '</tr></thead><tbody>' + rows.slice(1).map(function (r, i) { return '<tr><th>' + A.esc(r[0]) + '</th>' + r.slice(1).map(function (c, j) { var k = cls && cls[i] ? cls[i][j] : ''; return '<td' + (k ? ' class="c' + k + '"' : '') + '>' + A.esc(c) + '</td>'; }).join('') + '</tr>'; }).join('') + '</tbody>'; }
+  function pintar() {
+    var u = U(UI), l = A.lang;
+    A.nav($('#nav-at'), 'vacunas-semaforo.html');
+    SEC.forEach(function (s, k) {
+      var g = 's' + k, el = function (x) { return document.getElementById(g + x); };
+      el('h').textContent = s.h[l];
+      if (s.t === 'pts') {
+        var v = s.svg[l], on = st[g];
+        el('v').innerHTML = v.replace('</svg>', s.pts.map(function (p, i) { return P(p[0], p[1], g, i, i + 1, on === i); }).join('') + '</svg>');
+        if (on == null) A.panel(el('e'), '', [], u.vacP); else A.panel(el('e'), (on + 1) + '. ' + s.it[l][on][0], s.it[l][on][1], '');
+      } else if (s.t === 'chips') {
+        var c = st[g] == null ? (s.def != null ? s.def : null) : st[g];
+        chips(el('c'), s.it[l].map(function (x, i) { return { k: s.num ? String(i + (s.num0 || 1)) : '', n: x[0] }; }), c, g);
+        if (s.svg) el('v').innerHTML = c == null ? s.svg[l][0] : s.svg[l][c];
+        if (c == null) A.panel(el('e'), '', [], u.vacC); else A.panel(el('e'), s.it[l][c][1], s.it[l][c][2], '');
+      } else if (s.t === 'tab') { tabla(el('t'), s.rows[l], s.cls); }
+      else if (s.t === 'txt') { A.panel(el('e'), s.p[l][0], s.p[l][1], ''); }
+    });
+  }
+  document.addEventListener('click', function (ev) {
+    var b = ev.target.closest('[data-l],[data-g]'); if (!b) return;
+    if (b.dataset.l) A.setLang(b.dataset.l); else if (/^s\d+$/.test(b.dataset.g)) st[b.dataset.g] = +b.dataset.i; else return;
+    pintar();
+  });
+  pintar();
+
+})();
+</script>
+</body>
+</html>

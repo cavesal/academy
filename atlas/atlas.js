@@ -20,6 +20,7 @@
     { href: 'pas.html', t: { es: 'Acretismo (PAS)', en: 'Accreta (PAS)', pt: 'Acretismo (PAS)' } },
     { href: 'pas-ecografia.html', t: { es: 'PAS: ecografía S1/S2', en: 'PAS: S1/S2 ultrasound', pt: 'PAS: ultrassom S1/S2' } },
     { href: 'pas-conducta.html', t: { es: 'PAS: OSCS o histerectomía', en: 'PAS: OSCS or hysterectomy', pt: 'PAS: OSCS ou histerectomia' } },
+    { href: 'placenta-previa.html', t: { es: 'Placenta previa', en: 'Placenta previa', pt: 'Placenta prévia' } },
     { href: 'histerotomia-ward.html', t: { es: 'Histerotomía y maniobra de Ward', en: 'Hysterotomy and Ward maneuver', pt: 'Histerotomia e manobra de Ward' } },
     { href: 'zonas-ureterales.html', t: { es: 'Zonas de riesgo ureteral', en: 'Ureteral risk zones', pt: 'Zonas de risco ureteral' } },
     { href: 'suturas-compresivas.html', t: { es: 'Suturas compresivas S1/S2', en: 'Compression sutures S1/S2', pt: 'Suturas compressivas S1/S2' } },
@@ -30,7 +31,9 @@
     { href: 'biometria-fetal.html', t: { es: 'Biometría fetal', en: 'Fetal biometry', pt: 'Biometria fetal' } },
     { href: 'cabeza-cara-fetal.html', t: { es: 'Cabeza y cara fetal', en: 'Fetal head and face', pt: 'Cabeça e face fetal' } },
     { href: 'corazon-situs.html', t: { es: 'Corazón: situs y 4 cámaras', en: 'Heart: situs and 4 chambers', pt: 'Coração: situs e 4 câmaras' } },
-    { href: 'columna-pared-cordon.html', t: { es: 'Columna, pared y cordón', en: 'Spine, wall and cord', pt: 'Coluna, parede e cordão' } }
+    { href: 'columna-pared-cordon.html', t: { es: 'Columna, pared y cordón', en: 'Spine, wall and cord', pt: 'Coluna, parede e cordão' } },
+    { href: 'vacunas-semaforo.html', t: { es: 'Semáforo de vacunas', en: 'Vaccine traffic light', pt: 'Semáforo de vacinas' } },
+    { href: 'atrofia-vulvovaginal.html', t: { es: 'Atrofia vulvovaginal', en: 'Vulvovaginal atrophy', pt: 'Atrofia vulvovaginal' } }
   ];
   A.nav = function (el, actual) {
     if (!el) return;
