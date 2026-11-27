@@ -19,7 +19,8 @@
     calc: 'https://cavesal.app/full/',
     hc: 'https://historia.cavesal.app/',
     em: 'https://cavesal.app/cavesal-emergencias/full/',
-    gyn: 'https://cavesal.app/cavesal-gyn/'
+    gyn: 'https://cavesal.app/cavesal-gyn/full/',
+    ia: 'https://ia.cavesal.app/chat.html'
   };
 
   /* ================= textos de la interfaz ================= */
@@ -566,6 +567,8 @@
       '<a class="tarjeta" href="' + APPS.calc + '"><h3>' + esc(t('calc')) + '</h3><span class="meta">cavesal.app/full</span></a>' +
       '<a class="tarjeta" href="' + APPS.hc + '"><h3>' + esc(t('hc')) + '</h3><span class="meta">historia.cavesal.app</span></a>' +
       '<a class="tarjeta" href="' + APPS.em + '"><h3>' + esc(t('em')) + '</h3><span class="meta">cavesal.app/cavesal-emergencias</span></a>' +
+      '<a class="tarjeta" href="' + APPS.gyn + '"><h3>' + esc(t('gyn')) + '</h3><span class="meta">cavesal.app/cavesal-gyn</span></a>' +
+      '<a class="tarjeta" href="' + APPS.ia + '"><h3>CaVeSal® IA</h3><span class="meta">ia.cavesal.app</span></a>' +
       '</div>';
     $('#f-hero').addEventListener('submit', function (ev) {
       ev.preventDefault();
